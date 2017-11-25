@@ -18,7 +18,8 @@ import {
     Image,
     TouchableOpacity,
     ScrollView,
-    InteractionManager
+    InteractionManager,
+    Platform
 } from 'react-native';
 
 
@@ -27,7 +28,7 @@ import {Loading, EasyLoading} from 'react-native-easy-loading';
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 
-
+import BaseComponent from '../Main/BaseComponent';
 import HMApprovalDetailTopItem from './HMApprovalDetailTopItem';
 import HMApprovalMiddleItem from './HMApprovalMiddleItem';
 import HMListViewNextPerson from './HMListViewNextPerson';
@@ -38,11 +39,12 @@ import HMUrlUtils from '../CommonTools/HMUrlUtils'
 import LoadingView from '../CommonTools/LoadingView.js'
 import NetUitl from '../CommonTools/NetUitl'
 import HMAppProcessItem from '../Approval/HMAppProcessItem'
+import HMCalendar from '../CommonTools/HMCalendar'
 
 var cellArray = [];
 
 
-export default class HMApprovalDetail extends Component
+export default class HMApprovalDetail extends BaseComponent
 {
     static defaultProps = {
         popToLast: null
@@ -60,7 +62,9 @@ export default class HMApprovalDetail extends Component
             nextPerson: '',
             showLoading: true,
             progressArray: [],
-
+            isVisible: true,
+            size: 37,
+            color: "#FFFFFF",
         };
     }
 
@@ -68,51 +72,49 @@ export default class HMApprovalDetail extends Component
     {
         this.props.navigator.pop();
     }
+    renderItemClick(obj)
+    {
 
+        this.props.navigator.push({
+            component: HMCalendar,
+
+        })
+    }
     getApprovalDetail()
     {
         var tempUrl = `${HMUrlUtils.travelApplyDetail}&user_id=98108&travel_id=${this.props.rowData.travel_id}`;
         cellArray = [];
-
         var self = this;
-        // EasyLoading.show();
+        EasyLoading.show();
         NetUitl.get(tempUrl, function (responseText)
             {
-                // EasyLoading.dismis();
-
-                alert(JSON.stringify(responseText));
-
+                EasyLoading.dismis();
                 var jsonData = responseText;
                 var travelDetail = jsonData.travelDetail;
                 for (var i = 0; i < travelDetail.length; i++)
                 {
                     var obj = travelDetail[i];
-
-
                     obj.desPosition = (i + 1);
                     cellArray.push(
-                        <HMListViewCellItem key={i}
-                                            jsonObject={obj}
-                                            position={i}/>
+                        <View key={i} style={styles.cellViewStytle}>
+                            <HMListViewCellItem key={i}
+                                                itemClick={()=>this.renderItemClick}
+                                                jsonObject={obj}
+                                                position={i}/>
+                        </View>
                     )
                 }
                 jsonData.travel_id = self.props.rowData.travel_id;
-
-
-                alert(JSON.stringify(jsonData));
-
                 self.setState({
                     jsonObject: jsonData,
                     dataSource: cellArray,
                     remars: jsonData.description,
                     nextPerson: jsonData.nextAppName,
-
                 })
             },
             function (error)
             {
-
-                // EasyLoading.dismis();
+                EasyLoading.dismis();
             }
         )
         ;
@@ -128,6 +130,7 @@ export default class HMApprovalDetail extends Component
             this.getApprovalDetail();
 
             this.renderAppProgress();
+
         });
 
     }
@@ -166,8 +169,7 @@ export default class HMApprovalDetail extends Component
     //获取状态流程图
     renderAppProgress()
     {
-        //var tempUrl = `${HMUrlUtils.getAppProcess}&travel_id=${this.props.rowData.travel_id}`;
-        var tempUrl = 'http://test.tmcapi.tripg.com/index.php/commonApi/commonApi/getAppProcess?travel_id=851788';
+        var tempUrl = `${HMUrlUtils.getAppProcess}&travel_id=${this.props.rowData.travel_id}`;
         var self = this;
         NetUitl.get(tempUrl, function (ret)
         {
@@ -190,7 +192,6 @@ export default class HMApprovalDetail extends Component
                     obj.approval_status = self.renderImageName(obj);
 
                     obj.approval_time = approval_time;
-
                     progressArray.push(<HMAppProcessItem key={i}
                                                          length={resultList.length}
                                                          position={i}
@@ -213,6 +214,7 @@ export default class HMApprovalDetail extends Component
 
     pushToDetail()
     {
+        alert(1111);
     }
 
     render()
@@ -243,9 +245,7 @@ export default class HMApprovalDetail extends Component
                     />
                     <HMListViewNextPerson
                         nextPerson={this.state.nextPerson}/>
-
                     <View style={{flexDirection: 'row'}}>{this.state.progressArray}</View>
-
                     <Loading />
                 </ScrollView>
             </View>

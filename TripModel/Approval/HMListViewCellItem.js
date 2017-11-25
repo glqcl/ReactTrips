@@ -34,6 +34,7 @@ export default class HMListViewCellItem extends Component
         jsonObject: {},
         position: 0,
         popToLast: null,
+        itemClick: null,
         desPosition: 1,
     };
 
@@ -43,6 +44,15 @@ export default class HMListViewCellItem extends Component
         this.props.popToLast();
     }
 
+    renderCitys(obj)
+    {
+
+        if (this.props.itemClick == null) return;
+
+        this.props.itemClick(obj);
+
+
+    }
 
     renderGetCell()
     {
@@ -54,32 +64,52 @@ export default class HMListViewCellItem extends Component
         cellArray.push(<View key={'1'} style={styles.cellViewStytle}>
             <View style={styles.seconViewStytle}>
                 <Text style={styles.textViewStytle}>{'起始城市'}</Text>
-                <Text style={[styles.textViewStytle, {marginLeft: 10}]}>{this.props.jsonObject.setout_city}</Text>
+
+                <TouchableOpacity activeOpacity={0.5} onPress={() => this.renderCitys('起始城市')}>
+
+                    <Text style={[styles.textViewStytle, {marginLeft: 10}]}>{this.props.jsonObject.setout_city}</Text>
+                </TouchableOpacity>
                 <Text style={[styles.textViewStytle, {
                     color: 'orange',
                     position: 'absolute',
                     left: width * 0.5
                 }]}>{'至'}</Text>
-                <Text style={[styles.textViewStytle, {position: 'absolute', left: width - 100}]}>{this.props.jsonObject.arrive_city}</Text>
+
+
+                <Text style={[styles.textViewStytle, {
+                    position: 'absolute',
+                    left: width - 100
+                }]}>{this.props.jsonObject.arrive_city}</Text>
+
             </View>
         </View>);
-
         cellArray.push(<View key={'2'} style={styles.cellViewStytle}>
             <View style={styles.seconViewStytle}>
                 <Text style={styles.textViewStytle}>{'行程日期'}</Text>
-                <Text style={[styles.textViewStytle, {marginLeft: 10}]}>{this.props.jsonObject.start_date}</Text>
+                <TouchableOpacity activeOpacity={0.5} onPress={() => this.renderCitys('起始日期')}>
+                    <Text style={[styles.textViewStytle, {marginLeft: 10}]}>{this.props.jsonObject.start_date}</Text>
+
+                </TouchableOpacity>
                 <Text style={[styles.textViewStytle, {
                     color: 'orange',
                     position: 'absolute',
                     left: width * 0.5
                 }]}>{'至'}</Text>
-                <Text style={[styles.textViewStytle, {position: 'absolute', left: width - 100}]}>{this.props.jsonObject.end_date}</Text>
+
+                <Text style={[styles.textViewStytle, {
+                    position: 'absolute',
+                    left: width - 100
+                }]}>{this.props.jsonObject.end_date}</Text>
+
             </View>
         </View>);
-
         cellArray.push(<View key={'3'} style={[styles.desViewStytle, {flexDirection: 'row', alignItems: 'center'}]}>
             <Text style={styles.textViewStytle}>{'费用申请'}</Text>
-            <Text style={[styles.textViewStytle, {flex: 1, textAlign: 'left',marginLeft:width*0.5-70}]}>{this.props.jsonObject.product_name}</Text>
+            <Text style={[styles.textViewStytle, {
+                flex: 1,
+                textAlign: 'left',
+                marginLeft: width * 0.5 - 70
+            }]}>{this.props.jsonObject.product_name}</Text>
         </View>);
 
 
@@ -133,7 +163,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         fontSize: 12,
         color: 'gray',
-        backgroundColor:'transparent'
+        backgroundColor: 'transparent'
 
     }
 

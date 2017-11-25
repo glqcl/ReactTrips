@@ -18,7 +18,8 @@
 		"react-native-refresh-list-view": "^1.0.5",
 		"react-native-spinkit": "^1.1.1",
 		"react-native-swRefresh": "^1.2.3",
-		"react-native-tab-navigator": "^0.3.4"
+		"react-native-tab-navigator": "^0.3.4",
+		"rn-calendar": "0.0.4"
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",
