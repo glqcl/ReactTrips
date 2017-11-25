@@ -43,6 +43,7 @@ export default class HMListViewCellItem extends Component
         this.props.popToLast();
     }
 
+
     renderGetCell()
     {
         var cellArray = [];
@@ -131,7 +132,9 @@ const styles = StyleSheet.create({
     textViewStytle: {
         marginLeft: 10,
         fontSize: 12,
-        color: 'gray'
+        color: 'gray',
+        backgroundColor:'transparent'
+
     }
 
 

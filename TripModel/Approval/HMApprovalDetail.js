@@ -22,7 +22,7 @@ import {
 } from 'react-native';
 
 
-import Spinner from 'react-native-loading-spinner-overlay';
+import {Loading, EasyLoading} from 'react-native-easy-loading';
 
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
@@ -60,9 +60,7 @@ export default class HMApprovalDetail extends Component
             nextPerson: '',
             showLoading: true,
             progressArray: [],
-            isVisible: true,
-            size: 37,
-            color: "#FFFFFF",
+
         };
     }
 
@@ -71,60 +69,50 @@ export default class HMApprovalDetail extends Component
         this.props.navigator.pop();
     }
 
-
-    loadingToast()
-    {
-        Toast.loading('Loading...', 1, () =>
-        {
-            alert(111111);
-        });
-    }
-
-
     getApprovalDetail()
     {
         var tempUrl = `${HMUrlUtils.travelApplyDetail}&user_id=98108&travel_id=${this.props.rowData.travel_id}`;
         cellArray = [];
 
         var self = this;
-
-
-       var Spinner=this.refs.Spinner;
-
+        // EasyLoading.show();
         NetUitl.get(tempUrl, function (responseText)
             {
+                // EasyLoading.dismis();
+
+                alert(JSON.stringify(responseText));
+
                 var jsonData = responseText;
                 var travelDetail = jsonData.travelDetail;
                 for (var i = 0; i < travelDetail.length; i++)
                 {
                     var obj = travelDetail[i];
+
+
                     obj.desPosition = (i + 1);
                     cellArray.push(
-                        <View key={i} style={styles.cellViewStytle}>
-                            <HMListViewCellItem key={i}
-                                                jsonObject={obj}
-                                                position={i}/>
-                        </View>
+                        <HMListViewCellItem key={i}
+                                            jsonObject={obj}
+                                            position={i}/>
                     )
                 }
                 jsonData.travel_id = self.props.rowData.travel_id;
 
-                Spinner
 
+                alert(JSON.stringify(jsonData));
 
                 self.setState({
                     jsonObject: jsonData,
                     dataSource: cellArray,
                     remars: jsonData.description,
                     nextPerson: jsonData.nextAppName,
-                    isVisible: !this.state.isVisible
-                })
-            }
 
-            ,
+                })
+            },
             function (error)
             {
 
+                // EasyLoading.dismis();
             }
         )
         ;
@@ -175,7 +163,7 @@ export default class HMApprovalDetail extends Component
     }
 
 
-//获取状态流程图
+    //获取状态流程图
     renderAppProgress()
     {
         //var tempUrl = `${HMUrlUtils.getAppProcess}&travel_id=${this.props.rowData.travel_id}`;
@@ -202,6 +190,7 @@ export default class HMApprovalDetail extends Component
                     obj.approval_status = self.renderImageName(obj);
 
                     obj.approval_time = approval_time;
+
                     progressArray.push(<HMAppProcessItem key={i}
                                                          length={resultList.length}
                                                          position={i}
@@ -257,9 +246,7 @@ export default class HMApprovalDetail extends Component
 
                     <View style={{flexDirection: 'row'}}>{this.state.progressArray}</View>
 
-                    <View style={{ flex: 1 }}>
-                        <Spinner ref='Spinner' visible={this.state.isVisible} textContent={"正在加载中，请稍后..."} textStyle={{color: '#FFF'}} />
-                    </View>
+                    <Loading />
                 </ScrollView>
             </View>
         );

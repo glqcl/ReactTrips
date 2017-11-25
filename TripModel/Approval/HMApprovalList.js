@@ -18,6 +18,9 @@ import {
     InteractionManager
 
 } from 'react-native';
+import {Loading, EasyLoading} from 'react-native-easy-loading';
+
+import Singleton from '../CommonTools/Singleton';
 import {
     SwRefreshScrollView,
     SwRefreshListView,
@@ -91,6 +94,7 @@ export default class HMApprovalList extends BaseComponent
         this.state = {
             dataSource: ds.cloneWithRows(listArray),
 
+
         };
     }
     onRefresh(end)
@@ -100,8 +104,10 @@ export default class HMApprovalList extends BaseComponent
         var tempUrl = `${HMUrlUtils.getTravelList}?user_id=98108&type=3&page=${page}&pageSize=${pageSize}`;
 
         var self = this;
+        EasyLoading.show();
         NetUitl.get(tempUrl, function (responseText)
         {
+            EasyLoading.dismis();
             listArray = [];
             if (!isFirst)
             {
@@ -127,8 +133,10 @@ export default class HMApprovalList extends BaseComponent
         page++;
         var tempUrl = `${HMUrlUtils.getTravelList}?user_id=98108&type=3&page=${page}&pageSize= ${pageSize}`;
         var self = this;
+        EasyLoading.show();
         NetUitl.get(tempUrl, function (responseText)
         {
+            EasyLoading.dismis();
             var jsonData = responseText;
             var jsonArray = jsonData.result;
 
@@ -201,6 +209,8 @@ export default class HMApprovalList extends BaseComponent
                     onLoadMore={(onLoadMore) => this.onLoadMore(onLoadMore)}
                     isShowLoadMore={isFirst}
                 />
+
+                <Loading />
             </View>
         );
     }

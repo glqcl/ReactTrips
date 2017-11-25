@@ -6,10 +6,14 @@
  * 实现android端物理返回键的监听
  */
 import React, {Component} from 'react';
+
+import Singleton from '../CommonTools/Singleton';
 import {
     BackHandler,
     Platform,
 } from 'react-native';
+
+let singleton=new Singleton();
 
 export default class BaseComponent extends Component
 {
@@ -54,6 +58,8 @@ export default class BaseComponent extends Component
         if (navigator && navigator.getCurrentRoutes().length > 1)
         {
             navigator.pop();
+
+            singleton.hideProgress();
             return true;//true 表示返回上一页
         }
         return false; // 默认false  表示跳出RN
