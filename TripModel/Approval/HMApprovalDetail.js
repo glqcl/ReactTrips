@@ -48,7 +48,8 @@ var cellArray = [];
 export default class HMApprovalDetail extends BaseComponent
 {
     static defaultProps = {
-        popToLast: null
+        popToLast: null,
+
     };
 
     // 构造
@@ -75,7 +76,6 @@ export default class HMApprovalDetail extends BaseComponent
     }
     renderItemClick(obj)
     {
-        alert(obj);
         this.props.navigator.push({
             component: HMCalendar,
 
@@ -84,6 +84,7 @@ export default class HMApprovalDetail extends BaseComponent
     getApprovalDetail()
     {
         var tempUrl = `${HMUrlUtils.travelApplyDetail}&user_id=98108&travel_id=${this.props.rowData.travel_id}`;
+
         cellArray = [];
         var self = this;
         EasyLoading.show();
@@ -170,10 +171,14 @@ export default class HMApprovalDetail extends BaseComponent
     //获取状态流程图
     renderAppProgress()
     {
-        var tempUrl = `${HMUrlUtils.getAppProcess}&travel_id=${this.props.rowData.travel_id}`;
+
+        var tempUrl = `${HMUrlUtils.getAppProcess}?travel_id=${this.props.rowData.travel_id}`;
         var self = this;
+
         NetUitl.get(tempUrl, function (ret)
         {
+
+
             if (ret.code == '1')
             {
                 var resultList = ret.result;

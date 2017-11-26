@@ -19,7 +19,7 @@ const HMUrlUtils = {
     /*审批详情*/
     travelApplyDetail: 'http://test.tmcapi.tripg.com/index.php/commonApi/commonApi/travelApplyDetail?is_show=Y',
     /*获取流程图*/
-    getAppProcess: ' http://test.tmcapi.tripg.com/index.php/commonApi/commonApi/getAppProcess',
+    getAppProcess: 'http://test.tmcapi.tripg.com/index.php/commonApi/commonApi/getAppProcess',
 
 
     /*图片轮播图*/

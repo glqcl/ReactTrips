@@ -7,7 +7,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-import   React, {Component} from 'react';
+import React, {Component} from 'react';
 import {
     AppRegistry,
     StyleSheet,
@@ -37,6 +37,7 @@ import HMListViewItem from '../Approval/HMListViewItem';
 import HMApprovalDetail from './HMApprovalDetail';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
 import NetUitl from '../CommonTools/NetUitl'
+
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 var page = 1;
@@ -72,41 +73,34 @@ var listArray = [{
 
 export default class HMApprovalList extends BaseComponent
 {
-
-
     popToLast()
     {
         this.props.navigator.pop();
     }
-
     static defaultProps()
     {
 
     }
-
     constructor(props)
     {
         super(props);
-
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
         this.state = {
-            dataSource: ds.cloneWithRows(listArray),
 
+            dataSource: ds.cloneWithRows(listArray),
 
         };
     }
 
     onRefresh(end)
     {
-
         page = 1;
         var tempUrl = `${HMUrlUtils.getTravelList}?user_id=98108&type=3&page=${page}&pageSize=${pageSize}`;
-
         var self = this;
         EasyLoading.show();
         NetUitl.get(tempUrl, function (responseText)
         {
-           EasyLoading.dismis();
+            EasyLoading.dismis();
             listArray = [];
             if (!isFirst)
             {
@@ -116,17 +110,24 @@ export default class HMApprovalList extends BaseComponent
             var jsonArray = jsonData.result;
             listArray = jsonArray;
             self.setState({
+
                 dataSource: self.state.dataSource.cloneWithRows(jsonArray),
             });
+
+            self.refs.listView.endRefresh();
             self.refs.listView.resetStatus() //重置上拉加载的状态
-            end()//刷新成功后需要调用end结束刷新
+
         }, function (error)
         {
+            end();
+            self.refs.listView.resetStatus() //重置上拉加载的状态
 
         });
     }
-    onLoadMore(end)
+
+    onLoadMore(listView)
     {
+
         page++;
         var tempUrl = `${HMUrlUtils.getTravelList}?user_id=98108&type=3&page=${page}&pageSize= ${pageSize}`;
         var self = this;
@@ -139,11 +140,14 @@ export default class HMApprovalList extends BaseComponent
 
 
             listArray = listArray.concat(jsonArray);
-            self.setState({dataSource: self.state.dataSource.cloneWithRows(listArray)})
+            self.setState({
+                dataSource: self.state.dataSource.cloneWithRows(listArray)
+            })
             self.refs.listView.endLoadMore(jsonArray < 20)
         }, function (error)
         {
-            console.warn(error);
+            self.refs.listView.endRefresh();
+            this.refs.listView.resetStatus() //重置上拉加载的状态
             if (page > 1)
             {
                 page--;
@@ -164,18 +168,12 @@ export default class HMApprovalList extends BaseComponent
 
     componentDidMount()
     {
-
-        var self=this;
+        var self = this;
         InteractionManager.runAfterInteractions(() =>
         {
-           // self.refs.listView.beginRefresh();
-
-            self.onRefresh(self.refs.listView);
-
+           self.refs.listView.beginRefresh();
 
         });
-
-
     }
 
     renderRow(rowData)
@@ -203,16 +201,16 @@ export default class HMApprovalList extends BaseComponent
                     popToLast={() => this.popToLast()}>
                 </HMNavigatorBar>
                 <SwRefreshListView
-                    style={styles.bottomInnerViewStyle}
                     dataSource={this.state.dataSource}
                     ref="listView"
-                    renderRow={(rowData) => this.renderRow(rowData)}
-                    onRefresh={(onRefresh) => this.onRefresh(onRefresh)}
-                    onLoadMore={(onLoadMore) => this.onLoadMore(onLoadMore)}
-                    isShowLoadMore={isFirst}
+                    renderRow={this.renderRow.bind(this)}
+                    onRefresh={this.onRefresh.bind(this)}
+                    onLoadMore={this.onLoadMore.bind(this)}
+                    //其他需要设置的ListView属性
                 />
 
-                <Loading />
+
+                <Loading/>
             </View>
         );
     }
