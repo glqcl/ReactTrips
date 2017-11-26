@@ -43,7 +43,6 @@ var page = 1;
 var pageSize = 20;
 var isFirst = false;
 
-
 var listArray = [{
     "id": "9515",
     "current_approver": "98108",
@@ -107,7 +106,7 @@ export default class HMApprovalList extends BaseComponent
         EasyLoading.show();
         NetUitl.get(tempUrl, function (responseText)
         {
-            EasyLoading.dismis();
+           EasyLoading.dismis();
             listArray = [];
             if (!isFirst)
             {
@@ -125,9 +124,7 @@ export default class HMApprovalList extends BaseComponent
         {
 
         });
-
     }
-
     onLoadMore(end)
     {
         page++;
@@ -168,9 +165,14 @@ export default class HMApprovalList extends BaseComponent
     componentDidMount()
     {
 
+        var self=this;
         InteractionManager.runAfterInteractions(() =>
         {
-            this.refs.listView.beginRefresh();
+           // self.refs.listView.beginRefresh();
+
+            self.onRefresh(self.refs.listView);
+
+
         });
 
 

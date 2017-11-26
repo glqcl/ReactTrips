@@ -46,12 +46,9 @@ export default class HMListViewCellItem extends Component
 
     renderCitys(obj)
     {
-
         if (this.props.itemClick == null) return;
 
         this.props.itemClick(obj);
-
-
     }
 
     renderGetCell()

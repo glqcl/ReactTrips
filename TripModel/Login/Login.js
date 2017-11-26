@@ -22,6 +22,8 @@ import {
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 
+import Toast, {DURATION} from 'react-native-easy-toast'
+
 
 import HMIndex from '../Index/HMIndex';
 
@@ -41,14 +43,34 @@ export default class TripGroup extends Component
     {
         if ('' == this.state.username)
         {
-            alert('用户名不能为空!');
+
+            this.refs.toast.show('用户名不能为空!');
+
+            return;
+        }
+
+        if ('111' != this.state.username)
+        {
+
+            this.refs.toast.show('用户名不正确!');
+
             return;
         }
         if ('' == this.state.password)
         {
-            alert('密码不能为空!');
+
+            this.refs.toast.show('密码不能为空!');
             return;
         }
+
+        if ('111' != this.state.password)
+        {
+
+            this.refs.toast.show('密码不正确!');
+            return;
+        }
+
+
         if (this.state.username == '111' && this.state.password == '111')
         {
             this.props.navigator.replace({
@@ -107,6 +129,8 @@ export default class TripGroup extends Component
                             <Text style={{color: 'gray', fontSize: 12}}>请使用差旅天下集团版账户登录</Text>
                             <Text style={{color: 'gray', fontSize: 12}}>如需帮助,可拨打客服电话：300-6568-777</Text>
                         </View>
+
+                        <Toast ref="toast"/>
 
                     </View>
                 </View>

@@ -21,7 +21,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-
+import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 var holiday = {
     '2015-10-1': '国庆节',
     '2015-9-10': '教师节',
@@ -67,14 +67,26 @@ export default class HMCalendar extends Component
     render()
     {
         return (
-            <View style={styles.container}>
-                <Calendar
-                    touchEvent={this.press}
-                    headerStyle={headerStyle}
-                    holiday={holiday}
-                    check={check}
-                />
-            </View>
+            <CalendarList
+                markedDates={{
+                    '2017-11-26': {selected: true, marked: true},
+                    '2013-09-17': {marked: true},
+                    '2013-09-18': {disabled: true}
+                }}
+                // Callback which gets executed when visible months change in scroll view. Default = undefined
+                onVisibleMonthsChange={(months) => {}}
+                // Max amount of months allowed to scroll to the past. Default = 50
+                pastScrollRange={50}
+                // Max amount of months allowed to scroll to the future. Default = 50
+                futureScrollRange={50}
+                // Enable or disable scrolling of calendar list
+                scrollEnabled={true}
+                selected={'2017-11-25'}
+                rowHasChanged={(r1, r2) => {return r1.text !== r2.text}}
+                onDayPress={(day)=>{alert(JSON.stringify(day))}}
+                // Enable or disable vertical scroll indicator. Default = false
+                showScrollIndicator={true}
+    />
         );
 
     }

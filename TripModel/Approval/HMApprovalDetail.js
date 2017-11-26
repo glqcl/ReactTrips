@@ -41,6 +41,7 @@ import NetUitl from '../CommonTools/NetUitl'
 import HMAppProcessItem from '../Approval/HMAppProcessItem'
 import HMCalendar from '../CommonTools/HMCalendar'
 
+
 var cellArray = [];
 
 
@@ -74,7 +75,7 @@ export default class HMApprovalDetail extends BaseComponent
     }
     renderItemClick(obj)
     {
-
+        alert(obj);
         this.props.navigator.push({
             component: HMCalendar,
 
@@ -98,7 +99,7 @@ export default class HMApprovalDetail extends BaseComponent
                     cellArray.push(
                         <View key={i} style={styles.cellViewStytle}>
                             <HMListViewCellItem key={i}
-                                                itemClick={()=>this.renderItemClick}
+                                                itemClick={(item) => self.renderItemClick(item)}
                                                 jsonObject={obj}
                                                 position={i}/>
                         </View>

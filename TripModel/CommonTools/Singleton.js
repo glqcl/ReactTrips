@@ -2,8 +2,7 @@
  * Created by mac on 2017/11/25.
  */
 let instance = null;
-
-import {Loading, EasyLoading} from 'react-native-easy-loading';
+var name = '';
 
 export default class Singleton {
 
@@ -14,16 +13,14 @@ export default class Singleton {
         return instance;
     }
 
-    showProgress(){
-        EasyLoading.show();
+
+    setProgressLoading(name){
+        this.name=name;
     }
 
-    hideProgress(){
-        EasyLoading.dismis();
+    getProgressLoading(){
+        return this.name;
     }
 
-    getLoadingView()
-    {
-        // return (<Loading />)
-    }
+
 }
