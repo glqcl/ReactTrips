@@ -19,6 +19,8 @@ import {
 
 } from 'react-native';
 
+var forge = require('node-forge');
+
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 
@@ -65,12 +67,13 @@ export default class TripGroup extends Component
 
         if ('111' != this.state.password)
         {
-
             this.refs.toast.show('密码不正确!');
             return;
         }
-
-
+        var md = forge.md.md5.create();
+        md.update('此处是需要加密的字符串');
+        password = md.digest().toHex();
+        
         if (this.state.username == '111' && this.state.password == '111')
         {
             this.props.navigator.replace({
