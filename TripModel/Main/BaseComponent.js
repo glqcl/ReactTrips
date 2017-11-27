@@ -7,13 +7,12 @@
  */
 import React, {Component} from 'react';
 
-import Singleton from '../CommonTools/Singleton';
 import {
     BackHandler,
     Platform,
 } from 'react-native';
 
-let singleton = new Singleton();
+import Loading from 'react-native-loading-w';
 
 export default class BaseComponent extends Component
 {
@@ -21,6 +20,29 @@ export default class BaseComponent extends Component
     constructor(props)
     {
         super(props);
+    }
+
+
+    initLoading()
+    {
+        return <Loading ref={'loading'} text={'Loading...'}/>
+    }
+
+
+    showProgress()
+    {
+        var selft=this;
+        this.getLoading().setLoadingTimeout(20000, function ()
+        {
+            alert(11111);
+
+            selft.getLoading().clearLoadingTimeout();
+        }).show();
+    }
+
+    getLoading()
+    {
+        return this.refs['loading'];
     }
 
     componentWillMount()
@@ -56,5 +78,6 @@ export default class BaseComponent extends Component
         }
         return false; // 默认false  表示跳出RN
     }
+
 
 }

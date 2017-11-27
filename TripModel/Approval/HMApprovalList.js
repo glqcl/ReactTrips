@@ -19,8 +19,9 @@ import {
 
 } from 'react-native';
 import {Loading, EasyLoading} from 'react-native-easy-loading';
+import Loading from 'react-native-loading-w';
+// import ReactLoading from 'react-loading';
 
-import Singleton from '../CommonTools/Singleton';
 import {
     SwRefreshScrollView,
     SwRefreshListView,
@@ -77,30 +78,45 @@ export default class HMApprovalList extends BaseComponent
     {
         this.props.navigator.pop();
     }
+
     static defaultProps()
     {
 
     }
+
     constructor(props)
     {
         super(props);
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
         this.state = {
-
             dataSource: ds.cloneWithRows(listArray),
-
         };
     }
+
+    // getLoading()
+    // {
+    //     return this.refs['loading'];
+    // }
+
+    getLoading2()
+    {
+        // this offsetY = StatusBar.height + titlebar.height + button.height * 2 + row.padding
+        let offsetY = 20 + 44 + 38 * 2 + 5 * 2;
+        return this.refs['loading2'].setLoadingOffset(0, -offsetY);
+    }
+
 
     onRefresh(end)
     {
         page = 1;
         var tempUrl = `${HMUrlUtils.getTravelList}?user_id=98108&type=3&page=${page}&pageSize=${pageSize}`;
         var self = this;
-        EasyLoading.show();
+        // this.getLoading().show();
+
+        this.showProgress();
         NetUitl.get(tempUrl, function (responseText)
         {
-            EasyLoading.dismis();
+          //  self.getLoading().dismiss();
             listArray = [];
             if (!isFirst)
             {
@@ -110,18 +126,18 @@ export default class HMApprovalList extends BaseComponent
             var jsonArray = jsonData.result;
             listArray = jsonArray;
             self.setState({
-
-                dataSource: self.state.dataSource.cloneWithRows(jsonArray),
+                dataSource: self.state.dataSource.cloneWithRows(listArray),
             });
 
-            self.refs.listView.endRefresh();
             self.refs.listView.resetStatus() //重置上拉加载的状态
+            end();
 
         }, function (error)
         {
-            end();
-            self.refs.listView.resetStatus() //重置上拉加载的状态
 
+          //  self.getLoading().dismiss();
+            self.refs.listView.resetStatus() //重置上拉加载的状态
+            end();
         });
     }
 
@@ -131,10 +147,10 @@ export default class HMApprovalList extends BaseComponent
         page++;
         var tempUrl = `${HMUrlUtils.getTravelList}?user_id=98108&type=3&page=${page}&pageSize= ${pageSize}`;
         var self = this;
-        EasyLoading.show();
+        // EasyLoading.show();
         NetUitl.get(tempUrl, function (responseText)
         {
-            EasyLoading.dismis();
+            // EasyLoading.dismis();
             var jsonData = responseText;
             var jsonArray = jsonData.result;
 
@@ -171,7 +187,7 @@ export default class HMApprovalList extends BaseComponent
         var self = this;
         InteractionManager.runAfterInteractions(() =>
         {
-           self.refs.listView.beginRefresh();
+            self.refs.listView.beginRefresh();
 
         });
     }
@@ -203,14 +219,13 @@ export default class HMApprovalList extends BaseComponent
                 <SwRefreshListView
                     dataSource={this.state.dataSource}
                     ref="listView"
-                    renderRow={this.renderRow.bind(this)}
-                    onRefresh={this.onRefresh.bind(this)}
-                    onLoadMore={this.onLoadMore.bind(this)}
+                    renderRow={(rowData) => this.renderRow(rowData)}
+                    onRefresh={(onRefresh) => this.onRefresh(onRefresh)}
+                    onLoadMore={(onLoadMore) => this.onLoadMore(onLoadMore)}
                     //其他需要设置的ListView属性
                 />
 
-
-                <Loading/>
+                {this.initLoading()}
             </View>
         );
     }
