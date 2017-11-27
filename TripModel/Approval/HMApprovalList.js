@@ -18,7 +18,7 @@ import {
     InteractionManager
 
 } from 'react-native';
-import {Loading, EasyLoading} from 'react-native-easy-loading';
+// import {Loading, EasyLoading} from 'react-native-easy-loading';
 import Loading from 'react-native-loading-w';
 // import ReactLoading from 'react-loading';
 
