@@ -74,6 +74,9 @@ export default class TripGroup extends Component
         var self = this;
         NetUitl.get(HMUrlUtils.scrollUrl, function (success)
         {
+
+            alert(success);
+
             var jsonData = success;
             var Code = jsonData.Code;
 
@@ -92,7 +95,7 @@ export default class TripGroup extends Component
             }
         }, function (error)
         {
-
+            alert(error);
         });
 
     }

@@ -40,6 +40,7 @@ import LoadingView from '../CommonTools/LoadingView.js'
 import NetUitl from '../CommonTools/NetUitl'
 import HMAppProcessItem from '../Approval/HMAppProcessItem'
 import HMCalendar from '../CommonTools/HMCalendar'
+import SelectCity from '../cityList/SelectCity';
 
 
 var cellArray = [];
@@ -74,13 +75,40 @@ export default class HMApprovalDetail extends BaseComponent
     {
         this.props.navigator.pop();
     }
-    renderItemClick(obj)
-    {
-        this.props.navigator.push({
-            component: HMCalendar,
 
+    renderItemClick(status)
+    {
+        var self = this;
+        let component;
+        if (status == '起始城市')
+        {
+            component = SelectCity;
+        }
+        else
+        {
+            component = HMCalendar;
+        }
+
+        this.props.navigator.push({
+
+            component: component,
+            passProps: {
+                //回调
+                callBack: (msg) =>
+                {
+                    // if (status == '起始日期')
+                    // {
+                    //     //obj.start_date = msg.dateString;
+                    // }
+                    // else
+                    // {
+                        alert(JSON.stringify(msg));
+                   // }
+                }
+            }
         })
     }
+
     getApprovalDetail()
     {
         var tempUrl = `${HMUrlUtils.travelApplyDetail}&user_id=98108&travel_id=${this.props.rowData.travel_id}`;
@@ -192,11 +220,9 @@ export default class HMApprovalDetail extends BaseComponent
                     var approval_time = obj.approval_time;
                     if (approval_time.length > 10)
                     {
-                        approval_time = approval_time.substring(0, 10)
+                        approval_time = approval_time.substring(0, 10);
                     }
-
                     obj.approval_status = self.renderImageName(obj);
-
                     obj.approval_time = approval_time;
                     progressArray.push(<HMAppProcessItem key={i}
                                                          length={resultList.length}

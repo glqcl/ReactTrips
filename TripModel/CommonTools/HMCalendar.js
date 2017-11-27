@@ -49,7 +49,10 @@ var {width, height} = Dimensions.get('window');
 export default class HMCalendar extends Component
 {
 
-    static defaultProps = {};
+    static defaultProps = {
+
+
+    };
 
     popToLast()
     {
@@ -60,7 +63,10 @@ export default class HMCalendar extends Component
 
     renderPress(str)
     {
-        alert(str);
+
+        if(this.props.callBack==null)return;
+        this.props.callBack(str);
+
     }
 
 
@@ -83,7 +89,7 @@ export default class HMCalendar extends Component
                 scrollEnabled={true}
                 selected={'2017-11-25'}
                 rowHasChanged={(r1, r2) => {return r1.text !== r2.text}}
-                onDayPress={(day)=>{alert(JSON.stringify(day))}}
+                onDayPress={(day)=>{this.renderPress(day)}}
                 // Enable or disable vertical scroll indicator. Default = false
                 showScrollIndicator={true}
     />
