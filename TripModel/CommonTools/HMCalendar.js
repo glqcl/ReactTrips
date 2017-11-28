@@ -63,12 +63,10 @@ export default class HMCalendar extends Component
 
     renderPress(str)
     {
-
         if(this.props.callBack==null)return;
         this.props.callBack(str);
-
+        this.props.navigator.pop();
     }
-
 
     render()
     {

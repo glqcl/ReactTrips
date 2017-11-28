@@ -26,6 +26,8 @@ import {
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 
+import EventProxy from '../CommonTools/EventProxy'
+
 import BaseComponent from '../Main/BaseComponent';
 import HMApprovalDetailTopItem from './HMApprovalDetailTopItem';
 import HMApprovalMiddleItem from './HMApprovalMiddleItem';
@@ -94,13 +96,14 @@ export default class HMApprovalDetail extends BaseComponent
                 //回调
                 callBack: (msg) =>
                 {
+                    EventProxy.trigger('msg', msg);
                     // if (status == '起始日期')
                     // {
                     //     //obj.start_date = msg.dateString;
                     // }
                     // else
                     // {
-                    alert(JSON.stringify(msg));
+                    // alert(JSON.stringify(msg));
                     // }
                 }
             }

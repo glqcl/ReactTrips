@@ -22,6 +22,7 @@ import {
 } from 'react-native';
 
 
+import EventProxy from '../CommonTools/EventProxy'
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 var letfViewWidth = 60;
@@ -48,7 +49,24 @@ export default class HMListViewCellItem extends Component
     {
         if (this.props.itemClick == null) return;
 
+        var self=this;
+
         this.props.itemClick(obj);
+        // 监听 msg 事件
+        EventProxy.on('msg', (msg) =>
+        {
+            alert(JSON.stringify(msg));
+            if('起始城市'==obj)
+            {
+               // self.props.jsonObject.start_date=msg;
+            }
+
+            self.setState({
+                position:0
+            })
+
+
+        });
     }
 
     renderGetCell()
@@ -63,8 +81,8 @@ export default class HMListViewCellItem extends Component
                 <Text style={styles.textViewStytle}>{'起始城市'}</Text>
 
                 <TouchableOpacity activeOpacity={0.5} onPress={() => this.renderCitys('起始城市')}>
-
-                    <Text style={[styles.textViewStytle, {marginLeft: 10}]}>{this.props.jsonObject.setout_city}</Text>
+                    <Text
+                        style={[styles.textViewStytle, {marginLeft: 10}]}>{this.props.jsonObject.setout_city}</Text>
                 </TouchableOpacity>
                 <Text style={[styles.textViewStytle, {
                     color: 'orange',
@@ -84,7 +102,8 @@ export default class HMListViewCellItem extends Component
             <View style={styles.seconViewStytle}>
                 <Text style={styles.textViewStytle}>{'行程日期'}</Text>
                 <TouchableOpacity activeOpacity={0.5} onPress={() => this.renderCitys('起始日期')}>
-                    <Text style={[styles.textViewStytle, {marginLeft: 10}]}>{this.props.jsonObject.start_date}</Text>
+                    <Text
+                        style={[styles.textViewStytle, {marginLeft: 10}]}>{this.props.jsonObject.start_date}</Text>
 
                 </TouchableOpacity>
                 <Text style={[styles.textViewStytle, {
@@ -128,44 +147,51 @@ export default class HMListViewCellItem extends Component
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        width: width,
-        height: cellHeight,
-        marginTop: 2,
-    },
+const
+    styles = StyleSheet.create({
+        container: {
+            width: width,
+            height: cellHeight,
+            marginTop: 2,
+        },
 
 
-    cellViewStytle: {
-        width: width,
-        height: cellHeight
-    },
-    seconViewStytle: {
-        flexDirection: 'row',
-        width: width,
-        height: cellHeight,
-        alignItems: 'center',
-        borderBottomWidth: 0.5,
-        borderBottomColor: 'gray',
+        cellViewStytle: {
+            width: width,
+            height: cellHeight
+        },
+        seconViewStytle: {
+            flexDirection: 'row',
+            width: width,
+            height: cellHeight,
+            alignItems: 'center',
+            borderBottomWidth: 0.5,
+            borderBottomColor: 'gray',
 
-    },
-    desViewStytle: {
-        width: width,
-        height: cellHeight,
-        borderBottomColor: 'gray',
-        borderBottomWidth: 0.5,
-        justifyContent: 'center',
-    },
-    textViewStytle: {
-        marginLeft: 10,
-        fontSize: 12,
-        color: 'gray',
-        backgroundColor: 'transparent'
+        },
+        desViewStytle: {
+            width: width,
+            height: cellHeight,
+            borderBottomColor: 'gray',
+            borderBottomWidth: 0.5,
+            justifyContent: 'center',
+        },
+        textViewStytle: {
+            marginLeft: 10,
+            fontSize: 12,
+            color: 'gray',
+            backgroundColor: 'transparent'
 
-    }
+        }
 
 
-});
+    });
 
-AppRegistry.registerComponent('TripGroup', () => TripGroup);
+AppRegistry
+    .registerComponent(
+        'TripGroup'
+        , () =>
+            TripGroup
+    )
+;
 
