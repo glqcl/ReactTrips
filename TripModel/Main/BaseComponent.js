@@ -29,6 +29,11 @@ export default class BaseComponent extends Component
     }
 
 
+    hideProgress()
+    {
+        this.getLoading().dismiss();
+    }
+
     showProgress()
     {
         var selft=this;
@@ -49,6 +54,7 @@ export default class BaseComponent extends Component
     {
         if (Platform.OS === 'android')
         {
+
             BackHandler.addEventListener("back", this.onBackClicked);
         } else
         {
@@ -72,7 +78,14 @@ export default class BaseComponent extends Component
         const {navigator} = this.props;
         if (navigator && navigator.getCurrentRoutes().length > 1)
         {
-            navigator.pop();
+            if(this.getLoading().isShow)
+            {
+                alert(1111);
+            }
+            else
+            {
+                navigator.pop();
+            }
 
             return true;//true 表示返回上一页
         }

@@ -23,8 +23,6 @@ import {
 } from 'react-native';
 
 
-import {Loading, EasyLoading} from 'react-native-easy-loading';
-
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 
@@ -102,8 +100,8 @@ export default class HMApprovalDetail extends BaseComponent
                     // }
                     // else
                     // {
-                        alert(JSON.stringify(msg));
-                   // }
+                    alert(JSON.stringify(msg));
+                    // }
                 }
             }
         })
@@ -115,10 +113,10 @@ export default class HMApprovalDetail extends BaseComponent
 
         cellArray = [];
         var self = this;
-        EasyLoading.show();
+        this.showProgress();
         NetUitl.get(tempUrl, function (responseText)
             {
-                EasyLoading.dismis();
+                self.hideProgress();
                 var jsonData = responseText;
                 var travelDetail = jsonData.travelDetail;
                 for (var i = 0; i < travelDetail.length; i++)
@@ -144,7 +142,7 @@ export default class HMApprovalDetail extends BaseComponent
             },
             function (error)
             {
-                EasyLoading.dismis();
+                self.hideProgress();
             }
         )
         ;
@@ -278,8 +276,10 @@ export default class HMApprovalDetail extends BaseComponent
                     <HMListViewNextPerson
                         nextPerson={this.state.nextPerson}/>
                     <View style={{flexDirection: 'row'}}>{this.state.progressArray}</View>
-                    <Loading />
+
                 </ScrollView>
+
+                {this.initLoading()}
             </View>
         );
     }

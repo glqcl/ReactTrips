@@ -93,31 +93,16 @@ export default class HMApprovalList extends BaseComponent
         };
     }
 
-    // getLoading()
-    // {
-    //     return this.refs['loading'];
-    // }
-
-    getLoading2()
-    {
-        // this offsetY = StatusBar.height + titlebar.height + button.height * 2 + row.padding
-        let offsetY = 20 + 44 + 38 * 2 + 5 * 2;
-        return this.refs['loading2'].setLoadingOffset(0, -offsetY);
-    }
-
-
     onRefresh(end)
     {
         page = 1;
         var tempUrl = `${HMUrlUtils.getTravelList}?user_id=98108&type=3&page=${page}&pageSize=${pageSize}`;
         var self = this;
         // this.getLoading().show();
-
         this.showProgress();
         NetUitl.get(tempUrl, function (responseText)
         {
-          //  self.getLoading().dismiss();
-            listArray = [];
+            self.hideProgress();
             if (!isFirst)
             {
                 isFirst = true;
@@ -135,7 +120,7 @@ export default class HMApprovalList extends BaseComponent
         }, function (error)
         {
 
-          //  self.getLoading().dismiss();
+            self.hideProgress();
             self.refs.listView.resetStatus() //重置上拉加载的状态
             end();
         });
@@ -147,10 +132,11 @@ export default class HMApprovalList extends BaseComponent
         page++;
         var tempUrl = `${HMUrlUtils.getTravelList}?user_id=98108&type=3&page=${page}&pageSize= ${pageSize}`;
         var self = this;
-        // EasyLoading.show();
+
+        this.showProgress();
         NetUitl.get(tempUrl, function (responseText)
         {
-            // EasyLoading.dismis();
+          self.hideProgress();
             var jsonData = responseText;
             var jsonArray = jsonData.result;
 
@@ -162,6 +148,7 @@ export default class HMApprovalList extends BaseComponent
             self.refs.listView.endLoadMore(jsonArray < 20)
         }, function (error)
         {
+            self.hideProgress();
             self.refs.listView.endRefresh();
             this.refs.listView.resetStatus() //重置上拉加载的状态
             if (page > 1)
