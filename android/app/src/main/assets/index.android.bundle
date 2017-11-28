@@ -53695,9 +53695,9 @@ var HMListViewCellItem = function (_Component) {
             this.props.itemClick(obj);
 
             _EventProxy2.default.on('msg', function (msg) {
-                alert(JSON.stringify(msg));
-                if ('起始城市' == obj) {}
-
+                if ('起始日期' == obj) {
+                    self.props.jsonObject.start_date = msg.dateString;
+                }
                 self.setState({
                     position: 0
                 });
@@ -53714,7 +53714,7 @@ var HMListViewCellItem = function (_Component) {
                 _reactNative.View,
                 { key: '0', style: styles.desViewStytle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 76
+                        lineNumber: 75
                     }
                 },
                 _react2.default.createElement(
@@ -53722,7 +53722,7 @@ var HMListViewCellItem = function (_Component) {
                     {
                         style: styles.textViewStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 76
+                            lineNumber: 75
                         }
                     },
                     '第' + this.props.desPosition + '目的地'
@@ -53733,21 +53733,21 @@ var HMListViewCellItem = function (_Component) {
                 _reactNative.View,
                 { key: '1', style: styles.cellViewStytle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 79
+                        lineNumber: 78
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.seconViewStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 80
+                            lineNumber: 79
                         }
                     },
                     _react2.default.createElement(
                         _reactNative.Text,
                         { style: styles.textViewStytle, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 81
+                                lineNumber: 80
                             }
                         },
                         '起始城市'
@@ -53758,7 +53758,7 @@ var HMListViewCellItem = function (_Component) {
                                 return _this2.renderCitys('起始城市');
                             }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 83
+                                lineNumber: 82
                             }
                         },
                         _react2.default.createElement(
@@ -53766,7 +53766,7 @@ var HMListViewCellItem = function (_Component) {
                             {
                                 style: [styles.textViewStytle, { marginLeft: 10 }], __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 84
+                                    lineNumber: 83
                                 }
                             },
                             this.props.jsonObject.setout_city
@@ -53780,7 +53780,7 @@ var HMListViewCellItem = function (_Component) {
                                 left: width * 0.5
                             }], __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 87
+                                lineNumber: 86
                             }
                         },
                         '至'
@@ -53792,7 +53792,7 @@ var HMListViewCellItem = function (_Component) {
                                 left: width - 100
                             }], __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 94
+                                lineNumber: 93
                             }
                         },
                         this.props.jsonObject.arrive_city
@@ -53803,21 +53803,21 @@ var HMListViewCellItem = function (_Component) {
                 _reactNative.View,
                 { key: '2', style: styles.cellViewStytle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 101
+                        lineNumber: 100
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.seconViewStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 102
+                            lineNumber: 101
                         }
                     },
                     _react2.default.createElement(
                         _reactNative.Text,
                         { style: styles.textViewStytle, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 103
+                                lineNumber: 102
                             }
                         },
                         '行程日期'
@@ -53828,7 +53828,7 @@ var HMListViewCellItem = function (_Component) {
                                 return _this2.renderCitys('起始日期');
                             }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 104
+                                lineNumber: 103
                             }
                         },
                         _react2.default.createElement(
@@ -53836,7 +53836,7 @@ var HMListViewCellItem = function (_Component) {
                             {
                                 style: [styles.textViewStytle, { marginLeft: 10 }], __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 105
+                                    lineNumber: 104
                                 }
                             },
                             this.props.jsonObject.start_date
@@ -53850,7 +53850,7 @@ var HMListViewCellItem = function (_Component) {
                                 left: width * 0.5
                             }], __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 109
+                                lineNumber: 108
                             }
                         },
                         '至'
@@ -53862,7 +53862,7 @@ var HMListViewCellItem = function (_Component) {
                                 left: width - 100
                             }], __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 115
+                                lineNumber: 114
                             }
                         },
                         this.props.jsonObject.end_date
@@ -53873,14 +53873,14 @@ var HMListViewCellItem = function (_Component) {
                 _reactNative.View,
                 { key: '3', style: [styles.desViewStytle, { flexDirection: 'row', alignItems: 'center' }], __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 122
+                        lineNumber: 121
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.Text,
                     { style: styles.textViewStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 123
+                            lineNumber: 122
                         }
                     },
                     '费用申请'
@@ -53893,7 +53893,7 @@ var HMListViewCellItem = function (_Component) {
                             marginLeft: width * 0.5 - 70
                         }], __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 124
+                            lineNumber: 123
                         }
                     },
                     this.props.jsonObject.product_name
@@ -53909,7 +53909,7 @@ var HMListViewCellItem = function (_Component) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 140
+                        lineNumber: 139
                     }
                 },
                 _react2.default.createElement(
@@ -53917,7 +53917,7 @@ var HMListViewCellItem = function (_Component) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 141
+                            lineNumber: 140
                         }
                     },
                     this.renderGetCell()

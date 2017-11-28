@@ -55,12 +55,11 @@ export default class HMListViewCellItem extends Component
         // 监听 msg 事件
         EventProxy.on('msg', (msg) =>
         {
-            alert(JSON.stringify(msg));
-            if('起始城市'==obj)
+            //alert(JSON.stringify(msg));
+            if('起始日期'==obj)
             {
-               // self.props.jsonObject.start_date=msg;
+               self.props.jsonObject.start_date=msg.dateString;
             }
-
             self.setState({
                 position:0
             })
