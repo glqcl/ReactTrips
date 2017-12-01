@@ -49,20 +49,21 @@ export default class HMListViewCellItem extends Component
     {
         if (this.props.itemClick == null) return;
 
-        var self=this;
+        var self = this;
 
         this.props.itemClick(obj);
         // 监听 msg 事件
         EventProxy.on('msg', (msg) =>
         {
             //alert(JSON.stringify(msg));
-            if('起始日期'==obj)
+            if ('起始日期' == obj)
             {
-               self.props.jsonObject.start_date=msg.dateString;
+                self.ref.start_date.text( msg.dateString)
+               // self.props.jsonObject.start_date = msg.dateString;
             }
-            self.setState({
-                position:0
-            })
+            // self.setState({
+            //     position: 0
+            // })
 
 
         });
@@ -101,15 +102,17 @@ export default class HMListViewCellItem extends Component
             <View style={styles.seconViewStytle}>
                 <Text style={styles.textViewStytle}>{'行程日期'}</Text>
                 <TouchableOpacity activeOpacity={0.5} onPress={() => this.renderCitys('起始日期')}>
-                    <Text
-                        style={[styles.textViewStytle, {marginLeft: 10}]}>{this.props.jsonObject.start_date}</Text>
-
+                    <Text ref="start_date"
+                        style={[styles.textViewStytle, {marginLeft: 10}]}>{this.props.jsonObject.start_date}
+                    </Text>
                 </TouchableOpacity>
-                <Text style={[styles.textViewStytle, {
-                    color: 'orange',
-                    position: 'absolute',
-                    left: width * 0.5
-                }]}>{'至'}</Text>
+                <Text style={
+                    [styles.textViewStytle, {
+                        color: 'orange',
+                        position: 'absolute',
+                        left: width * 0.5
+                    }]
+                }>{'至'}</Text>
 
                 <Text style={[styles.textViewStytle, {
                     position: 'absolute',

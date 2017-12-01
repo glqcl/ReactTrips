@@ -38,7 +38,8 @@ class NetUitl extends React.Component
                     //responseText = responseText.replace(/\r?\n/g, '').replace(/[\u0080-\uFFFF]/g, ''); // If android , I've removed unwanted chars.
                 }
 
-                successCallback(JSON.parse(responseText))
+                successCallback(responseText);
+                // successCallback(JSON.parse(responseText))
             })
             .catch((error) =>
             {

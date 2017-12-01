@@ -40,7 +40,7 @@ import LoadingView from '../CommonTools/LoadingView.js'
 import NetUitl from '../CommonTools/NetUitl'
 import HMAppProcessItem from '../Approval/HMAppProcessItem'
 import HMCalendar from '../CommonTools/HMCalendar'
-import SelectCity from '../cityList/SelectCity';
+import SelectCity from '../CityList/SelectCity';
 
 
 var cellArray = [];

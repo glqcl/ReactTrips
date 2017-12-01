@@ -12,7 +12,7 @@ import {
     View,
     Image,
     Platform,
-
+    InteractionManager
 
 } from 'react-native';
 
@@ -55,7 +55,11 @@ export default class TripGroup extends Component
 
     componentDidMount()
     {
-        this.getPicList();
+        InteractionManager.runAfterInteractions(() =>
+        {
+            this.getPicList();
+
+        });
     }
 
     topItemClick(title)
@@ -76,7 +80,6 @@ export default class TripGroup extends Component
         {
 
             alert(success);
-
             var jsonData = success;
             var Code = jsonData.Code;
 
