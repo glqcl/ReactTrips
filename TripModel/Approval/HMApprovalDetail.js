@@ -73,7 +73,7 @@ export default class HMApprovalDetail extends BaseComponent
     renderItemClick(status)
     {
         var self = this;
-        let component=null;
+        let component = null;
         if (status == '起始城市' || status == '到达城市')
         {
             component = SelectCity;
@@ -184,24 +184,18 @@ export default class HMApprovalDetail extends BaseComponent
     //获取状态流程图
     renderAppProgress()
     {
-
         var tempUrl = `${HMUrlUtils.getAppProcess}?travel_id=${this.props.rowData.travel_id}`;
         var self = this;
-
         NetUitl.get(tempUrl, function (ret)
         {
-
 
             if (ret.code == '1')
             {
                 var resultList = ret.result;
-
                 var progressArray = [];
-
                 for (let i = 0; i < resultList.length; i++)
                 {
                     var obj = resultList[i];
-
                     var approval_time = obj.approval_time;
                     if (approval_time.length > 10)
                     {
