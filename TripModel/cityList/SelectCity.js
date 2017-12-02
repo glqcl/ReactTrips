@@ -41,7 +41,8 @@ export default class SimpleSelectCity extends Component
             allCityList: ALL_CITY_LIST,
             hotCityList: HOT_CITY_LIST,
             lastVisitCityList: LAST_VISIT_CITY_LIST,
-            nowCityList: NOW_CITY_LIST
+            nowCityList: NOW_CITY_LIST,
+            callBack:null
         };
     }
 
@@ -86,8 +87,9 @@ export default class SimpleSelectCity extends Component
         {
             this.setState({showSearchResult: false, keyword: ''});
         }
-
-        alert('你选择了城市====》' + cityJson.id + '#####' + cityJson.name);
+        if (this.props.callBack == null)return;
+        this.props.callBack(cityJson);
+        this.props.navigator.pop();
     }
 
     render()

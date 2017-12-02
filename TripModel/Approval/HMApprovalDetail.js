@@ -42,17 +42,11 @@ import HMAppProcessItem from '../Approval/HMAppProcessItem'
 import HMCalendar from '../CommonTools/HMCalendar'
 import SelectCity from '../CityList/SelectCity';
 
-
-var cellArray = [];
-
-
 export default class HMApprovalDetail extends BaseComponent
 {
     static defaultProps = {
         popToLast: null,
-
     };
-
     // 构造
     constructor(props)
     {
@@ -79,8 +73,8 @@ export default class HMApprovalDetail extends BaseComponent
     renderItemClick(status)
     {
         var self = this;
-        let component;
-        if (status == '起始城市')
+        let component=null;
+        if (status == '起始城市' || status == '到达城市')
         {
             component = SelectCity;
         }
@@ -88,23 +82,13 @@ export default class HMApprovalDetail extends BaseComponent
         {
             component = HMCalendar;
         }
-
         this.props.navigator.push({
-
             component: component,
             passProps: {
                 //回调
                 callBack: (msg) =>
                 {
                     EventProxy.trigger('msg', msg);
-                    // if (status == '起始日期')
-                    // {
-                    //     //obj.start_date = msg.dateString;
-                    // }
-                    // else
-                    // {
-                    // alert(JSON.stringify(msg));
-                    // }
                 }
             }
         })
@@ -114,7 +98,7 @@ export default class HMApprovalDetail extends BaseComponent
     {
         var tempUrl = `${HMUrlUtils.travelApplyDetail}&user_id=98108&travel_id=${this.props.rowData.travel_id}`;
 
-        cellArray = [];
+        var cellArray = [];
         var self = this;
         this.showProgress();
         NetUitl.get(tempUrl, function (responseText)

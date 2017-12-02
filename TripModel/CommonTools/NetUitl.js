@@ -36,10 +36,9 @@ class NetUitl extends React.Component
                 if (Platform.OS === 'android')
                 {
                     //responseText = responseText.replace(/\r?\n/g, '').replace(/[\u0080-\uFFFF]/g, ''); // If android , I've removed unwanted chars.
-                }
 
-                successCallback(responseText);
-                // successCallback(JSON.parse(responseText))
+                }
+                successCallback(JSON.parse(responseText))
             })
             .catch((error) =>
             {
@@ -48,6 +47,33 @@ class NetUitl extends React.Component
             }).done();
 
     }
+
+    static getImageList(url, successCallback, failureCallBack)
+    {
+
+        fetch(url,
+            {
+                method: 'GET',
+            })
+            .then((response) => response.text())
+            .then((responseText) =>
+            {
+
+                if (Platform.OS === 'android')
+                {
+                    responseText = responseText.replace(/\r?\n/g, '').replace(/[\u0080-\uFFFF]/g, ''); // If android , I've removed unwanted chars.
+
+                }
+                successCallback(JSON.parse(responseText))
+            })
+            .catch((error) =>
+            {
+
+                failureCallBack(error)
+            }).done();
+
+    }
+
 
     /*
      *  post请求

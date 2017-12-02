@@ -24,53 +24,58 @@ const key_now = '当前';
 const key_last_visit = '最近';
 const key_hot = '热门';
 
-export default class CityIndexListView extends Component {
+export default class CityIndexListView extends Component
+{
 
-    constructor(props) {
+    constructor(props)
+    {
         super(props);
 
-        var getSectionData = (dataBlob, sectionID) => {
+        var getSectionData = (dataBlob, sectionID) =>
+        {
             return sectionID;
         };
-        var getRowData = (dataBlob, sectionID, rowID) => {
+        var getRowData = (dataBlob, sectionID, rowID) =>
+        {
             return dataBlob[sectionID][rowID];
         };
-
         let ALL_CITY_LIST = this.props.allCityList;
         let CURRENT_CITY_LIST = this.props.nowCityList;
         let LAST_VISIT_CITY_LIST = this.props.lastVisitCityList;
         let HOT_CITY_LIST = this.props.hotCityList;
-
         let letterList = this._getSortLetters(ALL_CITY_LIST);
-
         let dataBlob = {};
         dataBlob[key_now] = CURRENT_CITY_LIST;
         dataBlob[key_last_visit] = LAST_VISIT_CITY_LIST;
         dataBlob[key_hot] = HOT_CITY_LIST;
-
-        ALL_CITY_LIST.map(cityJson => {
+        ALL_CITY_LIST.map(cityJson =>
+        {
             let key = cityJson.sortLetters.toUpperCase();
 
-            if (dataBlob[key]) {
+            if (dataBlob[key])
+            {
                 let subList = dataBlob[key];
                 subList.push(cityJson);
-            } else {
+            } else
+            {
                 let subList = [];
                 subList.push(cityJson);
                 dataBlob[key] = subList;
             }
         });
-
         let sectionIDs = Object.keys(dataBlob);
-        let rowIDs = sectionIDs.map(sectionID => {
+        let rowIDs = sectionIDs.map(sectionID =>
+        {
             let thisRow = [];
             let count = dataBlob[sectionID].length;
-            for (let ii = 0; ii < count; ii++) {
+            for (let ii = 0; ii < count; ii++)
+            {
                 thisRow.push(ii);
             }
 
             let eachheight = SECTIONHEIGHT + ROWHEIGHT * thisRow.length;
-            if (sectionID === key_hot || sectionID === key_now || sectionID === key_last_visit) {
+            if (sectionID === key_hot || sectionID === key_now || sectionID === key_last_visit)
+            {
                 let rowNum = (thisRow.length % 3 === 0)
                     ? (thisRow.length / 3)
                     : parseInt(thisRow.length / 3) + 1;
@@ -79,69 +84,71 @@ export default class CityIndexListView extends Component {
 
                 eachheight = SECTIONHEIGHT + ROWHEIGHT_BOX * rowNum;
             }
-
             totalheight.push(eachheight);
-
             return thisRow;
         });
-
-
         let ds = new ListView.DataSource({
             getRowData: getRowData,
             getSectionHeaderData: getSectionData,
             rowHasChanged: (row1, row2) => row1 !== row2,
             sectionHeaderHasChanged: (s1, s2) => s1 !== s2
         });
-
         this.state = {
             dataSource: ds.cloneWithRowsAndSections(dataBlob, sectionIDs, rowIDs),
             letters: sectionIDs
         };
-
         that = this;
     }
-
-    _getSortLetters(dataList) {
+    _getSortLetters(dataList)
+    {
         let list = [];
 
-        for (let j = 0; j < dataList.length; j++) {
+        for (let j = 0; j < dataList.length; j++)
+        {
             let sortLetters = dataList[j].sortLetters.toUpperCase();
 
             let exist = false;
-            for (let xx = 0; xx < list.length; xx++) {
-                if (list[xx] === sortLetters) {
+            for (let xx = 0; xx < list.length; xx++)
+            {
+                if (list[xx] === sortLetters)
+                {
                     exist = true;
                 }
-                if (exist) {
+                if (exist)
+                {
                     break;
                 }
             }
-            if (!exist) {
+            if (!exist)
+            {
                 list.push(sortLetters);
             }
         }
 
         return list;
     }
-
-    _cityNameClick(cityJson) {
+    _cityNameClick(cityJson)
+    {
         // alert('选择了城市====》' + cityJson.id + '#####' + cityJson.name);
         this.props.onSelectCity(cityJson);
     }
-
-    _scrollTo(index, letter) {
+    _scrollTo(index, letter)
+    {
         this.refs.toast.close();
         let position = 0;
-        for (let i = 0; i < index; i++) {
+        for (let i = 0; i < index; i++)
+        {
             position += totalheight[i]
         }
         this._listView.scrollTo({y: position});
         this.refs.toast.show(letter, DURATION.LENGTH_SHORT);
     }
 
-    _renderRightLetters(letter, index) {
+    _renderRightLetters(letter, index)
+    {
         return (
-            <TouchableOpacity key={'letter_idx_' + index} activeOpacity={0.6} onPress={() => {
+            <TouchableOpacity key={'letter_idx_' + index} activeOpacity={0.6} onPress={() =>
+            {
                 this._scrollTo(index, letter)
             }}>
                 <View style={styles.letter}>
@@ -151,9 +158,11 @@ export default class CityIndexListView extends Component {
         );
     }
 
-    _renderListBox(cityJson, rowId) {
+    _renderListBox(cityJson, rowId)
+    {
         return (
-            <TouchableOpacity key={'list_item_' + cityJson.id} style={styles.rowViewBox} onPress={() => {
+            <TouchableOpacity key={'list_item_' + cityJson.id} style={styles.rowViewBox} onPress={() =>
+            {
                 that._cityNameClick(cityJson)
             }}>
                 <View style={styles.rowdataBox}>
@@ -163,14 +172,17 @@ export default class CityIndexListView extends Component {
         );
     }
 
-    _renderListRow(cityJson, rowId) {
+    _renderListRow(cityJson, rowId)
+    {
         console.log('rowId===>' + rowId + ", cityJson====>" + JSON.stringify(cityJson));
-        if (rowId === key_now || rowId === key_hot || rowId === key_last_visit) {
+        if (rowId === key_now || rowId === key_hot || rowId === key_last_visit)
+        {
             return that._renderListBox(cityJson, rowId);
         }
 
         return (
-            <TouchableOpacity key={'list_item_' + cityJson.id} style={styles.rowView} onPress={() => {
+            <TouchableOpacity key={'list_item_' + cityJson.id} style={styles.rowView} onPress={() =>
+            {
                 that._cityNameClick(cityJson)
             }}>
                 <View style={styles.rowdata}>
@@ -180,7 +192,8 @@ export default class CityIndexListView extends Component {
         )
     }
 
-    _renderListSectionHeader(sectionData, sectionID) {
+    _renderListSectionHeader(sectionData, sectionID)
+    {
         return (
             <View style={styles.sectionView}>
                 <Text style={styles.sectionText}>
@@ -190,7 +203,8 @@ export default class CityIndexListView extends Component {
         );
     }
 
-    render() {
+    render()
+    {
         return (
             <View style={styles.container}>
                 <View style={styles.listContainner}>
@@ -247,8 +261,8 @@ const styles = StyleSheet.create({
     },
     letterText: {
         textAlign: 'center',
-        fontSize: height * 1.1 / 50,
-        color: '#e75404'
+        fontSize: height * 1.0 / 50,
+        color: 'rgba(47,121,173,1.0)'
     },
     sectionView: {
         paddingTop: 5,
@@ -256,11 +270,13 @@ const styles = StyleSheet.create({
         height: 30,
         paddingLeft: 10,
         width: width,
-        backgroundColor: '#F4F4F4'
+        backgroundColor: 'rgba(245,245,245,1.0)',
     },
     sectionText: {
-        color: '#e75404',
-        fontWeight: 'bold'
+        color: 'gray',
+        fontWeight: 'bold',
+        fontSize:14,
+
     },
     rowView: {
         height: ROWHEIGHT,
@@ -276,7 +292,8 @@ const styles = StyleSheet.create({
 
     rowdatatext: {
         color: 'gray',
-        width: width
+        width: width,
+        fontSize:14
     },
 
     rowViewBox: {
@@ -286,7 +303,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff'
     },
     rowdataBox: {
-        borderWidth: 1,
+
+        borderRadius:5,
+        borderWidth: 0.5,
         borderColor: '#DBDBDB',
         marginTop: 5,
         marginBottom: 5,

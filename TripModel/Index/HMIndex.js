@@ -34,6 +34,8 @@ import HMApprovalList from '../Approval/HMApprovalList';
 import NetUitl from '../CommonTools/NetUitl';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
 
+//var imgjSON = '{"Code":"1","Message":"成功","Result":[{"id":null,"imgRoute":"http:\/\/business.tripg.cn\/home\/images\/index_image\/1506309800.jpg","url":"http:\/\/propagate.tripg.com\/Mobile\/tel\/","type":"14","content":null,"conId":null,"title":null},{"id":null,"imgRoute":"http:\/\/business.tripg.cn\/home\/images\/index_image\/1509513056.jpg","url":null,"type":"14","content":null,"conId":null,"title":null},{"id":null,"imgRoute":"http:\/\/business.tripg.cn\/home\/images\/index_image\/1511489148.jpg","url":"https:\/\/mp.weixin.qq.com\/s\/r-yZ4CP7UqdTG6A9O896xA","type":"14","content":null,"conId":null,"title":null}]}';
+
 
 export default class TripGroup extends Component
 {
@@ -76,10 +78,9 @@ export default class TripGroup extends Component
     {
         var imgList = [];
         var self = this;
-        NetUitl.get(HMUrlUtils.scrollUrl, function (success)
+        NetUitl.getImageList(HMUrlUtils.scrollUrl, function (success)
         {
 
-            alert(success);
             var jsonData = success;
             var Code = jsonData.Code;
 
@@ -98,7 +99,7 @@ export default class TripGroup extends Component
             }
         }, function (error)
         {
-            alert(error);
+            // alert(error);
         });
 
     }

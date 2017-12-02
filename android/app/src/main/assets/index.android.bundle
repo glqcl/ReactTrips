@@ -48785,9 +48785,8 @@ var TripGroup = function (_Component) {
         value: function getPicList() {
             var imgList = [];
             var self = this;
-            _NetUitl2.default.get(_HMUrlUtils2.default.scrollUrl, function (success) {
+            _NetUitl2.default.getImageList(_HMUrlUtils2.default.scrollUrl, function (success) {
 
-                alert(success);
                 var jsonData = success;
                 var Code = jsonData.Code;
 
@@ -48802,9 +48801,7 @@ var TripGroup = function (_Component) {
                     }
                     self.setState({ picList: imgList });
                 }
-            }, function (error) {
-                alert(error);
-            });
+            }, function (error) {});
         }
     }, {
         key: 'getTopView',
@@ -48819,7 +48816,7 @@ var TripGroup = function (_Component) {
                         return _this3.topItemClick(title);
                     }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 112
+                        lineNumber: 113
                     }
                 }));
             }
@@ -48834,7 +48831,7 @@ var TripGroup = function (_Component) {
                 middleItemArray.push(_react2.default.createElement(_HMMiddleItem2.default, { key: i,
                     title: this.props.middleArray[i], __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 125
+                        lineNumber: 126
                     }
                 }));
             }
@@ -48847,31 +48844,31 @@ var TripGroup = function (_Component) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 134
+                        lineNumber: 135
                     }
                 },
                 _react2.default.createElement(_reactNative.Image, { source: { uri: 'index_bg' }, style: styles.bgStyle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 135
+                        lineNumber: 136
                     }
                 }),
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.outerViewStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 137
+                            lineNumber: 138
                         }
                     },
                     _react2.default.createElement(HMScrollImage, { imageDataArr: this.state.picList, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 138
+                            lineNumber: 139
                         }
                     }),
                     _react2.default.createElement(
                         _reactNative.View,
                         { style: [styles.topViewStyle], __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 139
+                                lineNumber: 140
                             }
                         },
                         this.getTopView()
@@ -48880,14 +48877,14 @@ var TripGroup = function (_Component) {
                         _reactNative.View,
                         { style: [styles.middleViewStytle], __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 143
+                                lineNumber: 144
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.View,
                             { style: styles.leftViewStyle, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 144
+                                    lineNumber: 145
                                 }
                             },
                             _react2.default.createElement(_reactNative.Image, { source: { uri: 'plane_icon' }, style: {
@@ -48895,14 +48892,14 @@ var TripGroup = function (_Component) {
                                     height: _reactNative.Platform.OS == 'ios' ? 80 : 85
                                 }, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 145
+                                    lineNumber: 146
                                 }
                             }),
                             _react2.default.createElement(
                                 _reactNative.Text,
                                 { style: { marginTop: 5, fontSize: 14, color: 'white' }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 149
+                                        lineNumber: 150
                                     }
                                 },
                                 '国内机票'
@@ -48912,7 +48909,7 @@ var TripGroup = function (_Component) {
                             _reactNative.View,
                             { style: styles.rightViewStyle, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 151
+                                    lineNumber: 152
                                 }
                             },
                             this.getMiddleView()
@@ -48922,7 +48919,7 @@ var TripGroup = function (_Component) {
                         _reactNative.View,
                         { style: styles.bottomViewStytle, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 156
+                                lineNumber: 157
                             }
                         },
                         _react2.default.createElement(
@@ -48930,13 +48927,13 @@ var TripGroup = function (_Component) {
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 157
+                                    lineNumber: 158
                                 }
                             },
                             _react2.default.createElement(_HMBottomItem2.default, {
                                 title: '差旅管控', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 158
+                                    lineNumber: 159
                                 }
                             })
                         ),
@@ -48945,13 +48942,13 @@ var TripGroup = function (_Component) {
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 162
+                                    lineNumber: 163
                                 }
                             },
                             _react2.default.createElement(_HMBottomItem2.default, {
                                 title: '我的差旅', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 163
+                                    lineNumber: 164
                                 }
                             })
                         )
@@ -48965,7 +48962,7 @@ var TripGroup = function (_Component) {
                             bottom: _reactNative.Platform.OS == 'ios' ? 10 : 30
                         }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 167
+                            lineNumber: 168
                         }
                     })
                 )
@@ -52713,8 +52710,6 @@ var _Dimensions$get = Dimensions.get('window'),
     width = _Dimensions$get.width,
     height = _Dimensions$get.height;
 
-var cellArray = [];
-
 var HMApprovalDetail = function (_BaseComponent) {
     babelHelpers.inherits(HMApprovalDetail, _BaseComponent);
 
@@ -52746,15 +52741,13 @@ var HMApprovalDetail = function (_BaseComponent) {
         key: 'renderItemClick',
         value: function renderItemClick(status) {
             var self = this;
-            var component = void 0;
-            if (status == '起始城市') {
+            var component = null;
+            if (status == '起始城市' || status == '到达城市') {
                 component = _SelectCity2.default;
             } else {
                 component = _HMCalendar2.default;
             }
-
             this.props.navigator.push({
-
                 component: component,
                 passProps: {
                     callBack: function callBack(msg) {
@@ -52768,7 +52761,7 @@ var HMApprovalDetail = function (_BaseComponent) {
         value: function getApprovalDetail() {
             var tempUrl = _HMUrlUtils2.default.travelApplyDetail + '&user_id=98108&travel_id=' + this.props.rowData.travel_id;
 
-            cellArray = [];
+            var cellArray = [];
             var self = this;
             this.showProgress();
             _NetUitl2.default.get(tempUrl, function (responseText) {
@@ -52782,7 +52775,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                         _reactNative.View,
                         { key: i, style: styles.cellViewStytle, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 130
+                                lineNumber: 114
                             }
                         },
                         _react2.default.createElement(_HMListViewCellItem2.default, { key: i,
@@ -52792,7 +52785,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                             jsonObject: obj,
                             position: i, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 131
+                                lineNumber: 115
                             }
                         })
                     ));
@@ -52867,7 +52860,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                             obj: obj,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 228
+                                lineNumber: 212
                             }
                         }));
                     }
@@ -52894,7 +52887,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 256
+                        lineNumber: 240
                     }
                 },
                 _react2.default.createElement(_HMNavigatorBar2.default, {
@@ -52903,7 +52896,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                         return _this3.popToLast();
                     }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 257
+                        lineNumber: 241
                     }
                 }),
                 _react2.default.createElement(
@@ -52911,13 +52904,13 @@ var HMApprovalDetail = function (_BaseComponent) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 261
+                            lineNumber: 245
                         }
                     },
                     _react2.default.createElement(_HMApprovalDetailTopItem2.default, {
                         jsonObject: this.state.jsonObject, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 262
+                            lineNumber: 246
                         }
                     }),
                     _react2.default.createElement(_HMApprovalMiddleItem2.default, {
@@ -52926,14 +52919,14 @@ var HMApprovalDetail = function (_BaseComponent) {
                         },
                         jsonObject: this.state.jsonObject, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 265
+                            lineNumber: 249
                         }
                     }),
                     _react2.default.createElement(
                         _reactNative.View,
                         { style: { backgroundColor: 'rgba(239,240,243,1.0)', width: width }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 272
+                                lineNumber: 256
                             }
                         },
                         this.state.dataSource
@@ -52942,20 +52935,20 @@ var HMApprovalDetail = function (_BaseComponent) {
                         remars: this.state.remars,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 276
+                            lineNumber: 260
                         }
                     }),
                     _react2.default.createElement(_HMListViewNextPerson2.default, {
                         nextPerson: this.state.nextPerson, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 279
+                            lineNumber: 263
                         }
                     }),
                     _react2.default.createElement(
                         _reactNative.View,
                         { style: { flexDirection: 'row' }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 281
+                                lineNumber: 265
                             }
                         },
                         this.state.progressArray
@@ -52970,7 +52963,6 @@ var HMApprovalDetail = function (_BaseComponent) {
 
 HMApprovalDetail.defaultProps = {
     popToLast: null
-
 };
 exports.default = HMApprovalDetail;
 
@@ -53696,11 +53688,22 @@ var HMListViewCellItem = function (_Component) {
             var self = this;
 
             this.props.itemClick(obj);
+            _EventProxy2.default.off('msg');
 
             _EventProxy2.default.on('msg', function (msg) {
+
                 if ('起始日期' == obj) {
-                    self.ref.start_date.text(msg.dateString);
+                    self.props.jsonObject.start_date = msg.dateString;
+                } else if ('到达日期' == obj) {
+                    self.props.jsonObject.end_date = msg.dateString;
+                } else if ('起始城市' == obj) {
+                    self.props.jsonObject.setout_city = msg.name;
+                } else if ('到达城市' == obj) {
+                    self.props.jsonObject.arrive_city = msg.name;
                 }
+                self.setState({
+                    position: 0
+                });
             });
         }
     }, {
@@ -53714,7 +53717,7 @@ var HMListViewCellItem = function (_Component) {
                 _reactNative.View,
                 { key: '0', style: styles.desViewStytle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 76
+                        lineNumber: 88
                     }
                 },
                 _react2.default.createElement(
@@ -53722,7 +53725,7 @@ var HMListViewCellItem = function (_Component) {
                     {
                         style: styles.textViewStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 76
+                            lineNumber: 88
                         }
                     },
                     '第' + this.props.desPosition + '目的地'
@@ -53733,21 +53736,21 @@ var HMListViewCellItem = function (_Component) {
                 _reactNative.View,
                 { key: '1', style: styles.cellViewStytle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 79
+                        lineNumber: 91
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.seconViewStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 80
+                            lineNumber: 92
                         }
                     },
                     _react2.default.createElement(
                         _reactNative.Text,
                         { style: styles.textViewStytle, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 81
+                                lineNumber: 93
                             }
                         },
                         '起始城市'
@@ -53758,7 +53761,7 @@ var HMListViewCellItem = function (_Component) {
                                 return _this2.renderCitys('起始城市');
                             }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 83
+                                lineNumber: 95
                             }
                         },
                         _react2.default.createElement(
@@ -53766,7 +53769,7 @@ var HMListViewCellItem = function (_Component) {
                             {
                                 style: [styles.textViewStytle, { marginLeft: 10 }], __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 84
+                                    lineNumber: 96
                                 }
                             },
                             this.props.jsonObject.setout_city
@@ -53780,22 +53783,32 @@ var HMListViewCellItem = function (_Component) {
                                 left: width * 0.5
                             }], __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 87
+                                lineNumber: 99
                             }
                         },
                         '至'
                     ),
                     _react2.default.createElement(
-                        _reactNative.Text,
-                        { style: [styles.textViewStytle, {
+                        _reactNative.TouchableOpacity,
+                        { activeOpacity: 0.5, style: {
                                 position: 'absolute',
                                 left: width - 100
-                            }], __source: {
+                            }, onPress: function onPress() {
+                                return _this2.renderCitys('到达城市');
+                            }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 94
+                                lineNumber: 105
                             }
                         },
-                        this.props.jsonObject.arrive_city
+                        _react2.default.createElement(
+                            _reactNative.Text,
+                            { style: [styles.textViewStytle], __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 109
+                                }
+                            },
+                            this.props.jsonObject.arrive_city
+                        )
                     )
                 )
             ));
@@ -53803,21 +53816,21 @@ var HMListViewCellItem = function (_Component) {
                 _reactNative.View,
                 { key: '2', style: styles.cellViewStytle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 101
+                        lineNumber: 113
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.seconViewStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 102
+                            lineNumber: 114
                         }
                     },
                     _react2.default.createElement(
                         _reactNative.Text,
                         { style: styles.textViewStytle, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 103
+                                lineNumber: 115
                             }
                         },
                         '行程日期'
@@ -53828,15 +53841,15 @@ var HMListViewCellItem = function (_Component) {
                                 return _this2.renderCitys('起始日期');
                             }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 104
+                                lineNumber: 116
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.Text,
-                            { ref: 'start_date',
+                            {
                                 style: [styles.textViewStytle, { marginLeft: 10 }], __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 105
+                                    lineNumber: 117
                                 }
                             },
                             this.props.jsonObject.start_date
@@ -53850,22 +53863,32 @@ var HMListViewCellItem = function (_Component) {
                                 left: width * 0.5
                             }], __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 109
+                                lineNumber: 121
                             }
                         },
                         '至'
                     ),
                     _react2.default.createElement(
-                        _reactNative.Text,
-                        { style: [styles.textViewStytle, {
+                        _reactNative.TouchableOpacity,
+                        { activeOpacity: 0.5, style: {
                                 position: 'absolute',
                                 left: width - 100
-                            }], __source: {
+                            }, onPress: function onPress() {
+                                return _this2.renderCitys('到达日期');
+                            }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 117
+                                lineNumber: 128
                             }
                         },
-                        this.props.jsonObject.end_date
+                        _react2.default.createElement(
+                            _reactNative.Text,
+                            { style: [styles.textViewStytle], __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 132
+                                }
+                            },
+                            this.props.jsonObject.end_date
+                        )
                     )
                 )
             ));
@@ -53873,14 +53896,14 @@ var HMListViewCellItem = function (_Component) {
                 _reactNative.View,
                 { key: '3', style: [styles.desViewStytle, { flexDirection: 'row', alignItems: 'center' }], __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 124
+                        lineNumber: 136
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.Text,
                     { style: styles.textViewStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 125
+                            lineNumber: 137
                         }
                     },
                     '费用申请'
@@ -53893,7 +53916,7 @@ var HMListViewCellItem = function (_Component) {
                             marginLeft: width * 0.5 - 70
                         }], __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 126
+                            lineNumber: 138
                         }
                     },
                     this.props.jsonObject.product_name
@@ -53909,7 +53932,7 @@ var HMListViewCellItem = function (_Component) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 142
+                        lineNumber: 154
                     }
                 },
                 _react2.default.createElement(
@@ -53917,7 +53940,7 @@ var HMListViewCellItem = function (_Component) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 143
+                            lineNumber: 155
                         }
                     },
                     this.renderGetCell()
@@ -54152,8 +54175,26 @@ var NetUitl = function (_React$Component) {
             }).then(function (responseText) {
 
                 if (_reactNative.Platform.OS === 'android') {}
+                successCallback(JSON.parse(responseText));
+            }).catch(function (error) {
 
-                successCallback(responseText);
+                failureCallBack(error);
+            }).done();
+        }
+    }, {
+        key: 'getImageList',
+        value: function getImageList(url, successCallback, failureCallBack) {
+
+            fetch(url, {
+                method: 'GET'
+            }).then(function (response) {
+                return response.text();
+            }).then(function (responseText) {
+
+                if (_reactNative.Platform.OS === 'android') {
+                    responseText = responseText.replace(/\r?\n/g, '').replace(/[\u0080-\uFFFF]/g, '');
+                }
+                successCallback(JSON.parse(responseText));
             }).catch(function (error) {
 
                 failureCallBack(error);
@@ -54419,7 +54460,7 @@ var HMCalendar = function (_Component) {
                 showScrollIndicator: true,
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 74
+                    lineNumber: 71
                 }
             });
         }
@@ -58262,7 +58303,8 @@ var SimpleSelectCity = function (_Component) {
             allCityList: ALL_CITY_LIST,
             hotCityList: HOT_CITY_LIST,
             lastVisitCityList: LAST_VISIT_CITY_LIST,
-            nowCityList: NOW_CITY_LIST
+            nowCityList: NOW_CITY_LIST,
+            callBack: null
         };
         return _this;
     }
@@ -58304,7 +58346,9 @@ var SimpleSelectCity = function (_Component) {
                 this.setState({ showSearchResult: false, keyword: '' });
             }
 
-            alert('你选择了城市====》' + cityJson.id + '#####' + cityJson.name);
+            if (this.props.callBack == null) return;
+            this.props.callBack(cityJson);
+            this.props.navigator.pop();
         }
     }, {
         key: 'render',
@@ -58315,7 +58359,7 @@ var SimpleSelectCity = function (_Component) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 96
+                        lineNumber: 101
                     }
                 },
                 _react2.default.createElement(_HMNavigatorBar2.default, {
@@ -58324,7 +58368,7 @@ var SimpleSelectCity = function (_Component) {
                         return _this2.popToLast();
                     }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 98
+                        lineNumber: 103
                     }
                 }),
                 _react2.default.createElement(_SearchBox2.default, {
@@ -58333,7 +58377,7 @@ var SimpleSelectCity = function (_Component) {
                         _this2.onChanegeTextKeyword(vv);
                     }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 103
+                        lineNumber: 108
                     }
                 }),
                 this.state.showSearchResult ? _react2.default.createElement(_SearchResult2.default, {
@@ -58341,13 +58385,13 @@ var SimpleSelectCity = function (_Component) {
                     onSelectCity: this.onSelectCity.bind(this),
                     searchResultList: this.state.searchResultList, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 109
+                        lineNumber: 114
                     }
                 }) : _react2.default.createElement(
                     _reactNative.View,
                     { style: { flex: 1 }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 114
+                            lineNumber: 119
                         }
                     },
                     _react2.default.createElement(_IndexListView2.default, {
@@ -58357,7 +58401,7 @@ var SimpleSelectCity = function (_Component) {
                         lastVisitCityList: this.state.lastVisitCityList,
                         nowCityList: this.state.nowCityList, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 115
+                            lineNumber: 120
                         }
                     })
                 )
@@ -58550,19 +58594,19 @@ var SearchBox = function (_Component) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 32
+                        lineNumber: 37
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.inputBox, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 33
+                            lineNumber: 38
                         }
                     },
                     _react2.default.createElement(_reactNative.View, { style: styles.inputIcon, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 34
+                            lineNumber: 39
                         }
                     }),
                     _react2.default.createElement(_reactNative.TextInput, { ref: 'keyword', autoCapitalize: 'none', value: this.props.keyword,
@@ -58570,7 +58614,7 @@ var SearchBox = function (_Component) {
                         style: styles.inputText, underlineColorAndroid: 'transparent',
                         placeholder: '输入城市名或拼音查询', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 36
+                            lineNumber: 41
                         }
                     })
                 )
@@ -58601,21 +58645,21 @@ var styles = _reactNative.StyleSheet.create({
         marginRight: 5,
         flex: 1,
         flexDirection: 'row',
-        backgroundColor: '#E6E7E8'
+        alignItems: 'center',
+        backgroundColor: '#E6E7E8',
+        borderRadius: 5
     },
     inputIcon: {
         margin: _reactNative.Platform.OS === 'ios' ? 5 : 10
     },
     inputText: {
-
         flex: 1,
         height: _reactNative.Platform.OS === 'ios' ? 30 : 40,
         marginLeft: 2,
         marginRight: 5,
-        fontSize: 12,
+        fontSize: 14,
         alignItems: 'center',
-        textDecorationLine: 'none',
-        borderRadius: 5
+        textDecorationLine: 'none'
     }
 });
 }, 492, null, "TripGroup/TripModel/CityList/SearchBox.js");
@@ -58872,19 +58916,15 @@ var CityIndexListView = function (_Component) {
         var getRowData = function getRowData(dataBlob, sectionID, rowID) {
             return dataBlob[sectionID][rowID];
         };
-
         var ALL_CITY_LIST = _this.props.allCityList;
         var CURRENT_CITY_LIST = _this.props.nowCityList;
         var LAST_VISIT_CITY_LIST = _this.props.lastVisitCityList;
         var HOT_CITY_LIST = _this.props.hotCityList;
-
         var letterList = _this._getSortLetters(ALL_CITY_LIST);
-
         var dataBlob = {};
         dataBlob[key_now] = CURRENT_CITY_LIST;
         dataBlob[key_last_visit] = LAST_VISIT_CITY_LIST;
         dataBlob[key_hot] = HOT_CITY_LIST;
-
         ALL_CITY_LIST.map(function (cityJson) {
             var key = cityJson.sortLetters.toUpperCase();
 
@@ -58897,7 +58937,6 @@ var CityIndexListView = function (_Component) {
                 dataBlob[key] = _subList;
             }
         });
-
         var sectionIDs = Object.keys(dataBlob);
         var rowIDs = sectionIDs.map(function (sectionID) {
             var thisRow = [];
@@ -58914,12 +58953,9 @@ var CityIndexListView = function (_Component) {
 
                 eachheight = SECTIONHEIGHT + ROWHEIGHT_BOX * rowNum;
             }
-
             totalheight.push(eachheight);
-
             return thisRow;
         });
-
         var ds = new _reactNative.ListView.DataSource({
             getRowData: getRowData,
             getSectionHeaderData: getSectionData,
@@ -58930,12 +58966,10 @@ var CityIndexListView = function (_Component) {
                 return s1 !== s2;
             }
         });
-
         _this.state = {
             dataSource: ds.cloneWithRowsAndSections(dataBlob, sectionIDs, rowIDs),
             letters: sectionIDs
         };
-
         that = _this;
         return _this;
     }
@@ -58991,21 +59025,21 @@ var CityIndexListView = function (_Component) {
                         _this2._scrollTo(index, letter);
                     }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 144
+                        lineNumber: 150
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.letter, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 147
+                            lineNumber: 154
                         }
                     },
                     _react2.default.createElement(
                         _reactNative.Text,
                         { style: styles.letterText, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 148
+                                lineNumber: 155
                             }
                         },
                         letter
@@ -59022,21 +59056,21 @@ var CityIndexListView = function (_Component) {
                         that._cityNameClick(cityJson);
                     }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 156
+                        lineNumber: 164
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.rowdataBox, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 159
+                            lineNumber: 168
                         }
                     },
                     _react2.default.createElement(
                         _reactNative.Text,
                         { style: styles.rowDataTextBox, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 160
+                                lineNumber: 169
                             }
                         },
                         cityJson.name
@@ -59058,21 +59092,21 @@ var CityIndexListView = function (_Component) {
                         that._cityNameClick(cityJson);
                     }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 173
+                        lineNumber: 184
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.rowdata, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 176
+                            lineNumber: 188
                         }
                     },
                     _react2.default.createElement(
                         _reactNative.Text,
                         { style: styles.rowdatatext, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 177
+                                lineNumber: 189
                             }
                         },
                         cityJson.name
@@ -59087,14 +59121,14 @@ var CityIndexListView = function (_Component) {
                 _reactNative.View,
                 { style: styles.sectionView, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 185
+                        lineNumber: 198
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.Text,
                     { style: styles.sectionText, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 186
+                            lineNumber: 199
                         }
                     },
                     sectionData
@@ -59110,14 +59144,14 @@ var CityIndexListView = function (_Component) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 195
+                        lineNumber: 209
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.listContainner, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 196
+                            lineNumber: 210
                         }
                     },
                     _react2.default.createElement(_reactNative.ListView, { ref: function ref(listView) {
@@ -59127,14 +59161,14 @@ var CityIndexListView = function (_Component) {
                         renderRow: this._renderListRow, renderSectionHeader: this._renderListSectionHeader,
                         enableEmptySections: true, initialListSize: 500, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 197
+                            lineNumber: 211
                         }
                     }),
                     _react2.default.createElement(
                         _reactNative.View,
                         { style: styles.letters, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 201
+                                lineNumber: 215
                             }
                         },
                         this.state.letters.map(function (letter, index) {
@@ -59145,7 +59179,7 @@ var CityIndexListView = function (_Component) {
                 _react2.default.createElement(_ToastUtil2.default, { ref: 'toast', position: 'top', positionValue: 200, fadeInDuration: 750, fadeOutDuration: 1000,
                     opacity: 0.8, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 205
+                        lineNumber: 219
                     }
                 })
             );
@@ -59193,8 +59227,8 @@ var styles = _reactNative.StyleSheet.create({
     },
     letterText: {
         textAlign: 'center',
-        fontSize: height * 1.1 / 50,
-        color: '#e75404'
+        fontSize: height * 1.0 / 50,
+        color: 'rgba(47,121,173,1.0)'
     },
     sectionView: {
         paddingTop: 5,
@@ -59202,11 +59236,13 @@ var styles = _reactNative.StyleSheet.create({
         height: 30,
         paddingLeft: 10,
         width: width,
-        backgroundColor: '#F4F4F4'
+        backgroundColor: 'rgba(245,245,245,1.0)'
     },
     sectionText: {
-        color: '#e75404',
-        fontWeight: 'bold'
+        color: 'gray',
+        fontWeight: 'bold',
+        fontSize: 14
+
     },
     rowView: {
         height: ROWHEIGHT,
@@ -59222,7 +59258,8 @@ var styles = _reactNative.StyleSheet.create({
 
     rowdatatext: {
         color: 'gray',
-        width: width
+        width: width,
+        fontSize: 14
     },
 
     rowViewBox: {
@@ -59232,7 +59269,9 @@ var styles = _reactNative.StyleSheet.create({
         backgroundColor: '#ffffff'
     },
     rowdataBox: {
-        borderWidth: 1,
+
+        borderRadius: 5,
+        borderWidth: 0.5,
         borderColor: '#DBDBDB',
         marginTop: 5,
         marginBottom: 5,

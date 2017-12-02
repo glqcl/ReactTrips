@@ -52,20 +52,32 @@ export default class HMListViewCellItem extends Component
         var self = this;
 
         this.props.itemClick(obj);
+        EventProxy.off('msg');
         // 监听 msg 事件
         EventProxy.on('msg', (msg) =>
         {
-            //alert(JSON.stringify(msg));
+
             if ('起始日期' == obj)
             {
-                self.ref.start_date.text( msg.dateString)
-               // self.props.jsonObject.start_date = msg.dateString;
+                self.props.jsonObject.start_date = msg.dateString;
             }
-            // self.setState({
-            //     position: 0
-            // })
-
-
+            else if ('到达日期' == obj)
+            {
+                self.props.jsonObject.end_date = msg.dateString;
+            }
+            else if ('起始城市' == obj)
+            {
+                self.props.jsonObject.setout_city= msg.name;
+                //alert('你选择了城市====》' + msg.id + '#####' + msg.name);
+            }
+            else if ('到达城市' == obj)
+            {
+                self.props.jsonObject.arrive_city= msg.name;
+               // alert('你选择了城市====》' + msg.id + '#####' + msg.name);
+            }
+            self.setState({
+                position: 0
+            })
         });
     }
 
@@ -90,19 +102,19 @@ export default class HMListViewCellItem extends Component
                     left: width * 0.5
                 }]}>{'至'}</Text>
 
-
-                <Text style={[styles.textViewStytle, {
+                <TouchableOpacity activeOpacity={0.5} style={{
                     position: 'absolute',
                     left: width - 100
-                }]}>{this.props.jsonObject.arrive_city}</Text>
-
+                }} onPress={() => this.renderCitys('到达城市')}>
+                    <Text style={[styles.textViewStytle]}>{this.props.jsonObject.arrive_city}</Text>
+                </TouchableOpacity>
             </View>
         </View>);
         cellArray.push(<View key={'2'} style={styles.cellViewStytle}>
             <View style={styles.seconViewStytle}>
                 <Text style={styles.textViewStytle}>{'行程日期'}</Text>
                 <TouchableOpacity activeOpacity={0.5} onPress={() => this.renderCitys('起始日期')}>
-                    <Text ref="start_date"
+                    <Text
                         style={[styles.textViewStytle, {marginLeft: 10}]}>{this.props.jsonObject.start_date}
                     </Text>
                 </TouchableOpacity>
@@ -113,12 +125,12 @@ export default class HMListViewCellItem extends Component
                         left: width * 0.5
                     }]
                 }>{'至'}</Text>
-
-                <Text style={[styles.textViewStytle, {
+                <TouchableOpacity activeOpacity={0.5} style={{
                     position: 'absolute',
                     left: width - 100
-                }]}>{this.props.jsonObject.end_date}</Text>
-
+                }} onPress={() => this.renderCitys('到达日期')}>
+                    <Text style={[styles.textViewStytle]}>{this.props.jsonObject.end_date}</Text>
+                </TouchableOpacity>
             </View>
         </View>);
         cellArray.push(<View key={'3'} style={[styles.desViewStytle, {flexDirection: 'row', alignItems: 'center'}]}>

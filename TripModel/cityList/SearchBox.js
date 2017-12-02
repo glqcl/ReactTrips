@@ -7,8 +7,10 @@ import {
     Platform,
 } from 'react-native';
 
-export default class SearchBox extends Component {
-    constructor(props) {
+export default class SearchBox extends Component
+{
+    constructor(props)
+    {
         super(props);
         this.state = {
             value: ''
@@ -16,18 +18,21 @@ export default class SearchBox extends Component {
 
     }
 
-    onEndEditingKeyword(vv) {
+    onEndEditingKeyword(vv)
+    {
         console.log(vv);
     }
 
-    onChanegeTextKeyword(vv) {
+    onChanegeTextKeyword(vv)
+    {
         console.log('onChanegeTextKeyword', vv);
 
         this.setState({value: vv});
         this.props.onChanegeTextKeyword(vv);
     }
 
-    render() {
+    render()
+    {
         return (
             <View style={styles.container}>
                 <View style={styles.inputBox}>
@@ -55,34 +60,28 @@ const styles = StyleSheet.create({
         borderBottomWidth: StyleSheet.hairlineWidth,
         borderBottomColor: '#cdcdcd',
         paddingBottom: 5,
-        borderRadius:5
+        borderRadius: 5
     },
     inputBox: {
-        height: Platform.OS === 'ios'
-            ? 30
-            : 40,
+        height: Platform.OS === 'ios' ? 30 : 40,
         marginLeft: 5,
         marginRight: 5,
         flex: 1,
         flexDirection: 'row',
-        backgroundColor: '#E6E7E8'
+        alignItems: 'center',
+        backgroundColor: '#E6E7E8',
+        borderRadius: 5
     },
     inputIcon: {
-        margin: Platform.OS === 'ios'
-            ? 5
-            : 10
+        margin: Platform.OS === 'ios' ? 5 : 10
     },
     inputText: {
-
         flex: 1,
-        height: Platform.OS === 'ios'
-            ? 30
-            : 40,
+        height: Platform.OS === 'ios' ? 30 : 40,
         marginLeft: 2,
         marginRight: 5,
-        fontSize: 12,
-        alignItems:'center',
+        fontSize: 14,
+        alignItems: 'center',
         textDecorationLine: 'none',
-        borderRadius:5
     }
 });

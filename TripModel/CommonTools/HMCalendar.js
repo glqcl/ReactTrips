@@ -21,7 +21,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
+import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 var holiday = {
     '2015-10-1': '国庆节',
     '2015-9-10': '教师节',
@@ -49,10 +49,7 @@ var {width, height} = Dimensions.get('window');
 export default class HMCalendar extends Component
 {
 
-    static defaultProps = {
-
-
-    };
+    static defaultProps = {};
 
     popToLast()
     {
@@ -63,7 +60,7 @@ export default class HMCalendar extends Component
 
     renderPress(str)
     {
-        if(this.props.callBack==null)return;
+        if (this.props.callBack == null)return;
         this.props.callBack(str);
         this.props.navigator.pop();
     }
@@ -78,7 +75,9 @@ export default class HMCalendar extends Component
                     '2013-09-18': {disabled: true}
                 }}
                 // Callback which gets executed when visible months change in scroll view. Default = undefined
-                onVisibleMonthsChange={(months) => {}}
+                onVisibleMonthsChange={(months) =>
+                {
+                }}
                 // Max amount of months allowed to scroll to the past. Default = 50
                 pastScrollRange={50}
                 // Max amount of months allowed to scroll to the future. Default = 50
@@ -86,11 +85,17 @@ export default class HMCalendar extends Component
                 // Enable or disable scrolling of calendar list
                 scrollEnabled={true}
                 selected={'2017-11-25'}
-                rowHasChanged={(r1, r2) => {return r1.text !== r2.text}}
-                onDayPress={(day)=>{this.renderPress(day)}}
+                rowHasChanged={(r1, r2) =>
+                {
+                    return r1.text !== r2.text
+                }}
+                onDayPress={(day) =>
+                {
+                    this.renderPress(day)
+                }}
                 // Enable or disable vertical scroll indicator. Default = false
                 showScrollIndicator={true}
-    />
+            />
         );
 
     }
