@@ -23,6 +23,7 @@ import {
 
 
 import EventProxy from '../CommonTools/EventProxy'
+
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 var letfViewWidth = 60;
@@ -41,30 +42,28 @@ export default class HMListViewCellItem extends Component
 
     popToLast()
     {
-        if (this.props.popToLast == null)return;
+        if (this.props.popToLast == null) return;
         this.props.popToLast();
     }
 
     renderCitys(obj)
     {
         if (this.props.itemClick == null) return;
-
-        var self=this;
-
+        var self = this;
         this.props.itemClick(obj);
         // 监听 msg 事件
         EventProxy.on('msg', (msg) =>
         {
             //alert(JSON.stringify(msg));
-            if('起始日期'==obj)
+            if ('起始日期' == obj)
             {
-               self.props.jsonObject.start_date=msg.dateString;
+                self.props.jsonObject.start_date = msg.dateString;
             }
+
+
             self.setState({
-                position:0
+                position: 0
             })
-
-
         });
     }
 
@@ -78,7 +77,6 @@ export default class HMListViewCellItem extends Component
         cellArray.push(<View key={'1'} style={styles.cellViewStytle}>
             <View style={styles.seconViewStytle}>
                 <Text style={styles.textViewStytle}>{'起始城市'}</Text>
-
                 <TouchableOpacity activeOpacity={0.5} onPress={() => this.renderCitys('起始城市')}>
                     <Text
                         style={[styles.textViewStytle, {marginLeft: 10}]}>{this.props.jsonObject.setout_city}</Text>
@@ -88,8 +86,6 @@ export default class HMListViewCellItem extends Component
                     position: 'absolute',
                     left: width * 0.5
                 }]}>{'至'}</Text>
-
-
                 <Text style={[styles.textViewStytle, {
                     position: 'absolute',
                     left: width - 100
@@ -103,19 +99,16 @@ export default class HMListViewCellItem extends Component
                 <TouchableOpacity activeOpacity={0.5} onPress={() => this.renderCitys('起始日期')}>
                     <Text
                         style={[styles.textViewStytle, {marginLeft: 10}]}>{this.props.jsonObject.start_date}</Text>
-
                 </TouchableOpacity>
                 <Text style={[styles.textViewStytle, {
                     color: 'orange',
                     position: 'absolute',
                     left: width * 0.5
                 }]}>{'至'}</Text>
-
                 <Text style={[styles.textViewStytle, {
                     position: 'absolute',
                     left: width - 100
                 }]}>{this.props.jsonObject.end_date}</Text>
-
             </View>
         </View>);
         cellArray.push(<View key={'3'} style={[styles.desViewStytle, {flexDirection: 'row', alignItems: 'center'}]}>
@@ -126,10 +119,7 @@ export default class HMListViewCellItem extends Component
                 marginLeft: width * 0.5 - 70
             }]}>{this.props.jsonObject.product_name}</Text>
         </View>);
-
-
         return cellArray;
-
 
     }
 
