@@ -49453,7 +49453,12 @@ var HMApprovalList = function (_BaseComponent) {
                     dataSource: self.state.dataSource.cloneWithRows(listArray)
                 });
 
-                self.refs.listView.resetStatus();
+                if (jsonArray < pageSize) {
+                    this.refs.listView.setNoMoreData();
+                } else {
+                    this.refs.listView.resetStatus();
+                }
+
                 end();
             }, function (error) {
 
@@ -49464,7 +49469,7 @@ var HMApprovalList = function (_BaseComponent) {
         }
     }, {
         key: 'onLoadMore',
-        value: function onLoadMore(listView) {
+        value: function onLoadMore(end) {
 
             page++;
             var tempUrl = _HMUrlUtils2.default.getTravelList + '?user_id=98108&type=3&page=' + page + '&pageSize= ' + pageSize;
@@ -49475,12 +49480,12 @@ var HMApprovalList = function (_BaseComponent) {
                 self.hideProgress();
                 var jsonData = responseText;
                 var jsonArray = jsonData.result;
-
                 listArray = listArray.concat(jsonArray);
                 self.setState({
                     dataSource: self.state.dataSource.cloneWithRows(listArray)
                 });
-                self.refs.listView.endLoadMore(jsonArray < 20);
+
+                end(jsonArray < 20);
             }, function (error) {
                 self.hideProgress();
                 self.refs.listView.endRefresh();
@@ -49518,20 +49523,20 @@ var HMApprovalList = function (_BaseComponent) {
                         _this2.pushToNewsDetail(rowData);
                     }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 185
+                        lineNumber: 196
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.cellStyle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 189
+                            lineNumber: 200
                         }
                     },
                     _react2.default.createElement(_HMListViewItem2.default, {
                         jsonObject: rowData, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 190
+                            lineNumber: 201
                         }
                     })
                 )
@@ -49546,7 +49551,7 @@ var HMApprovalList = function (_BaseComponent) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 200
+                        lineNumber: 211
                     }
                 },
                 _react2.default.createElement(_HMNavigatorBar2.default, {
@@ -49555,7 +49560,7 @@ var HMApprovalList = function (_BaseComponent) {
                         return _this3.popToLast();
                     }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 202
+                        lineNumber: 213
                     }
                 }),
                 _react2.default.createElement(_reactNativeSwRefresh.SwRefreshListView, {
@@ -49572,7 +49577,7 @@ var HMApprovalList = function (_BaseComponent) {
                     },
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 206
+                        lineNumber: 217
                     }
                 }),
                 this.initLoading()
@@ -52832,22 +52837,32 @@ var HMApprovalDetail = function (_BaseComponent) {
             }
         }
     }, {
+        key: 'pushToDetail',
+        value: function pushToDetail() {
+            alert(1111);
+        }
+    }, {
+        key: 'renderApply',
+        value: function renderApply() {
+            alert('renderApply');
+        }
+    }, {
+        key: 'renderCreate',
+        value: function renderCreate() {
+            alert('renderCreate');
+        }
+    }, {
         key: 'renderAppProgress',
         value: function renderAppProgress() {
-
             var tempUrl = _HMUrlUtils2.default.getAppProcess + '?travel_id=' + this.props.rowData.travel_id;
             var self = this;
-
             _NetUitl2.default.get(tempUrl, function (ret) {
 
                 if (ret.code == '1') {
                     var resultList = ret.result;
-
                     var progressArray = [];
-
                     for (var i = 0; i < resultList.length; i++) {
                         var obj = resultList[i];
-
                         var approval_time = obj.approval_time;
                         if (approval_time.length > 10) {
                             approval_time = approval_time.substring(0, 10);
@@ -52860,7 +52875,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                             obj: obj,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 212
+                                lineNumber: 221
                             }
                         }));
                     }
@@ -52874,11 +52889,6 @@ var HMApprovalDetail = function (_BaseComponent) {
             });
         }
     }, {
-        key: 'pushToDetail',
-        value: function pushToDetail() {
-            alert(1111);
-        }
-    }, {
         key: 'render',
         value: function render() {
             var _this3 = this;
@@ -52887,7 +52897,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 240
+                        lineNumber: 244
                     }
                 },
                 _react2.default.createElement(_HMNavigatorBar2.default, {
@@ -52896,7 +52906,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                         return _this3.popToLast();
                     }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 241
+                        lineNumber: 245
                     }
                 }),
                 _react2.default.createElement(
@@ -52904,13 +52914,13 @@ var HMApprovalDetail = function (_BaseComponent) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 245
+                            lineNumber: 249
                         }
                     },
                     _react2.default.createElement(_HMApprovalDetailTopItem2.default, {
                         jsonObject: this.state.jsonObject, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 246
+                            lineNumber: 250
                         }
                     }),
                     _react2.default.createElement(_HMApprovalMiddleItem2.default, {
@@ -52919,14 +52929,14 @@ var HMApprovalDetail = function (_BaseComponent) {
                         },
                         jsonObject: this.state.jsonObject, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 249
+                            lineNumber: 253
                         }
                     }),
                     _react2.default.createElement(
                         _reactNative.View,
                         { style: { backgroundColor: 'rgba(239,240,243,1.0)', width: width }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 256
+                                lineNumber: 260
                             }
                         },
                         this.state.dataSource
@@ -52935,23 +52945,98 @@ var HMApprovalDetail = function (_BaseComponent) {
                         remars: this.state.remars,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 260
+                            lineNumber: 264
                         }
                     }),
                     _react2.default.createElement(_HMListViewNextPerson2.default, {
                         nextPerson: this.state.nextPerson, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 263
+                            lineNumber: 267
                         }
                     }),
                     _react2.default.createElement(
                         _reactNative.View,
                         { style: { flexDirection: 'row' }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 265
+                                lineNumber: 269
                             }
                         },
                         this.state.progressArray
+                    ),
+                    _react2.default.createElement(
+                        _reactNative.View,
+                        { style: { alignSelf: 'flex-end', flexDirection: 'row', height: 40, width: width }, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 271
+                            }
+                        },
+                        _react2.default.createElement(
+                            _reactNative.TouchableOpacity,
+                            { activeOpacity: 0.5,
+                                onPress: function onPress() {
+                                    return _this3.renderApply();
+                                }, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 273
+                                }
+                            },
+                            _react2.default.createElement(
+                                _reactNative.View,
+                                { style: { width: width * 0.5, height: 40, backgroundColor: 'rgb(17,33,49)' }, __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 275
+                                    }
+                                },
+                                _react2.default.createElement(
+                                    _reactNative.Text,
+                                    { style: {
+                                            paddingTop: 14,
+                                            fontSize: 12,
+                                            color: 'white',
+                                            height: 40,
+                                            textAlign: 'center'
+                                        }, __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 276
+                                        }
+                                    },
+                                    '我的申请单'
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            _reactNative.TouchableOpacity,
+                            { activeOpacity: 0.5,
+                                onPress: function onPress() {
+                                    return _this3.renderCreate();
+                                }, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 286
+                                }
+                            },
+                            _react2.default.createElement(
+                                _reactNative.View,
+                                { style: { width: width * 0.5, height: 40, backgroundColor: 'rgb(192,65,38)' }, __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 288
+                                    }
+                                },
+                                _react2.default.createElement(
+                                    _reactNative.Text,
+                                    { style: {
+                                            paddingTop: 14,
+                                            fontSize: 12,
+                                            color: 'white',
+                                            textAlign: 'center'
+                                        }, __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 289
+                                        }
+                                    },
+                                    '创建申请单'
+                                )
+                            )
+                        )
                     )
                 ),
                 this.initLoading()
@@ -53338,7 +53423,7 @@ var HMApprovalDetailItem = function (_Component) {
                         _react2.default.createElement(
                             _reactNative.Text,
                             { style: [styles.textViewStytle, {
-                                    backgroundColor: 'red',
+                                    backgroundColor: 'rgb(192,65,38)',
                                     borderRadius: 5,
                                     color: 'white',
                                     height: 30,
@@ -58345,7 +58430,6 @@ var SimpleSelectCity = function (_Component) {
             if (this.state.showSearchResult) {
                 this.setState({ showSearchResult: false, keyword: '' });
             }
-
             if (this.props.callBack == null) return;
             this.props.callBack(cityJson);
             this.props.navigator.pop();
@@ -58359,7 +58443,7 @@ var SimpleSelectCity = function (_Component) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 101
+                        lineNumber: 98
                     }
                 },
                 _react2.default.createElement(_HMNavigatorBar2.default, {
@@ -58368,7 +58452,7 @@ var SimpleSelectCity = function (_Component) {
                         return _this2.popToLast();
                     }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 103
+                        lineNumber: 100
                     }
                 }),
                 _react2.default.createElement(_SearchBox2.default, {
@@ -58377,7 +58461,7 @@ var SimpleSelectCity = function (_Component) {
                         _this2.onChanegeTextKeyword(vv);
                     }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 108
+                        lineNumber: 105
                     }
                 }),
                 this.state.showSearchResult ? _react2.default.createElement(_SearchResult2.default, {
@@ -58385,13 +58469,13 @@ var SimpleSelectCity = function (_Component) {
                     onSelectCity: this.onSelectCity.bind(this),
                     searchResultList: this.state.searchResultList, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 114
+                        lineNumber: 111
                     }
                 }) : _react2.default.createElement(
                     _reactNative.View,
                     { style: { flex: 1 }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 119
+                            lineNumber: 116
                         }
                     },
                     _react2.default.createElement(_IndexListView2.default, {
@@ -58401,7 +58485,7 @@ var SimpleSelectCity = function (_Component) {
                         lastVisitCityList: this.state.lastVisitCityList,
                         nowCityList: this.state.nowCityList, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 120
+                            lineNumber: 117
                         }
                     })
                 )

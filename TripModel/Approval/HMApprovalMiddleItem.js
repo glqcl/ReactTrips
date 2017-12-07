@@ -49,7 +49,7 @@ export default class HMApprovalDetailItem extends Component
                     >
 
                         <Text style={[styles.textViewStytle, {
-                            backgroundColor: 'red',
+                            backgroundColor: 'rgb(192,65,38)',
                             borderRadius: 5,
                             color: 'white',
                             height: 30,

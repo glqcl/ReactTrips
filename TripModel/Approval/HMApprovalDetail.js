@@ -132,10 +132,8 @@ export default class HMApprovalDetail extends BaseComponent
                 self.hideProgress();
             }
         )
-        ;
 
     }
-
 
     componentDidMount()
     {
@@ -178,6 +176,23 @@ export default class HMApprovalDetail extends BaseComponent
         {
             return 'approval_update'
         }
+    }
+
+    pushToDetail()
+    {
+        alert(1111);
+    }
+
+    /*申请单列表*/
+    renderApply()
+    {
+        alert('renderApply');
+    }
+
+    /*创建申请单*/
+    renderCreate()
+    {
+        alert('renderCreate');
     }
 
 
@@ -223,11 +238,6 @@ export default class HMApprovalDetail extends BaseComponent
         })
     }
 
-    pushToDetail()
-    {
-        alert(1111);
-    }
-
     render()
     {
         return (
@@ -258,13 +268,45 @@ export default class HMApprovalDetail extends BaseComponent
                         nextPerson={this.state.nextPerson}/>
                     <View style={{flexDirection: 'row'}}>{this.state.progressArray}</View>
 
+                    <View style={{alignSelf: 'flex-end', flexDirection: 'row', height: 40, width: width}}>
+
+                        <TouchableOpacity activeOpacity={0.5}
+                                          onPress={() => this.renderApply() }>
+                            <View style={{width: width * 0.5, height: 40, backgroundColor: 'rgb(17,33,49)'}}>
+                                <Text style={{
+                                    paddingTop:14,
+                                    fontSize: 12,
+                                    color: 'white',
+                                    height:40,
+                                    textAlign: 'center'
+                                }}>{'我的申请单'}</Text>
+                            </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity activeOpacity={0.5}
+                                          onPress={() => this.renderCreate()}>
+                            <View style={{width: width * 0.5, height: 40, backgroundColor: 'rgb(192,65,38)'}}>
+                                <Text style={{
+                                    paddingTop:14,
+                                    fontSize: 12,
+                                    color: 'white',
+                                    textAlign: 'center'
+                                }}>{'创建申请单'}</Text>
+                            </View>
+                        </TouchableOpacity>
+
+                    </View>
                 </ScrollView>
 
                 {this.initLoading()}
             </View>
         );
+
     }
+
+
 }
+
 
 const styles = StyleSheet.create({
     container: {
