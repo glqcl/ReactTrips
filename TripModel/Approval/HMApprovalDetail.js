@@ -42,6 +42,11 @@ import HMAppProcessItem from '../Approval/HMAppProcessItem'
 import HMCalendar from '../CommonTools/HMCalendar'
 import SelectCity from '../CityList/SelectCity';
 
+
+
+var cellArray = [];
+
+
 export default class HMApprovalDetail extends BaseComponent
 {
     static defaultProps = {
