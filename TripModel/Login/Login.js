@@ -28,6 +28,7 @@ import Toast, {DURATION} from 'react-native-easy-toast'
 
 
 import HMIndex from '../Index/HMIndex';
+import NetUitl from '../CommonTools/NetUitl';
 
 export default class TripGroup extends Component
 {
@@ -70,10 +71,52 @@ export default class TripGroup extends Component
             this.refs.toast.show('密码不正确!');
             return;
         }
+        var timsStamp = new Date().getTime();
+        var timeMd5 = Number(timsStamp);
+        var username = this.props.username;
+        var password = this.props.password;
         var md = forge.md.md5.create();
-        md.update('此处是需要加密的字符串');
-        password = md.digest().toHex();
-        
+        md.update(password);
+        passmd5String = md.digest().toHex();
+        var passMd5 = username + timeMd5 + passmd5String;
+        md.update(passMd5);
+        passMd5 = md.digest().toHex();
+        var LogoSign = '986CD980-17CA-4FF4-A158-6067D2721A56';
+        var LogoKey = '9DE65DF9-84A3-47C4-901A-681443F5591C';
+        var params = {};
+        params.cmd = 'UserCheck';
+        params.Sign = LogoSign;
+        params.Key = LogoKey;
+        params.TimeStamp = timsStamp;
+        params.UserName = username;
+        params.PasswordKey = passMd5;
+
+        var arrayList = [];
+        for (var Key in params)
+        {
+            var valueString = '';
+            valueString = Key + '=' + params[Key] + '';
+            arrayList.push(valueString);
+        }
+        var tempList = arrayList.sort();
+
+        var tempStr = tempList.join();
+
+        var md5String = md.update(tempStr);
+
+        params.NewKey = md5String;
+        params.remove('Key');
+
+        var tempUrl = 'http://c.tripg.com/Base/Get_CusomterAndMemberInterface.aspx?';
+
+        NetUitl.post(tempUrl, params, function (response)
+        {
+            alert(JSON.stringify(response));
+        }, function (error)
+        {
+            alert(JSON.stringify(error));
+        })
+
         if (this.state.username == '111' && this.state.password == '111')
         {
             this.props.navigator.replace({
@@ -170,7 +213,7 @@ const styles = StyleSheet.create({
 
     },
     innerStytle: {
-        marginTop: Platform.OS=='ios'?200:180,
+        marginTop: Platform.OS == 'ios' ? 200 : 180,
         alignItems: 'center',
 
     },

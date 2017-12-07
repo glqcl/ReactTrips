@@ -43,9 +43,7 @@ import HMCalendar from '../CommonTools/HMCalendar'
 import SelectCity from '../CityList/SelectCity';
 
 
-
-var cellArray = [];
-
+var travelDetail = [];
 
 export default class HMApprovalDetail extends BaseComponent
 {
@@ -110,7 +108,7 @@ export default class HMApprovalDetail extends BaseComponent
             {
                 self.hideProgress();
                 var jsonData = responseText;
-                var travelDetail = jsonData.travelDetail;
+                travelDetail = jsonData.travelDetail;
                 for (var i = 0; i < travelDetail.length; i++)
                 {
                     var obj = travelDetail[i];
@@ -197,7 +195,12 @@ export default class HMApprovalDetail extends BaseComponent
     /*创建申请单*/
     renderCreate()
     {
-        alert('renderCreate');
+        for (var i = 0; i < travelDetail.length; i++)
+        {
+            var obj = travelDetail[i];
+
+
+        }
     }
 
 
@@ -279,10 +282,10 @@ export default class HMApprovalDetail extends BaseComponent
                                           onPress={() => this.renderApply() }>
                             <View style={{width: width * 0.5, height: 40, backgroundColor: 'rgb(17,33,49)'}}>
                                 <Text style={{
-                                    paddingTop:14,
+                                    paddingTop: 14,
                                     fontSize: 12,
                                     color: 'white',
-                                    height:40,
+                                    height: 40,
                                     textAlign: 'center'
                                 }}>{'我的申请单'}</Text>
                             </View>
@@ -292,7 +295,7 @@ export default class HMApprovalDetail extends BaseComponent
                                           onPress={() => this.renderCreate()}>
                             <View style={{width: width * 0.5, height: 40, backgroundColor: 'rgb(192,65,38)'}}>
                                 <Text style={{
-                                    paddingTop:14,
+                                    paddingTop: 14,
                                     fontSize: 12,
                                     color: 'white',
                                     textAlign: 'center'
