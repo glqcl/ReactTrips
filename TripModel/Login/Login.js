@@ -66,7 +66,7 @@ export default class TripGroup extends Component
 
         var timeMd5Int =  1513049582;
 
-        var passmd5String = CryptoJS.MD5(this.state.password).toString();
+        var passmd5String = CryptoJS.MD5('000000');
 
         var passMd5 = this.state.username + timeMd5Int/60 + passmd5String;
 
@@ -79,7 +79,7 @@ export default class TripGroup extends Component
             TimeStamp: timeMd5Int,
             Sign: LogoSign,
             cmd: 'UserCheck',
-            UserName: this.state.username,
+            UserName: 'YDCS007',
             PasswordKey: passMd5
 
         };
@@ -91,7 +91,7 @@ export default class TripGroup extends Component
 
         NetUitl.post(tempUrl, function (response)
         {
-            alert(JSON.stringify(response));
+            alert('11111'+JSON.stringify(response));
 
             if (this.state.username == '111' && this.state.password == '111')
             {
