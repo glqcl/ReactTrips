@@ -25,10 +25,13 @@ var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 
 import Toast, {DURATION} from 'react-native-easy-toast'
+import CryptoJS from 'crypto-js'
 
 
 import HMIndex from '../Index/HMIndex';
 import NetUitl from '../CommonTools/NetUitl';
+import tgConfig from '../CommonTools/tgConfig.relase';
+import tgUtil from '../CommonTools/tgUtil';
 
 export default class TripGroup extends Component
 {
@@ -52,13 +55,7 @@ export default class TripGroup extends Component
             return;
         }
 
-        if ('111' != this.state.username)
-        {
 
-            this.refs.toast.show('用户名不正确!');
-
-            return;
-        }
         if ('' == this.state.password)
         {
 
@@ -66,99 +63,50 @@ export default class TripGroup extends Component
             return;
         }
 
-        if ('111' != this.state.password)
-        {
-            this.refs.toast.show('密码不正确!');
-            return;
-        }
-        var timsStamp = new Date().getTime();
-        var timeMd5 = Number(timsStamp);
 
-        var timeMd5Int = timeMd5 / 60;
+        var timeMd5Int =  1513049582;
 
+        var passmd5String = CryptoJS.MD5(this.state.password).toString();
 
-        var username = this.state.username;
-        var password = this.state.password;
+        var passMd5 = this.state.username + timeMd5Int/60 + passmd5String;
 
-        var md1 = forge.md.md5.create();
-        var md2 = forge.md.md5.create();
-        var md3 = forge.md.md5.create();
-
-        md1.update(password);
-        passmd5String = md1.digest().toHex();
-
-
-        //alert(passmd5String);
-        // return;
-
-        var passMd5 = username + timeMd5Int + passmd5String;
-        md2.update(passMd5);
-
-        passMd5 = md2.digest().toHex();
+        passMd5 = CryptoJS.MD5(passMd5);
 
         var LogoSign = '986CD980-17CA-4FF4-A158-6067D2721A56';
-        var LogoKey = '9DE65DF9-84A3-47C4-901A-681443F5591C';
-        var params = {};
-        params.cmd = 'UserCheck';
-        params.Sign = LogoSign;
-        params.Key = LogoKey;
-        params.TimeStamp = timsStamp + '';
-        params.UserName = username;
-        params.PasswordKey = passMd5;
+        var LogoKey = 'Key=9DE65DF9-84A3-47C4-901A-681443F5591C';
 
-        var arrayList = [];
-        for (var Key in params)
-        {
-            var valueString = '';
-            valueString = Key + '=' + params[Key] + '';
-            arrayList.push(valueString);
-        }
+        var parmData = {
+            TimeStamp: timeMd5Int,
+            Sign: LogoSign,
+            cmd: 'UserCheck',
+            UserName: this.state.username,
+            PasswordKey: passMd5
 
-        //var tempList = arrayList.sort();
+        };
 
+        var urlData = tgUtil.tgParmsToUrl(parmData);
+        urlData += tgUtil.tgGetNewKeyStr(urlData, LogoKey);
 
-        // var tempList= arrayList.sort(function(a,b){return a.key+"">b.key+"";});
-
-        var tempList = arrayList.sort(function (a, b)
-        {
-            return a.key > b.key;
-        });
-
-        var tempStr = tempList.join();
-
-
-        var md5String = md3.update(tempStr);
-
-        md5String = md3.digest().toHex();
-
-        params.NewKey = md5String;
-
-        delete(params["Key"]);
-
-        //var tempUrl = 'http://c.tripg.com/Base/Get_CusomterAndMemberInterface.aspx?';
-
-
-        var tempUrl = `http://c.tripg.com/Base/Get_CusomterAndMemberInterface.aspx?cmd=UserCheck&Sign=${LogoSign}&TimeStamp=${timsStamp}&UserName= ${username}&PasswordKey=${passMd5}&NewKey=${md5String}`;
-
-        alert(tempStr);
-
-
-        // return;
+        var tempUrl = 'http://c.tripg.com/Base/Get_CusomterAndMemberInterface.aspx?' + urlData;
 
         NetUitl.post(tempUrl, function (response)
         {
             alert(JSON.stringify(response));
+
+            if (this.state.username == '111' && this.state.password == '111')
+            {
+                this.props.navigator.replace({
+                    component: HMIndex
+                })
+            }
+
+
         }, function (error)
         {
             alert(JSON.stringify(error));
         })
 
-        // if (this.state.username == '111' && this.state.password == '111')
-        // {
-        //     this.props.navigator.replace({
-        //         component: HMIndex
-        //     })
-        // }
+
     }
 
     render()
