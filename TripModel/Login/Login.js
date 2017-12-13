@@ -24,6 +24,9 @@ var forge = require('node-forge');
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 
+var LogoSign = '986CD980-17CA-4FF4-A158-6067D2721A56';
+var LogoKey = 'Key=9DE65DF9-84A3-47C4-901A-681443F5591C';
+
 import Toast, {DURATION} from 'react-native-easy-toast'
 import CryptoJS from 'crypto-js'
 
@@ -35,7 +38,6 @@ import tgUtil from '../CommonTools/tgUtil';
 
 export default class TripGroup extends Component
 {
-
     constructor(props)
     {
         super(props);
@@ -47,59 +49,45 @@ export default class TripGroup extends Component
 
     login()
     {
+
         if ('' == this.state.username)
         {
-
             this.refs.toast.show('用户名不能为空!');
-
             return;
         }
-
-
         if ('' == this.state.password)
         {
-
             this.refs.toast.show('密码不能为空!');
             return;
         }
 
-
-        var timeMd5Int =  1513049582;
-
-        var passmd5String = CryptoJS.MD5('000000');
-
-        var passMd5 = this.state.username + timeMd5Int/60 + passmd5String;
-
+        var timeMd5Int = new Date().getTime();
+        var username = this.state.username;
+        var password = this.state.password;
+        var passmd5String = CryptoJS.MD5(password).toString();
+        var passMd5 = username + timeMd5Int + passmd5String;
         passMd5 = CryptoJS.MD5(passMd5);
-
-        var LogoSign = '986CD980-17CA-4FF4-A158-6067D2721A56';
-        var LogoKey = 'Key=9DE65DF9-84A3-47C4-901A-681443F5591C';
-
         var parmData = {
             TimeStamp: timeMd5Int,
             Sign: LogoSign,
             cmd: 'UserCheck',
-            UserName: 'YDCS007',
+            UserName: username,
             PasswordKey: passMd5
 
         };
-
         var urlData = tgUtil.tgParmsToUrl(parmData);
         urlData += tgUtil.tgGetNewKeyStr(urlData, LogoKey);
-
         var tempUrl = 'http://c.tripg.com/Base/Get_CusomterAndMemberInterface.aspx?' + urlData;
-
-        NetUitl.post(tempUrl, function (response)
+        NetUitl.get(tempUrl, function (responseText)
         {
-            alert('11111'+JSON.stringify(response));
+            alert(JSON.stringify(responseText));
 
-            if (this.state.username == '111' && this.state.password == '111')
-            {
-                this.props.navigator.replace({
-                    component: HMIndex
-                })
-            }
-
+            // if (this.state.username == '111' && this.state.password == '111')
+            // {
+            //     this.props.navigator.replace({
+            //         component: HMIndex
+            //     })
+            // }
 
         }, function (error)
         {

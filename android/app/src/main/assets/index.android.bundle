@@ -47763,6 +47763,9 @@ var _Dimensions$get = Dimensions.get('window'),
     width = _Dimensions$get.width,
     height = _Dimensions$get.height;
 
+var LogoSign = '986CD980-17CA-4FF4-A158-6067D2721A56';
+var LogoKey = 'Key=9DE65DF9-84A3-47C4-901A-681443F5591C';
+
 var TripGroup = function (_Component) {
     babelHelpers.inherits(TripGroup, _Component);
 
@@ -47781,52 +47784,35 @@ var TripGroup = function (_Component) {
     babelHelpers.createClass(TripGroup, [{
         key: 'login',
         value: function login() {
+
             if ('' == this.state.username) {
-
                 this.refs.toast.show('用户名不能为空!');
-
                 return;
             }
-
             if ('' == this.state.password) {
-
                 this.refs.toast.show('密码不能为空!');
                 return;
             }
 
-            var timeMd5Int = 1513049582;
-
-            var passmd5String = _cryptoJs2.default.MD5('000000');
-
-            var passMd5 = this.state.username + timeMd5Int / 60 + passmd5String;
-
+            var timeMd5Int = new Date().getTime();
+            var username = this.state.username;
+            var password = this.state.password;
+            var passmd5String = _cryptoJs2.default.MD5(password).toString();
+            var passMd5 = username + timeMd5Int + passmd5String;
             passMd5 = _cryptoJs2.default.MD5(passMd5);
-
-            var LogoSign = '986CD980-17CA-4FF4-A158-6067D2721A56';
-            var LogoKey = 'Key=9DE65DF9-84A3-47C4-901A-681443F5591C';
-
             var parmData = {
                 TimeStamp: timeMd5Int,
                 Sign: LogoSign,
                 cmd: 'UserCheck',
-                UserName: 'YDCS007',
+                UserName: username,
                 PasswordKey: passMd5
 
             };
-
             var urlData = _tgUtil2.default.tgParmsToUrl(parmData);
             urlData += _tgUtil2.default.tgGetNewKeyStr(urlData, LogoKey);
-
             var tempUrl = 'http://c.tripg.com/Base/Get_CusomterAndMemberInterface.aspx?' + urlData;
-
-            _NetUitl2.default.post(tempUrl, function (response) {
-                alert('11111' + JSON.stringify(response));
-
-                if (this.state.username == '111' && this.state.password == '111') {
-                    this.props.navigator.replace({
-                        component: _HMIndex2.default
-                    });
-                }
+            _NetUitl2.default.get(tempUrl, function (responseText) {
+                alert(JSON.stringify(responseText));
             }, function (error) {
                 alert(JSON.stringify(error));
             });
@@ -47840,33 +47826,33 @@ var TripGroup = function (_Component) {
                 _reactNative.View,
                 { style: [styles.container], __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 115
+                        lineNumber: 103
                     }
                 },
                 _react2.default.createElement(_reactNative.Image, { source: { uri: 'loginbg' }, style: styles.bgStytle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 117
+                        lineNumber: 105
                     }
                 }),
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.outerViewStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 119
+                            lineNumber: 107
                         }
                     },
                     _react2.default.createElement(
                         _reactNative.View,
                         { style: { alignItems: 'center', width: width, marginTop: 20 }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 121
+                                lineNumber: 109
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.View,
                             { style: styles.innerStytle, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 123
+                                    lineNumber: 111
                                 }
                             },
                             _react2.default.createElement(_reactNative.TextInput, { ref: 'username', placeholder: '\u8BF7\u8F93\u5165\u8D26\u53F7',
@@ -47879,7 +47865,7 @@ var TripGroup = function (_Component) {
 
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 124
+                                    lineNumber: 112
                                 }
                             }),
                             _react2.default.createElement(_reactNative.TextInput, { ref: 'password',
@@ -47893,7 +47879,7 @@ var TripGroup = function (_Component) {
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 135
+                                    lineNumber: 123
                                 }
                             }),
                             _react2.default.createElement(
@@ -47904,14 +47890,14 @@ var TripGroup = function (_Component) {
                                         _this2.login();
                                     }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 148
+                                        lineNumber: 136
                                     }
                                 },
                                 _react2.default.createElement(
                                     _reactNative.Text,
                                     { style: [styles.textStytle], __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 154
+                                            lineNumber: 142
                                         }
                                     },
                                     '\u767B\u5F55'
@@ -47922,14 +47908,14 @@ var TripGroup = function (_Component) {
                             _reactNative.View,
                             { style: { marginTop: 20, width: width * 0.85, backgroundColor: 'rgba(0,0,0,0)' }, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 157
+                                    lineNumber: 145
                                 }
                             },
                             _react2.default.createElement(
                                 _reactNative.Text,
                                 { style: { color: 'red', fontSize: 12 }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 158
+                                        lineNumber: 146
                                     }
                                 },
                                 '\u5FD8\u8BB0\u5BC6\u7801?'
@@ -47938,7 +47924,7 @@ var TripGroup = function (_Component) {
                                 _reactNative.Text,
                                 { style: { color: 'gray', fontSize: 12 }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 159
+                                        lineNumber: 147
                                     }
                                 },
                                 '\u8BF7\u4F7F\u7528\u5DEE\u65C5\u5929\u4E0B\u96C6\u56E2\u7248\u8D26\u6237\u767B\u5F55'
@@ -47947,7 +47933,7 @@ var TripGroup = function (_Component) {
                                 _reactNative.Text,
                                 { style: { color: 'gray', fontSize: 12 }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 160
+                                        lineNumber: 148
                                     }
                                 },
                                 '\u5982\u9700\u5E2E\u52A9,\u53EF\u62E8\u6253\u5BA2\u670D\u7535\u8BDD\uFF1A300-6568-777'
@@ -47955,7 +47941,7 @@ var TripGroup = function (_Component) {
                         ),
                         _react2.default.createElement(_reactNativeEasyToast2.default, { ref: 'toast', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 163
+                                lineNumber: 151
                             }
                         })
                     )
