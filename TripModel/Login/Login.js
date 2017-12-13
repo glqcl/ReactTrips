@@ -14,7 +14,8 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
-    Platform
+    Platform,
+    AsyncStorage
 
 
 } from 'react-native';
@@ -35,21 +36,22 @@ import HMIndex from '../Index/HMIndex';
 import NetUitl from '../CommonTools/NetUitl';
 import tgConfig from '../CommonTools/tgConfig.relase';
 import tgUtil from '../CommonTools/tgUtil';
+import BaseComponent from '../Main/BaseComponent';
 
-export default class TripGroup extends Component
+export default class TripGroup extends BaseComponent
 {
     constructor(props)
     {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            tempUrl: ''
         };
     }
 
     login()
     {
-
         if ('' == this.state.username)
         {
             this.refs.toast.show('用户名不能为空!');
@@ -60,38 +62,54 @@ export default class TripGroup extends Component
             this.refs.toast.show('密码不能为空!');
             return;
         }
+        var timeMd5Int = Date.parse(new Date());
 
-        var timeMd5Int = new Date().getTime();
+        timeMd5Int = (timeMd5Int / 1000);
         var username = this.state.username;
         var password = this.state.password;
         var passmd5String = CryptoJS.MD5(password).toString();
-        var passMd5 = username + timeMd5Int + passmd5String;
+        var passMd5 = username + parseInt(timeMd5Int / 60) + passmd5String;
         passMd5 = CryptoJS.MD5(passMd5);
         var parmData = {
-            TimeStamp: timeMd5Int,
+            TimeStamp: timeMd5Int + '',
             Sign: LogoSign,
             cmd: 'UserCheck',
             UserName: username,
             PasswordKey: passMd5
-
         };
         var urlData = tgUtil.tgParmsToUrl(parmData);
         urlData += tgUtil.tgGetNewKeyStr(urlData, LogoKey);
         var tempUrl = 'http://c.tripg.com/Base/Get_CusomterAndMemberInterface.aspx?' + urlData;
+
+        this.showProgress();
+        var self = this;
+
+        console.log(tempUrl);
+
         NetUitl.get(tempUrl, function (responseText)
         {
-            alert(JSON.stringify(responseText));
+            self.hideProgress();
 
-            // if (this.state.username == '111' && this.state.password == '111')
-            // {
-            //     this.props.navigator.replace({
-            //         component: HMIndex
-            //     })
-            // }
+            var Code = responseText.Code;
+
+            var Message = responseText.Message;
+
+            if ('0' == Code)
+            {
+                Storage.setItem('userInfo', JSON.stringify(responseText));
+                self.props.navigator.replace({
+                    component: HMIndex
+                })
+            }
+            else
+            {
+                self.refs.toast.show(Message);
+            }
 
         }, function (error)
         {
-            alert(JSON.stringify(error));
+            self.hideProgress();
+
         })
 
 
@@ -106,7 +124,7 @@ export default class TripGroup extends Component
 
                 <View style={styles.outerViewStytle}>
 
-                    <View style={{alignItems: 'center', width: width, marginTop: 20}}>
+                    <View style={{alignItems: 'center', width: width, marginTop: 40}}>
 
                         <View style={styles.innerStytle}>
                             <TextInput ref='username' placeholder='请输入账号'
@@ -132,7 +150,6 @@ export default class TripGroup extends Component
                                        }}
                             ></TextInput>
 
-
                             <TouchableOpacity
                                 style={styles.loginStytle}
                                 activeOpacity={0.5} onPress={() =>
@@ -149,6 +166,8 @@ export default class TripGroup extends Component
                         </View>
 
                         <Toast ref="toast"/>
+
+                        {this.initLoading()}
 
                     </View>
                 </View>
