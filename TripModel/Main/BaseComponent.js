@@ -78,7 +78,7 @@ export default class BaseComponent extends Component
         const {navigator} = this.props;
         if (navigator && navigator.getCurrentRoutes().length > 1)
         {
-            if(this.getLoading().isShow)
+            if(null!=this.getLoading()&&this.getLoading().isShow)
             {
                 alert(1111);
             }

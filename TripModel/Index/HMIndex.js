@@ -12,7 +12,8 @@ import {
     View,
     Image,
     Platform,
-    InteractionManager
+    InteractionManager,
+    TouchableOpacity
 
 } from 'react-native';
 
@@ -31,6 +32,7 @@ import HMTopItem from './HMTopItem';
 import HMMiddleItem from './HMMiddleItem';
 import HMBottomItem from './HMBottomItem';
 import HMApprovalList from '../Approval/HMApprovalList';
+import HMPlaneIndex from '../Plane/HMPlaneIndex';
 import NetUitl from '../CommonTools/NetUitl';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
 
@@ -129,6 +131,15 @@ export default class TripGroup extends Component
         return middleItemArray;
     }
 
+
+    rednderPlane()
+    {
+
+        this.props.navigator.push({
+            component: HMPlaneIndex
+        })
+    }
+
     render()
     {
         return (
@@ -142,13 +153,17 @@ export default class TripGroup extends Component
                     </View>
 
                     <View style={[styles.middleViewStytle]}>
-                        <View style={styles.leftViewStyle}>
-                            <Image source={{uri: 'plane_icon'}} style={{
-                                width: Platform.OS == 'ios' ? 80 : 85,
-                                height: Platform.OS == 'ios' ? 80 : 85
-                            }}/>
-                            <Text style={{marginTop: 5, fontSize: 14, color: 'white'}}>{'国内机票'}</Text>
-                        </View>
+
+
+                        <TouchableOpacity opacity={0.5} onPress={()=>this.rednderPlane()}>
+                            <View style={styles.leftViewStyle}>
+                                <Image source={{uri: 'plane_icon'}} style={{
+                                    width: Platform.OS == 'ios' ? 80 : 85,
+                                    height: Platform.OS == 'ios' ? 80 : 85
+                                }}/>
+                                <Text style={{marginTop: 5, fontSize: 14, color: 'white'}}>{'国内机票'}</Text>
+                            </View>
+                        </TouchableOpacity>
                         <View style={styles.rightViewStyle}>
                             {this.getMiddleView()}
                         </View>

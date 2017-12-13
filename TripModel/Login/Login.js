@@ -16,27 +16,21 @@ import {
     TouchableOpacity,
     Platform,
     AsyncStorage
-
-
 } from 'react-native';
 
 var forge = require('node-forge');
-
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
-
 var LogoSign = '986CD980-17CA-4FF4-A158-6067D2721A56';
 var LogoKey = 'Key=9DE65DF9-84A3-47C4-901A-681443F5591C';
-
 import Toast, {DURATION} from 'react-native-easy-toast'
 import CryptoJS from 'crypto-js'
-
-
 import HMIndex from '../Index/HMIndex';
 import NetUitl from '../CommonTools/NetUitl';
 import tgConfig from '../CommonTools/tgConfig.relase';
 import tgUtil from '../CommonTools/tgUtil';
 import BaseComponent from '../Main/BaseComponent';
+import HMUrlUtils from '../CommonTools/HMUrlUtils'
 
 export default class TripGroup extends BaseComponent
 {
@@ -44,12 +38,11 @@ export default class TripGroup extends BaseComponent
     {
         super(props);
         this.state = {
-            username: '',
-            password: '',
+            username: 'YDCS007',
+            password: '000000',
             tempUrl: ''
         };
     }
-
     login()
     {
         if ('' == this.state.username)
@@ -63,7 +56,6 @@ export default class TripGroup extends BaseComponent
             return;
         }
         var timeMd5Int = Date.parse(new Date());
-
         timeMd5Int = (timeMd5Int / 1000);
         var username = this.state.username;
         var password = this.state.password;
@@ -79,24 +71,22 @@ export default class TripGroup extends BaseComponent
         };
         var urlData = tgUtil.tgParmsToUrl(parmData);
         urlData += tgUtil.tgGetNewKeyStr(urlData, LogoKey);
-        var tempUrl = 'http://c.tripg.com/Base/Get_CusomterAndMemberInterface.aspx?' + urlData;
 
+
+
+        var tempUrl =  `${HMUrlUtils.CusomterUrl}?${urlData}`;
         this.showProgress();
         var self = this;
-
         console.log(tempUrl);
-
         NetUitl.get(tempUrl, function (responseText)
         {
             self.hideProgress();
-
             var Code = responseText.Code;
-
             var Message = responseText.Message;
 
-            if ('0' == Code)
+            if (0 == Code)
             {
-                Storage.setItem('userInfo', JSON.stringify(responseText));
+               // Storage.setItem('userInfo', JSON.stringify(responseText));
                 self.props.navigator.replace({
                     component: HMIndex
                 })
@@ -105,11 +95,9 @@ export default class TripGroup extends BaseComponent
             {
                 self.refs.toast.show(Message);
             }
-
         }, function (error)
         {
             self.hideProgress();
-
         })
 
 
@@ -129,6 +117,7 @@ export default class TripGroup extends BaseComponent
                         <View style={styles.innerStytle}>
                             <TextInput ref='username' placeholder='请输入账号'
                                        returnKeyType={'done'}
+                                       value={'YDCS007'}
                                        underlineColorAndroid='transparent'
                                        style={styles.textInputStytle}
                                        onChangeText={(text) =>
@@ -141,6 +130,7 @@ export default class TripGroup extends BaseComponent
                             <TextInput ref='password'
                                        secureTextEntry={true}
                                        returnKeyType={'done'}
+                                       value={'000000'}
                                        underlineColorAndroid='transparent'
                                        placeholder='请输入密码' style={styles.textInputStytle}
 
