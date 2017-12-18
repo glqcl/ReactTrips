@@ -18,15 +18,10 @@ import {
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 
-var height=Platform.OS=='ios'?170:155;
-var cellW = Platform.OS == 'ios' ? 90 : 85;
-var cellH = (height-10)/2;
-
-
-
-var hMargin = ((width - 145 - cellW * 2)) / 4;
-var vMargin = 10;
-
+var cellH = (height / 4) / 2.1;
+var cellW = ((width - 20) / 3) / 1.3
+var hMargin = ( ((width - 20) / 3) * 1.7 - 2 * cellW) / 3
+var vMargin = 10
 
 export default class TripGroup extends Component
 {
@@ -36,17 +31,11 @@ export default class TripGroup extends Component
     };  // 注意这里有分号
     render()
     {
-
         return (
-
             <View style={styles.container}>
-
                 <Image source={{uri: 'hotel', width: 20, height: 20}}></Image>
-
                 <Text style={{marginTop: 5, fontSize: 12, color: 'white'}}>{this.props.title}</Text>
-
             </View>
-
         );
     }
 }
@@ -58,9 +47,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#323141',
-        borderRadius: 5,
+        borderRadius: 8,
         marginLeft: hMargin,
         marginTop: vMargin,
+
 
     },
     innerStytle: {}

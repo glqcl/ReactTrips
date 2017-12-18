@@ -36,11 +36,9 @@ export default class BaseComponent extends Component
 
     showProgress()
     {
-        var selft=this;
+        var selft = this;
         this.getLoading().setLoadingTimeout(20000, function ()
         {
-            alert(11111);
-
             selft.getLoading().clearLoadingTimeout();
         }).show();
     }
@@ -78,9 +76,9 @@ export default class BaseComponent extends Component
         const {navigator} = this.props;
         if (navigator && navigator.getCurrentRoutes().length > 1)
         {
-            if(null!=this.getLoading()&&this.getLoading().isShow)
+            if (null != this.getLoading() && this.getLoading().isShow)
             {
-                alert(1111);
+                this.getLoading().dismiss();
             }
             else
             {

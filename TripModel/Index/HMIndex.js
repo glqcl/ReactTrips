@@ -21,13 +21,6 @@ var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 
 var HMScrollImage = require('../CommonTools/HMScrollImage');
-
-
-var cellW = Platform.OS == 'ios' ? 90 : 80;
-var middleWidth = 145;
-
-var hMargin = (width - middleWidth - cellW * 2) / 4;
-
 import HMTopItem from './HMTopItem';
 import HMMiddleItem from './HMMiddleItem';
 import HMBottomItem from './HMBottomItem';
@@ -35,10 +28,6 @@ import HMApprovalList from '../Approval/HMApprovalList';
 import HMPlaneIndex from '../Plane/HMPlaneIndex';
 import NetUitl from '../CommonTools/NetUitl';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
-
-//var imgjSON = '{"Code":"1","Message":"成功","Result":[{"id":null,"imgRoute":"http:\/\/business.tripg.cn\/home\/images\/index_image\/1506309800.jpg","url":"http:\/\/propagate.tripg.com\/Mobile\/tel\/","type":"14","content":null,"conId":null,"title":null},{"id":null,"imgRoute":"http:\/\/business.tripg.cn\/home\/images\/index_image\/1509513056.jpg","url":null,"type":"14","content":null,"conId":null,"title":null},{"id":null,"imgRoute":"http:\/\/business.tripg.cn\/home\/images\/index_image\/1511489148.jpg","url":"https:\/\/mp.weixin.qq.com\/s\/r-yZ4CP7UqdTG6A9O896xA","type":"14","content":null,"conId":null,"title":null}]}';
-
-
 export default class TripGroup extends Component
 {
 
@@ -53,7 +42,6 @@ export default class TripGroup extends Component
         super(props);
         this.state = {
             picList: [{'title': '', 'picUrl': 'http://business.tripg.cn/home/images/index_image/1504171272.jpg'}],
-
         };
     }
 
@@ -62,7 +50,6 @@ export default class TripGroup extends Component
         InteractionManager.runAfterInteractions(() =>
         {
             this.getPicList();
-
         });
     }
 
@@ -82,10 +69,8 @@ export default class TripGroup extends Component
         var self = this;
         NetUitl.getImageList(HMUrlUtils.scrollUrl, function (success)
         {
-
             var jsonData = success;
             var Code = jsonData.Code;
-
             if (Code == '1')
             {
                 var jsonArray = jsonData.Result;
@@ -101,7 +86,7 @@ export default class TripGroup extends Component
             }
         }, function (error)
         {
-            // alert(error);
+
         });
 
     }
@@ -151,17 +136,17 @@ export default class TripGroup extends Component
                     <View style={[styles.topViewStyle]}>
                         {this.getTopView()}
                     </View>
-
                     <View style={[styles.middleViewStytle]}>
-
-
-                        <TouchableOpacity opacity={0.5} onPress={()=>this.rednderPlane()}>
-                            <View style={styles.leftViewStyle}>
+                        <TouchableOpacity style={styles.leftViewStyle} opacity={0.5}
+                                          onPress={() => this.rednderPlane() }>
+                            <View style={{height: height / 4}}>
                                 <Image source={{uri: 'plane_icon'}} style={{
-                                    width: Platform.OS == 'ios' ? 80 : 85,
-                                    height: Platform.OS == 'ios' ? 80 : 85
+                                    width: ((width - 20) / 3),
+                                    height: ((width - 20) / 3),
                                 }}/>
-                                <Text style={{marginTop: 5, fontSize: 14, color: 'white'}}>{'国内机票'}</Text>
+                                <Text style={{marginTop: 5, fontSize: 14, color: 'white',width:((width - 20) / 3),
+                                    textAlign:'center'
+                                }}>{'国内机票'}</Text>
                             </View>
                         </TouchableOpacity>
                         <View style={styles.rightViewStyle}>
@@ -227,21 +212,25 @@ const styles = StyleSheet.create({
         height: (height - 200) * 0.5,
         flexDirection: 'row',
         marginTop: 10,
-        marginLeft: hMargin,
+        marginLeft: 10,
+        marginRight: 10,
+
     },
 
     rightViewStyle: {
-        width: (width - 145),
-        height: Platform.OS == 'ios' ? 170 : 155,
+        width: ((width - 20) / 3) * 1.65,
+        height: height / 4,
         flexDirection: 'row',
         flexWrap: 'wrap',
+
+
 
     },
     leftViewStyle: {
         marginTop: 10,
-        width: 145,
-        height: Platform.OS == 'ios' ? 170 : 155,
-        borderRadius: 5,
+        width: ((width - 20) / 3) * 1.35,
+        height: height / 4,
+        borderRadius: 8,
         backgroundColor: '#323141',
         justifyContent: 'center',
         alignItems: 'center',

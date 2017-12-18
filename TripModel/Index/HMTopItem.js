@@ -16,7 +16,8 @@ import {
 
 } from 'react-native';
 
-
+var Dimensions = require('Dimensions');
+var {width, height} = Dimensions.get('window');
 export default class TripGroup extends Component
 {
     static defaultProps = {
@@ -32,13 +33,14 @@ export default class TripGroup extends Component
 
                     <Image source={{
                         uri: 'topcircle',
-                        width: Platform.OS == 'ios' ? 80 : 85,
-                        height: Platform.OS == 'ios' ? 80 : 85
+                        width: width / 4,
+                        height: width / 4
                     }}></Image>
 
                     <Text style={{
                         marginTop: 5,
                         fontSize: 12,
+                        marginTop: 5,
                         color: 'white',
                         textAlign: 'center'
                     }}>{this.props.title}</Text>
@@ -58,7 +60,7 @@ export default class TripGroup extends Component
 
 const styles = StyleSheet.create({
     container: {
-        width: 70,
+        width: width / 3,
         height: 90,
         alignItems: 'center',
         justifyContent: 'space-around'

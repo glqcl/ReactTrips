@@ -43,6 +43,7 @@ export default class TripGroup extends BaseComponent
             tempUrl: ''
         };
     }
+
     login()
     {
         if ('' == this.state.username)
@@ -71,10 +72,7 @@ export default class TripGroup extends BaseComponent
         };
         var urlData = tgUtil.tgParmsToUrl(parmData);
         urlData += tgUtil.tgGetNewKeyStr(urlData, LogoKey);
-
-
-
-        var tempUrl =  `${HMUrlUtils.CusomterUrl}?${urlData}`;
+        var tempUrl = `${HMUrlUtils.CusomterUrl}?${urlData}`;
         this.showProgress();
         var self = this;
         console.log(tempUrl);
@@ -86,7 +84,7 @@ export default class TripGroup extends BaseComponent
 
             if (0 == Code)
             {
-               // Storage.setItem('userInfo', JSON.stringify(responseText));
+                // Storage.setItem('userInfo', JSON.stringify(responseText));
                 self.props.navigator.replace({
                     component: HMIndex
                 })
@@ -99,8 +97,6 @@ export default class TripGroup extends BaseComponent
         {
             self.hideProgress();
         })
-
-
     }
 
     render()
