@@ -33,13 +33,13 @@ export default class TripGroup extends Component
 
                     <Image source={{
                         uri: 'topcircle',
-                        width: width / 4,
-                        height: width / 4
+                        width: width / 4.1,
+                        height: width / 4.1
                     }}></Image>
 
                     <Text style={{
                         marginTop: 5,
-                        fontSize: 12,
+                        fontSize: 14,
                         marginTop: 5,
                         color: 'white',
                         textAlign: 'center'

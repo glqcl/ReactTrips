@@ -108,7 +108,7 @@ export default class TripGroup extends BaseComponent
 
                 <View style={styles.outerViewStytle}>
 
-                    <View style={{alignItems: 'center', width: width, marginTop: 40}}>
+                    <View style={{alignItems: 'center', width: width, marginTop: 50}}>
 
                         <View style={styles.innerStytle}>
                             <TextInput ref='username' placeholder='请输入账号'

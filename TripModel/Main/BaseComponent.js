@@ -22,12 +22,10 @@ export default class BaseComponent extends Component
         super(props);
     }
 
-
     initLoading()
     {
         return <Loading ref={'loading'} text={'Loading...'}/>
     }
-
 
     hideProgress()
     {
@@ -36,10 +34,13 @@ export default class BaseComponent extends Component
 
     showProgress()
     {
-        var selft = this;
+        var self = this;
         this.getLoading().setLoadingTimeout(20000, function ()
         {
-            selft.getLoading().clearLoadingTimeout();
+            if (null != self && null != self.getLoading())
+            {
+                self.getLoading().clearLoadingTimeout();
+            }
         }).show();
     }
 

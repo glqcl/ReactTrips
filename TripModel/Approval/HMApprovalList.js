@@ -95,6 +95,8 @@ export default class HMApprovalList extends BaseComponent
 
     onRefresh(end)
     {
+
+
         page = 1;
         var tempUrl = `${HMUrlUtils.getTravelList}?user_id=98108&type=3&page=${page}&pageSize=${pageSize}`;
         var self = this;
