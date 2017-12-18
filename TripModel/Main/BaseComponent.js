@@ -79,7 +79,7 @@ export default class BaseComponent extends Component
         {
             if (null != this.getLoading() && this.getLoading().isShow)
             {
-                this.getLoading().dismiss();
+                this.getLoading().hideProgress();
             }
             else
             {
@@ -90,6 +90,4 @@ export default class BaseComponent extends Component
         }
         return false; // 默认false  表示跳出RN
     }
-
-
 }
