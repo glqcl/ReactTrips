@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 
 
-import Login from './TripModel/Login/Login'
+import HMLaunchImage from './TripModel/Main/HMLaunchImage'
 import {Navigator} from 'react-native-deprecated-custom-components';
 
 export default class TripGroup extends Component
@@ -23,7 +23,7 @@ export default class TripGroup extends Component
     {
         return (
             <Navigator
-                initialRoute={{name: '启动页', component: Login}}
+                initialRoute={{name: '启动页', component: HMLaunchImage}}
                 configureScene={() =>
                 {
                     return Navigator.SceneConfigs.PushFromRight;

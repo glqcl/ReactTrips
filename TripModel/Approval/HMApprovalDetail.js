@@ -203,7 +203,6 @@ export default class HMApprovalDetail extends BaseComponent
         }
     }
 
-
     //获取状态流程图
     renderAppProgress()
     {
@@ -254,7 +253,7 @@ export default class HMApprovalDetail extends BaseComponent
                     title={'申请单详情'}
                     popToLast={() => this.popToLast()}>
                 </HMNavigatorBar>
-                <ScrollView>
+                <ScrollView style={{height: height, flex: 1}}>
                     <HMApprovalDetailTopItem
                         jsonObject={this.state.jsonObject}/>
 
@@ -276,43 +275,42 @@ export default class HMApprovalDetail extends BaseComponent
                         nextPerson={this.state.nextPerson}/>
                     <View style={{flexDirection: 'row'}}>{this.state.progressArray}</View>
 
-                    <View style={{alignSelf: 'flex-end', flexDirection: 'row', height: 40, width: width}}>
 
-                        <TouchableOpacity activeOpacity={0.5}
-                                          onPress={() => this.renderApply() }>
-                            <View style={{width: width * 0.5, height: 40, backgroundColor: 'rgb(17,33,49)'}}>
-                                <Text style={{
-                                    paddingTop: 14,
-                                    fontSize: 12,
-                                    color: 'white',
-                                    height: 40,
-                                    textAlign: 'center'
-                                }}>{'我的申请单'}</Text>
-                            </View>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity activeOpacity={0.5}
-                                          onPress={() => this.renderCreate()}>
-                            <View style={{width: width * 0.5, height: 40, backgroundColor: 'rgb(192,65,38)'}}>
-                                <Text style={{
-                                    paddingTop: 14,
-                                    fontSize: 12,
-                                    color: 'white',
-                                    textAlign: 'center'
-                                }}>{'创建申请单'}</Text>
-                            </View>
-                        </TouchableOpacity>
-
-                    </View>
                 </ScrollView>
+
+                <View style={{flexDirection: 'row', height: 40, width: width}}>
+
+                    <TouchableOpacity activeOpacity={0.5}
+                                      onPress={() => this.renderApply() }>
+                        <View style={{width: width * 0.5, height: 40, backgroundColor: 'rgb(17,33,49)'}}>
+                            <Text style={{
+                                paddingTop: 14,
+                                fontSize: 12,
+                                color: 'white',
+                                height: 40,
+                                textAlign: 'center'
+                            }}>{'我的申请单'}</Text>
+                        </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity activeOpacity={0.5}
+                                      onPress={() => this.renderCreate()}>
+                        <View style={{width: width * 0.5, height: 40, backgroundColor: 'rgb(192,65,38)'}}>
+                            <Text style={{
+                                paddingTop: 14,
+                                fontSize: 12,
+                                color: 'white',
+                                textAlign: 'center'
+                            }}>{'创建申请单'}</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
 
                 {this.initLoading()}
             </View>
         );
 
     }
-
-
 }
 
 

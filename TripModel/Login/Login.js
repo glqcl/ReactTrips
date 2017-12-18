@@ -27,10 +27,12 @@ import Toast, {DURATION} from 'react-native-easy-toast'
 import CryptoJS from 'crypto-js'
 import HMIndex from '../Index/HMIndex';
 import NetUitl from '../CommonTools/NetUitl';
-import tgConfig from '../CommonTools/tgConfig.relase';
 import tgUtil from '../CommonTools/tgUtil';
 import BaseComponent from '../Main/BaseComponent';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
+
+
+import Storage from '../CommonTools/DeviceStorage'
 
 export default class TripGroup extends BaseComponent
 {
@@ -75,7 +77,6 @@ export default class TripGroup extends BaseComponent
         var tempUrl = `${HMUrlUtils.CusomterUrl}?${urlData}`;
         this.showProgress();
         var self = this;
-        console.log(tempUrl);
         NetUitl.get(tempUrl, function (responseText)
         {
             self.hideProgress();
@@ -84,8 +85,8 @@ export default class TripGroup extends BaseComponent
 
             if (0 == Code)
             {
-                // Storage.setItem('userInfo', JSON.stringify(responseText));
-                self.props.navigator.replace({
+                Storage.save('userInfo', responseText.Datas)
+                self.props.navigator.push({
                     component: HMIndex
                 })
             }

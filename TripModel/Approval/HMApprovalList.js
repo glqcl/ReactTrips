@@ -29,7 +29,7 @@ import {
     LoadMoreStatus
 } from 'react-native-swRefresh'
 
-
+import Storage from '../CommonTools/DeviceStorage'
 import {Bubbles, DoubleBounce, Bars, Pulse} from 'react-native-loader';
 import PullRefreshScrollView from 'react-native-pullrefresh-scrollview';
 import BaseComponent from '../Main/BaseComponent';
@@ -96,79 +96,84 @@ export default class HMApprovalList extends BaseComponent
     onRefresh(end)
     {
 
-
-        page = 1;
-        var tempUrl = `${HMUrlUtils.getTravelList}?user_id=98108&type=3&page=${page}&pageSize=${pageSize}`;
-        var self = this;
-        // this.getLoading().show();
-        this.showProgress();
-        NetUitl.get(tempUrl, function (responseText)
+        Storage.get('userInfo').then((userInfo) =>
         {
-            self.hideProgress();
-            if (!isFirst)
+            page = 1;
+            var tempUrl = `${HMUrlUtils.getTravelList}?user_id=${userInfo.Id}&type=3&page=${page}&pageSize=${pageSize}`;
+            var self = this;
+            // this.getLoading().show();
+            this.showProgress();
+            NetUitl.get(tempUrl, function (responseText)
             {
-                isFirst = true;
-            }
-            var jsonData = responseText;
-            var jsonArray = jsonData.result;
-            listArray = jsonArray;
-            self.setState({
-                dataSource: self.state.dataSource.cloneWithRows(listArray),
+                self.hideProgress();
+                if (!isFirst)
+                {
+                    isFirst = true;
+                }
+                var jsonData = responseText;
+                var jsonArray = jsonData.result;
+                listArray = jsonArray;
+                self.setState({
+                    dataSource: self.state.dataSource.cloneWithRows(listArray),
+                });
+
+                if (jsonArray < pageSize)
+                {
+                    //如果此时刷新的数据就已经是全部数据了，不管怎样都应该将上拉加载组件设置为没有更多数据了的状态 或者通过isShowLoadMore控制其隐藏
+                    this.refs.listView.setNoMoreData() //设置为没有更多数据了的状态
+                } else
+                {
+                    //这里调用resetStatus来重置上拉加载的状态 因为此前可上拉加载组件的状态可能已经是无更多数据了 所以进行状态重置 亦可以通        过state控制isShowLoadMore来控制显示上拉加载视图
+                    this.refs.listView.resetStatus() //重置上拉加载的状态
+                }
+
+                end();
+
+            }, function (error)
+            {
+
+                self.hideProgress();
+                self.refs.listView.resetStatus() //重置上拉加载的状态
+                end();
             });
 
-
-            if (jsonArray < pageSize)
-            {
-                //如果此时刷新的数据就已经是全部数据了，不管怎样都应该将上拉加载组件设置为没有更多数据了的状态 或者通过isShowLoadMore控制其隐藏
-                this.refs.listView.setNoMoreData() //设置为没有更多数据了的状态
-            } else
-            {
-                //这里调用resetStatus来重置上拉加载的状态 因为此前可上拉加载组件的状态可能已经是无更多数据了 所以进行状态重置 亦可以通        过state控制isShowLoadMore来控制显示上拉加载视图
-                this.refs.listView.resetStatus() //重置上拉加载的状态
-            }
-
-            end();
-
-        }, function (error)
-        {
-
-            self.hideProgress();
-            self.refs.listView.resetStatus() //重置上拉加载的状态
-            end();
         });
+
     }
 
     onLoadMore(end)
     {
-
-        page++;
-        var tempUrl = `${HMUrlUtils.getTravelList}?user_id=98108&type=3&page=${page}&pageSize= ${pageSize}`;
-        var self = this;
-
-        this.showProgress();
-        NetUitl.get(tempUrl, function (responseText)
+        Storage.get('userInfo').then((userInfo) =>
         {
-            self.hideProgress();
-            var jsonData = responseText;
-            var jsonArray = jsonData.result;
-            listArray = listArray.concat(jsonArray);
-            self.setState({
-                dataSource: self.state.dataSource.cloneWithRows(listArray)
-            })
-            //self.refs.listView.endLoadMore(jsonArray < 20)
-
-            //结束
-            end(jsonArray < 20)
-        }, function (error)
-        {
-            self.hideProgress();
-            self.refs.listView.endRefresh();
-            this.refs.listView.resetStatus() //重置上拉加载的状态
-            if (page > 1)
+            page++;
+            var tempUrl = `${HMUrlUtils.getTravelList}?user_id=${userInfo.Id}&type=3&page=${page}&pageSize= ${pageSize}`;
+            var self = this;
+            this.showProgress();
+            NetUitl.get(tempUrl, function (responseText)
             {
-                page--;
-            }
+                self.hideProgress();
+                var jsonData = responseText;
+                var jsonArray = jsonData.result;
+                listArray = listArray.concat(jsonArray);
+                self.setState({
+                    dataSource: self.state.dataSource.cloneWithRows(listArray)
+                })
+                //self.refs.listView.endLoadMore(jsonArray < 20)
+
+                //结束
+                end(jsonArray < 20)
+            }, function (error)
+            {
+                self.hideProgress();
+                self.refs.listView.endRefresh();
+                this.refs.listView.resetStatus() //重置上拉加载的状态
+                if (page > 1)
+                {
+                    page--;
+                }
+            })
         })
+
 
     }
 

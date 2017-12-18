@@ -25,6 +25,7 @@ class NetUitl extends React.Component
     static get(url, successCallback, failureCallBack)
     {
 
+        console.log("请求url="+url);
         fetch(url,
             {
                 method: 'GET',
@@ -83,6 +84,12 @@ class NetUitl extends React.Component
      * */
     static post(url, params, successCallback, failureCallBack)
     {
+        var tempUrl='';
+        for (var Key in params){
+            tempUrl =tempUrl+'&'+''+Key+'='+params[Key]+'';
+        }
+        tempUrl=  tempUrl.substring(1,str.length-1);
+        console.log("请求url="+url+"？"+tempUrl);
         //fetch请求
         fetch(url, {
             method: 'POST',
