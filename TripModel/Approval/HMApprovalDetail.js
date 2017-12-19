@@ -41,8 +41,6 @@ import HMAppProcessItem from '../Approval/HMAppProcessItem'
 import HMCalendar from '../CommonTools/HMCalendar'
 import SelectCity from '../CityList/SelectCity';
 import Storage from '../CommonTools/DeviceStorage'
-
-
 var travelDetail = [];
 
 export default class HMApprovalDetail extends BaseComponent
@@ -99,10 +97,19 @@ export default class HMApprovalDetail extends BaseComponent
 
     getApprovalDetail()
     {
-
+        var approved_status = this.props.rowData.approved_status;
+        var tempUrl = '';
+        if ('n' == approved_status || 'b' == approved_status)
+        {
+            var tempUrl = `${HMUrlUtils.travelApplyDetail}&user_id=${this.props.rowData.ry_people}&travel_id=${this.props.rowData.travel_id}&is_show=Y`;
+        }
+        else
+        {
+            var tempUrl = `${HMUrlUtils.travelApplyDetail}&user_id=${this.props.rowData.ry_people}&travel_id=${this.props.rowData.travel_id}`;
+        }
         Storage.get('userInfo').then((userInfo) =>
         {
-            var tempUrl = `${HMUrlUtils.travelApplyDetail}&user_id=${userInfo.Id}&travel_id=${this.props.rowData.travel_id}`;
+
             var cellArray = [];
             var self = this;
             this.showProgress();
@@ -265,14 +272,13 @@ export default class HMApprovalDetail extends BaseComponent
 
     render()
     {
-
         var approved_status = this.props.rowData.approved_status;
-
         let userMessage = null;
+
+
         if ('n' == approved_status || 'b' == approved_status)
         {
             userMessage = ( <View style={{flexDirection: 'row', height: 40, width: width}}>
-
                 <TouchableOpacity activeOpacity={0.5}
                                   onPress={() => this.renderApply() }>
                     <View style={{width: width * 0.5, height: 40, backgroundColor: 'rgb(17,33,49)'}}>
@@ -302,6 +308,7 @@ export default class HMApprovalDetail extends BaseComponent
 
 
         return (
+            
             <View style={styles.container}>
                 <HMNavigatorBar
                     title={'申请单详情'}
@@ -313,6 +320,7 @@ export default class HMApprovalDetail extends BaseComponent
                     style={{height: height, flex: 1}}>
                     <HMApprovalDetailTopItem
                         jsonObject={this.state.jsonObject}/>
+
                     <HMApprovalMiddleItem
                         pushToAppDetail={() =>
                         {

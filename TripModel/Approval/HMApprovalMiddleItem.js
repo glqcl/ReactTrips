@@ -39,9 +39,26 @@ export default class HMApprovalDetailItem extends Component
 
     render()
     {
+
+        var acitonName = '';
+        var actionColor = 'rgb(192,65,38)'
+
+        if (this.props.jsonObject.approved_status == 's')
+        {
+            acitonName = '撤回申请单';
+
+        } else if (this.props.jsonObject.approved_status == 'p')
+        {
+            acitonName = '修改申请单';
+        }
+        else
+        {
+            actionColor = 'transparent';
+        }
+
+
         return (
             <View style={styles.container}>
-
                 <View style={styles.outInnerStytle}>
                     <Text style={styles.textViewStytle}>{this.getApprovedStatus(this.props.jsonObject)}</Text>
 
@@ -49,7 +66,7 @@ export default class HMApprovalDetailItem extends Component
                     >
 
                         <Text style={[styles.textViewStytle, {
-                            backgroundColor: 'rgb(192,65,38)',
+                            backgroundColor: actionColor,
                             borderRadius: 5,
                             color: 'white',
                             height: 30,
@@ -57,7 +74,7 @@ export default class HMApprovalDetailItem extends Component
                             paddingTop: 7,
                             width: 80,
 
-                        }]}> {'修改申请单'}</Text>
+                        }]}> {acitonName}</Text>
                     </TouchableOpacity>
 
                 </View>
