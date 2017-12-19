@@ -40,6 +40,7 @@ import NetUitl from '../CommonTools/NetUitl'
 import HMAppProcessItem from '../Approval/HMAppProcessItem'
 import HMCalendar from '../CommonTools/HMCalendar'
 import SelectCity from '../CityList/SelectCity';
+import Storage from '../CommonTools/DeviceStorage'
 
 
 var travelDetail = [];
@@ -98,52 +99,56 @@ export default class HMApprovalDetail extends BaseComponent
 
     getApprovalDetail()
     {
-        var tempUrl = `${HMUrlUtils.travelApplyDetail}&user_id=98108&travel_id=${this.props.rowData.travel_id}`;
 
-        var cellArray = [];
-        var self = this;
-        this.showProgress();
-        NetUitl.get(tempUrl, function (responseText)
-            {
-                self.hideProgress();
-                var jsonData = responseText;
-                travelDetail = jsonData.travelDetail;
-                for (var i = 0; i < travelDetail.length; i++)
+        Storage.get('userInfo').then((userInfo) =>
+        {
+            var tempUrl = `${HMUrlUtils.travelApplyDetail}&user_id=${userInfo.Id}&travel_id=${this.props.rowData.travel_id}`;
+            var cellArray = [];
+            var self = this;
+            this.showProgress();
+            NetUitl.get(tempUrl, function (responseText)
                 {
-                    var obj = travelDetail[i];
-                    obj.desPosition = (i + 1);
-                    cellArray.push(
-                        <View key={i} style={styles.cellViewStytle}>
-                            <HMListViewCellItem key={i}
-                                                itemClick={(item) => self.renderItemClick(item)}
-                                                jsonObject={obj}
-                                                position={i}/>
-                        </View>
-                    )
-                }
-                jsonData.travel_id = self.props.rowData.travel_id;
-                var description = jsonData.description;
-                if (description == null || 'null' == description)
+                    self.hideProgress();
+                    var jsonData = responseText;
+                    travelDetail = jsonData.travelDetail;
+                    for (var i = 0; i < travelDetail.length; i++)
+                    {
+                        var obj = travelDetail[i];
+                        obj.desPosition = (i + 1);
+                        cellArray.push(
+                            <View key={i} style={styles.cellViewStytle}>
+                                <HMListViewCellItem key={i}
+                                                    itemClick={(item) => self.renderItemClick(item)}
+                                                    jsonObject={obj}
+                                                    position={i}/>
+                            </View>
+                        )
+                    }
+                    jsonData.travel_id = self.props.rowData.travel_id;
+                    var description = jsonData.description;
+                    if (description == null || 'null' == description)
+                    {
+                        description = '';
+                    }
+                    var nextAppName = jsonData.nextAppName;
+                    if (null == nextAppName || 'null' == nextAppName)
+                    {
+                        nextAppName = '';
+                    }
+                    self.setState({
+                        //remars: description,
+                        jsonObject: jsonData,
+                        //nextPerson: nextAppName,
+                        dataSource: cellArray,
+                    })
+                },
+                function (error)
                 {
-                    description = '';
+                    self.hideProgress();
                 }
-                var nextAppName = jsonData.nextAppName;
-                if (null == nextAppName || 'null' == nextAppName)
-                {
-                    nextAppName = '';
-                }
-                self.setState({
-                    remars: description,
-                    jsonObject: jsonData,
-                    nextPerson: nextAppName,
-                    dataSource: cellArray,
-                })
-            },
-            function (error)
-            {
-                self.hideProgress();
-            }
-        )
+            )
+        })
+
 
     }
 
@@ -187,6 +192,10 @@ export default class HMApprovalDetail extends BaseComponent
         else if ('gx' == approval_status)
         {
             return 'approval_update'
+        }
+        else if ('n' == approval_status)
+        {
+            return 'new_approval_refuse'
         }
     }
 
@@ -256,13 +265,52 @@ export default class HMApprovalDetail extends BaseComponent
 
     render()
     {
+
+        var approved_status = this.props.rowData.approved_status;
+
+        let userMessage = null;
+        if ('n' == approved_status || 'b' == approved_status)
+        {
+            userMessage = ( <View style={{flexDirection: 'row', height: 40, width: width}}>
+
+                <TouchableOpacity activeOpacity={0.5}
+                                  onPress={() => this.renderApply() }>
+                    <View style={{width: width * 0.5, height: 40, backgroundColor: 'rgb(17,33,49)'}}>
+                        <Text style={{
+                            paddingTop: 14,
+                            fontSize: 12,
+                            color: 'white',
+                            height: 40,
+                            textAlign: 'center'
+                        }}>{'我的申请单'}</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity activeOpacity={0.5}
+                                  onPress={() => this.renderCreate()}>
+                    <View style={{width: width * 0.5, height: 40, backgroundColor: 'rgb(192,65,38)'}}>
+                        <Text style={{
+                            paddingTop: 14,
+                            fontSize: 12,
+                            color: 'white',
+                            textAlign: 'center'
+                        }}>{'创建申请单'}</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>)
+        }
+
+
         return (
             <View style={styles.container}>
                 <HMNavigatorBar
                     title={'申请单详情'}
                     popToLast={() => this.popToLast()}>
                 </HMNavigatorBar>
-                <ScrollView style={{height: height, flex: 1}}>
+                <ScrollView
+                    showsVerticalScrollIndicator={false}
+                    horizontal={false}
+                    style={{height: height, flex: 1}}>
                     <HMApprovalDetailTopItem
                         jsonObject={this.state.jsonObject}/>
                     <HMApprovalMiddleItem
@@ -281,37 +329,19 @@ export default class HMApprovalDetail extends BaseComponent
                     />
                     <HMListViewNextPerson
                         nextPerson={this.state.nextPerson}/>
-                    <View style={{flexDirection: 'row'}}>{this.state.progressArray}</View>
+
+
+                    <ScrollView
+                        style={{width: width}}
+                        showsHorizontalScrollIndicator={false}
+                        horizontal={true}
+                    >
+                        <View style={{flexDirection: 'row'}}>{this.state.progressArray}</View>
+                    </ScrollView>
+
                 </ScrollView>
 
-                <View style={{flexDirection: 'row', height: 40, width: width}}>
-
-                    <TouchableOpacity activeOpacity={0.5}
-                                      onPress={() => this.renderApply() }>
-                        <View style={{width: width * 0.5, height: 40, backgroundColor: 'rgb(17,33,49)'}}>
-                            <Text style={{
-                                paddingTop: 14,
-                                fontSize: 12,
-                                color: 'white',
-                                height: 40,
-                                textAlign: 'center'
-                            }}>{'我的申请单'}</Text>
-                        </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity activeOpacity={0.5}
-                                      onPress={() => this.renderCreate()}>
-                        <View style={{width: width * 0.5, height: 40, backgroundColor: 'rgb(192,65,38)'}}>
-                            <Text style={{
-                                paddingTop: 14,
-                                fontSize: 12,
-                                color: 'white',
-                                textAlign: 'center'
-                            }}>{'创建申请单'}</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-
+                {userMessage}
                 {this.initLoading()}
             </View>
         );

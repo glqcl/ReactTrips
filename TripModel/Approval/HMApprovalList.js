@@ -30,8 +30,6 @@ import {
 } from 'react-native-swRefresh'
 
 import Storage from '../CommonTools/DeviceStorage'
-import {Bubbles, DoubleBounce, Bars, Pulse} from 'react-native-loader';
-import PullRefreshScrollView from 'react-native-pullrefresh-scrollview';
 import BaseComponent from '../Main/BaseComponent';
 import HMNavigatorBar from '../Main/HMNavigatorBar';
 import HMListViewItem from '../Approval/HMListViewItem';
