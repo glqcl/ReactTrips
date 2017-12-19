@@ -41,7 +41,7 @@ export default class HMApprovalDetailItem extends Component
     {
 
         var acitonName = '';
-        var actionColor = 'rgb(192,65,38)'
+        var actionColor = 'rgb(192,65,38)';
 
         if (this.props.jsonObject.approved_status == 's')
         {
@@ -49,6 +49,15 @@ export default class HMApprovalDetailItem extends Component
 
         } else if (this.props.jsonObject.approved_status == 'p')
         {
+
+            if(this.props.jsonObject.assRembuise=='true'||this.props.jsonObject.assRembuise==true)
+            {
+                actionColor = 'rgb(192,65,38)';
+            }
+            else
+            {
+                actionColor = 'rgb(201,201,201)';
+            }
             acitonName = '修改申请单';
         }
         else

@@ -205,12 +205,16 @@ export default class HMApprovalDetail extends BaseComponent
             return 'new_approval_refuse'
         }
     }
-
-    pushToDetail()
+    actionRollBack()
     {
-        alert(1111);
-    }
+        var approved_status = this.props.rowData.approved_status;
 
+        if('s'==approved_status)
+        {
+            
+        }
+
+    }
     /*申请单列表*/
     renderApply()
     {
@@ -308,7 +312,7 @@ export default class HMApprovalDetail extends BaseComponent
 
 
         return (
-            
+
             <View style={styles.container}>
                 <HMNavigatorBar
                     title={'申请单详情'}
@@ -324,7 +328,7 @@ export default class HMApprovalDetail extends BaseComponent
                     <HMApprovalMiddleItem
                         pushToAppDetail={() =>
                         {
-                            this.pushToDetail()
+                            this.actionRollBack()
                         }}
                         jsonObject={this.state.jsonObject}/>
 
