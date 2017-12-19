@@ -103,10 +103,10 @@ export default class HMApprovalDetail extends BaseComponent
 
         var cellArray = [];
         var self = this;
-        this.showProgress();
+       this.showProgress();
         NetUitl.get(tempUrl, function (responseText)
             {
-                self.hideProgress();
+               self.hideProgress();
                 var jsonData = responseText;
                 travelDetail = jsonData.travelDetail;
                 for (var i = 0; i < travelDetail.length; i++)
@@ -124,15 +124,15 @@ export default class HMApprovalDetail extends BaseComponent
                 }
                 jsonData.travel_id = self.props.rowData.travel_id;
                 self.setState({
-                    jsonObject: jsonData,
+                   //  remars: jsonData.description,
+                   // jsonObject: jsonData,
+                    //nextPerson: jsonData.nextAppName,
                     dataSource: cellArray,
-                    remars: jsonData.description,
-                    nextPerson: jsonData.nextAppName,
                 })
             },
             function (error)
             {
-                self.hideProgress();
+               self.hideProgress();
             }
         )
 
@@ -256,7 +256,6 @@ export default class HMApprovalDetail extends BaseComponent
                 <ScrollView style={{height: height, flex: 1}}>
                     <HMApprovalDetailTopItem
                         jsonObject={this.state.jsonObject}/>
-
                     <HMApprovalMiddleItem
                         pushToAppDetail={() =>
                         {
@@ -264,7 +263,7 @@ export default class HMApprovalDetail extends BaseComponent
                         }}
                         jsonObject={this.state.jsonObject}/>
 
-                    <View style={{backgroundColor: 'rgba(239,240,243,1.0)', width: width}}>
+                    <View style={{backgroundColor: 'rgba(239,240,243,1.0)', width: width, marginBottom:5}}>
                         {this.state.dataSource}
                     </View>
 
@@ -274,8 +273,6 @@ export default class HMApprovalDetail extends BaseComponent
                     <HMListViewNextPerson
                         nextPerson={this.state.nextPerson}/>
                     <View style={{flexDirection: 'row'}}>{this.state.progressArray}</View>
-
-
                 </ScrollView>
 
                 <View style={{flexDirection: 'row', height: 40, width: width}}>

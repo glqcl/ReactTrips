@@ -33,6 +33,7 @@ export default class HMApprovalDetailTopItem extends Component
     {
         if (this.props.popToLast == null)return;
         this.props.popToLast();
+
     }
 
     render()

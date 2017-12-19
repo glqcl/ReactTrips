@@ -27,7 +27,7 @@ var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 var letfViewWidth = 60;
 var middleWidth = 10;
-var cellHeight = 40;
+var cellHeight = 39;
 export default class HMListViewCellItem extends Component
 {
     static defaultProps = {
@@ -67,13 +67,13 @@ export default class HMListViewCellItem extends Component
             }
             else if ('起始城市' == obj)
             {
-                self.props.jsonObject.setout_city= msg.name;
+                self.props.jsonObject.setout_city = msg.name;
                 //alert('你选择了城市====》' + msg.id + '#####' + msg.name);
             }
             else if ('到达城市' == obj)
             {
-                self.props.jsonObject.arrive_city= msg.name;
-               // alert('你选择了城市====》' + msg.id + '#####' + msg.name);
+                self.props.jsonObject.arrive_city = msg.name;
+                // alert('你选择了城市====》' + msg.id + '#####' + msg.name);
             }
             self.setState({
                 position: 0
@@ -84,7 +84,6 @@ export default class HMListViewCellItem extends Component
     renderGetCell()
     {
         var cellArray = [];
-
         cellArray.push(<View key={'0'} style={styles.desViewStytle}><Text
             style={styles.textViewStytle}>{'第' + this.props.desPosition + '目的地'}</Text></View>);
 
@@ -152,8 +151,7 @@ export default class HMListViewCellItem extends Component
     {
         return (
             <View style={styles.container}>
-                <View
-                >
+                <View>
                     {this.renderGetCell()}
                 </View>
             </View>
@@ -161,34 +159,34 @@ export default class HMListViewCellItem extends Component
     }
 }
 
-const
-    styles = StyleSheet.create({
+const styles = StyleSheet.create({
         container: {
             width: width,
             height: cellHeight,
             marginTop: 2,
         },
-
-
         cellViewStytle: {
-            width: width,
-            height: cellHeight
+            width: width-20,
+            height: cellHeight,
+
         },
         seconViewStytle: {
             flexDirection: 'row',
-            width: width,
+            flex:1,
             height: cellHeight,
             alignItems: 'center',
             borderBottomWidth: 0.5,
             borderBottomColor: 'gray',
+            backgroundColor:'transparent'
 
         },
         desViewStytle: {
-            width: width,
+            width: width-20,
             height: cellHeight,
             borderBottomColor: 'gray',
             borderBottomWidth: 0.5,
             justifyContent: 'center',
+            backgroundColor: 'transparent'
         },
         textViewStytle: {
             marginLeft: 10,

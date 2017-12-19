@@ -68,7 +68,10 @@ export default class BaseComponent extends Component
             BackHandler.removeEventListener("back", this.onBackClicked);
         } else
         {
-            this.propstManger.addLengeData(this.props.navigator.getCurrentRoutes().length);
+            if (null != this.propstManger && null != this.props.navigator.getCurrentRoutes())
+            {
+                this.propstManger.addLengeData(this.props.navigator.getCurrentRoutes().length);
+            }
         }
     }
 

@@ -45,8 +45,11 @@ export default class HMListViewNextPerson extends Component
     {
         return (
             <View style={styles.container}>
-                <Text style={{marginLeft:5}}>{'下一步审批人'}</Text>
-                <Text style={{width:width-100, textAlign:'center'}}>{this.props.jsonObject.nextAppName}</Text>
+                <Text style={{marginLeft: 5}}>{'下一步审批人'}</Text>
+                <Text style={{
+                    width: width - 100,
+                    textAlign: 'center'
+                }}>{null == this.props.jsonObject.nextAppName ? '' : this.props.jsonObject.nextAppName}</Text>
             </View>
         );
     }
@@ -55,9 +58,9 @@ export default class HMListViewNextPerson extends Component
 const styles = StyleSheet.create({
     container: {
         width: width,
-        backgroundColor:'white',
+        backgroundColor: 'white',
         flexDirection: 'row',
-        alignItems:'center',
+        alignItems: 'center',
         height: cellHeight,
 
     },

@@ -56548,7 +56548,7 @@ var BaseComponent = function (_Component) {
 
             if (navigator && navigator.getCurrentRoutes().length > 1) {
                 if (null != _this.getLoading() && _this.getLoading().isShow) {
-                    _this.getLoading().dismiss();
+                    _this.getLoading().hideProgress();
                 } else {
                     navigator.pop();
                 }

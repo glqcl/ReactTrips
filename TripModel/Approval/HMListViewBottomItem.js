@@ -30,7 +30,7 @@ export default class HMListViewBottomItem extends Component
     static defaultProps = {
         jsonObject: {},
         popToLast: null,
-        remars:'',
+        remars: '',
     };
 
     popToLast()
@@ -54,7 +54,7 @@ export default class HMListViewBottomItem extends Component
                         multiline={true}
 
                         underlineColorAndroid='transparent' //设置下划线背景色透明 达到去掉下划线的效果
-                        style={styles.textInputStytle}>{this.props.remars}</TextInput>
+                        style={styles.textInputStytle}>{this.props.remars == null ? '' : this.props.remars}</TextInput>
 
                 </View>
 
@@ -67,19 +67,20 @@ export default class HMListViewBottomItem extends Component
 const styles = StyleSheet.create({
     container: {
         width: width,
+        height: 100,
         marginTop: 10,
-        borderTopWidth:0.5,
-        borderTopColor:'gray',
-        backgroundColor: 'white',
-        borderBottomWidth:0.5,
-        borderBottomColor:'gray'
+        borderTopWidth: 0.5,
+        borderTopColor: 'gray',
+        borderBottomWidth: 0.5,
+        borderBottomColor: 'gray'
 
     },
 
     bottomViewStyle: {
         flexDirection: 'row',
         width: width,
-        height: 100,
+        flex: 1,
+        backgroundColor: 'white',
 
 
     },

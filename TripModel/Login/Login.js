@@ -143,7 +143,7 @@ export default class TripGroup extends BaseComponent
                             {
                                 this.login()
                             }}>
-                                <Text style={[styles.textStytle]}>登录</Text>
+                                <Text style={[styles.textStytle,{ backgroundColor: 'rgb(192,65,38)'}]}>登录</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={{marginTop: 20, width: width * 0.85, backgroundColor: 'rgba(0,0,0,0)'}}>
