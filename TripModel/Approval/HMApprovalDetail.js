@@ -36,7 +36,6 @@ import HMListViewBottomItem from './HMListViewBottomItem';
 import HMListViewCellItem from './HMListViewCellItem';
 import HMNavigatorBar from '../Main/HMNavigatorBar';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
-import LoadingView from '../CommonTools/LoadingView.js'
 import NetUitl from '../CommonTools/NetUitl'
 import HMAppProcessItem from '../Approval/HMAppProcessItem'
 import HMCalendar from '../CommonTools/HMCalendar'
@@ -103,10 +102,10 @@ export default class HMApprovalDetail extends BaseComponent
 
         var cellArray = [];
         var self = this;
-       this.showProgress();
+        this.showProgress();
         NetUitl.get(tempUrl, function (responseText)
             {
-               self.hideProgress();
+                self.hideProgress();
                 var jsonData = responseText;
                 travelDetail = jsonData.travelDetail;
                 for (var i = 0; i < travelDetail.length; i++)
@@ -123,16 +122,26 @@ export default class HMApprovalDetail extends BaseComponent
                     )
                 }
                 jsonData.travel_id = self.props.rowData.travel_id;
+                var description = jsonData.description;
+                if (description == null || 'null' == description)
+                {
+                    description = '';
+                }
+                var nextAppName = jsonData.nextAppName;
+                if (null == nextAppName || 'null' == nextAppName)
+                {
+                    nextAppName = '';
+                }
                 self.setState({
-                   //  remars: jsonData.description,
-                   // jsonObject: jsonData,
-                    //nextPerson: jsonData.nextAppName,
+                    remars: description,
+                    jsonObject: jsonData,
+                    nextPerson: nextAppName,
                     dataSource: cellArray,
                 })
             },
             function (error)
             {
-               self.hideProgress();
+                self.hideProgress();
             }
         )
 
@@ -263,7 +272,7 @@ export default class HMApprovalDetail extends BaseComponent
                         }}
                         jsonObject={this.state.jsonObject}/>
 
-                    <View style={{backgroundColor: 'rgba(239,240,243,1.0)', width: width, marginBottom:5}}>
+                    <View style={{backgroundColor: 'rgba(239,240,243,1.0)', width: width, marginBottom: 5}}>
                         {this.state.dataSource}
                     </View>
 

@@ -47933,7 +47933,6 @@ var TripGroup = function (_BaseComponent) {
                                 value: '000000',
                                 underlineColorAndroid: 'transparent',
                                 placeholder: '\u8BF7\u8F93\u5165\u5BC6\u7801', style: styles.textInputStytle,
-
                                 onChangeText: function onChangeText(text) {
                                     _this2.setState({ password: text });
                                 },
@@ -47950,17 +47949,17 @@ var TripGroup = function (_BaseComponent) {
                                         _this2.login();
                                     }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 140
+                                        lineNumber: 139
                                     }
                                 },
                                 _react2.default.createElement(
                                     _reactNative.Text,
-                                    { style: [styles.textStytle], __source: {
+                                    { style: [styles.textStytle, { backgroundColor: 'transparent' }], __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 146
+                                            lineNumber: 145
                                         }
                                     },
-                                    '\u767B\u5F55'
+                                    '登录'
                                 )
                             )
                         ),
@@ -47968,14 +47967,14 @@ var TripGroup = function (_BaseComponent) {
                             _reactNative.View,
                             { style: { marginTop: 20, width: width * 0.85, backgroundColor: 'rgba(0,0,0,0)' }, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 149
+                                    lineNumber: 148
                                 }
                             },
                             _react2.default.createElement(
                                 _reactNative.Text,
                                 { style: { color: 'red', fontSize: 12 }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 150
+                                        lineNumber: 149
                                     }
                                 },
                                 '\u5FD8\u8BB0\u5BC6\u7801?'
@@ -47984,7 +47983,7 @@ var TripGroup = function (_BaseComponent) {
                                 _reactNative.Text,
                                 { style: { color: 'gray', fontSize: 12 }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 151
+                                        lineNumber: 150
                                     }
                                 },
                                 '\u8BF7\u4F7F\u7528\u5DEE\u65C5\u5929\u4E0B\u96C6\u56E2\u7248\u8D26\u6237\u767B\u5F55'
@@ -47993,7 +47992,7 @@ var TripGroup = function (_BaseComponent) {
                                 _reactNative.Text,
                                 { style: { color: 'gray', fontSize: 12 }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 152
+                                        lineNumber: 151
                                     }
                                 },
                                 '\u5982\u9700\u5E2E\u52A9,\u53EF\u62E8\u6253\u5BA2\u670D\u7535\u8BDD\uFF1A300-6568-777'
@@ -48001,7 +48000,7 @@ var TripGroup = function (_BaseComponent) {
                         ),
                         _react2.default.createElement(_reactNativeEasyToast2.default, { ref: 'toast', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 155
+                                lineNumber: 154
                             }
                         }),
                         this.initLoading()
@@ -56604,7 +56603,9 @@ var BaseComponent = function (_Component) {
             if (_reactNative.Platform.OS === 'android') {
                 _reactNative.BackHandler.removeEventListener("back", this.onBackClicked);
             } else {
-                this.propstManger.addLengeData(this.props.navigator.getCurrentRoutes().length);
+                if (null != this.propstManger && null != this.props.navigator.getCurrentRoutes()) {
+                    this.propstManger.addLengeData(this.props.navigator.getCurrentRoutes().length);
+                }
             }
         }
     }]);
@@ -57038,11 +57039,19 @@ var HMApprovalDetail = function (_BaseComponent) {
                     ));
                 }
                 jsonData.travel_id = self.props.rowData.travel_id;
+                var description = jsonData.description;
+                if (description == null || 'null' == description) {
+                    description = '';
+                }
+                var nextAppName = jsonData.nextAppName;
+                if (null == nextAppName || 'null' == nextAppName) {
+                    nextAppName = '';
+                }
                 self.setState({
+                    remars: description,
                     jsonObject: jsonData,
-                    dataSource: cellArray,
-                    remars: jsonData.description,
-                    nextPerson: jsonData.nextAppName
+                    nextPerson: nextAppName,
+                    dataSource: cellArray
                 });
             }, function (error) {
                 self.hideProgress();
@@ -57119,7 +57128,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                             obj: obj,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 228
+                                lineNumber: 238
                             }
                         }));
                     }
@@ -57141,7 +57150,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 251
+                        lineNumber: 261
                     }
                 },
                 _react2.default.createElement(_HMNavigatorBar2.default, {
@@ -57150,20 +57159,20 @@ var HMApprovalDetail = function (_BaseComponent) {
                         return _this3.popToLast();
                     }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 252
+                        lineNumber: 262
                     }
                 }),
                 _react2.default.createElement(
                     _reactNative.ScrollView,
                     { style: { height: height, flex: 1 }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 256
+                            lineNumber: 266
                         }
                     },
                     _react2.default.createElement(_HMApprovalDetailTopItem2.default, {
                         jsonObject: this.state.jsonObject, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 257
+                            lineNumber: 267
                         }
                     }),
                     _react2.default.createElement(_HMApprovalMiddleItem2.default, {
@@ -57172,14 +57181,14 @@ var HMApprovalDetail = function (_BaseComponent) {
                         },
                         jsonObject: this.state.jsonObject, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 260
+                            lineNumber: 269
                         }
                     }),
                     _react2.default.createElement(
                         _reactNative.View,
-                        { style: { backgroundColor: 'rgba(239,240,243,1.0)', width: width }, __source: {
+                        { style: { backgroundColor: 'rgba(239,240,243,1.0)', width: width, marginBottom: 5 }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 267
+                                lineNumber: 276
                             }
                         },
                         this.state.dataSource
@@ -57188,20 +57197,20 @@ var HMApprovalDetail = function (_BaseComponent) {
                         remars: this.state.remars,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 271
+                            lineNumber: 280
                         }
                     }),
                     _react2.default.createElement(_HMListViewNextPerson2.default, {
                         nextPerson: this.state.nextPerson, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 274
+                            lineNumber: 283
                         }
                     }),
                     _react2.default.createElement(
                         _reactNative.View,
                         { style: { flexDirection: 'row' }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 276
+                                lineNumber: 285
                             }
                         },
                         this.state.progressArray
@@ -57211,7 +57220,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                     _reactNative.View,
                     { style: { flexDirection: 'row', height: 40, width: width }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 281
+                            lineNumber: 288
                         }
                     },
                     _react2.default.createElement(
@@ -57221,14 +57230,14 @@ var HMApprovalDetail = function (_BaseComponent) {
                                 return _this3.renderApply();
                             }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 283
+                                lineNumber: 290
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.View,
                             { style: { width: width * 0.5, height: 40, backgroundColor: 'rgb(17,33,49)' }, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 285
+                                    lineNumber: 292
                                 }
                             },
                             _react2.default.createElement(
@@ -57241,7 +57250,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                                         textAlign: 'center'
                                     }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 286
+                                        lineNumber: 293
                                     }
                                 },
                                 '我的申请单'
@@ -57255,14 +57264,14 @@ var HMApprovalDetail = function (_BaseComponent) {
                                 return _this3.renderCreate();
                             }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 296
+                                lineNumber: 303
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.View,
                             { style: { width: width * 0.5, height: 40, backgroundColor: 'rgb(192,65,38)' }, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 298
+                                    lineNumber: 305
                                 }
                             },
                             _react2.default.createElement(
@@ -57274,7 +57283,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                                         textAlign: 'center'
                                     }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 299
+                                        lineNumber: 306
                                     }
                                 },
                                 '创建申请单'
@@ -57433,7 +57442,7 @@ var HMApprovalDetailTopItem = function (_Component) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 41
+                        lineNumber: 42
                     }
                 },
                 _react2.default.createElement(
@@ -57446,21 +57455,21 @@ var HMApprovalDetailTopItem = function (_Component) {
                             margin: 10
                         }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 43
+                            lineNumber: 44
                         }
                     },
                     _react2.default.createElement(
                         _reactNative.View,
                         { style: styles.cellStytle, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 50
+                                lineNumber: 51
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.Text,
                             { style: styles.letfViewStytle, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 51
+                                    lineNumber: 52
                                 }
                             },
                             '申请单号'
@@ -57469,7 +57478,7 @@ var HMApprovalDetailTopItem = function (_Component) {
                             _reactNative.Text,
                             { style: styles.textViewStytle, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 52
+                                    lineNumber: 53
                                 }
                             },
                             this.props.jsonObject.travel_id
@@ -57477,21 +57486,21 @@ var HMApprovalDetailTopItem = function (_Component) {
                     ),
                     _react2.default.createElement(_reactNative.View, { style: styles.lineStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 55
+                            lineNumber: 56
                         }
                     }),
                     _react2.default.createElement(
                         _reactNative.View,
                         { style: styles.cellStytle, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 57
+                                lineNumber: 58
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.Text,
                             { style: styles.letfViewStytle, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 58
+                                    lineNumber: 59
                                 }
                             },
                             '费用归属'
@@ -57500,7 +57509,7 @@ var HMApprovalDetailTopItem = function (_Component) {
                             _reactNative.Text,
                             { style: styles.textViewStytle, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 59
+                                    lineNumber: 60
                                 }
                             },
                             this.props.jsonObject.costcenter
@@ -57508,21 +57517,21 @@ var HMApprovalDetailTopItem = function (_Component) {
                     ),
                     _react2.default.createElement(_reactNative.View, { style: styles.lineStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 61
+                            lineNumber: 62
                         }
                     }),
                     _react2.default.createElement(
                         _reactNative.View,
                         { style: styles.cellStytle, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 62
+                                lineNumber: 63
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.Text,
                             { style: styles.letfViewStytle, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 63
+                                    lineNumber: 64
                                 }
                             },
                             '出差类型'
@@ -57531,7 +57540,7 @@ var HMApprovalDetailTopItem = function (_Component) {
                             _reactNative.Text,
                             { style: styles.textViewStytle, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 64
+                                    lineNumber: 65
                                 }
                             },
                             this.props.jsonObject.ccType
@@ -57814,12 +57823,15 @@ var HMListViewNextPerson = function (_Component) {
                 ),
                 _react2.default.createElement(
                     _reactNative.Text,
-                    { style: { width: width - 100, textAlign: 'center' }, __source: {
+                    { style: {
+                            width: width - 100,
+                            textAlign: 'center'
+                        }, __source: {
                             fileName: _jsxFileName,
                             lineNumber: 49
                         }
                     },
-                    this.props.jsonObject.nextAppName
+                    null == this.props.jsonObject.nextAppName ? '' : this.props.jsonObject.nextAppName
                 )
             );
         }
@@ -57920,7 +57932,7 @@ var HMListViewBottomItem = function (_Component) {
                                 lineNumber: 52
                             }
                         },
-                        this.props.remars
+                        this.props.remars == null ? '' : this.props.remars
                     )
                 )
             );
@@ -57940,10 +57952,10 @@ exports.default = HMListViewBottomItem;
 var styles = _reactNative.StyleSheet.create({
     container: {
         width: width,
+        height: 100,
         marginTop: 10,
         borderTopWidth: 0.5,
         borderTopColor: 'gray',
-        backgroundColor: 'white',
         borderBottomWidth: 0.5,
         borderBottomColor: 'gray'
 
@@ -57952,7 +57964,8 @@ var styles = _reactNative.StyleSheet.create({
     bottomViewStyle: {
         flexDirection: 'row',
         width: width,
-        height: 100
+        flex: 1,
+        backgroundColor: 'white'
 
     },
     textInputStytle: {
@@ -57992,7 +58005,7 @@ var _Dimensions$get = Dimensions.get('window'),
 
 var letfViewWidth = 60;
 var middleWidth = 10;
-var cellHeight = 40;
+var cellHeight = 39;
 
 var HMListViewCellItem = function (_Component) {
     babelHelpers.inherits(HMListViewCellItem, _Component);
@@ -58040,12 +58053,11 @@ var HMListViewCellItem = function (_Component) {
             var _this2 = this;
 
             var cellArray = [];
-
             cellArray.push(_react2.default.createElement(
                 _reactNative.View,
                 { key: '0', style: styles.desViewStytle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 88
+                        lineNumber: 87
                     }
                 },
                 _react2.default.createElement(
@@ -58053,7 +58065,7 @@ var HMListViewCellItem = function (_Component) {
                     {
                         style: styles.textViewStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 88
+                            lineNumber: 87
                         }
                     },
                     '第' + this.props.desPosition + '目的地'
@@ -58064,21 +58076,21 @@ var HMListViewCellItem = function (_Component) {
                 _reactNative.View,
                 { key: '1', style: styles.cellViewStytle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 91
+                        lineNumber: 90
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.seconViewStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 92
+                            lineNumber: 91
                         }
                     },
                     _react2.default.createElement(
                         _reactNative.Text,
                         { style: styles.textViewStytle, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 93
+                                lineNumber: 92
                             }
                         },
                         '起始城市'
@@ -58089,7 +58101,7 @@ var HMListViewCellItem = function (_Component) {
                                 return _this2.renderCitys('起始城市');
                             }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 95
+                                lineNumber: 94
                             }
                         },
                         _react2.default.createElement(
@@ -58097,7 +58109,7 @@ var HMListViewCellItem = function (_Component) {
                             {
                                 style: [styles.textViewStytle, { marginLeft: 10 }], __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 96
+                                    lineNumber: 95
                                 }
                             },
                             this.props.jsonObject.setout_city
@@ -58111,7 +58123,7 @@ var HMListViewCellItem = function (_Component) {
                                 left: width * 0.5
                             }], __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 99
+                                lineNumber: 98
                             }
                         },
                         '至'
@@ -58125,14 +58137,14 @@ var HMListViewCellItem = function (_Component) {
                                 return _this2.renderCitys('到达城市');
                             }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 105
+                                lineNumber: 104
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.Text,
                             { style: [styles.textViewStytle], __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 109
+                                    lineNumber: 108
                                 }
                             },
                             this.props.jsonObject.arrive_city
@@ -58144,21 +58156,21 @@ var HMListViewCellItem = function (_Component) {
                 _reactNative.View,
                 { key: '2', style: styles.cellViewStytle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 113
+                        lineNumber: 112
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.seconViewStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 114
+                            lineNumber: 113
                         }
                     },
                     _react2.default.createElement(
                         _reactNative.Text,
                         { style: styles.textViewStytle, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 115
+                                lineNumber: 114
                             }
                         },
                         '行程日期'
@@ -58169,7 +58181,7 @@ var HMListViewCellItem = function (_Component) {
                                 return _this2.renderCitys('起始日期');
                             }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 116
+                                lineNumber: 115
                             }
                         },
                         _react2.default.createElement(
@@ -58177,7 +58189,7 @@ var HMListViewCellItem = function (_Component) {
                             {
                                 style: [styles.textViewStytle, { marginLeft: 10 }], __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 117
+                                    lineNumber: 116
                                 }
                             },
                             this.props.jsonObject.start_date
@@ -58191,7 +58203,7 @@ var HMListViewCellItem = function (_Component) {
                                 left: width * 0.5
                             }], __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 121
+                                lineNumber: 120
                             }
                         },
                         '至'
@@ -58205,14 +58217,14 @@ var HMListViewCellItem = function (_Component) {
                                 return _this2.renderCitys('到达日期');
                             }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 128
+                                lineNumber: 127
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.Text,
                             { style: [styles.textViewStytle], __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 132
+                                    lineNumber: 131
                                 }
                             },
                             this.props.jsonObject.end_date
@@ -58224,14 +58236,14 @@ var HMListViewCellItem = function (_Component) {
                 _reactNative.View,
                 { key: '3', style: [styles.desViewStytle, { flexDirection: 'row', alignItems: 'center' }], __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 136
+                        lineNumber: 135
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.Text,
                     { style: styles.textViewStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 137
+                            lineNumber: 136
                         }
                     },
                     '费用申请'
@@ -58244,7 +58256,7 @@ var HMListViewCellItem = function (_Component) {
                             marginLeft: width * 0.5 - 70
                         }], __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 138
+                            lineNumber: 137
                         }
                     },
                     this.props.jsonObject.product_name
@@ -58260,7 +58272,7 @@ var HMListViewCellItem = function (_Component) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 154
+                        lineNumber: 153
                     }
                 },
                 _react2.default.createElement(
@@ -58268,7 +58280,7 @@ var HMListViewCellItem = function (_Component) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 155
+                            lineNumber: 154
                         }
                     },
                     this.renderGetCell()
@@ -58296,26 +58308,28 @@ var styles = _reactNative.StyleSheet.create({
         height: cellHeight,
         marginTop: 2
     },
-
     cellViewStytle: {
-        width: width,
+        width: width - 20,
         height: cellHeight
+
     },
     seconViewStytle: {
         flexDirection: 'row',
-        width: width,
+        flex: 1,
         height: cellHeight,
         alignItems: 'center',
         borderBottomWidth: 0.5,
-        borderBottomColor: 'gray'
+        borderBottomColor: 'gray',
+        backgroundColor: 'transparent'
 
     },
     desViewStytle: {
-        width: width,
+        width: width - 20,
         height: cellHeight,
         borderBottomColor: 'gray',
         borderBottomWidth: 0.5,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: 'transparent'
     },
     textViewStytle: {
         marginLeft: 10,

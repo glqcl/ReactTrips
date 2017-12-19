@@ -130,7 +130,6 @@ export default class TripGroup extends BaseComponent
                                        value={'000000'}
                                        underlineColorAndroid='transparent'
                                        placeholder='请输入密码' style={styles.textInputStytle}
-
                                        onChangeText={(text) =>
                                        {
                                            this.setState({password: text})
@@ -143,7 +142,7 @@ export default class TripGroup extends BaseComponent
                             {
                                 this.login()
                             }}>
-                                <Text style={[styles.textStytle,{ backgroundColor: 'rgb(192,65,38)'}]}>登录</Text>
+                                <Text style={[styles.textStytle, {backgroundColor: 'transparent'}]}>{'登录'}</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={{marginTop: 20, width: width * 0.85, backgroundColor: 'rgba(0,0,0,0)'}}>
