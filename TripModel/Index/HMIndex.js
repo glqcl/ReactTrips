@@ -144,7 +144,7 @@ export default class TripGroup extends Component
                                     width: ((width - 20) / 3),
                                     height: ((width - 20) / 3),
                                 }}/>
-                                <Text style={{marginTop: 5, fontSize: 14, color: 'white',width:((width - 20) / 3),
+                                <Text style={{ fontSize: 14, color: 'white',width:((width - 20) / 3),
                                     textAlign:'center'
                                 }}>{'国内机票'}</Text>
                             </View>

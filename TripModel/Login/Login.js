@@ -30,8 +30,6 @@ import NetUitl from '../CommonTools/NetUitl';
 import tgUtil from '../CommonTools/tgUtil';
 import BaseComponent from '../Main/BaseComponent';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
-
-
 import Storage from '../CommonTools/DeviceStorage'
 
 export default class TripGroup extends BaseComponent
