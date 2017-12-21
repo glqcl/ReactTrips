@@ -97,6 +97,7 @@ export default class HMApprovalDetail extends BaseComponent
 
     getApprovalDetail()
     {
+
         var approved_status = this.props.rowData.approved_status;
         var tempUrl = '';
         if ('n' == approved_status || 'b' == approved_status)
@@ -162,13 +163,18 @@ export default class HMApprovalDetail extends BaseComponent
     componentDidMount()
     {
 
-        InteractionManager.runAfterInteractions(() =>
+        var self=this;
+        setTimeout(function ()
         {
-            this.getApprovalDetail();
+            InteractionManager.runAfterInteractions(() =>
+            {
+                self.getApprovalDetail();
 
-            this.renderAppProgress();
+                self.renderAppProgress();
 
-        });
+            });
+        },500);
+
 
     }
 
@@ -211,7 +217,7 @@ export default class HMApprovalDetail extends BaseComponent
 
         if('s'==approved_status)
         {
-            
+
         }
 
     }
@@ -278,8 +284,6 @@ export default class HMApprovalDetail extends BaseComponent
     {
         var approved_status = this.props.rowData.approved_status;
         let userMessage = null;
-
-
         if ('n' == approved_status || 'b' == approved_status)
         {
             userMessage = ( <View style={{flexDirection: 'row', height: 40, width: width}}>
@@ -310,10 +314,12 @@ export default class HMApprovalDetail extends BaseComponent
             </View>)
         }
 
-
         return (
 
             <View style={styles.container}>
+
+
+                <Text></Text>
                 <HMNavigatorBar
                     title={'申请单详情'}
                     popToLast={() => this.popToLast()}>
