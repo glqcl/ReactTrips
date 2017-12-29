@@ -42,6 +42,7 @@ export default class TripGroup extends Component
                         fontSize: 14,
                         marginTop: 5,
                         color: 'white',
+                        backgroundColor: 'transparent',
                         textAlign: 'center'
                     }}>{this.props.title}</Text>
                 </TouchableOpacity>

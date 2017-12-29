@@ -47,6 +47,7 @@ export default class HMApprovalDetail extends BaseComponent
 {
     static defaultProps = {
         popToLast: null,
+
     };
     // 构造
     constructor(props)
@@ -97,16 +98,17 @@ export default class HMApprovalDetail extends BaseComponent
 
     getApprovalDetail()
     {
+         var rowData = this.props.navigation.state.params.rowData;
 
-        var approved_status = this.props.rowData.approved_status;
+        var approved_status = rowData.approved_status;
         var tempUrl = '';
         if ('n' == approved_status || 'b' == approved_status)
         {
-            var tempUrl = `${HMUrlUtils.travelApplyDetail}&user_id=${this.props.rowData.ry_people}&travel_id=${this.props.rowData.travel_id}&is_show=Y`;
+            var tempUrl = `${HMUrlUtils.travelApplyDetail}&user_id=${rowData.ry_people}&travel_id=${rowData.travel_id}&is_show=Y`;
         }
         else
         {
-            var tempUrl = `${HMUrlUtils.travelApplyDetail}&user_id=${this.props.rowData.ry_people}&travel_id=${this.props.rowData.travel_id}`;
+            var tempUrl = `${HMUrlUtils.travelApplyDetail}&user_id=${rowData.ry_people}&travel_id=${rowData.travel_id}`;
         }
         Storage.get('userInfo').then((userInfo) =>
         {
@@ -132,7 +134,7 @@ export default class HMApprovalDetail extends BaseComponent
                             </View>
                         )
                     }
-                    jsonData.travel_id = self.props.rowData.travel_id;
+                    jsonData.travel_id = rowData.travel_id;
                     var description = jsonData.description;
                     if (description == null || 'null' == description)
                     {
@@ -163,7 +165,7 @@ export default class HMApprovalDetail extends BaseComponent
     componentDidMount()
     {
 
-        var self=this;
+        var self = this;
         setTimeout(function ()
         {
             InteractionManager.runAfterInteractions(() =>
@@ -173,7 +175,7 @@ export default class HMApprovalDetail extends BaseComponent
                 self.renderAppProgress();
 
             });
-        },500);
+        }, 500);
 
 
     }
@@ -211,16 +213,21 @@ export default class HMApprovalDetail extends BaseComponent
             return 'new_approval_refuse'
         }
     }
+
     actionRollBack()
     {
-        var approved_status = this.props.rowData.approved_status;
 
-        if('s'==approved_status)
+        var rowData = this.props.navigation.state.params.rowData;
+
+        var approved_status = rowData.approved_status;
+
+        if ('s' == approved_status)
         {
 
         }
 
     }
+
     /*申请单列表*/
     renderApply()
     {
@@ -241,7 +248,8 @@ export default class HMApprovalDetail extends BaseComponent
     //获取状态流程图
     renderAppProgress()
     {
-        var tempUrl = `${HMUrlUtils.getAppProcess}?travel_id=${this.props.rowData.travel_id}`;
+        var rowData = this.props.navigation.state.params.rowData;
+        var tempUrl = `${HMUrlUtils.getAppProcess}?travel_id=${rowData.travel_id}`;
         var self = this;
         NetUitl.get(tempUrl, function (ret)
         {
@@ -282,7 +290,9 @@ export default class HMApprovalDetail extends BaseComponent
 
     render()
     {
-        var approved_status = this.props.rowData.approved_status;
+
+        var rowData = this.props.navigation.state.params.rowData;
+        var approved_status = rowData.approved_status;
         let userMessage = null;
         if ('n' == approved_status || 'b' == approved_status)
         {
@@ -318,12 +328,10 @@ export default class HMApprovalDetail extends BaseComponent
 
             <View style={styles.container}>
 
-
-                <Text></Text>
-                <HMNavigatorBar
-                    title={'申请单详情'}
-                    popToLast={() => this.popToLast()}>
-                </HMNavigatorBar>
+                {/*<HMNavigatorBar*/}
+                    {/*title={'申请单详情'}*/}
+                    {/*popToLast={() => this.popToLast()}>*/}
+                {/*</HMNavigatorBar>*/}
                 <ScrollView
                     showsVerticalScrollIndicator={false}
                     horizontal={false}

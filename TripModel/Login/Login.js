@@ -30,12 +30,18 @@ import NetUitl from '../CommonTools/NetUitl';
 import tgUtil from '../CommonTools/tgUtil';
 import BaseComponent from '../Main/BaseComponent';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
+import {StackNavigator} from 'react-navigation';
 
 
 import Storage from '../CommonTools/DeviceStorage'
 
 export default class TripGroup extends BaseComponent
 {
+
+    static navigationOptions = {
+        title: 'Chat with Lucy',
+    };
+
     constructor(props)
     {
         super(props);
@@ -85,10 +91,11 @@ export default class TripGroup extends BaseComponent
 
             if (0 == Code)
             {
-                Storage.save('userInfo', responseText.Datas)
-                self.props.navigator.push({
-                    component: HMIndex
-                })
+                Storage.save('userInfo', responseText.Datas);
+                self.props.navigation.navigate('HMIndex');
+                // self.props.navigator.push({
+                //     component: HMIndex
+                // })
             }
             else
             {
@@ -157,8 +164,6 @@ export default class TripGroup extends BaseComponent
 
                     </View>
                 </View>
-
-
             </View>
         );
     }

@@ -51,28 +51,28 @@ export default class BaseComponent extends Component
 
     componentWillMount()
     {
-        if (Platform.OS === 'android')
-        {
-
-            BackHandler.addEventListener("back", this.onBackClicked);
-        } else
-        {
-
-        }
+        // if (Platform.OS === 'android')
+        // {
+        //
+        //     BackHandler.addEventListener("back", this.onBackClicked);
+        // } else
+        // {
+        //
+        // }
     }
 
     componentWillUnmount()
     {
-        if (Platform.OS === 'android')
-        {
-            BackHandler.removeEventListener("back", this.onBackClicked);
-        } else
-        {
-            if (null != this.propstManger && null != this.props.navigator.getCurrentRoutes())
-            {
-                this.propstManger.addLengeData(this.props.navigator.getCurrentRoutes().length);
-            }
-        }
+        // if (Platform.OS === 'android')
+        // {
+        //     BackHandler.removeEventListener("back", this.onBackClicked);
+        // } else
+        // {
+        //     if (null != this.propstManger && null != this.props.navigator.getCurrentRoutes())
+        //     {
+        //         this.propstManger.addLengeData(this.props.navigator.getCurrentRoutes().length);
+        //     }
+        // }
     }
 
     onBackClicked = () =>

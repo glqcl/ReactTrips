@@ -33,7 +33,7 @@ import Storage from '../CommonTools/DeviceStorage'
 import BaseComponent from '../Main/BaseComponent';
 import HMNavigatorBar from '../Main/HMNavigatorBar';
 import HMListViewItem from '../Approval/HMListViewItem';
-import HMApprovalDetail from './HMApprovalDetail';
+// import HMApprovalDetail from './HMApprovalDetail';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
 import NetUitl from '../CommonTools/NetUitl'
 
@@ -178,21 +178,32 @@ export default class HMApprovalList extends BaseComponent
 
     pushToNewsDetail(rowData)
     {
-        this.props.navigator.push({
-            component: HMApprovalDetail,
-            title: '申请单详情',
-            passProps: {rowData}
-        })
+
+
+        this.props.navigation.navigate('HMApprovalDetail', {rowData: rowData});
+        // this.props.navigator.push({
+        //     component: HMApprovalDetail,
+        //     title: '申请单详情',
+        //     passProps: {rowData}
+        // })
+
+
     }
 
     componentDidMount()
     {
         var self = this;
-        InteractionManager.runAfterInteractions(() =>
+        setTimeout(function ()
         {
-            self.refs.listView.beginRefresh();
 
-        });
+            InteractionManager.runAfterInteractions(() =>
+            {
+                self.refs.listView.beginRefresh();
+
+            });
+        }, 500)
+
+
     }
 
     renderRow(rowData)
@@ -215,10 +226,10 @@ export default class HMApprovalList extends BaseComponent
         return (
             <View style={styles.container}>
 
-                <HMNavigatorBar
-                    title={'我的申请'}
-                    popToLast={() => this.popToLast()}>
-                </HMNavigatorBar>
+                {/*<HMNavigatorBar*/}
+                {/*title={'我的申请'}*/}
+                {/*popToLast={() => this.popToLast()}>*/}
+                {/*</HMNavigatorBar>*/}
                 <SwRefreshListView
                     dataSource={this.state.dataSource}
                     ref="listView"

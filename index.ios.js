@@ -13,31 +13,22 @@ import {
 
 } from 'react-native';
 
-
-import HMLaunchImage from './TripModel/Main/HMLaunchImage'
-import {Navigator} from 'react-native-deprecated-custom-components';
+import App from './TripModel/Main/App'
 
 export default class TripGroup extends Component
 {
     render()
     {
         return (
-            <Navigator
-                initialRoute={{name: '启动页', component: HMLaunchImage}}
-                configureScene={() =>
-                {
-                    return Navigator.SceneConfigs.PushFromRight;
-                }}
-                renderScene={(route, navigator) =>
-                {
-                    let Component = route.component;
-                    return <Component{...route.passProps} navigator={navigator}/>
-                }}
-            >
-            </Navigator>
+          <App/>
         );
     }
 }
+
+
+
+
+
 
 
 AppRegistry.registerComponent('TripGroup', () => TripGroup);

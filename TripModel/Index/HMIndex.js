@@ -24,8 +24,8 @@ var HMScrollImage = require('../CommonTools/HMScrollImage');
 import HMTopItem from './HMTopItem';
 import HMMiddleItem from './HMMiddleItem';
 import HMBottomItem from './HMBottomItem';
-import HMApprovalList from '../Approval/HMApprovalList';
-import HMPlaneIndex from '../Plane/HMPlaneIndex';
+// import HMApprovalList from '../Approval/HMApprovalList';
+// import HMPlaneIndex from '../Plane/HMPlaneIndex';
 import NetUitl from '../CommonTools/NetUitl';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
 export default class TripGroup extends Component
@@ -35,7 +35,7 @@ export default class TripGroup extends Component
         titleArray: ['申请出差', '差旅数据', '申请报销'],
         middleArray: ['酒店', '国际机票', '火车票', '用车'],
 
-    };  // 注意这里有分号
+    };// 注意这里有分号
 
     constructor(props)
     {
@@ -57,9 +57,10 @@ export default class TripGroup extends Component
     {
         if (this.props.titleArray[0] == title)
         {
-            this.props.navigator.push({
-                component: HMApprovalList
-            })
+            this.props.navigation.navigate('HMApprovalList');
+            // this.props.navigator.push({
+            //     component: HMApprovalList
+            // })
         }
     }
 
@@ -120,9 +121,11 @@ export default class TripGroup extends Component
     rednderPlane()
     {
 
-        this.props.navigator.push({
-            component: HMPlaneIndex
-        })
+
+        this.props.navigation.navigate('HMPlaneIndex');
+        // this.props.navigator.push({
+        //     component: HMPlaneIndex
+        // })
     }
 
     render()
@@ -144,8 +147,9 @@ export default class TripGroup extends Component
                                     width: ((width - 20) / 3),
                                     height: ((width - 20) / 3),
                                 }}/>
-                                <Text style={{marginTop: 5, fontSize: 14, color: 'white',width:((width - 20) / 3),
-                                    textAlign:'center'
+                                <Text style={{
+                                    marginTop: 5, fontSize: 14, color: 'white', width: ((width - 20) / 3),
+                                    textAlign: 'center'
                                 }}>{'国内机票'}</Text>
                             </View>
                         </TouchableOpacity>
@@ -222,7 +226,6 @@ const styles = StyleSheet.create({
         height: height / 4,
         flexDirection: 'row',
         flexWrap: 'wrap',
-
 
 
     },
