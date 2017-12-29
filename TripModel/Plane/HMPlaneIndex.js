@@ -38,10 +38,10 @@ export default class HMPlaneIndex extends BaseComponent
     {
         return (
             <View style={styles.container}>
-                <HMNavigatorBar
-                    title={'国内机票'}
-                    popToLast={() => this.popToLast()}>
-                </HMNavigatorBar>
+                {/*<HMNavigatorBar*/}
+                    {/*title={'国内机票'}*/}
+                    {/*popToLast={() => this.popToLast()}>*/}
+                {/*</HMNavigatorBar>*/}
                 <View style={styles.outerViewStytle}>
                     <View style={{width: width, height: 40, flexDirection: 'row'}}>
                         <Text style={{width: width * 0.5,}}>{'单程'}</Text>

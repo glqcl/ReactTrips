@@ -10,7 +10,8 @@ import {
     StyleSheet,
     Text,
     View,
-    Image
+    Image,
+    Platform
 } from 'react-native';
 
 /**----导入外部的组件----**/
@@ -86,10 +87,11 @@ const Navigator = StackNavigator({
     navigationOptions: {
 
         headerStyle: {backgroundColor: 'rgba(7,18,30,1.0)'},
-        headerTitleStyle: {color: 'white', fontSize: 16},
+        headerTitleStyle: {color: 'white', fontSize: 16,alignSelf:Platform.OS=='android'?'center':null},
         gesturesEnabled: true,
         headerBackTitle: null,
-        headerTintColor: 'white'
+        headerTintColor: 'white',
+        headerRight:null
     },
     initialRouteName: 'HMLaunchImage', // 默认显示界面
     mode: 'card',  // 页面切换模式, 左右是card(相当于iOS中的push效果), 上下是modal(相当于iOS中的modal效果)
