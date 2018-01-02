@@ -28,6 +28,9 @@ import HMBottomItem from './HMBottomItem';
 // import HMPlaneIndex from '../Plane/HMPlaneIndex';
 import NetUitl from '../CommonTools/NetUitl';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
+
+
+
 export default class TripGroup extends Component
 {
 
@@ -57,7 +60,8 @@ export default class TripGroup extends Component
     {
         if (this.props.titleArray[0] == title)
         {
-            this.props.navigation.navigate('HMApprovalList');
+            //this.props.navigation.navigate('HMApprovalList');
+            this.props.navigation.navigate('FlatListExample');
             // this.props.navigator.push({
             //     component: HMApprovalList
             // })
@@ -123,6 +127,7 @@ export default class TripGroup extends Component
 
 
         this.props.navigation.navigate('HMPlaneIndex');
+
         // this.props.navigator.push({
         //     component: HMPlaneIndex
         // })

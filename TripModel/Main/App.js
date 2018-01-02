@@ -24,6 +24,7 @@ import {StackNavigator} from 'react-navigation';
 import HMPlaneIndex from '../Plane/HMPlaneIndex';
 import HMApprovalList from '../Approval/HMApprovalList';
 import HMApprovalDetail from '../Approval/HMApprovalDetail';
+import FlatListExample from '../Approval/FlatListExample'
 
 export default class BaseRootNavigator extends Component
 {
@@ -71,6 +72,13 @@ const Navigator = StackNavigator({
     },
     HMApprovalList: {
         screen: HMApprovalList,
+        navigationOptions: {
+            headerTitle: '申请单列表'
+        }
+    },
+
+    FlatListExample: {
+        screen: FlatListExample,
         navigationOptions: {
             headerTitle: '申请单列表'
         }
