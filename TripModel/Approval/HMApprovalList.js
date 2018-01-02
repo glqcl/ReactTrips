@@ -15,12 +15,13 @@ import {
     View,
     ListView,
     TouchableOpacity,
-    InteractionManager
+    InteractionManager,
+    Dimensions
 
 } from 'react-native';
-// import {Loading, EasyLoading} from 'react-native-easy-loading';
+
 import Loading from 'react-native-loading-w';
-// import ReactLoading from 'react-loading';
+
 
 import {
     SwRefreshScrollView,
@@ -29,15 +30,12 @@ import {
     LoadMoreStatus
 } from 'react-native-swRefresh'
 
-import Storage from '../CommonTools/DeviceStorage'
+import StorageUtil from '../CommonTools/StorageUtil'
 import BaseComponent from '../Main/BaseComponent';
-import HMNavigatorBar from '../Main/HMNavigatorBar';
 import HMListViewItem from '../Approval/HMListViewItem';
-// import HMApprovalDetail from './HMApprovalDetail';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
 import NetUitl from '../CommonTools/NetUitl'
 
-var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 var page = 1;
 var pageSize = 20;
@@ -93,13 +91,11 @@ export default class HMApprovalList extends BaseComponent
 
     onRefresh(end)
     {
-
-        Storage.get('userInfo').then((userInfo) =>
+        StorageUtil.getJsonObject('userInfo').then(userInfo =>
         {
             page = 1;
             var tempUrl = `${HMUrlUtils.getTravelList}?user_id=${userInfo.Id}&type=3&page=${page}&pageSize=${pageSize}`;
             var self = this;
-            // this.getLoading().show();
             this.showProgress();
             NetUitl.get(tempUrl, function (responseText)
             {
@@ -135,13 +131,14 @@ export default class HMApprovalList extends BaseComponent
                 end();
             });
 
-        });
+        })
 
     }
 
     onLoadMore(end)
     {
-        Storage.get('userInfo').then((userInfo) =>
+
+        StorageUtil.getJsonObject('userInfo').then(userInfo =>
         {
             page++;
             var tempUrl = `${HMUrlUtils.getTravelList}?user_id=${userInfo.Id}&type=3&page=${page}&pageSize= ${pageSize}`;
@@ -170,7 +167,11 @@ export default class HMApprovalList extends BaseComponent
                     page--;
                 }
             })
+
+
         })
+
+
 
 
     }

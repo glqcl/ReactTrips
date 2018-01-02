@@ -32,8 +32,10 @@ import BaseComponent from '../Main/BaseComponent';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
 import {StackNavigator} from 'react-navigation';
 
+var Spinner = require('react-native-spinkit');
 
-import Storage from '../CommonTools/DeviceStorage'
+
+import StorageUtil from '../CommonTools/StorageUtil'
 
 export default class TripGroup extends BaseComponent
 {
@@ -48,7 +50,10 @@ export default class TripGroup extends BaseComponent
         this.state = {
             username: 'YDCS007',
             password: '000000',
-            tempUrl: ''
+            tempUrl: '',
+            size: 100,
+            color: "#FFFFFF",
+            isVisible: true
         };
     }
 
@@ -91,7 +96,8 @@ export default class TripGroup extends BaseComponent
 
             if (0 == Code)
             {
-                Storage.save('userInfo', responseText.Datas);
+                StorageUtil.saveJsonObject('userInfo',responseText.Datas);
+
                 self.props.navigation.navigate('HMIndex');
                 // self.props.navigator.push({
                 //     component: HMIndex
@@ -162,6 +168,7 @@ export default class TripGroup extends BaseComponent
 
                         {this.initLoading()}
 
+
                     </View>
                 </View>
             </View>
@@ -225,7 +232,14 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: 'white',
 
-    }
+    },
+    spinner: {
+        position: 'absolute',
+        top: height * 0.5,
+        left: width * 0.5,
+        marginBottom: 50,
+
+    },
 
 
 });
