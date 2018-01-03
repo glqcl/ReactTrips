@@ -34,13 +34,13 @@ import HMApprovalMiddleItem from './HMApprovalMiddleItem';
 import HMListViewNextPerson from './HMListViewNextPerson';
 import HMListViewBottomItem from './HMListViewBottomItem';
 import HMListViewCellItem from './HMListViewCellItem';
-import HMNavigatorBar from '../Main/HMNavigatorBar';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
 import NetUitl from '../CommonTools/NetUitl'
 import HMAppProcessItem from '../Approval/HMAppProcessItem'
 import HMCalendar from '../CommonTools/HMCalendar'
 import SelectCity from '../CityList/SelectCity';
-import Storage from '../CommonTools/DeviceStorage'
+import StorageUtil from '../CommonTools/StorageUtil'
+
 var travelDetail = [];
 
 export default class HMApprovalDetail extends BaseComponent
@@ -49,6 +49,7 @@ export default class HMApprovalDetail extends BaseComponent
         popToLast: null,
 
     };
+
     // 构造
     constructor(props)
     {
@@ -98,7 +99,7 @@ export default class HMApprovalDetail extends BaseComponent
 
     getApprovalDetail()
     {
-         var rowData = this.props.navigation.state.params.rowData;
+        var rowData = this.props.navigation.state.params.rowData;
 
         var approved_status = rowData.approved_status;
         var tempUrl = '';
@@ -110,9 +111,10 @@ export default class HMApprovalDetail extends BaseComponent
         {
             var tempUrl = `${HMUrlUtils.travelApplyDetail}&user_id=${rowData.ry_people}&travel_id=${rowData.travel_id}`;
         }
-        Storage.get('userInfo').then((userInfo) =>
-        {
 
+
+        StorageUtil.getJsonObject('userInfo').then(userInfo =>
+        {
             var cellArray = [];
             var self = this;
             this.showProgress();
@@ -157,7 +159,9 @@ export default class HMApprovalDetail extends BaseComponent
                     self.hideProgress();
                 }
             )
+
         })
+
 
 
     }
@@ -298,7 +302,7 @@ export default class HMApprovalDetail extends BaseComponent
         {
             userMessage = ( <View style={{flexDirection: 'row', height: 40, width: width}}>
                 <TouchableOpacity activeOpacity={0.5}
-                                  onPress={() => this.renderApply() }>
+                                  onPress={() => this.renderApply()}>
                     <View style={{width: width * 0.5, height: 40, backgroundColor: 'rgb(17,33,49)'}}>
                         <Text style={{
                             paddingTop: 14,
@@ -329,8 +333,8 @@ export default class HMApprovalDetail extends BaseComponent
             <View style={styles.container}>
 
                 {/*<HMNavigatorBar*/}
-                    {/*title={'申请单详情'}*/}
-                    {/*popToLast={() => this.popToLast()}>*/}
+                {/*title={'申请单详情'}*/}
+                {/*popToLast={() => this.popToLast()}>*/}
                 {/*</HMNavigatorBar>*/}
                 <ScrollView
                     showsVerticalScrollIndicator={false}
