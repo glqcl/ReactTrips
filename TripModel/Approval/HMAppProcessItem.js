@@ -32,14 +32,12 @@ export default class HMAppProcessItem extends Component
         length: 0
 
     };
-
     popToLast()
     {
         if (this.props.popToLast == null)return;
         this.props.popToLast();
 
     }
-
     componentDidMount()
     {
         var letfView = this.refs.letfView;
@@ -54,7 +52,6 @@ export default class HMAppProcessItem extends Component
                 style: {marginLeft: 26}
             })
         }
-
         if (this.props.length - 1 == this.props.position)
         {
             rightView.setNativeProps({
@@ -64,15 +61,7 @@ export default class HMAppProcessItem extends Component
                 style: {marginRight: 26}
             })
         }
-
-
-
-
     }
-
-
-
-
     render()
     {
         return (
@@ -95,21 +84,15 @@ export default class HMAppProcessItem extends Component
                     textAlign: 'center',
                     width: 70,
                 }}>{this.props.obj.approval_time}</Text>
-
-
             </View>
         );
     }
 }
-
 const styles = StyleSheet.create({
     container: {
-
         height: 60,
         justifyContent: 'center'
-
     },
-
 
 });
 

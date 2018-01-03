@@ -38,7 +38,7 @@ import NetUitl from '../CommonTools/NetUitl'
 
 var {width, height} = Dimensions.get('window');
 var page = 1;
-var pageSize = 20;
+var pageSize = 300;
 var isFirst = false;
 
 var listArray = [{
@@ -89,76 +89,57 @@ export default class HMApprovalList extends BaseComponent
         };
     }
 
-    onRefresh(isPullUp)
+    onLoadMore()
     {
+        this.getDataFromNet(true);
+    }
+
+    onRefresh()
+    {
+        this.getDataFromNet(false);
+    }
+
+    getDataFromNet(isPullUp = false)
+    {
+        page = isPullUp ? page++ : 1;
+        var self = this;
+        this.showProgress();
         StorageUtil.getJsonObject('userInfo').then(userInfo =>
         {
-            if (isPullUp)
-            {
-                //加载更多
-                page++;
-            }
-            else
-            {
-                page = 1;
-            }
             var tempUrl = `${HMUrlUtils.getTravelList}?user_id=${userInfo.Id}&type=3&page=${page}&pageSize=${pageSize}`;
-            var self = this;
-            this.showProgress();
             NetUitl.get(tempUrl, function (responseText)
             {
                 self.hideProgress();
-                if (!isFirst)
-                {
-                    isFirst = true;
-                }
                 let jsonData = responseText;
                 let jsonArray = jsonData.result;
                 if (isPullUp)
                 {
                     //加载更多
                     listArray = listArray.concat(jsonArray);
-                    if (jsonArray < pageSize)
-                    {
-                        self.refs.listView.setNoMoreData()
-                    }
-                    else
-                    {
-                        self.refs.listView.resetStatus() //重置上拉加载的状态
-                    }
+                    self.refs.listView.endLoadMore(jsonArray.length < pageSize);
                 }
                 else
                 {
                     listArray = jsonArray;
+                    self.refs.listView.endRefresh()
+                    self.refs.listView.resetStatus() //重置上拉加载的状态
                 }
                 self.setState({
                     dataSource: self.state.dataSource.cloneWithRows(listArray),
                 });
 
-
             }, function (error)
             {
-
                 self.hideProgress();
                 self.refs.listView.resetStatus() //重置上拉加载的状态
-
-                if (isPullUp)
-                {
-
-                    page = page > 1 ? page-- : 1
-                }
-
-            });
-
+                self.refs.listView.endRefresh()
+            })
         })
-
     }
 
 
     pushToNewsDetail(rowData)
     {
-
-
         this.props.navigation.navigate('HMApprovalDetail', {rowData: rowData});
         // this.props.navigator.push({
         //     component: HMApprovalDetail,
@@ -171,18 +152,7 @@ export default class HMApprovalList extends BaseComponent
 
     componentDidMount()
     {
-        var self = this;
-        setTimeout(function ()
-        {
-
-            InteractionManager.runAfterInteractions(() =>
-            {
-                self.refs.listView.beginRefresh();
-
-            });
-        }, 500)
-
-
+        this.refs.listView.beginRefresh();
     }
 
     renderRow(rowData)
@@ -205,17 +175,12 @@ export default class HMApprovalList extends BaseComponent
         return (
             <View style={styles.container}>
 
-                {/*<HMNavigatorBar*/}
-                {/*title={'我的申请'}*/}
-                {/*popToLast={() => this.popToLast()}>*/}
-                {/*</HMNavigatorBar>*/}
                 <SwRefreshListView
                     dataSource={this.state.dataSource}
                     ref="listView"
                     renderRow={(rowData) => this.renderRow(rowData)}
-                    onRefresh={() => this.onRefresh(false)}
-                    onLoadMore={() => this.onRefresh(true)}
-                    //其他需要设置的ListView属性
+                    onRefresh={() => this.onRefresh()}
+                    onLoadMore={() => this.onLoadMore()}
                 />
 
                 {this.initLoading()}
@@ -224,28 +189,35 @@ export default class HMApprovalList extends BaseComponent
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'rgba(239,240,243,1.0)',
-    },
-    cellStyle: {
-        width: width,
-        height: 44,
-        backgroundColor: 'white'
-    },
-    header: {
-        height: 64,
-        backgroundColor: '#293447',
-    },
+const
+    styles = StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: 'rgba(239,240,243,1.0)',
+        },
+        cellStyle: {
+            width: width,
+            height: 44,
+            backgroundColor: 'white'
+        },
+        header: {
+            height: 64,
+            backgroundColor: '#293447',
+        },
 
-    separator: {
-        height: 1,
-        backgroundColor: '#CCCCCC',
-    },
-    bottomInnerViewStyle: {}
+        separator: {
+            height: 1,
+            backgroundColor: '#CCCCCC',
+        },
+        bottomInnerViewStyle: {}
 
-});
+    });
 
-AppRegistry.registerComponent('TripGroup', () => TripGroup);
+AppRegistry
+    .registerComponent(
+        'TripGroup'
+        , () =>
+            TripGroup
+    )
+;
 
