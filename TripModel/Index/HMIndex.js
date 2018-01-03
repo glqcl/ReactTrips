@@ -60,8 +60,8 @@ export default class TripGroup extends Component
     {
         if (this.props.titleArray[0] == title)
         {
-            //this.props.navigation.navigate('HMApprovalList');
-            this.props.navigation.navigate('FlatListExample');
+            this.props.navigation.navigate('HMApprovalList');
+            // this.props.navigation.navigate('FlatListExample');
             // this.props.navigator.push({
             //     component: HMApprovalList
             // })

@@ -89,11 +89,19 @@ export default class HMApprovalList extends BaseComponent
         };
     }
 
-    onRefresh(end)
+    onRefresh(isPullUp)
     {
         StorageUtil.getJsonObject('userInfo').then(userInfo =>
         {
-            page = 1;
+            if (isPullUp)
+            {
+                //加载更多
+                page++;
+            }
+            else
+            {
+                page = 1;
+            }
             var tempUrl = `${HMUrlUtils.getTravelList}?user_id=${userInfo.Id}&type=3&page=${page}&pageSize=${pageSize}`;
             var self = this;
             this.showProgress();
@@ -104,75 +112,45 @@ export default class HMApprovalList extends BaseComponent
                 {
                     isFirst = true;
                 }
-                var jsonData = responseText;
-                var jsonArray = jsonData.result;
-                listArray = jsonArray;
+                let jsonData = responseText;
+                let jsonArray = jsonData.result;
+                if (isPullUp)
+                {
+                    //加载更多
+                    listArray = listArray.concat(jsonArray);
+                    if (jsonArray < pageSize)
+                    {
+                        self.refs.listView.setNoMoreData()
+                    }
+                    else
+                    {
+                        self.refs.listView.resetStatus() //重置上拉加载的状态
+                    }
+                }
+                else
+                {
+                    listArray = jsonArray;
+                }
                 self.setState({
                     dataSource: self.state.dataSource.cloneWithRows(listArray),
                 });
 
-                if (jsonArray < pageSize)
-                {
-                    //如果此时刷新的数据就已经是全部数据了，不管怎样都应该将上拉加载组件设置为没有更多数据了的状态 或者通过isShowLoadMore控制其隐藏
-                    this.refs.listView.setNoMoreData() //设置为没有更多数据了的状态
-                } else
-                {
-                    //这里调用resetStatus来重置上拉加载的状态 因为此前可上拉加载组件的状态可能已经是无更多数据了 所以进行状态重置 亦可以通        过state控制isShowLoadMore来控制显示上拉加载视图
-                    this.refs.listView.resetStatus() //重置上拉加载的状态
-                }
-
-                end();
 
             }, function (error)
             {
 
                 self.hideProgress();
                 self.refs.listView.resetStatus() //重置上拉加载的状态
-                end();
+
+                if (isPullUp)
+                {
+
+                    page = page > 1 ? page-- : 1
+                }
+
             });
 
         })
-
-    }
-
-    onLoadMore(end)
-    {
-
-        StorageUtil.getJsonObject('userInfo').then(userInfo =>
-        {
-            page++;
-            var tempUrl = `${HMUrlUtils.getTravelList}?user_id=${userInfo.Id}&type=3&page=${page}&pageSize= ${pageSize}`;
-            var self = this;
-            this.showProgress();
-            NetUitl.get(tempUrl, function (responseText)
-            {
-                self.hideProgress();
-                var jsonData = responseText;
-                var jsonArray = jsonData.result;
-                listArray = listArray.concat(jsonArray);
-                self.setState({
-                    dataSource: self.state.dataSource.cloneWithRows(listArray)
-                })
-                //self.refs.listView.endLoadMore(jsonArray < 20)
-
-                //结束
-                end(jsonArray < 20)
-            }, function (error)
-            {
-                self.hideProgress();
-                self.refs.listView.endRefresh();
-                this.refs.listView.resetStatus() //重置上拉加载的状态
-                if (page > 1)
-                {
-                    page--;
-                }
-            })
-
-
-        })
-
-
-
 
     }
 
@@ -235,8 +213,8 @@ export default class HMApprovalList extends BaseComponent
                     dataSource={this.state.dataSource}
                     ref="listView"
                     renderRow={(rowData) => this.renderRow(rowData)}
-                    onRefresh={(onRefresh) => this.onRefresh(onRefresh)}
-                    onLoadMore={(onLoadMore) => this.onLoadMore(onLoadMore)}
+                    onRefresh={() => this.onRefresh(false)}
+                    onLoadMore={() => this.onRefresh(true)}
                     //其他需要设置的ListView属性
                 />
 

@@ -47725,25 +47725,25 @@ var _HMIndex = require(458               ); // 458 = ../Index/HMIndex
 
 var _HMIndex2 = babelHelpers.interopRequireDefault(_HMIndex);
 
-var _HMLaunchImage = require(575                    ); // 575 = ../Main/HMLaunchImage
+var _HMLaunchImage = require(576                    ); // 576 = ../Main/HMLaunchImage
 
 var _HMLaunchImage2 = babelHelpers.interopRequireDefault(_HMLaunchImage);
 
 var _reactNavigation = require(469               ); // 469 = react-navigation
 
-var _HMPlaneIndex = require(576                    ); // 576 = ../Plane/HMPlaneIndex
+var _HMPlaneIndex = require(577                    ); // 577 = ../Plane/HMPlaneIndex
 
 var _HMPlaneIndex2 = babelHelpers.interopRequireDefault(_HMPlaneIndex);
 
-var _HMApprovalList = require(578                         ); // 578 = ../Approval/HMApprovalList
+var _HMApprovalList = require(579                         ); // 579 = ../Approval/HMApprovalList
 
 var _HMApprovalList2 = babelHelpers.interopRequireDefault(_HMApprovalList);
 
-var _HMApprovalDetail = require(585                           ); // 585 = ../Approval/HMApprovalDetail
+var _HMApprovalDetail = require(586                           ); // 586 = ../Approval/HMApprovalDetail
 
 var _HMApprovalDetail2 = babelHelpers.interopRequireDefault(_HMApprovalDetail);
 
-var _FlatListExample = require(629                          ); // 629 = ../Approval/FlatListExample
+var _FlatListExample = require(630                          ); // 630 = ../Approval/FlatListExample
 
 var _FlatListExample2 = babelHelpers.interopRequireDefault(_FlatListExample);
 
@@ -47887,9 +47887,9 @@ var _HMUrlUtils2 = babelHelpers.interopRequireDefault(_HMUrlUtils);
 
 var _reactNavigation = require(469               ); // 469 = react-navigation
 
-var _DeviceStorage = require(532                           ); // 532 = ../CommonTools/DeviceStorage
+var _StorageUtil = require(532                         ); // 532 = ../CommonTools/StorageUtil
 
-var _DeviceStorage2 = babelHelpers.interopRequireDefault(_DeviceStorage);
+var _StorageUtil2 = babelHelpers.interopRequireDefault(_StorageUtil);
 
 var forge = require(533         ); // 533 = node-forge
 var Dimensions = require(263         ); // 263 = Dimensions
@@ -47900,6 +47900,9 @@ var _Dimensions$get = Dimensions.get('window'),
 
 var LogoSign = '986CD980-17CA-4FF4-A158-6067D2721A56';
 var LogoKey = 'Key=9DE65DF9-84A3-47C4-901A-681443F5591C';
+
+
+var Spinner = require(575                   ); // 575 = react-native-spinkit
 
 var TripGroup = function (_BaseComponent) {
     babelHelpers.inherits(TripGroup, _BaseComponent);
@@ -47912,7 +47915,10 @@ var TripGroup = function (_BaseComponent) {
         _this.state = {
             username: 'YDCS007',
             password: '000000',
-            tempUrl: ''
+            tempUrl: '',
+            size: 100,
+            color: "#FFFFFF",
+            isVisible: true
         };
         return _this;
     }
@@ -47953,7 +47959,8 @@ var TripGroup = function (_BaseComponent) {
                 var Message = responseText.Message;
 
                 if (0 == Code) {
-                    _DeviceStorage2.default.save('userInfo', responseText.Datas);
+                    _StorageUtil2.default.saveJsonObject('userInfo', responseText.Datas);
+
                     self.props.navigation.navigate('HMIndex');
                 } else {
                     self.refs.toast.show(Message);
@@ -47971,33 +47978,33 @@ var TripGroup = function (_BaseComponent) {
                 _reactNative.View,
                 { style: [styles.container], __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 113
+                        lineNumber: 119
                     }
                 },
                 _react2.default.createElement(_reactNative.Image, { source: { uri: 'loginbg' }, style: styles.bgStytle, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 115
+                        lineNumber: 121
                     }
                 }),
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.outerViewStytle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 117
+                            lineNumber: 123
                         }
                     },
                     _react2.default.createElement(
                         _reactNative.View,
                         { style: { alignItems: 'center', width: width, marginTop: 50 }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 119
+                                lineNumber: 125
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.View,
                             { style: styles.innerStytle, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 121
+                                    lineNumber: 127
                                 }
                             },
                             _react2.default.createElement(_reactNative.TextInput, { ref: 'username', placeholder: '\u8BF7\u8F93\u5165\u8D26\u53F7',
@@ -48011,7 +48018,7 @@ var TripGroup = function (_BaseComponent) {
 
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 122
+                                    lineNumber: 128
                                 }
                             }),
                             _react2.default.createElement(_reactNative.TextInput, { ref: 'password',
@@ -48025,7 +48032,7 @@ var TripGroup = function (_BaseComponent) {
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 134
+                                    lineNumber: 140
                                 }
                             }),
                             _react2.default.createElement(
@@ -48036,14 +48043,14 @@ var TripGroup = function (_BaseComponent) {
                                         _this2.login();
                                     }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 146
+                                        lineNumber: 152
                                     }
                                 },
                                 _react2.default.createElement(
                                     _reactNative.Text,
                                     { style: [styles.textStytle, { backgroundColor: 'transparent' }], __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 152
+                                            lineNumber: 158
                                         }
                                     },
                                     '登录'
@@ -48054,14 +48061,14 @@ var TripGroup = function (_BaseComponent) {
                             _reactNative.View,
                             { style: { marginTop: 20, width: width * 0.85, backgroundColor: 'rgba(0,0,0,0)' }, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 155
+                                    lineNumber: 161
                                 }
                             },
                             _react2.default.createElement(
                                 _reactNative.Text,
                                 { style: { color: 'red', fontSize: 12 }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 156
+                                        lineNumber: 162
                                     }
                                 },
                                 '\u5FD8\u8BB0\u5BC6\u7801?'
@@ -48070,7 +48077,7 @@ var TripGroup = function (_BaseComponent) {
                                 _reactNative.Text,
                                 { style: { color: 'gray', fontSize: 12 }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 157
+                                        lineNumber: 163
                                     }
                                 },
                                 '\u8BF7\u4F7F\u7528\u5DEE\u65C5\u5929\u4E0B\u96C6\u56E2\u7248\u8D26\u6237\u767B\u5F55'
@@ -48079,7 +48086,7 @@ var TripGroup = function (_BaseComponent) {
                                 _reactNative.Text,
                                 { style: { color: 'gray', fontSize: 12 }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 158
+                                        lineNumber: 164
                                     }
                                 },
                                 '\u5982\u9700\u5E2E\u52A9,\u53EF\u62E8\u6253\u5BA2\u670D\u7535\u8BDD\uFF1A300-6568-777'
@@ -48087,7 +48094,7 @@ var TripGroup = function (_BaseComponent) {
                         ),
                         _react2.default.createElement(_reactNativeEasyToast2.default, { ref: 'toast', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 161
+                                lineNumber: 167
                             }
                         }),
                         this.initLoading()
@@ -48157,6 +48164,13 @@ var styles = _reactNative.StyleSheet.create({
         textAlign: 'center',
         fontSize: 12,
         color: 'white'
+
+    },
+    spinner: {
+        position: 'absolute',
+        top: height * 0.5,
+        left: width * 0.5,
+        marginBottom: 50
 
     }
 
@@ -53001,7 +53015,7 @@ var TripGroup = function (_Component) {
         key: 'topItemClick',
         value: function topItemClick(title) {
             if (this.props.titleArray[0] == title) {
-                this.props.navigation.navigate('FlatListExample');
+                this.props.navigation.navigate('HMApprovalList');
             }
         }
     }, {
@@ -62465,51 +62479,235 @@ function withNavigation(Component) {
   return (0, _hoistNonReactStatics2.default)(componentWithNavigation, Component);
 }
 }, 531, null, "react-navigation/src/views/withNavigation.js");
-__d(/* TripGroup/TripModel/CommonTools/DeviceStorage.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
+__d(/* TripGroup/TripModel/CommonTools/StorageUtil.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _reactNative2 = babelHelpers.interopRequireDefault(_reactNative);
-
-var DeviceStorage = function () {
-    function DeviceStorage() {
-        babelHelpers.classCallCheck(this, DeviceStorage);
+var StorageUtil = function () {
+    function StorageUtil() {
+        babelHelpers.classCallCheck(this, StorageUtil);
     }
 
-    babelHelpers.createClass(DeviceStorage, null, [{
-        key: 'get',
-        value: function get(key) {
-            return _reactNative.AsyncStorage.getItem(key).then(function (value) {
-                var jsonValue = JSON.parse(value);
-                return jsonValue;
-            });
+    babelHelpers.createClass(StorageUtil, null, [{
+        key: "saveJsonObject",
+        value: function saveJsonObject(key, value) {
+            return regeneratorRuntime.async(function saveJsonObject$(_context) {
+                while (1) {
+                    switch (_context.prev = _context.next) {
+                        case 0:
+                            _context.next = 2;
+                            return regeneratorRuntime.awrap(this.saveString(key, JSON.stringify(value)));
+
+                        case 2:
+                            return _context.abrupt("return", _context.sent);
+
+                        case 3:
+                        case "end":
+                            return _context.stop();
+                    }
+                }
+            }, null, this);
         }
     }, {
-        key: 'save',
-        value: function save(key, value) {
-            return _reactNative.AsyncStorage.setItem(key, JSON.stringify(value));
+        key: "getJsonObject",
+        value: function getJsonObject(key, defaultObject) {
+            var result;
+            return regeneratorRuntime.async(function getJsonObject$(_context2) {
+                while (1) {
+                    switch (_context2.prev = _context2.next) {
+                        case 0:
+                            result = null;
+                            _context2.prev = 1;
+                            _context2.next = 4;
+                            return regeneratorRuntime.awrap(this.getString(key, null));
+
+                        case 4:
+                            result = _context2.sent;
+                            _context2.next = 7;
+                            return regeneratorRuntime.awrap(JSON.parse(result));
+
+                        case 7:
+                            result = _context2.sent;
+                            _context2.next = 17;
+                            break;
+
+                        case 10:
+                            _context2.prev = 10;
+                            _context2.t0 = _context2["catch"](1);
+
+                            if (!defaultObject) {
+                                _context2.next = 16;
+                                break;
+                            }
+
+                            return _context2.abrupt("return", Promise.resolve(defaultObject));
+
+                        case 16:
+                            return _context2.abrupt("return", Promise.reject(_context2.t0));
+
+                        case 17:
+                            return _context2.abrupt("return", result);
+
+                        case 18:
+                        case "end":
+                            return _context2.stop();
+                    }
+                }
+            }, null, this, [[1, 10]]);
         }
     }, {
-        key: 'update',
-        value: function update(key, value) {
-            return DeviceStorage.get(key).then(function (item) {
-                value = typeof value === 'string' ? value : babelHelpers.extends({}, item, value);
-                return _reactNative.AsyncStorage.setItem(key, JSON.stringify(value));
-            });
+        key: "saveString",
+        value: function saveString(key, value) {
+            return regeneratorRuntime.async(function saveString$(_context3) {
+                while (1) {
+                    switch (_context3.prev = _context3.next) {
+                        case 0:
+                            if (!(key != null && value != null)) {
+                                _context3.next = 12;
+                                break;
+                            }
+
+                            _context3.prev = 1;
+                            _context3.next = 4;
+                            return regeneratorRuntime.awrap(_reactNative.AsyncStorage.setItem(key, value));
+
+                        case 4:
+                            _context3.next = 9;
+                            break;
+
+                        case 6:
+                            _context3.prev = 6;
+                            _context3.t0 = _context3["catch"](1);
+                            return _context3.abrupt("return", Promise.reject(_context3.t0));
+
+                        case 9:
+                            return _context3.abrupt("return", Promise.resolve(true));
+
+                        case 12:
+                            return _context3.abrupt("return", Promise.reject({ "msg": "Key and value can not be null" }));
+
+                        case 13:
+                        case "end":
+                            return _context3.stop();
+                    }
+                }
+            }, null, this, [[1, 6]]);
         }
     }, {
-        key: 'delete',
-        value: function _delete(key) {
-            return _reactNative.AsyncStorage.removeItem(key);
+        key: "getString",
+        value: function getString(key, defaultValue) {
+            var result, noDataError;
+            return regeneratorRuntime.async(function getString$(_context4) {
+                while (1) {
+                    switch (_context4.prev = _context4.next) {
+                        case 0:
+                            result = null;
+                            noDataError = { "msg": "No value found !" };
+
+                            if (!(key != null)) {
+                                _context4.next = 9;
+                                break;
+                            }
+
+                            _context4.next = 5;
+                            return regeneratorRuntime.awrap(_reactNative.AsyncStorage.getItem(key));
+
+                        case 5:
+                            result = _context4.sent;
+                            return _context4.abrupt("return", result ? result : defaultValue != null ? defaultValue : Promise.reject(noDataError));
+
+                        case 9:
+                            if (!defaultValue) {
+                                _context4.next = 13;
+                                break;
+                            }
+
+                            return _context4.abrupt("return", Promise.resolve(defaultValue));
+
+                        case 13:
+                            return _context4.abrupt("return", Promise.reject(noDataError));
+
+                        case 14:
+                        case "end":
+                            return _context4.stop();
+                    }
+                }
+            }, null, this);
+        }
+    }, {
+        key: "remove",
+        value: function remove(key) {
+            var result;
+            return regeneratorRuntime.async(function remove$(_context5) {
+                while (1) {
+                    switch (_context5.prev = _context5.next) {
+                        case 0:
+                            result = true;
+                            _context5.prev = 1;
+                            _context5.next = 4;
+                            return regeneratorRuntime.awrap(_reactNative.AsyncStorage.removeItem(key));
+
+                        case 4:
+                            result = _context5.sent;
+                            _context5.next = 10;
+                            break;
+
+                        case 7:
+                            _context5.prev = 7;
+                            _context5.t0 = _context5["catch"](1);
+                            return _context5.abrupt("return", Promise.reject(_context5.t0));
+
+                        case 10:
+                            return _context5.abrupt("return", result);
+
+                        case 11:
+                        case "end":
+                            return _context5.stop();
+                    }
+                }
+            }, null, this, [[1, 7]]);
+        }
+    }, {
+        key: "getAllKeys",
+        value: function getAllKeys() {
+            var result;
+            return regeneratorRuntime.async(function getAllKeys$(_context6) {
+                while (1) {
+                    switch (_context6.prev = _context6.next) {
+                        case 0:
+                            result = true;
+                            _context6.prev = 1;
+                            _context6.next = 4;
+                            return regeneratorRuntime.awrap(_reactNative.AsyncStorage.getAllKeys());
+
+                        case 4:
+                            result = _context6.sent;
+                            _context6.next = 10;
+                            break;
+
+                        case 7:
+                            _context6.prev = 7;
+                            _context6.t0 = _context6["catch"](1);
+                            return _context6.abrupt("return", Promise.reject(_context6.t0));
+
+                        case 10:
+                            return _context6.abrupt("return", result);
+
+                        case 11:
+                        case "end":
+                            return _context6.stop();
+                    }
+                }
+            }, null, this, [[1, 7]]);
         }
     }]);
-    return DeviceStorage;
+    return StorageUtil;
 }();
 
-exports.default = DeviceStorage;
-}, 532, null, "TripGroup/TripModel/CommonTools/DeviceStorage.js");
+exports.default = StorageUtil;
+}, 532, null, "TripGroup/TripModel/CommonTools/StorageUtil.js");
 __d(/* node-forge/lib/index.js */function(global, require, module, exports) {
 module.exports = require(534      ); // 534 = ./forge
 require(535    ); // 535 = ./aes
@@ -79199,6 +79397,94 @@ forge.task.createCondition = function () {
   return cond;
 };
 }, 574, null, "node-forge/lib/task.js");
+__d(/* react-native-spinkit/index.js */function(global, require, module, exports) {var _jsxFileName = '/Users/mac/WebstormProjects/workplace/ReactTrips/node_modules/react-native-spinkit/index.js';
+
+var _react = require(12     ); // 12 = react
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require(45            ); // 45 = react-native
+
+var _reactNative2 = babelHelpers.interopRequireDefault(_reactNative);
+
+var _propTypes = require(419         ); // 419 = prop-types
+
+var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
+
+var NativeModules = _reactNative2.default.NativeModules,
+    processColor = _reactNative2.default.processColor,
+    requireNativeComponent = _reactNative2.default.requireNativeComponent,
+    View = _reactNative2.default.View;
+
+
+var RNSpinkit = null;
+
+var Spinkit = function (_React$Component) {
+	babelHelpers.inherits(Spinkit, _React$Component);
+
+	function Spinkit() {
+		babelHelpers.classCallCheck(this, Spinkit);
+		return babelHelpers.possibleConstructorReturn(this, (Spinkit.__proto__ || Object.getPrototypeOf(Spinkit)).apply(this, arguments));
+	}
+
+	babelHelpers.createClass(Spinkit, [{
+		key: 'render',
+		value: function render() {
+			if (!this.props.isVisible) return _react2.default.createElement(View, {
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 45
+				}
+			});
+
+			var size = { height: this.props.size, width: this.props.size };
+
+			var colorNumber = processColor(this.props.color);
+
+			return _react2.default.createElement(RNSpinkit, {
+				type: String(this.props.type),
+				size: parseInt(this.props.size),
+				color: colorNumber,
+				style: [size, this.props.style], __source: {
+					fileName: _jsxFileName,
+					lineNumber: 57
+				}
+			});
+		}
+	}]);
+	return Spinkit;
+}(_react2.default.Component);
+
+Spinkit.propTypes = {
+	type: _propTypes2.default.string,
+
+	color: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+	size: _propTypes2.default.number,
+	isVisible: _propTypes2.default.bool,
+	testID: _propTypes2.default.string,
+	accessibilityComponentType: _propTypes2.default.string,
+	accessibilityLabel: _propTypes2.default.string,
+	accessibilityLiveRegion: _propTypes2.default.string,
+	renderToHardwareTextureAndroid: _propTypes2.default.bool,
+	importantForAccessibility: _propTypes2.default.string,
+	onLayout: _propTypes2.default.func
+};
+Spinkit.defaultProps = {
+	size: 37,
+	color: "#000000",
+	isVisible: true
+};
+
+NativeModules.RNSpinkit;
+
+RNSpinkit = requireNativeComponent('RNSpinkit', Spinkit, {
+	nativeOnly: {
+		'nativeID': true
+	}
+});
+
+module.exports = Spinkit;
+}, 575, null, "react-native-spinkit/index.js");
 __d(/* TripGroup/TripModel/Main/HMLaunchImage.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -79257,7 +79543,7 @@ var styles = _reactNative.StyleSheet.create({
 });
 
 module.exports = HMLaunchImage;
-}, 575, null, "TripGroup/TripModel/Main/HMLaunchImage.js");
+}, 576, null, "TripGroup/TripModel/Main/HMLaunchImage.js");
 __d(/* TripGroup/TripModel/Plane/HMPlaneIndex.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -79273,7 +79559,7 @@ var _BaseComponent2 = require(466                    ); // 466 = ../Main/BaseCom
 
 var _BaseComponent3 = babelHelpers.interopRequireDefault(_BaseComponent2);
 
-var _HMNavigatorBar = require(577                     ); // 577 = ../Main/HMNavigatorBar
+var _HMNavigatorBar = require(578                     ); // 578 = ../Main/HMNavigatorBar
 
 var _HMNavigatorBar2 = babelHelpers.interopRequireDefault(_HMNavigatorBar);
 
@@ -79426,7 +79712,7 @@ var styles = _reactNative.StyleSheet.create({
 _reactNative.AppRegistry.registerComponent('TripGroup', function () {
     return TripGroup;
 });
-}, 576, null, "TripGroup/TripModel/Plane/HMPlaneIndex.js");
+}, 577, null, "TripGroup/TripModel/Plane/HMPlaneIndex.js");
 __d(/* TripGroup/TripModel/Main/HMNavigatorBar.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -79551,7 +79837,7 @@ var styles = _reactNative.StyleSheet.create({
 _reactNative.AppRegistry.registerComponent('TripGroup', function () {
     return TripGroup;
 });
-}, 577, null, "TripGroup/TripModel/Main/HMNavigatorBar.js");
+}, 578, null, "TripGroup/TripModel/Main/HMNavigatorBar.js");
 __d(/* TripGroup/TripModel/Approval/HMApprovalList.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -79567,21 +79853,17 @@ var _reactNativeLoadingW = require(467                     ); // 467 = react-nat
 
 var _reactNativeLoadingW2 = babelHelpers.interopRequireDefault(_reactNativeLoadingW);
 
-var _reactNativeSwRefresh = require(579                     ); // 579 = react-native-swRefresh
+var _reactNativeSwRefresh = require(580                     ); // 580 = react-native-swRefresh
 
-var _DeviceStorage = require(532                           ); // 532 = ../CommonTools/DeviceStorage
+var _StorageUtil = require(532                         ); // 532 = ../CommonTools/StorageUtil
 
-var _DeviceStorage2 = babelHelpers.interopRequireDefault(_DeviceStorage);
+var _StorageUtil2 = babelHelpers.interopRequireDefault(_StorageUtil);
 
 var _BaseComponent2 = require(466                    ); // 466 = ../Main/BaseComponent
 
 var _BaseComponent3 = babelHelpers.interopRequireDefault(_BaseComponent2);
 
-var _HMNavigatorBar = require(577                     ); // 577 = ../Main/HMNavigatorBar
-
-var _HMNavigatorBar2 = babelHelpers.interopRequireDefault(_HMNavigatorBar);
-
-var _HMListViewItem = require(584                         ); // 584 = ../Approval/HMListViewItem
+var _HMListViewItem = require(585                         ); // 585 = ../Approval/HMListViewItem
 
 var _HMListViewItem2 = babelHelpers.interopRequireDefault(_HMListViewItem);
 
@@ -79593,9 +79875,7 @@ var _NetUitl = require(462                     ); // 462 = ../CommonTools/NetUit
 
 var _NetUitl2 = babelHelpers.interopRequireDefault(_NetUitl);
 
-var Dimensions = require(263         ); // 263 = Dimensions
-
-var _Dimensions$get = Dimensions.get('window'),
+var _Dimensions$get = _reactNative.Dimensions.get('window'),
     width = _Dimensions$get.width,
     height = _Dimensions$get.height;
 
@@ -79658,14 +79938,17 @@ var HMApprovalList = function (_BaseComponent) {
 
     babelHelpers.createClass(HMApprovalList, [{
         key: 'onRefresh',
-        value: function onRefresh(end) {
+        value: function onRefresh(isPullUp) {
             var _this2 = this;
 
-            _DeviceStorage2.default.get('userInfo').then(function (userInfo) {
-                page = 1;
+            _StorageUtil2.default.getJsonObject('userInfo').then(function (userInfo) {
+                if (isPullUp) {
+                    page++;
+                } else {
+                    page = 1;
+                }
                 var tempUrl = _HMUrlUtils2.default.getTravelList + '?user_id=' + userInfo.Id + '&type=3&page=' + page + '&pageSize=' + pageSize;
                 var self = _this2;
-
                 _this2.showProgress();
                 _NetUitl2.default.get(tempUrl, function (responseText) {
                     self.hideProgress();
@@ -79674,52 +79957,27 @@ var HMApprovalList = function (_BaseComponent) {
                     }
                     var jsonData = responseText;
                     var jsonArray = jsonData.result;
-                    listArray = jsonArray;
+                    if (isPullUp) {
+                        listArray = listArray.concat(jsonArray);
+                        if (jsonArray < pageSize) {
+                            self.refs.listView.setNoMoreData();
+                        } else {
+                            self.refs.listView.resetStatus();
+                        }
+                    } else {
+                        listArray = jsonArray;
+                    }
                     self.setState({
                         dataSource: self.state.dataSource.cloneWithRows(listArray)
                     });
-
-                    if (jsonArray < pageSize) {
-                        this.refs.listView.setNoMoreData();
-                    } else {
-                        this.refs.listView.resetStatus();
-                    }
-
-                    end();
                 }, function (error) {
 
                     self.hideProgress();
                     self.refs.listView.resetStatus();
-                    end();
-                });
-            });
-        }
-    }, {
-        key: 'onLoadMore',
-        value: function onLoadMore(end) {
-            var _this3 = this;
 
-            _DeviceStorage2.default.get('userInfo').then(function (userInfo) {
-                page++;
-                var tempUrl = _HMUrlUtils2.default.getTravelList + '?user_id=' + userInfo.Id + '&type=3&page=' + page + '&pageSize= ' + pageSize;
-                var self = _this3;
-                _this3.showProgress();
-                _NetUitl2.default.get(tempUrl, function (responseText) {
-                    self.hideProgress();
-                    var jsonData = responseText;
-                    var jsonArray = jsonData.result;
-                    listArray = listArray.concat(jsonArray);
-                    self.setState({
-                        dataSource: self.state.dataSource.cloneWithRows(listArray)
-                    });
+                    if (isPullUp) {
 
-                    end(jsonArray < 20);
-                }, function (error) {
-                    self.hideProgress();
-                    self.refs.listView.endRefresh();
-                    this.refs.listView.resetStatus();
-                    if (page > 1) {
-                        page--;
+                        page = page > 1 ? page-- : 1;
                     }
                 });
             });
@@ -79744,28 +80002,28 @@ var HMApprovalList = function (_BaseComponent) {
     }, {
         key: 'renderRow',
         value: function renderRow(rowData) {
-            var _this4 = this;
+            var _this3 = this;
 
             return _react2.default.createElement(
                 _reactNative.TouchableOpacity,
                 { activeOpacity: 0.5, onPress: function onPress() {
-                        _this4.pushToNewsDetail(rowData);
+                        _this3.pushToNewsDetail(rowData);
                     }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 212
+                        lineNumber: 191
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.View,
                     { style: styles.cellStyle, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 216
+                            lineNumber: 195
                         }
                     },
                     _react2.default.createElement(_HMListViewItem2.default, {
                         jsonObject: rowData, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 217
+                            lineNumber: 196
                         }
                     })
                 )
@@ -79774,30 +80032,30 @@ var HMApprovalList = function (_BaseComponent) {
     }, {
         key: 'render',
         value: function render() {
-            var _this5 = this;
+            var _this4 = this;
 
             return _react2.default.createElement(
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 227
+                        lineNumber: 206
                     }
                 },
                 _react2.default.createElement(_reactNativeSwRefresh.SwRefreshListView, {
                     dataSource: this.state.dataSource,
                     ref: 'listView',
                     renderRow: function renderRow(rowData) {
-                        return _this5.renderRow(rowData);
+                        return _this4.renderRow(rowData);
                     },
-                    onRefresh: function onRefresh(_onRefresh) {
-                        return _this5.onRefresh(_onRefresh);
+                    onRefresh: function onRefresh() {
+                        return _this4.onRefresh(false);
                     },
-                    onLoadMore: function onLoadMore(_onLoadMore) {
-                        return _this5.onLoadMore(_onLoadMore);
+                    onLoadMore: function onLoadMore() {
+                        return _this4.onRefresh(true);
                     },
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 233
+                        lineNumber: 212
                     }
                 }),
                 this.initLoading()
@@ -79836,33 +80094,33 @@ var styles = _reactNative.StyleSheet.create({
 _reactNative.AppRegistry.registerComponent('TripGroup', function () {
     return TripGroup;
 });
-}, 578, null, "TripGroup/TripModel/Approval/HMApprovalList.js");
+}, 579, null, "TripGroup/TripModel/Approval/HMApprovalList.js");
 __d(/* react-native-swRefresh/index.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.LoadMoreStatus = exports.RefreshStatus = exports.SwRefreshListView = exports.SwRefreshScrollView = undefined;
 
-var _SwRefresh = require(580              ); // 580 = ./lib/SwRefresh
+var _SwRefresh = require(581              ); // 581 = ./lib/SwRefresh
 
 exports.SwRefreshScrollView = _SwRefresh.SwRefreshScrollView;
 exports.SwRefreshListView = _SwRefresh.SwRefreshListView;
 exports.RefreshStatus = _SwRefresh.RefreshStatus;
 exports.LoadMoreStatus = _SwRefresh.LoadMoreStatus;
-}, 579, null, "react-native-swRefresh/index.js");
+}, 580, null, "react-native-swRefresh/index.js");
 __d(/* react-native-swRefresh/lib/SwRefresh.android.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.SwRefreshScrollView = exports.RefreshStatus = exports.LoadMoreStatus = exports.SwRefreshListView = undefined;
 
-var _SwRefreshListView = require(581                  ); // 581 = ./SwRefreshListView
+var _SwRefreshListView = require(582                  ); // 582 = ./SwRefreshListView
 
-var _SwRefreshScrollView = require(583                    ); // 583 = ./SwRefreshScrollView
+var _SwRefreshScrollView = require(584                    ); // 584 = ./SwRefreshScrollView
 
 exports.SwRefreshListView = _SwRefreshListView.SwRefreshListView;
 exports.LoadMoreStatus = _SwRefreshListView.LoadMoreStatus;
 exports.RefreshStatus = _SwRefreshListView.RefreshStatus;
 exports.SwRefreshScrollView = _SwRefreshScrollView.SwRefreshScrollView;
-}, 580, null, "react-native-swRefresh/lib/SwRefresh.android.js");
+}, 581, null, "react-native-swRefresh/lib/SwRefresh.android.js");
 __d(/* react-native-swRefresh/lib/SwRefreshListView.android.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -79875,7 +80133,7 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _Tools = require(582      ); // 582 = ./Tools
+var _Tools = require(583      ); // 583 = ./Tools
 
 var _Tools2 = babelHelpers.interopRequireDefault(_Tools);
 
@@ -80480,7 +80738,7 @@ var footStyles = _reactNative.StyleSheet.create({
   }
 
 });
-}, 581, null, "react-native-swRefresh/lib/SwRefreshListView.android.js");
+}, 582, null, "react-native-swRefresh/lib/SwRefreshListView.android.js");
 __d(/* react-native-swRefresh/lib/Tools.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -80501,7 +80759,7 @@ exports.default = dateFormat = function dateFormat(dateTime, fmt) {
     if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
   }return fmt;
 };
-}, 582, null, "react-native-swRefresh/lib/Tools.js");
+}, 583, null, "react-native-swRefresh/lib/Tools.js");
 __d(/* react-native-swRefresh/lib/SwRefreshScrollView.android.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -80514,7 +80772,7 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _Tools = require(582      ); // 582 = ./Tools
+var _Tools = require(583      ); // 583 = ./Tools
 
 var _Tools2 = babelHelpers.interopRequireDefault(_Tools);
 
@@ -80879,7 +81137,7 @@ var defaultHeaderStyles = _reactNative.StyleSheet.create({
   }
 
 });
-}, 583, null, "react-native-swRefresh/lib/SwRefreshScrollView.android.js");
+}, 584, null, "react-native-swRefresh/lib/SwRefreshScrollView.android.js");
 __d(/* TripGroup/TripModel/Approval/HMListViewItem.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -81023,7 +81281,7 @@ var styles = _reactNative.StyleSheet.create({
 _reactNative.AppRegistry.registerComponent('TripGroup', function () {
     return TripGroup;
 });
-}, 584, null, "TripGroup/TripModel/Approval/HMListViewItem.js");
+}, 585, null, "TripGroup/TripModel/Approval/HMListViewItem.js");
 __d(/* TripGroup/TripModel/Approval/HMApprovalDetail.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -81035,7 +81293,7 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _EventProxy = require(586                        ); // 586 = ../CommonTools/EventProxy
+var _EventProxy = require(587                        ); // 587 = ../CommonTools/EventProxy
 
 var _EventProxy2 = babelHelpers.interopRequireDefault(_EventProxy);
 
@@ -81043,29 +81301,25 @@ var _BaseComponent2 = require(466                    ); // 466 = ../Main/BaseCom
 
 var _BaseComponent3 = babelHelpers.interopRequireDefault(_BaseComponent2);
 
-var _HMApprovalDetailTopItem = require(587                        ); // 587 = ./HMApprovalDetailTopItem
+var _HMApprovalDetailTopItem = require(588                        ); // 588 = ./HMApprovalDetailTopItem
 
 var _HMApprovalDetailTopItem2 = babelHelpers.interopRequireDefault(_HMApprovalDetailTopItem);
 
-var _HMApprovalMiddleItem = require(588                     ); // 588 = ./HMApprovalMiddleItem
+var _HMApprovalMiddleItem = require(589                     ); // 589 = ./HMApprovalMiddleItem
 
 var _HMApprovalMiddleItem2 = babelHelpers.interopRequireDefault(_HMApprovalMiddleItem);
 
-var _HMListViewNextPerson = require(589                     ); // 589 = ./HMListViewNextPerson
+var _HMListViewNextPerson = require(590                     ); // 590 = ./HMListViewNextPerson
 
 var _HMListViewNextPerson2 = babelHelpers.interopRequireDefault(_HMListViewNextPerson);
 
-var _HMListViewBottomItem = require(590                     ); // 590 = ./HMListViewBottomItem
+var _HMListViewBottomItem = require(591                     ); // 591 = ./HMListViewBottomItem
 
 var _HMListViewBottomItem2 = babelHelpers.interopRequireDefault(_HMListViewBottomItem);
 
-var _HMListViewCellItem = require(591                   ); // 591 = ./HMListViewCellItem
+var _HMListViewCellItem = require(592                   ); // 592 = ./HMListViewCellItem
 
 var _HMListViewCellItem2 = babelHelpers.interopRequireDefault(_HMListViewCellItem);
-
-var _HMNavigatorBar = require(577                     ); // 577 = ../Main/HMNavigatorBar
-
-var _HMNavigatorBar2 = babelHelpers.interopRequireDefault(_HMNavigatorBar);
 
 var _HMUrlUtils = require(463                        ); // 463 = ../CommonTools/HMUrlUtils
 
@@ -81075,21 +81329,21 @@ var _NetUitl = require(462                     ); // 462 = ../CommonTools/NetUit
 
 var _NetUitl2 = babelHelpers.interopRequireDefault(_NetUitl);
 
-var _HMAppProcessItem = require(592                           ); // 592 = ../Approval/HMAppProcessItem
+var _HMAppProcessItem = require(593                           ); // 593 = ../Approval/HMAppProcessItem
 
 var _HMAppProcessItem2 = babelHelpers.interopRequireDefault(_HMAppProcessItem);
 
-var _HMCalendar = require(593                        ); // 593 = ../CommonTools/HMCalendar
+var _HMCalendar = require(594                        ); // 594 = ../CommonTools/HMCalendar
 
 var _HMCalendar2 = babelHelpers.interopRequireDefault(_HMCalendar);
 
-var _SelectCity = require(622                     ); // 622 = ../CityList/SelectCity
+var _SelectCity = require(623                     ); // 623 = ../CityList/SelectCity
 
 var _SelectCity2 = babelHelpers.interopRequireDefault(_SelectCity);
 
-var _DeviceStorage = require(532                           ); // 532 = ../CommonTools/DeviceStorage
+var _StorageUtil = require(532                         ); // 532 = ../CommonTools/StorageUtil
 
-var _DeviceStorage2 = babelHelpers.interopRequireDefault(_DeviceStorage);
+var _StorageUtil2 = babelHelpers.interopRequireDefault(_StorageUtil);
 
 var Dimensions = require(263         ); // 263 = Dimensions
 
@@ -81159,8 +81413,8 @@ var HMApprovalDetail = function (_BaseComponent) {
             } else {
                 var tempUrl = _HMUrlUtils2.default.travelApplyDetail + '&user_id=' + rowData.ry_people + '&travel_id=' + rowData.travel_id;
             }
-            _DeviceStorage2.default.get('userInfo').then(function (userInfo) {
 
+            _StorageUtil2.default.getJsonObject('userInfo').then(function (userInfo) {
                 var cellArray = [];
                 var self = _this2;
                 _this2.showProgress();
@@ -81175,7 +81429,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                             _reactNative.View,
                             { key: i, style: styles.cellViewStytle, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 129
+                                    lineNumber: 131
                                 }
                             },
                             _react2.default.createElement(_HMListViewCellItem2.default, { key: i,
@@ -81185,7 +81439,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                                 jsonObject: obj,
                                 position: i, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 130
+                                    lineNumber: 132
                                 }
                             })
                         ));
@@ -81290,7 +81544,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                             obj: obj,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 271
+                                lineNumber: 275
                             }
                         }));
                     }
@@ -81316,7 +81570,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                     _reactNative.View,
                     { style: { flexDirection: 'row', height: 40, width: width }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 299
+                            lineNumber: 303
                         }
                     },
                     _react2.default.createElement(
@@ -81326,14 +81580,14 @@ var HMApprovalDetail = function (_BaseComponent) {
                                 return _this3.renderApply();
                             }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 300
+                                lineNumber: 304
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.View,
                             { style: { width: width * 0.5, height: 40, backgroundColor: 'rgb(17,33,49)' }, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 302
+                                    lineNumber: 306
                                 }
                             },
                             _react2.default.createElement(
@@ -81346,7 +81600,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                                         textAlign: 'center'
                                     }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 303
+                                        lineNumber: 307
                                     }
                                 },
                                 '我的申请单'
@@ -81360,14 +81614,14 @@ var HMApprovalDetail = function (_BaseComponent) {
                                 return _this3.renderCreate();
                             }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 313
+                                lineNumber: 317
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.View,
                             { style: { width: width * 0.5, height: 40, backgroundColor: 'rgb(192,65,38)' }, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 315
+                                    lineNumber: 319
                                 }
                             },
                             _react2.default.createElement(
@@ -81379,7 +81633,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                                         textAlign: 'center'
                                     }, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 316
+                                        lineNumber: 320
                                     }
                                 },
                                 '创建申请单'
@@ -81393,7 +81647,7 @@ var HMApprovalDetail = function (_BaseComponent) {
                 _reactNative.View,
                 { style: styles.container, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 329
+                        lineNumber: 333
                     }
                 },
                 _react2.default.createElement(
@@ -81403,13 +81657,13 @@ var HMApprovalDetail = function (_BaseComponent) {
                         horizontal: false,
                         style: { height: height, flex: 1 }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 335
+                            lineNumber: 339
                         }
                     },
                     _react2.default.createElement(_HMApprovalDetailTopItem2.default, {
                         jsonObject: this.state.jsonObject, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 339
+                            lineNumber: 343
                         }
                     }),
                     _react2.default.createElement(_HMApprovalMiddleItem2.default, {
@@ -81418,14 +81672,14 @@ var HMApprovalDetail = function (_BaseComponent) {
                         },
                         jsonObject: this.state.jsonObject, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 342
+                            lineNumber: 346
                         }
                     }),
                     _react2.default.createElement(
                         _reactNative.View,
                         { style: { backgroundColor: 'rgba(239,240,243,1.0)', width: width, marginBottom: 5 }, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 349
+                                lineNumber: 353
                             }
                         },
                         this.state.dataSource
@@ -81434,13 +81688,13 @@ var HMApprovalDetail = function (_BaseComponent) {
                         remars: this.state.remars,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 353
+                            lineNumber: 357
                         }
                     }),
                     _react2.default.createElement(_HMListViewNextPerson2.default, {
                         nextPerson: this.state.nextPerson, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 356
+                            lineNumber: 360
                         }
                     }),
                     _react2.default.createElement(
@@ -81451,14 +81705,14 @@ var HMApprovalDetail = function (_BaseComponent) {
                             horizontal: true,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 360
+                                lineNumber: 364
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.View,
                             { style: { flexDirection: 'row' }, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 365
+                                    lineNumber: 369
                                 }
                             },
                             this.state.progressArray
@@ -81526,7 +81780,7 @@ var styles = _reactNative.StyleSheet.create({
 _reactNative.AppRegistry.registerComponent('TripGroup', function () {
     return TripGroup;
 });
-}, 585, null, "TripGroup/TripModel/Approval/HMApprovalDetail.js");
+}, 586, null, "TripGroup/TripModel/Approval/HMApprovalDetail.js");
 __d(/* TripGroup/TripModel/CommonTools/EventProxy.js */function(global, require, module, exports) {
 'use strict';
 
@@ -81579,7 +81833,7 @@ var EventProxy = {
 };
 
 exports.default = EventProxy;
-}, 586, null, "TripGroup/TripModel/CommonTools/EventProxy.js");
+}, 587, null, "TripGroup/TripModel/CommonTools/EventProxy.js");
 __d(/* TripGroup/TripModel/Approval/HMApprovalDetailTopItem.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -81777,7 +82031,7 @@ var styles = _reactNative.StyleSheet.create({
 _reactNative.AppRegistry.registerComponent('TripGroup', function () {
     return TripGroup;
 });
-}, 587, null, "TripGroup/TripModel/Approval/HMApprovalDetailTopItem.js");
+}, 588, null, "TripGroup/TripModel/Approval/HMApprovalDetailTopItem.js");
 __d(/* TripGroup/TripModel/Approval/HMApprovalMiddleItem.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -81959,7 +82213,7 @@ var styles = _reactNative.StyleSheet.create({
 _reactNative.AppRegistry.registerComponent('TripGroup', function () {
     return TripGroup;
 });
-}, 588, null, "TripGroup/TripModel/Approval/HMApprovalMiddleItem.js");
+}, 589, null, "TripGroup/TripModel/Approval/HMApprovalMiddleItem.js");
 __d(/* TripGroup/TripModel/Approval/HMListViewNextPerson.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -82055,7 +82309,7 @@ var styles = _reactNative.StyleSheet.create({
 _reactNative.AppRegistry.registerComponent('TripGroup', function () {
     return TripGroup;
 });
-}, 589, null, "TripGroup/TripModel/Approval/HMListViewNextPerson.js");
+}, 590, null, "TripGroup/TripModel/Approval/HMListViewNextPerson.js");
 __d(/* TripGroup/TripModel/Approval/HMListViewBottomItem.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -82174,7 +82428,7 @@ var styles = _reactNative.StyleSheet.create({
 _reactNative.AppRegistry.registerComponent('TripGroup', function () {
     return TripGroup;
 });
-}, 590, null, "TripGroup/TripModel/Approval/HMListViewBottomItem.js");
+}, 591, null, "TripGroup/TripModel/Approval/HMListViewBottomItem.js");
 __d(/* TripGroup/TripModel/Approval/HMListViewCellItem.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -82186,7 +82440,7 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _EventProxy = require(586                        ); // 586 = ../CommonTools/EventProxy
+var _EventProxy = require(587                        ); // 587 = ../CommonTools/EventProxy
 
 var _EventProxy2 = babelHelpers.interopRequireDefault(_EventProxy);
 
@@ -82537,7 +82791,7 @@ var styles = _reactNative.StyleSheet.create({
 _reactNative.AppRegistry.registerComponent('TripGroup', function () {
     return TripGroup;
 });
-}, 591, null, "TripGroup/TripModel/Approval/HMListViewCellItem.js");
+}, 592, null, "TripGroup/TripModel/Approval/HMListViewCellItem.js");
 __d(/* TripGroup/TripModel/Approval/HMAppProcessItem.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -82683,7 +82937,7 @@ var styles = _reactNative.StyleSheet.create({
 _reactNative.AppRegistry.registerComponent('TripGroup', function () {
     return TripGroup;
 });
-}, 592, null, "TripGroup/TripModel/Approval/HMAppProcessItem.js");
+}, 593, null, "TripGroup/TripModel/Approval/HMAppProcessItem.js");
 __d(/* TripGroup/TripModel/CommonTools/HMCalendar.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -82695,7 +82949,7 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _reactNativeCalendars = require(594                     ); // 594 = react-native-calendars
+var _reactNativeCalendars = require(595                     ); // 595 = react-native-calendars
 
 var holiday = {
     '2015-10-1': '国庆节',
@@ -82798,12 +83052,12 @@ var styles = _reactNative.StyleSheet.create({
 _reactNative.AppRegistry.registerComponent('TripGroup', function () {
     return TripGroup;
 });
-}, 593, null, "TripGroup/TripModel/CommonTools/HMCalendar.js");
+}, 594, null, "TripGroup/TripModel/CommonTools/HMCalendar.js");
 __d(/* react-native-calendars/src/index.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _calendar = require(595         ); // 595 = ./calendar
+var _calendar = require(596         ); // 596 = ./calendar
 
 Object.defineProperty(exports, 'Calendar', {
   enumerable: true,
@@ -82812,7 +83066,7 @@ Object.defineProperty(exports, 'Calendar', {
   }
 });
 
-var _calendarList = require(612              ); // 612 = ./calendar-list
+var _calendarList = require(613              ); // 613 = ./calendar-list
 
 Object.defineProperty(exports, 'CalendarList', {
   enumerable: true,
@@ -82821,7 +83075,7 @@ Object.defineProperty(exports, 'CalendarList', {
   }
 });
 
-var _agenda = require(615       ); // 615 = ./agenda
+var _agenda = require(616       ); // 616 = ./agenda
 
 Object.defineProperty(exports, 'Agenda', {
   enumerable: true,
@@ -82830,7 +83084,7 @@ Object.defineProperty(exports, 'Agenda', {
   }
 });
 
-var _xdate = require(596    ); // 596 = xdate
+var _xdate = require(597    ); // 597 = xdate
 
 Object.defineProperty(exports, 'LocaleConfig', {
   enumerable: true,
@@ -82838,7 +83092,7 @@ Object.defineProperty(exports, 'LocaleConfig', {
     return babelHelpers.interopRequireDefault(_xdate).default;
   }
 });
-}, 594, null, "react-native-calendars/src/index.js");
+}, 595, null, "react-native-calendars/src/index.js");
 __d(/* react-native-calendars/src/calendar/index.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -82854,37 +83108,37 @@ var _propTypes = require(419         ); // 419 = prop-types
 
 var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
 
-var _xdate = require(596    ); // 596 = xdate
+var _xdate = require(597    ); // 597 = xdate
 
 var _xdate2 = babelHelpers.interopRequireDefault(_xdate);
 
-var _dateutils = require(597           ); // 597 = ../dateutils
+var _dateutils = require(598           ); // 598 = ../dateutils
 
 var _dateutils2 = babelHelpers.interopRequireDefault(_dateutils);
 
-var _interface = require(598           ); // 598 = ../interface
+var _interface = require(599           ); // 599 = ../interface
 
-var _style = require(599      ); // 599 = ./style
+var _style = require(600      ); // 600 = ./style
 
 var _style2 = babelHelpers.interopRequireDefault(_style);
 
-var _basic = require(601          ); // 601 = ./day/basic
+var _basic = require(602          ); // 602 = ./day/basic
 
 var _basic2 = babelHelpers.interopRequireDefault(_basic);
 
-var _period = require(603           ); // 603 = ./day/period
+var _period = require(604           ); // 604 = ./day/period
 
 var _period2 = babelHelpers.interopRequireDefault(_period);
 
-var _multiDot = require(605              ); // 605 = ./day/multi-dot
+var _multiDot = require(606              ); // 606 = ./day/multi-dot
 
 var _multiDot2 = babelHelpers.interopRequireDefault(_multiDot);
 
-var _header = require(607       ); // 607 = ./header
+var _header = require(608       ); // 608 = ./header
 
 var _header2 = babelHelpers.interopRequireDefault(_header);
 
-var _updater = require(611        ); // 611 = ./updater
+var _updater = require(612        ); // 612 = ./updater
 
 var _updater2 = babelHelpers.interopRequireDefault(_updater);
 
@@ -83157,7 +83411,7 @@ Calendar.propTypes = {
   disabledByDefault: _propTypes2.default.bool
 };
 exports.default = Calendar;
-}, 595, null, "react-native-calendars/src/calendar/index.js");
+}, 596, null, "react-native-calendars/src/calendar/index.js");
 __d(/* xdate/src/xdate.js */function(global, require, module, exports) {/**
  * @preserve XDate v@VERSION
  * Docs & Licensing: http://arshaw.com/xdate/
@@ -83771,8 +84025,8 @@ var XDate = function (Date, Math, Array, undefined) {
 
 	return XDate;
 }(Date, Math, Array);
-}, 596, null, "xdate/src/xdate.js");
-__d(/* react-native-calendars/src/dateutils.js */function(global, require, module, exports) {var XDate = require(596    ); // 596 = xdate
+}, 597, null, "xdate/src/xdate.js");
+__d(/* react-native-calendars/src/dateutils.js */function(global, require, module, exports) {var XDate = require(597    ); // 597 = xdate
 
 function sameMonth(a, b) {
   return a instanceof XDate && b instanceof XDate && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth();
@@ -83864,8 +84118,8 @@ module.exports = {
   isLTE: isLTE,
   isGTE: isGTE
 };
-}, 597, null, "react-native-calendars/src/dateutils.js");
-__d(/* react-native-calendars/src/interface.js */function(global, require, module, exports) {var XDate = require(596    ); // 596 = xdate
+}, 598, null, "react-native-calendars/src/dateutils.js");
+__d(/* react-native-calendars/src/interface.js */function(global, require, module, exports) {var XDate = require(597    ); // 597 = xdate
 
 function padNumber(n) {
   if (n < 10) {
@@ -83907,7 +84161,7 @@ module.exports = {
   xdateToData: xdateToData,
   parseDate: parseDate
 };
-}, 598, null, "react-native-calendars/src/interface.js");
+}, 599, null, "react-native-calendars/src/interface.js");
 __d(/* react-native-calendars/src/calendar/style.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -83915,7 +84169,7 @@ exports.default = getStyle;
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _style = require(600       ); // 600 = ../style
+var _style = require(601       ); // 601 = ../style
 
 var defaultStyle = babelHelpers.interopRequireWildcard(_style);
 
@@ -83941,7 +84195,7 @@ function getStyle() {
     }
   }, theme[STYLESHEET_ID] || {}));
 }
-}, 599, null, "react-native-calendars/src/calendar/style.js");
+}, 600, null, "react-native-calendars/src/calendar/style.js");
 __d(/* react-native-calendars/src/style.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -83985,7 +84239,7 @@ var agendaDayTextColor = exports.agendaDayTextColor = '#7a92a5';
 var agendaDayNumColor = exports.agendaDayNumColor = '#7a92a5';
 var agendaTodayColor = exports.agendaTodayColor = textLinkColor;
 var agendaKnobColor = exports.agendaKnobColor = _reactNative.Platform.OS === 'ios' ? '#f2F4f5' : '#4ac4f7';
-}, 600, null, "react-native-calendars/src/style.js");
+}, 601, null, "react-native-calendars/src/style.js");
 __d(/* react-native-calendars/src/calendar/day/basic/index.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -84001,7 +84255,7 @@ var _propTypes = require(419         ); // 419 = prop-types
 
 var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
 
-var _style = require(602      ); // 602 = ./style
+var _style = require(603      ); // 603 = ./style
 
 var _style2 = babelHelpers.interopRequireDefault(_style);
 
@@ -84116,7 +84370,7 @@ Day.propTypes = {
   date: _propTypes2.default.object
 };
 exports.default = Day;
-}, 601, null, "react-native-calendars/src/calendar/day/basic/index.js");
+}, 602, null, "react-native-calendars/src/calendar/day/basic/index.js");
 __d(/* react-native-calendars/src/calendar/day/basic/style.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -84124,7 +84378,7 @@ exports.default = styleConstructor;
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _style = require(600             ); // 600 = ../../../style
+var _style = require(601             ); // 601 = ../../../style
 
 var defaultStyle = babelHelpers.interopRequireWildcard(_style);
 
@@ -84181,7 +84435,7 @@ function styleConstructor() {
     }
   }, theme[STYLESHEET_ID] || {}));
 }
-}, 602, null, "react-native-calendars/src/calendar/day/basic/style.js");
+}, 603, null, "react-native-calendars/src/calendar/day/basic/style.js");
 __d(/* react-native-calendars/src/calendar/day/period/index.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -84197,11 +84451,11 @@ var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _style = require(600             ); // 600 = ../../../style
+var _style = require(601             ); // 601 = ../../../style
 
 var defaultStyle = babelHelpers.interopRequireWildcard(_style);
 
-var _style2 = require(604      ); // 604 = ./style
+var _style2 = require(605      ); // 605 = ./style
 
 var _style3 = babelHelpers.interopRequireDefault(_style2);
 
@@ -84447,7 +84701,7 @@ Day.propTypes = {
   markingExists: _propTypes2.default.bool
 };
 exports.default = Day;
-}, 603, null, "react-native-calendars/src/calendar/day/period/index.js");
+}, 604, null, "react-native-calendars/src/calendar/day/period/index.js");
 __d(/* react-native-calendars/src/calendar/day/period/style.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -84455,7 +84709,7 @@ exports.default = styleConstructor;
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _style = require(600             ); // 600 = ../../../style
+var _style = require(601             ); // 601 = ../../../style
 
 var defaultStyle = babelHelpers.interopRequireWildcard(_style);
 
@@ -84530,7 +84784,7 @@ function styleConstructor() {
     }
   }, theme[STYLESHEET_ID] || {}));
 }
-}, 604, null, "react-native-calendars/src/calendar/day/period/style.js");
+}, 605, null, "react-native-calendars/src/calendar/day/period/style.js");
 __d(/* react-native-calendars/src/calendar/day/multi-dot/index.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -84546,7 +84800,7 @@ var _propTypes = require(419         ); // 419 = prop-types
 
 var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
 
-var _style = require(606      ); // 606 = ./style
+var _style = require(607      ); // 607 = ./style
 
 var _style2 = babelHelpers.interopRequireDefault(_style);
 
@@ -84669,7 +84923,7 @@ Day.propTypes = {
   date: _propTypes2.default.object
 };
 exports.default = Day;
-}, 605, null, "react-native-calendars/src/calendar/day/multi-dot/index.js");
+}, 606, null, "react-native-calendars/src/calendar/day/multi-dot/index.js");
 __d(/* react-native-calendars/src/calendar/day/multi-dot/style.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -84677,7 +84931,7 @@ exports.default = styleConstructor;
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _style = require(600             ); // 600 = ../../../style
+var _style = require(601             ); // 601 = ../../../style
 
 var defaultStyle = babelHelpers.interopRequireWildcard(_style);
 
@@ -84736,7 +84990,7 @@ function styleConstructor() {
     }
   }, theme[STYLESHEET_ID] || {}));
 }
-}, 606, null, "react-native-calendars/src/calendar/day/multi-dot/style.js");
+}, 607, null, "react-native-calendars/src/calendar/day/multi-dot/style.js");
 __d(/* react-native-calendars/src/calendar/header/index.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -84748,7 +85002,7 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _xdate = require(596    ); // 596 = xdate
+var _xdate = require(597    ); // 597 = xdate
 
 var _xdate2 = babelHelpers.interopRequireDefault(_xdate);
 
@@ -84756,11 +85010,11 @@ var _propTypes = require(419         ); // 419 = prop-types
 
 var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
 
-var _style = require(608      ); // 608 = ./style
+var _style = require(609      ); // 609 = ./style
 
 var _style2 = babelHelpers.interopRequireDefault(_style);
 
-var _dateutils = require(597              ); // 597 = ../../dateutils
+var _dateutils = require(598              ); // 598 = ../../dateutils
 
 var CalendarHeader = function (_Component) {
   babelHelpers.inherits(CalendarHeader, _Component);
@@ -84827,7 +85081,7 @@ var CalendarHeader = function (_Component) {
             }
           },
           this.props.renderArrow ? this.props.renderArrow('left') : _react2.default.createElement(_reactNative.Image, {
-            source: require(609                  ), // 609 = ../img/previous.png
+            source: require(610                  ), // 610 = ../img/previous.png
             style: this.style.arrowImage,
             __source: {
               fileName: _jsxFileName,
@@ -84843,7 +85097,7 @@ var CalendarHeader = function (_Component) {
             }
           },
           this.props.renderArrow ? this.props.renderArrow('right') : _react2.default.createElement(_reactNative.Image, {
-            source: require(610              ), // 610 = ../img/next.png
+            source: require(611              ), // 611 = ../img/next.png
             style: this.style.arrowImage,
             __source: {
               fileName: _jsxFileName,
@@ -84933,7 +85187,7 @@ CalendarHeader.propTypes = {
   hideDayNames: _propTypes2.default.bool
 };
 exports.default = CalendarHeader;
-}, 607, null, "react-native-calendars/src/calendar/header/index.js");
+}, 608, null, "react-native-calendars/src/calendar/header/index.js");
 __d(/* react-native-calendars/src/calendar/header/style.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -84987,23 +85241,23 @@ exports.default = function () {
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _style = require(600          ); // 600 = ../../style
+var _style = require(601          ); // 601 = ../../style
 
 var defaultStyle = babelHelpers.interopRequireWildcard(_style);
 
 
 var STYLESHEET_ID = 'stylesheet.calendar.header';
-}, 608, null, "react-native-calendars/src/calendar/header/style.js");
+}, 609, null, "react-native-calendars/src/calendar/header/style.js");
 __d(/* react-native-calendars/src/calendar/img/previous.png */function(global, require, module, exports) {module.exports = require(277                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/node_modules/react-native-calendars/src/calendar/img","width":24,"height":24,"scales":[1.5,2,3,4],"hash":"4406f62d93a5ca591c3b7a97bdd7712f","name":"previous","type":"png"}); // 277 = react-native/Libraries/Image/AssetRegistry
-}, 609, null, "react-native-calendars/src/calendar/img/previous.png");
+}, 610, null, "react-native-calendars/src/calendar/img/previous.png");
 __d(/* react-native-calendars/src/calendar/img/next.png */function(global, require, module, exports) {module.exports = require(277                                         ).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/node_modules/react-native-calendars/src/calendar/img","width":24,"height":24,"scales":[1.5,2,3,4],"hash":"b70ab45a87cc0c5293f206606f5c2be0","name":"next","type":"png"}); // 277 = react-native/Libraries/Image/AssetRegistry
-}, 610, null, "react-native-calendars/src/calendar/img/next.png");
+}, 611, null, "react-native-calendars/src/calendar/img/next.png");
 __d(/* react-native-calendars/src/calendar/updater.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = shouldComponentUpdate;
 
-var _interface = require(598           ); // 598 = ../interface
+var _interface = require(599           ); // 599 = ../interface
 
 function shouldComponentUpdate(nextProps, nextState) {
   var _this = this;
@@ -85056,7 +85310,7 @@ function shouldComponentUpdate(nextProps, nextState) {
 
   return shouldUpdate.update;
 }
-}, 611, null, "react-native-calendars/src/calendar/updater.js");
+}, 612, null, "react-native-calendars/src/calendar/updater.js");
 __d(/* react-native-calendars/src/calendar-list/index.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -85072,25 +85326,25 @@ var _propTypes = require(419         ); // 419 = prop-types
 
 var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
 
-var _xdate = require(596    ); // 596 = xdate
+var _xdate = require(597    ); // 597 = xdate
 
 var _xdate2 = babelHelpers.interopRequireDefault(_xdate);
 
-var _interface = require(598           ); // 598 = ../interface
+var _interface = require(599           ); // 599 = ../interface
 
-var _style = require(613      ); // 613 = ./style
+var _style = require(614      ); // 614 = ./style
 
 var _style2 = babelHelpers.interopRequireDefault(_style);
 
-var _dateutils = require(597           ); // 597 = ../dateutils
+var _dateutils = require(598           ); // 598 = ../dateutils
 
 var _dateutils2 = babelHelpers.interopRequireDefault(_dateutils);
 
-var _calendar = require(595          ); // 595 = ../calendar
+var _calendar = require(596          ); // 596 = ../calendar
 
 var _calendar2 = babelHelpers.interopRequireDefault(_calendar);
 
-var _item = require(614     ); // 614 = ./item
+var _item = require(615     ); // 615 = ./item
 
 var _item2 = babelHelpers.interopRequireDefault(_item);
 
@@ -85291,7 +85545,7 @@ CalendarList.propTypes = babelHelpers.extends({}, _calendar2.default.propTypes, 
   showScrollIndicator: _propTypes2.default.bool
 });
 exports.default = CalendarList;
-}, 612, null, "react-native-calendars/src/calendar-list/index.js");
+}, 613, null, "react-native-calendars/src/calendar-list/index.js");
 __d(/* react-native-calendars/src/calendar-list/style.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -85299,7 +85553,7 @@ exports.default = getStyle;
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _style = require(600       ); // 600 = ../style
+var _style = require(601       ); // 601 = ../style
 
 var defaultStyle = babelHelpers.interopRequireWildcard(_style);
 
@@ -85330,7 +85584,7 @@ function getStyle() {
     }
   }, theme[STYLESHEET_ID] || {}));
 }
-}, 613, null, "react-native-calendars/src/calendar-list/style.js");
+}, 614, null, "react-native-calendars/src/calendar-list/style.js");
 __d(/* react-native-calendars/src/calendar-list/item.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -85342,11 +85596,11 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _calendar = require(595          ); // 595 = ../calendar
+var _calendar = require(596          ); // 596 = ../calendar
 
 var _calendar2 = babelHelpers.interopRequireDefault(_calendar);
 
-var _style = require(613      ); // 613 = ./style
+var _style = require(614      ); // 614 = ./style
 
 var _style2 = babelHelpers.interopRequireDefault(_style);
 
@@ -85423,7 +85677,7 @@ var CalendarListItem = function (_Component) {
 }(_react.Component);
 
 exports.default = CalendarListItem;
-}, 614, null, "react-native-calendars/src/calendar-list/item.js");
+}, 615, null, "react-native-calendars/src/calendar-list/item.js");
 __d(/* react-native-calendars/src/agenda/index.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -85439,29 +85693,29 @@ var _propTypes = require(419         ); // 419 = prop-types
 
 var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
 
-var _xdate = require(596    ); // 596 = xdate
+var _xdate = require(597    ); // 597 = xdate
 
 var _xdate2 = babelHelpers.interopRequireDefault(_xdate);
 
-var _interface = require(598           ); // 598 = ../interface
+var _interface = require(599           ); // 599 = ../interface
 
-var _dateutils = require(597           ); // 597 = ../dateutils
+var _dateutils = require(598           ); // 598 = ../dateutils
 
 var _dateutils2 = babelHelpers.interopRequireDefault(_dateutils);
 
-var _calendarList = require(612               ); // 612 = ../calendar-list
+var _calendarList = require(613               ); // 613 = ../calendar-list
 
 var _calendarList2 = babelHelpers.interopRequireDefault(_calendarList);
 
-var _reservationList = require(616                 ); // 616 = ./reservation-list
+var _reservationList = require(617                 ); // 617 = ./reservation-list
 
 var _reservationList2 = babelHelpers.interopRequireDefault(_reservationList);
 
-var _style = require(619      ); // 619 = ./style
+var _style = require(620      ); // 620 = ./style
 
 var _style2 = babelHelpers.interopRequireDefault(_style);
 
-var _input = require(621       ); // 621 = ../input
+var _input = require(622       ); // 622 = ../input
 
 var HEADER_HEIGHT = 104;
 var KNOB_HEIGHT = 24;
@@ -85967,7 +86221,7 @@ AgendaView.propTypes = {
   monthFormat: _propTypes2.default.string
 };
 exports.default = AgendaView;
-}, 615, null, "react-native-calendars/src/agenda/index.js");
+}, 616, null, "react-native-calendars/src/agenda/index.js");
 __d(/* react-native-calendars/src/agenda/reservation-list/index.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -85979,7 +86233,7 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _reservation = require(617            ); // 617 = ./reservation
+var _reservation = require(618            ); // 618 = ./reservation
 
 var _reservation2 = babelHelpers.interopRequireDefault(_reservation);
 
@@ -85987,15 +86241,15 @@ var _propTypes = require(419         ); // 419 = prop-types
 
 var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
 
-var _xdate = require(596    ); // 596 = xdate
+var _xdate = require(597    ); // 597 = xdate
 
 var _xdate2 = babelHelpers.interopRequireDefault(_xdate);
 
-var _dateutils = require(597              ); // 597 = ../../dateutils
+var _dateutils = require(598              ); // 598 = ../../dateutils
 
 var _dateutils2 = babelHelpers.interopRequireDefault(_dateutils);
 
-var _style = require(618      ); // 618 = ./style
+var _style = require(619      ); // 619 = ./style
 
 var _style2 = babelHelpers.interopRequireDefault(_style);
 
@@ -86229,7 +86483,7 @@ ReactComp.propTypes = {
   topDay: _propTypes2.default.instanceOf(_xdate2.default)
 };
 exports.default = ReactComp;
-}, 616, null, "react-native-calendars/src/agenda/reservation-list/index.js");
+}, 617, null, "react-native-calendars/src/agenda/reservation-list/index.js");
 __d(/* react-native-calendars/src/agenda/reservation-list/reservation.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -86241,17 +86495,17 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _interface = require(598              ); // 598 = ../../interface
+var _interface = require(599              ); // 599 = ../../interface
 
-var _xdate = require(596    ); // 596 = xdate
+var _xdate = require(597    ); // 597 = xdate
 
 var _xdate2 = babelHelpers.interopRequireDefault(_xdate);
 
-var _dateutils = require(597              ); // 597 = ../../dateutils
+var _dateutils = require(598              ); // 598 = ../../dateutils
 
 var _dateutils2 = babelHelpers.interopRequireDefault(_dateutils);
 
-var _style = require(618      ); // 618 = ./style
+var _style = require(619      ); // 619 = ./style
 
 var _style2 = babelHelpers.interopRequireDefault(_style);
 
@@ -86368,7 +86622,7 @@ var ReservationListItem = function (_Component) {
 }(_react.Component);
 
 exports.default = ReservationListItem;
-}, 617, null, "react-native-calendars/src/agenda/reservation-list/reservation.js");
+}, 618, null, "react-native-calendars/src/agenda/reservation-list/reservation.js");
 __d(/* react-native-calendars/src/agenda/reservation-list/style.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -86376,7 +86630,7 @@ exports.default = styleConstructor;
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _style = require(600          ); // 600 = ../../style
+var _style = require(601          ); // 601 = ../../style
 
 var defaultStyle = babelHelpers.interopRequireWildcard(_style);
 
@@ -86414,7 +86668,7 @@ function styleConstructor() {
     }
   }, theme[STYLESHEET_ID] || {}));
 }
-}, 618, null, "react-native-calendars/src/agenda/reservation-list/style.js");
+}, 619, null, "react-native-calendars/src/agenda/reservation-list/style.js");
 __d(/* react-native-calendars/src/agenda/style.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -86422,11 +86676,11 @@ exports.default = styleConstructor;
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _style = require(600       ); // 600 = ../style
+var _style = require(601       ); // 601 = ../style
 
 var defaultStyle = babelHelpers.interopRequireWildcard(_style);
 
-var _platformStyle = require(620               ); // 620 = ./platform-style
+var _platformStyle = require(621               ); // 621 = ./platform-style
 
 var _platformStyle2 = babelHelpers.interopRequireDefault(_platformStyle);
 
@@ -86479,7 +86733,7 @@ function styleConstructor() {
     }
   }, theme[STYLESHEET_ID] || {}));
 }
-}, 619, null, "react-native-calendars/src/agenda/style.js");
+}, 620, null, "react-native-calendars/src/agenda/style.js");
 __d(/* react-native-calendars/src/agenda/platform-style.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -86508,7 +86762,7 @@ function platformStyles(appStyle) {
     }
   };
 }
-}, 620, null, "react-native-calendars/src/agenda/platform-style.js");
+}, 621, null, "react-native-calendars/src/agenda/platform-style.js");
 __d(/* react-native-calendars/src/input.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -86554,7 +86808,7 @@ var VelocityTracker = exports.VelocityTracker = function () {
   }]);
   return VelocityTracker;
 }();
-}, 621, null, "react-native-calendars/src/input.js");
+}, 622, null, "react-native-calendars/src/input.js");
 __d(/* TripGroup/TripModel/CityList/SelectCity.js */function(global, require, module, exports) {'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -86568,27 +86822,27 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _Header = require(623       ); // 623 = ./Header
+var _Header = require(624       ); // 624 = ./Header
 
 var _Header2 = babelHelpers.interopRequireDefault(_Header);
 
-var _SearchBox = require(624          ); // 624 = ./SearchBox
+var _SearchBox = require(625          ); // 625 = ./SearchBox
 
 var _SearchBox2 = babelHelpers.interopRequireDefault(_SearchBox);
 
-var _SearchResult = require(625             ); // 625 = ./SearchResult
+var _SearchResult = require(626             ); // 626 = ./SearchResult
 
 var _SearchResult2 = babelHelpers.interopRequireDefault(_SearchResult);
 
-var _IndexListView = require(626              ); // 626 = ./IndexListView
+var _IndexListView = require(627              ); // 627 = ./IndexListView
 
 var _IndexListView2 = babelHelpers.interopRequireDefault(_IndexListView);
 
-var _cityList = require(628               ); // 628 = ./city-list.json
+var _cityList = require(629               ); // 629 = ./city-list.json
 
 var _cityList2 = babelHelpers.interopRequireDefault(_cityList);
 
-var _HMNavigatorBar = require(577                     ); // 577 = ../Main/HMNavigatorBar
+var _HMNavigatorBar = require(578                     ); // 578 = ../Main/HMNavigatorBar
 
 var _HMNavigatorBar2 = babelHelpers.interopRequireDefault(_HMNavigatorBar);
 
@@ -86743,7 +86997,7 @@ var styles = _reactNative.StyleSheet.create({
         fontSize: 16
     }
 });
-}, 622, null, "TripGroup/TripModel/CityList/SelectCity.js");
+}, 623, null, "TripGroup/TripModel/CityList/SelectCity.js");
 __d(/* TripGroup/TripModel/CityList/Header.js */function(global, require, module, exports) {'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -86859,7 +87113,7 @@ var styles = _reactNative.StyleSheet.create({
         width: 80
     }
 });
-}, 623, null, "TripGroup/TripModel/CityList/Header.js");
+}, 624, null, "TripGroup/TripModel/CityList/Header.js");
 __d(/* TripGroup/TripModel/CityList/SearchBox.js */function(global, require, module, exports) {'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -86976,7 +87230,7 @@ var styles = _reactNative.StyleSheet.create({
         textDecorationLine: 'none'
     }
 });
-}, 624, null, "TripGroup/TripModel/CityList/SearchBox.js");
+}, 625, null, "TripGroup/TripModel/CityList/SearchBox.js");
 __d(/* TripGroup/TripModel/CityList/SearchResult.js */function(global, require, module, exports) {'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -87184,7 +87438,7 @@ var styles = _reactNative.StyleSheet.create({
         width: width
     }
 });
-}, 625, null, "TripGroup/TripModel/CityList/SearchResult.js");
+}, 626, null, "TripGroup/TripModel/CityList/SearchResult.js");
 __d(/* TripGroup/TripModel/CityList/IndexListView.js */function(global, require, module, exports) {'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -87198,7 +87452,7 @@ var _react2 = babelHelpers.interopRequireDefault(_react);
 
 var _reactNative = require(45            ); // 45 = react-native
 
-var _ToastUtil = require(627          ); // 627 = ./ToastUtil
+var _ToastUtil = require(628          ); // 628 = ./ToastUtil
 
 var _ToastUtil2 = babelHelpers.interopRequireDefault(_ToastUtil);
 
@@ -87603,7 +87857,7 @@ var styles = _reactNative.StyleSheet.create({
     }
 
 });
-}, 626, null, "TripGroup/TripModel/CityList/IndexListView.js");
+}, 627, null, "TripGroup/TripModel/CityList/IndexListView.js");
 __d(/* TripGroup/TripModel/CityList/ToastUtil.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -87758,7 +88012,7 @@ var styles = _reactNative.StyleSheet.create({
         color: 'white'
     }
 });
-}, 627, null, "TripGroup/TripModel/CityList/ToastUtil.js");
+}, 628, null, "TripGroup/TripModel/CityList/ToastUtil.js");
 __d(/* TripGroup/TripModel/CityList/city-list.json */function(global, require, module, exports) {module.exports = module.exports = {
   "lastVisitCityList": [{
     "name": "北京",
@@ -88863,7 +89117,7 @@ __d(/* TripGroup/TripModel/CityList/city-list.json */function(global, require, m
   }],
   "bcode": 0
 };
-}, 628, null, "TripGroup/TripModel/CityList/city-list.json");
+}, 629, null, "TripGroup/TripModel/CityList/city-list.json");
 __d(/* TripGroup/TripModel/Approval/FlatListExample.js */function(global, require, module, exports) {Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -89039,6 +89293,6 @@ var styles = _reactNative.StyleSheet.create({
 });
 
 module.exports = FlatListExample;
-}, 629, null, "TripGroup/TripModel/Approval/FlatListExample.js");
+}, 630, null, "TripGroup/TripModel/Approval/FlatListExample.js");
 ;require(138);
 ;require(0);
