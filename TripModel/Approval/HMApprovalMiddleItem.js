@@ -16,7 +16,8 @@ import {
     Text,
     View,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    Platform
 } from 'react-native';
 
 
@@ -81,7 +82,7 @@ export default class HMApprovalDetailItem extends Component
                             height: 30,
                             marginRight: 5,
                             paddingTop: 7,
-                            width: 80,
+                            width: 100,
 
                         }]}> {acitonName}</Text>
                     </TouchableOpacity>
@@ -153,7 +154,7 @@ const styles = StyleSheet.create({
     },
 
     textViewStytle: {
-        width: 100,
+        flexWrap:'wrap',
         fontSize: 12,
         textAlign: 'center',
         color: 'gray',

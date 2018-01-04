@@ -17,7 +17,7 @@ import {
 
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
-var cellW = 60;
+var cellW = Platform.OS=='ios'?80:60;
 var cellH = 40;
 var vMargin = 5;
 
@@ -37,7 +37,7 @@ export default class TripGroup extends Component
 
                 <Image source={{uri: 'manage', width: Platform.OS=='ios'?25:20, height: Platform.OS=='ios'?25:20}}></Image>
 
-                <Text style={{fontSize:Platform.OS=='ios'?14:10 , color: 'white',marginTop:5}}>{this.props.title}</Text>
+                <Text style={{fontSize:Platform.OS=='ios'?12:10 , color: 'white',marginTop:5}}>{this.props.title}</Text>
 
             </View>
 

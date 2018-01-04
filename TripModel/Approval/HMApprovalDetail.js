@@ -22,12 +22,9 @@ import {
     Platform
 } from 'react-native';
 
-
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
-
 import EventProxy from '../CommonTools/EventProxy'
-
 import BaseComponent from '../Main/BaseComponent';
 import HMApprovalDetailTopItem from './HMApprovalDetailTopItem';
 import HMApprovalMiddleItem from './HMApprovalMiddleItem';
@@ -40,16 +37,13 @@ import HMAppProcessItem from '../Approval/HMAppProcessItem'
 import HMCalendar from '../CommonTools/HMCalendar'
 import SelectCity from '../CityList/SelectCity';
 import StorageUtil from '../CommonTools/StorageUtil'
-
 var travelDetail = [];
 
 export default class HMApprovalDetail extends BaseComponent
 {
     static defaultProps = {
         popToLast: null,
-
     };
-
     // 构造
     constructor(props)
     {
@@ -362,7 +356,7 @@ export default class HMApprovalDetail extends BaseComponent
 
 
                     <ScrollView
-                        style={{width: width}}
+                        style={{width: width,marginTop:10}}
                         showsHorizontalScrollIndicator={false}
                         horizontal={true}
                     >

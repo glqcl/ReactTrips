@@ -127,7 +127,7 @@ export default class TripGroup extends BaseComponent
                         <View style={styles.innerStytle}>
                             <TextInput ref='username' placeholder='请输入账号'
                                        returnKeyType={'done'}
-                                       value={'YDCS007'}
+                                       value={'YDCS001'}
                                        underlineColorAndroid='transparent'
                                        style={styles.textInputStytle}
                                        onChangeText={(text) =>

@@ -18,7 +18,8 @@ import {
     Text,
     View,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    Platform
 } from 'react-native';
 
 
@@ -66,7 +67,7 @@ export default class HMAppProcessItem extends Component
     {
         return (
             <View style={styles.container}>
-                <View style={{width: 70, height: 18, flexDirection: 'row', alignItems: 'center'}}>
+                <View style={{width: 90, height: 18, flexDirection: 'row', alignItems: 'center'}}>
                     <View ref='letfView' style={{flex: 1, height: 1, backgroundColor: 'rgb(20,42,64)'}}></View>
                     <Image ref='image' source={{uri: this.props.obj.approval_status} } style={{width: 18, height: 18}}></Image>
                     <View ref='rightView'
@@ -76,13 +77,13 @@ export default class HMAppProcessItem extends Component
                     fontSize: 12,
                     color: 'black',
                     textAlign: 'center',
-                    width: 70,
+                    flexWrap:'wrap'
                 }}>{this.props.obj.u_name}</Text>
                 <Text style={{
                     fontSize: 12,
                     color: 'black',
                     textAlign: 'center',
-                    width: 70,
+                    flexWrap: 'wrap',
                 }}>{this.props.obj.approval_time}</Text>
             </View>
         );
@@ -90,7 +91,7 @@ export default class HMAppProcessItem extends Component
 }
 const styles = StyleSheet.create({
     container: {
-        height: 60,
+        height: 90,
         justifyContent: 'center'
     },
 

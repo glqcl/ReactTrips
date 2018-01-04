@@ -132,7 +132,12 @@ export default class HMListViewCellItem extends Component
                 </TouchableOpacity>
             </View>
         </View>);
-        cellArray.push(<View key={'3'} style={[styles.desViewStytle, {flexDirection: 'row', alignItems: 'center'}]}>
+        cellArray.push(<View key={'3'} style={[styles.desViewStytle, {
+            flexDirection: 'row',
+            alignItems: 'center',
+            borderBottomWidth: 0,
+            borderBottomColor: 'transparent'
+        }]}>
             <Text style={styles.textViewStytle}>{'费用申请'}</Text>
             <Text style={[styles.textViewStytle, {
                 flex: 1,
@@ -140,8 +145,6 @@ export default class HMListViewCellItem extends Component
                 marginLeft: width * 0.5 - 70
             }]}>{this.props.jsonObject.product_name}</Text>
         </View>);
-
-
         return cellArray;
 
 
@@ -160,44 +163,44 @@ export default class HMListViewCellItem extends Component
 }
 
 const styles = StyleSheet.create({
-        container: {
-            width: width,
-            height: cellHeight,
-            marginTop: 2,
-        },
-        cellViewStytle: {
-            width: width-20,
-            height: cellHeight,
+    container: {
+        width: width,
+        height: cellHeight,
+        marginTop: 2,
+    },
+    cellViewStytle: {
+        width: width - 20,
+        height: cellHeight,
 
-        },
-        seconViewStytle: {
-            flexDirection: 'row',
-            flex:1,
-            height: cellHeight,
-            alignItems: 'center',
-            borderBottomWidth: 0.5,
-            borderBottomColor: 'gray',
-            backgroundColor:'transparent'
+    },
+    seconViewStytle: {
+        flexDirection: 'row',
+        flex: 1,
+        height: cellHeight,
+        alignItems: 'center',
+        borderBottomWidth: 0.5,
+        borderBottomColor: 'gray',
+        backgroundColor: 'transparent'
 
-        },
-        desViewStytle: {
-            width: width-20,
-            height: cellHeight,
-            borderBottomColor: 'gray',
-            borderBottomWidth: 0.5,
-            justifyContent: 'center',
-            backgroundColor: 'transparent'
-        },
-        textViewStytle: {
-            marginLeft: 10,
-            fontSize: 12,
-            color: 'gray',
-            backgroundColor: 'transparent'
+    },
+    desViewStytle: {
+        width: width - 20,
+        height: cellHeight,
+        borderBottomColor: 'gray',
+        borderBottomWidth: 0.5,
+        justifyContent: 'center',
+        backgroundColor: 'transparent'
+    },
+    textViewStytle: {
+        marginLeft: 10,
+        fontSize: 12,
+        color: 'gray',
+        backgroundColor: 'transparent'
 
-        }
+    }
 
 
-    });
+});
 
 AppRegistry
     .registerComponent(

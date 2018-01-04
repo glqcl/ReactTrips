@@ -39,7 +39,7 @@ export default class TripGroup extends Component
 
                     <Text style={{
                         marginTop: 5,
-                        fontSize: 14,
+                        fontSize: Platform.OS=='android'?14:12,
                         marginTop: 5,
                         color: 'white',
                         backgroundColor: 'transparent',

@@ -19,7 +19,8 @@ import {
     View,
     Image,
     TouchableOpacity,
-    TextInput
+    TextInput,
+    Platform
 } from 'react-native';
 
 
@@ -47,14 +48,14 @@ export default class HMListViewBottomItem extends Component
 
                 <View style={styles.bottomViewStyle}>
 
-                    <Text style={{marginTop: 5, marginLeft: 10}}>{'出差事由'}</Text>
+                    <Text style={{marginTop: 5, marginLeft: 10, color: 'gray'}}>{'出差事由'}</Text>
 
                     <TextInput
                         editable={false}
                         multiline={true}
 
                         underlineColorAndroid='transparent' //设置下划线背景色透明 达到去掉下划线的效果
-                        style={styles.textInputStytle}>{this.props.remars == null ? '' : this.props.remars}</TextInput>
+                        style={[styles.textInputStytle, {fontSize: Platform.OS == 'ios' ? 12 : 14}]}>{this.props.remars == null ? '' : this.props.remars}</TextInput>
 
                 </View>
 

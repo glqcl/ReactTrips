@@ -20,8 +20,6 @@ import {
 
 } from 'react-native';
 
-import Loading from 'react-native-loading-w';
-
 
 import {
     SwRefreshScrollView,
@@ -74,12 +72,10 @@ export default class HMApprovalList extends BaseComponent
     {
         this.props.navigator.pop();
     }
-
     static defaultProps()
     {
 
     }
-
     constructor(props)
     {
         super(props);
@@ -88,12 +84,10 @@ export default class HMApprovalList extends BaseComponent
             dataSource: ds.cloneWithRows(listArray),
         };
     }
-
     onLoadMore()
     {
         this.getDataFromNet(true);
     }
-
     onRefresh()
     {
         this.getDataFromNet(false);

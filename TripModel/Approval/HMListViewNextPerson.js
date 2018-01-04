@@ -18,7 +18,8 @@ import {
     Text,
     View,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    Platform
 } from 'react-native';
 
 
@@ -45,10 +46,11 @@ export default class HMListViewNextPerson extends Component
     {
         return (
             <View style={styles.container}>
-                <Text style={{marginLeft: 5}}>{'下一步审批人'}</Text>
+                <Text style={{marginLeft: 5, color:'gray',fontSize:Platform.OS=='ios'?12:14}}>{'下一步审批人'}</Text>
                 <Text style={{
                     width: width - 100,
-                    textAlign: 'center'
+                    textAlign: 'center',
+                    fontSize:Platform.OS=='ios'?12:14
                 }}>{null == this.props.jsonObject.nextAppName ? '' : this.props.jsonObject.nextAppName}</Text>
             </View>
         );

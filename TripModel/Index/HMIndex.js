@@ -13,22 +13,21 @@ import {
     Image,
     Platform,
     InteractionManager,
-    TouchableOpacity
+    TouchableOpacity,
+    NativeAppEventEmitter,
+    Dimensions
 
 } from 'react-native';
 
-var Dimensions = require('Dimensions');
-var {width, height} = Dimensions.get('window');
 
+var {width, height} = Dimensions.get('window');
 var HMScrollImage = require('../CommonTools/HMScrollImage');
 import HMTopItem from './HMTopItem';
 import HMMiddleItem from './HMMiddleItem';
 import HMBottomItem from './HMBottomItem';
-// import HMApprovalList from '../Approval/HMApprovalList';
-// import HMPlaneIndex from '../Plane/HMPlaneIndex';
 import NetUitl from '../CommonTools/NetUitl';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
-
+import JPushModule from 'jpush-react-native';
 
 
 export default class TripGroup extends Component
@@ -53,7 +52,57 @@ export default class TripGroup extends Component
         InteractionManager.runAfterInteractions(() =>
         {
             this.getPicList();
+
+            if (Platform.OS == 'android')
+            {
+                JPushModule.addReceiveCustomMsgListener((message) =>
+                {
+                    //这是默认的通知消息
+                    //  this.setState({pushMsg:message});
+                });
+                JPushModule.addReceiveNotificationListener((map) =>
+                {
+                    //自定义推送的消息
+                    //console.log("alertContent: " + map.alertContent);
+                    //extra是可选配置上的附件字段
+                    console.log("extras: " + map.extras);
+                    var message = JSON.parse(map.extras);
+                    this.storeDB(message);//我这里是把内容存在了数据库里面，你可以把这里的message放到state里面显示出来
+                    //这里面解析json数据，并存在数据库中，同时显示在通知栏上
+                })
+                //点击通知进入应用的主页，相当于跳转到制定的页面
+                JPushModule.addReceiveOpenNotificationListener((map) =>
+                {
+                    console.log("Opening notification!");
+                    alert("map: " + JSON.stringify(map));
+                    //this.props.navigator.replace({name: "HomePage", component: HomePage});
+                })
+            }
+            else
+            {
+                NativeAppEventEmitter.addListener(
+                    'ReceiveNotification',
+                    (message) =>
+                    {
+                        alert("content: " + JSON.stringify(message));
+                        //下面就是发送过来的内容，可以用stringfy打印发来的消息
+                        //这个是极光的消息id console.log("content:" + message.content);
+                        //这是标题 console.log("aps:" + message.aps.sound);
+                        //这是声音 console.log("aps:" + message.aps.badge);
+                        //这是上标 console.log("aps:" + message.aps.alert);
+                        //这是发送通知的主内容 this.storeDB(message); } );
+                        console.log("content: " + JSON.stringify(message));
+                    })
+            }
+
         });
+
+    }
+
+    componentWillUnmount()
+    {
+        JPushModule.removeReceiveCustomMsgListener();
+        JPushModule.removeReceiveNotificationListener();
     }
 
     topItemClick(title)
@@ -124,8 +173,6 @@ export default class TripGroup extends Component
 
     rednderPlane()
     {
-
-
         this.props.navigation.navigate('HMPlaneIndex');
 
         // this.props.navigator.push({
@@ -153,7 +200,7 @@ export default class TripGroup extends Component
                                     height: ((width - 20) / 3),
                                 }}/>
                                 <Text style={{
-                                    marginTop: 5, fontSize: 14, color: 'white', width: ((width - 20) / 3),
+                                    marginTop: 5, fontSize: Platform.OS=='ios'?12:14, color: 'white', width: ((width - 20) / 3),
                                     textAlign: 'center'
                                 }}>{'国内机票'}</Text>
                             </View>
@@ -223,16 +270,12 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginLeft: 10,
         marginRight: 10,
-
     },
-
     rightViewStyle: {
         width: ((width - 20) / 3) * 1.65,
         height: height / 4,
         flexDirection: 'row',
         flexWrap: 'wrap',
-
-
     },
     leftViewStyle: {
         marginTop: 10,
@@ -242,7 +285,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#323141',
         justifyContent: 'center',
         alignItems: 'center',
-
     },
     bottomViewStytle: {
         position: 'absolute',
@@ -253,7 +295,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(17,33,49,1.0)',
         flexDirection: 'row',
         justifyContent: 'space-between',
-
     }
 });
 
