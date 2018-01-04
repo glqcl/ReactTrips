@@ -28,6 +28,12 @@ import HMBottomItem from './HMBottomItem';
 import NetUitl from '../CommonTools/NetUitl';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
 import JPushModule from 'jpush-react-native';
+import ActionSheet from 'react-native-actionsheet'
+
+const CANCEL_INDEX = 0
+const DESTRUCTIVE_INDEX = 4
+const options = [ 'Cancel', 'Apple', 'Banana', 'Watermelon', 'Durian' ]
+const title = 'Which one do you like?'
 
 
 export default class TripGroup extends Component
@@ -170,7 +176,11 @@ export default class TripGroup extends Component
         return middleItemArray;
     }
 
-
+    handlePress(i) {
+        //this.setState({
+          //  selected: i
+        //})
+    }
     rednderPlane()
     {
         this.props.navigation.navigate('HMPlaneIndex');
@@ -231,6 +241,16 @@ export default class TripGroup extends Component
                            }}></Image>
 
                 </View>
+
+
+                <ActionSheet
+                    ref={o => this.ActionSheet = o}
+                    title={title}
+                    options={options}
+                    cancelButtonIndex={CANCEL_INDEX}
+                    destructiveButtonIndex={DESTRUCTIVE_INDEX}
+                    onPress={this.handlePress}
+                />
 
 
             </View>
