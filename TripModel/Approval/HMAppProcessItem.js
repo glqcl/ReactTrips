@@ -67,24 +67,23 @@ export default class HMAppProcessItem extends Component
     {
         return (
             <View style={styles.container}>
-                <View style={{width: 90, height: 18, flexDirection: 'row', alignItems: 'center'}}>
+                <View style={{height: 18, flexDirection: 'row', alignItems: 'center'}}>
                     <View ref='letfView' style={{flex: 1, height: 1, backgroundColor: 'rgb(20,42,64)'}}></View>
                     <Image ref='image' source={{uri: this.props.obj.approval_status} } style={{width: 18, height: 18}}></Image>
                     <View ref='rightView'
                           style={{flex: 1, height: 1, backgroundColor: 'rgb(20,42,64)'}}></View>
                 </View>
                 <Text style={{
-                    fontSize: Platform.OS=='ios'?10:12,
+                    fontSize: Platform.OS=='ios'?8:12,
                     color: 'black',
                     textAlign: 'center',
-                    width:90,
-                    backgroundColor:'red'
+                    flexWrap:'wrap'
                 }}>{this.props.obj.u_name}</Text>
                 <Text style={{
-                    fontSize: Platform.OS=='ios'?10:12,
+                    fontSize: Platform.OS=='ios'?8:12,
                     color: 'black',
                     textAlign: 'center',
-                    width: 90,
+                    flexWrap:'wrap'
                 }}>{this.props.obj.approval_time}</Text>
             </View>
         );
