@@ -103,7 +103,7 @@ export default class HMListViewCellItem extends Component
 
                 <TouchableOpacity activeOpacity={0.5} style={{
                     position: 'absolute',
-                    left: width - 100
+                    left: width - 150
                 }} onPress={() => this.renderCitys('到达城市')}>
                     <Text style={[styles.textViewStytle]}>{this.props.jsonObject.arrive_city}</Text>
                 </TouchableOpacity>
@@ -126,7 +126,7 @@ export default class HMListViewCellItem extends Component
                 }>{'至'}</Text>
                 <TouchableOpacity activeOpacity={0.5} style={{
                     position: 'absolute',
-                    left: width - 100
+                    left: width - 150
                 }} onPress={() => this.renderCitys('到达日期')}>
                     <Text style={[styles.textViewStytle]}>{this.props.jsonObject.end_date}</Text>
                 </TouchableOpacity>

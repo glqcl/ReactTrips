@@ -127,7 +127,7 @@ export default class TripGroup extends BaseComponent
                         <View style={styles.innerStytle}>
                             <TextInput ref='username' placeholder='请输入账号'
                                        returnKeyType={'done'}
-                                       value={'YDCS001'}
+                                       value={'WD287044'}
                                        underlineColorAndroid='transparent'
                                        style={styles.textInputStytle}
                                        onChangeText={(text) =>
@@ -140,7 +140,7 @@ export default class TripGroup extends BaseComponent
                             <TextInput ref='password'
                                        secureTextEntry={true}
                                        returnKeyType={'done'}
-                                       value={'000000'}
+                                       value={'888888'}
                                        underlineColorAndroid='transparent'
                                        placeholder='请输入密码' style={styles.textInputStytle}
                                        onChangeText={(text) =>

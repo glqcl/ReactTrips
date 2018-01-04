@@ -74,13 +74,13 @@ export default class HMAppProcessItem extends Component
                           style={{flex: 1, height: 1, backgroundColor: 'rgb(20,42,64)'}}></View>
                 </View>
                 <Text style={{
-                    fontSize: Platform.OS=='ios'?8:12,
+                    fontSize: Platform.OS=='ios'?10:12,
                     color: 'black',
                     textAlign: 'center',
                     flexWrap:'wrap'
                 }}>{this.props.obj.u_name}</Text>
                 <Text style={{
-                    fontSize: Platform.OS=='ios'?8:12,
+                    fontSize: Platform.OS=='ios'?10:12,
                     color: 'black',
                     textAlign: 'center',
                     flexWrap:'wrap'
