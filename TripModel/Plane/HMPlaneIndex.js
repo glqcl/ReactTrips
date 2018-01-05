@@ -38,18 +38,22 @@ export default class HMPlaneIndex extends BaseComponent
     {
         return (
             <View style={styles.container}>
-                {/*<HMNavigatorBar*/}
-                    {/*title={'国内机票'}*/}
-                    {/*popToLast={() => this.popToLast()}>*/}
-                {/*</HMNavigatorBar>*/}
                 <View style={styles.outerViewStytle}>
-                    <View style={{width: width, height: 40, flexDirection: 'row'}}>
-                        <Text style={{width: width * 0.5,}}>{'单程'}</Text>
-                        <Text style={{width: width * 0.5,}}>{'往返'}</Text>
+                    <View style={{
+                        width: width,
+                        height: 40,
+                        flexDirection: 'row',
+                        borderBottomWidth: 0.5,
+                        borderBottomColor: 'gray',
+                        alignItems:'center'
+                    }}>
+                        <Text style={{width: width * 0.5, textAlign: 'center'}}>{'单程'}</Text>
+                        <Text style={{width: width * 0.5, textAlign: 'center'}}>{'往返'}</Text>
                     </View>
-                    <View style={{width: width, height: 40, flexDirection: 'row'}}>
-                        <Text style={{width: width * 0.5,}}>{'长春'}</Text>
-                        <Text style={{width: width * 0.5,}}>{'北京'}</Text>
+                    <View style={{width: width, height: 40, flexDirection: 'row',alignItems:'center'}}>
+                        <Text style={{width: width * 0.45,marginLeft:10}}>{'长春'}</Text>
+                        <Image source={{uri: 'goback_img'}} style={{width: 20, height: 20}}></Image>
+                        <Text style={{width: width * 0.45,textAlign:'right',marginRight:10}}>{'北京'}</Text>
                     </View>
                     <View style={{width: width, height: 40, flexDirection: 'row'}}>
                         <Text style={{width: width * 0.5,}}></Text>

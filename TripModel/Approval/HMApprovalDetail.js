@@ -71,6 +71,8 @@ export default class HMApprovalDetail extends BaseComponent
     {
         var self = this;
         let component = null;
+
+        //this.props.navigation.navigate.goBack();
         if (status == '起始城市' || status == '到达城市')
         {
             component = SelectCity;
@@ -90,7 +92,6 @@ export default class HMApprovalDetail extends BaseComponent
             }
         })
     }
-
     getApprovalDetail()
     {
         var rowData = this.props.navigation.state.params.rowData;
@@ -216,14 +217,11 @@ export default class HMApprovalDetail extends BaseComponent
     {
 
         var rowData = this.props.navigation.state.params.rowData;
-
         var approved_status = rowData.approved_status;
-
         if ('s' == approved_status)
         {
 
         }
-
     }
 
     /*申请单列表*/
@@ -231,7 +229,6 @@ export default class HMApprovalDetail extends BaseComponent
     {
         alert('renderApply');
     }
-
     /*创建申请单*/
     renderCreate()
     {

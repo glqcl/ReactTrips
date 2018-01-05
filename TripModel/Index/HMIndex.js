@@ -15,7 +15,8 @@ import {
     InteractionManager,
     TouchableOpacity,
     NativeAppEventEmitter,
-    Dimensions
+    Dimensions,
+
 
 } from 'react-native';
 
@@ -29,11 +30,12 @@ import NetUitl from '../CommonTools/NetUitl';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
 import JPushModule from 'jpush-react-native';
 import ActionSheet from 'react-native-actionsheet'
+import Speech from 'native-speech';
 
 const CANCEL_INDEX = 0
 const DESTRUCTIVE_INDEX = 4
-const options = [ 'Cancel', 'Apple', 'Banana', 'Watermelon', 'Durian' ]
-const title = 'Which one do you like?'
+const options = ['取消', '微信', '支付宝']
+const title = '请选择支付方式'
 
 
 export default class TripGroup extends Component
@@ -176,14 +178,26 @@ export default class TripGroup extends Component
         return middleItemArray;
     }
 
-    handlePress(i) {
-        //this.setState({
-          //  selected: i
-        //})
+    handlePress(i)
+    {
+        alert(i);
+
+        if (i == 1)
+        {
+            Speech.speak('您选择了微信', () => alert('callback'));
+        }
+        else if (i == 2)
+        {
+            Speech.speak('您选择了支付宝', () => alert('callback'));
+        }
     }
+
     rednderPlane()
     {
         this.props.navigation.navigate('HMPlaneIndex');
+
+
+        // this.refs.actionSheet.show();
 
         // this.props.navigator.push({
         //     component: HMPlaneIndex
@@ -210,7 +224,10 @@ export default class TripGroup extends Component
                                     height: ((width - 20) / 3),
                                 }}/>
                                 <Text style={{
-                                    marginTop: 5, fontSize: Platform.OS=='ios'?12:14, color: 'white', width: ((width - 20) / 3),
+                                    marginTop: 5,
+                                    fontSize: Platform.OS == 'ios' ? 12 : 14,
+                                    color: 'white',
+                                    width: ((width - 20) / 3),
                                     textAlign: 'center'
                                 }}>{'国内机票'}</Text>
                             </View>
@@ -244,7 +261,7 @@ export default class TripGroup extends Component
 
 
                 <ActionSheet
-                    ref={o => this.ActionSheet = o}
+                    ref='actionSheet'
                     title={title}
                     options={options}
                     cancelButtonIndex={CANCEL_INDEX}
