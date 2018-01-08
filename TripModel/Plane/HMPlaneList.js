@@ -38,6 +38,14 @@ export default class HMPlaneList extends Component
         );
     }
 
+
+    renderPlaneList()
+    {
+        //http://a.tripg.com/QunarAir/GetFlightList?arr=CGQ&date=2018-01-09&companyCode=919&dpt=PEK&TimeStamp=1515401963&Sign=600DCA44-D71A-41F1-9B73-EB3A560B3429&NewKey=859b645e11806218b4afbb4f9cd10971
+
+        //http://a.tripg.com/QunarAir/GetFlightInfo?arr=CGQ&date=2018-01-09&flightNum=CA1609&dpt=PEK&TimeStamp=1515401989&Sign=600DCA44-D71A-41F1-9B73-EB3A560B3429&companyCode=919&NewKey=3a34fd02225ec9813e30489f0af71048
+    }
+
     componentDidMount()
     {
 
