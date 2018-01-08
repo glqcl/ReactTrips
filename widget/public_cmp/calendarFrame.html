@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui/aui-calendar.css" />
+    <title>calendar</title>
+    </head>
+<body>    
+	  <div id="calendar" class="aui-content aui-calendar">
+	  	
+	  </div>
+</body>
+<script type="text/javascript" src="../script/zepto.js"></script>
+<script type="text/javascript" src="../script/aui/api.js"></script>
+<script type="text/javascript" src="../script/pengCmp/coreXP.js"></script>
+<script type="text/javascript" src="../script/aui/aui-tap.js"></script>
+<script type="text/javascript" src="../script/aui/aui-calendar.js"></script>
+<script type="text/javascript">
+        /*var  calendar = document.getElementById("calendar");
+        $aui.calendar(calendar,{
+            startDate  : '2016-01',
+            selectDate : '2016-02',
+            endDate    : '2016-08-30',
+            beforeStartDateClick : true // 是否允许开始日期之前的可以点击，默认为false
+        },function(ret){
+            
+        })*/
+
+    apiready = function(){
+        
+        var pageParam   = api.pageParam;
+        var winName     = pageParam.winName;
+        var frameName   = pageParam.frameName;
+        var todayDate   = new Date();
+        var startDate   = todayDate.getFullYear()+'-'+(todayDate.getMonth()+1)+'-'+todayDate.getDate();
+        var endArr      = nativeXP.complementFutureDate(10);
+        var endDate     = endArr[endArr.length - 1];
+        var currentDate = pageParam.currentDate;
+        
+   
+        $aui.calendar($api.byId("calendar"),{
+            startDate  : '2016-01',
+            selectDate : currentDate,
+            endDate    : endDate,
+            beforeStartDateClick : true // 是否允许开始日期之前的可以点击，默认为false
+        },function(ret){
+            if(ret){
+            	    var weekText  = nativeXP.getWeekByDate(ret.date);
+            	    if(winName!=null && frameName!=null){
+            	    	       api.execScript({
+		            	    	    name      :  winName,
+						    frameName :  frameName,
+						    script    :  'calendarCall("'+ret.date+'" , "'+weekText+'");'
+					   });
+            	    	
+            	    }else if(winName != null){
+            	    	       api.execScript({
+						    name   :  winName,
+						    script : 'calendarCall("'+ret.date+'" , "'+weekText+'");'
+					   });
+            	    }else{
+            	    	       api.execScript({
+						    frameName: frameName,
+						    script: 'calendarCall("'+ret.date+'" , "'+weekText+'");'
+					   });
+            	    }
+            	    
+            	    
+            	    
+                setTimeout(function(){
+                	    
+                	       api.closeWin();
+                
+                },700);
+            	    
+            }
+        })
+    }
+</script>
+</html>

@@ -1,0 +1,879 @@
+{
+list: [
+{
+groupname: "A",
+citylist: [
+{
+dataSpac: "AM",
+dataTags: "MACAU",
+dataSzm: "MFM",
+dataValue: "澳门",
+dataLat: "22.163498",
+dataLng: "113.582961"
+},
+{
+dataSpac: "AS",
+dataTags: "ANSHAN",
+dataSzm: "AOG",
+dataValue: "鞍山",
+dataLat: "41.114949",
+dataLng: "122.875192"
+}
+]
+},
+{
+groupname: "B",
+citylist: [
+{
+dataSpac: "BJ",
+dataTags: "BEIJING",
+dataSzm: "PEK",
+dataValue: "北京",
+dataLat: "40.08597",
+dataLng: "116.59458"
+},
+{
+dataSpac: "BN",
+dataTags: "XISHUANGBANNA",
+dataSzm: "JHG",
+dataValue: "西双版纳",
+dataLat: "21.976475",
+dataLng: "100.772973"
+},
+{
+dataSpac: "BT",
+dataTags: "BAOTOU",
+dataSzm: "BAV",
+dataValue: "包头",
+dataLat: "40.570978",
+dataLng: "110.010927"
+},
+{
+dataSpac: "BAISHAN",
+dataTags: "BAISHAN",
+dataSzm: "NBS",
+dataValue: "白山",
+dataLat: "42.075556",
+dataLng: "127.623974"
+}
+]
+},
+{
+groupname: "C",
+citylist: [
+{
+dataSpac: "CQ",
+dataTags: "CHONGQING",
+dataSzm: "CKG",
+dataValue: "重庆",
+dataLat: "29.727921",
+dataLng: "106.647656"
+},
+{
+dataSpac: "CD",
+dataTags: "CHENGDU",
+dataSzm: "CTU",
+dataValue: "成都",
+dataLat: "30.585034",
+dataLng: "103.965048"
+},
+{
+dataSpac: "CHS",
+dataTags: "CHANGSHA",
+dataSzm: "CSX",
+dataValue: "长沙",
+dataLat: "28.198522",
+dataLng: "113.226329"
+},
+{
+dataSpac: "CC",
+dataTags: "CHANGCHUN",
+dataSzm: "CGQ",
+dataValue: "长春",
+dataLat: "44.000164",
+dataLng: "125.704287"
+},
+{
+dataSpac: "CZ",
+dataTags: "CHANGZHOU",
+dataSzm: "CZX",
+dataValue: "常州",
+dataLat: "31.916777",
+dataLng: "119.794221"
+}
+]
+},
+{
+groupname: "D",
+citylist: [
+{
+dataSpac: "DT",
+dataTags: "DATONG",
+dataSzm: "DAT",
+dataValue: "大同",
+dataLat: "40.060951",
+dataLng: "113.493212"
+},
+{
+dataSpac: "DL",
+dataTags: "DALIAN",
+dataSzm: "DLC",
+dataValue: "大连",
+dataLat: "38.968753",
+dataLng: "121.55064"
+},
+{
+dataSpac: "DALI",
+dataTags: "DALI",
+dataSzm: "DLU",
+dataValue: "大理",
+dataLat: "25.659774",
+dataLng: "100.336857"
+},
+{
+dataSpac: "DANDONG",
+dataTags: "DANDONG",
+dataSzm: "DDG",
+dataValue: "丹东",
+dataLat: "40.039675",
+dataLng: "124.293233"
+},
+{
+dataSpac: "DQ",
+dataTags: "DAQING",
+dataSzm: "DQA",
+dataValue: "大庆",
+dataLat: "46.755272",
+dataLng: "125.149606"
+}
+]
+},
+{
+groupname: "E",
+citylist: [
+{
+dataSpac: "ERDS",
+dataTags: "EERDUOSI",
+dataSzm: "DSN",
+dataValue: "鄂尔多斯",
+dataLat: "39.505995",
+dataLng: "109.873299"
+}
+]
+},
+{
+groupname: "F",
+citylist: [
+{
+dataSpac: "FZ",
+dataTags: "FUZHOU",
+dataSzm: "FOC",
+dataValue: "福州",
+dataLat: "25.934518",
+dataLng: "119.678874"
+},
+{
+dataSpac: "FS",
+dataTags: "FOSHAN",
+dataSzm: "FUO",
+dataValue: "佛山",
+dataLat: "23.079681",
+dataLng: "113.083613"
+}
+]
+},
+{
+groupname: "G",
+citylist: [
+{
+dataSpac: "GZ",
+dataTags: "GUANGZHOU",
+dataSzm: "CAN",
+dataValue: "广州",
+dataLat: "23.391914",
+dataLng: "113.309886"
+},
+{
+dataSpac: "GL",
+dataTags: "GUILIN",
+dataSzm: "KWL",
+dataValue: "桂林",
+dataLat: "25.229992",
+dataLng: "110.059598"
+},
+{
+dataSpac: "GY",
+dataTags: "GUIYANG",
+dataSzm: "KWE",
+dataValue: "贵阳",
+dataLat: "26.547052",
+dataLng: "106.806153"
+},
+{
+dataSpac: "GAOXIONG",
+dataTags: "KAOHSIUNG",
+dataSzm: "KHH",
+dataValue: "高雄",
+dataLat: "22.580884",
+dataLng: "120.351273"
+}
+]
+},
+{
+groupname: "H",
+citylist: [
+{
+dataSpac: "HZ",
+dataTags: "HANGZHOU",
+dataSzm: "HGH",
+dataValue: "杭州",
+dataLat: "30.24123",
+dataLng: "120.443981"
+},
+{
+dataSpac: "HAIKOU",
+dataTags: "HAIKOU",
+dataSzm: "HAK",
+dataValue: "海口",
+dataLat: "19.944145",
+dataLng: "110.468613"
+},
+{
+dataSpac: "HK",
+dataTags: "HONGKONG",
+dataSzm: "HKG",
+dataValue: "香港",
+dataLat: "22.318259",
+dataLng: "113.945081"
+},
+{
+dataSpac: "HF",
+dataTags: "HEFEI",
+dataSzm: "HFE",
+dataValue: "合肥",
+dataLat: "31.969393",
+dataLng: "117.016491"
+},
+{
+dataSpac: "HRB",
+dataTags: "HAERBIN",
+dataSzm: "HRB",
+dataValue: "哈尔滨",
+dataLat: "45.629063",
+dataLng: "126.248904"
+},
+{
+dataSpac: "HU",
+dataTags: "HUHEHAOTE",
+dataSzm: "HET",
+dataValue: "呼和浩特",
+dataLat: "40.861591",
+dataLng: "111.827735"
+},
+{
+dataSpac: "HUALIAN",
+dataTags: "HUALIAN",
+dataSzm: "HLN",
+dataValue: "花莲",
+dataLat: "24.032821",
+dataLng: "121.624728"
+},
+{
+dataSpac: "HUIZHOU",
+dataTags: "HUIZHOU",
+dataSzm: "HUZ",
+dataValue: "惠州",
+dataLat: "23.063006",
+dataLng: "114.602589"
+},
+{
+dataSpac: "HLBE",
+dataTags: "HULUNBEIER",
+dataSzm: "HLD",
+dataValue: "呼伦贝尔",
+dataLat: "49.215625",
+dataLng: "119.861815"
+},
+{
+dataSpac: "HA",
+dataTags: "HUAIAN",
+dataSzm: "HIA",
+dataValue: "淮安",
+dataLat: "33.800028",
+dataLng: "119.147888"
+},
+{
+dataSpac: "HUANGSHAN",
+dataTags: "HUANGSHAN",
+dataSzm: "TXN",
+dataValue: "黄山",
+dataLat: "29.739025",
+dataLng: "118.272104"
+}
+]
+},
+{
+groupname: "J",
+citylist: [
+{
+dataSpac: "JN",
+dataTags: "JINAN",
+dataSzm: "TNA",
+dataValue: "济南",
+dataLat: "36.856818",
+dataLng: "117.219742"
+},
+{
+dataSpac: "JJ",
+dataTags: "JIUJIANG",
+dataSzm: "JIU",
+dataValue: "九江",
+dataLat: "29.494993",
+dataLng: "115.820219"
+},
+{
+dataSpac: "JL",
+dataTags: "JILIN",
+dataSzm: "JIL",
+dataValue: "吉林",
+dataLat: "44.0048",
+dataLng: "126.392913"
+},
+{
+dataSpac: "JX",
+dataTags: "JIAXING",
+dataSzm: "HGH",
+dataValue: "嘉兴",
+dataLat: "30.24123",
+dataLng: "120.443981"
+}
+]
+},
+{
+groupname: "K",
+citylist: [
+{
+dataSpac: "KM",
+dataTags: "KUNMING",
+dataSzm: "KMG",
+dataValue: "昆明",
+dataLat: "25.101827",
+dataLng: "102.93434"
+}
+]
+},
+{
+groupname: "L",
+citylist: [
+{
+dataSpac: "LUOYANG",
+dataTags: "LUOYANG",
+dataSzm: "LYA",
+dataValue: "洛阳",
+dataLat: "34.741431",
+dataLng: "112.399981"
+},
+{
+dataSpac: "LZ",
+dataTags: "LANZHOU",
+dataSzm: "LHW",
+dataValue: "兰州",
+dataLat: "36.513679",
+dataLng: "103.623837"
+},
+{
+dataSpac: "LJ",
+dataTags: "LIJIANG",
+dataSzm: "LJG",
+dataValue: "丽江",
+dataLat: "26.67194",
+dataLng: "100.254165"
+},
+{
+dataSpac: "LASA",
+dataTags: "LASA",
+dataSzm: "LXA",
+dataValue: "拉萨",
+dataLat: "29.301913",
+dataLng: "90.914917"
+},
+{
+dataSpac: "LIUZHOU",
+dataTags: "LIUZHOU",
+dataSzm: "LZH",
+dataValue: "柳州",
+dataLat: "24.215088",
+dataLng: "109.416389"
+},
+{
+dataSpac: "LINYI",
+dataTags: "LINYI",
+dataSzm: "LYI",
+dataValue: "临沂",
+dataLat: "35.050349",
+dataLng: "118.457573"
+},
+{
+dataSpac: "LY",
+dataTags: "LONGYAN",
+dataSzm: "LCX",
+dataValue: "龙岩",
+dataLat: "25.691723",
+dataLng: "116.771983"
+}
+]
+},
+{
+groupname: "M",
+citylist: [
+{
+dataSpac: "MIANYANG",
+dataTags: "MIANYANG",
+dataSzm: "MIG",
+dataValue: "绵阳",
+dataLat: "31.438119",
+dataLng: "104.762918"
+},
+{
+dataSpac: "MANZL",
+dataTags: "MANZHOULI",
+dataSzm: "NZH",
+dataValue: "满洲里",
+dataLat: "49.576997",
+dataLng: "117.370561"
+}
+]
+},
+{
+groupname: "N",
+citylist: [
+{
+dataSpac: "NJ",
+dataTags: "NANJING",
+dataSzm: "NKG",
+dataValue: "南京",
+dataLat: "31.739597",
+dataLng: "118.877729"
+},
+{
+dataSpac: "NB",
+dataTags: "NINGBO",
+dataSzm: "NGB",
+dataValue: "宁波",
+dataLat: "29.825116",
+dataLng: "121.473044"
+},
+{
+dataSpac: "NN",
+dataTags: "NANNING",
+dataSzm: "NNG",
+dataValue: "南宁",
+dataLat: "22.615281",
+dataLng: "108.178301"
+},
+{
+dataSpac: "NT",
+dataTags: "NANTONG",
+dataSzm: "NTG",
+dataValue: "南通",
+dataLat: "32.082945",
+dataLng: "120.993206"
+},
+{
+dataSpac: "NC",
+dataTags: "NANCHANG",
+dataSzm: "KHN",
+dataValue: "南昌",
+dataLat: "28.865002",
+dataLng: "115.91912"
+}
+]
+},
+{
+groupname: "Q",
+citylist: [
+{
+dataSpac: "QD",
+dataTags: "QINGDAO",
+dataSzm: "TAO",
+dataValue: "青岛",
+dataLat: "36.273833",
+dataLng: "120.392415"
+},
+{
+dataSpac: "QZ",
+dataTags: "QUANZHOU",
+dataSzm: "JJN",
+dataValue: "泉州",
+dataLat: "24.806086",
+dataLng: "118.599012"
+},
+{
+dataSpac: "QF",
+dataTags: "QUFU",
+dataSzm: "JNG",
+dataValue: "曲阜",
+dataLat: "35.303234",
+dataLng: "116.363043"
+},
+{
+dataSpac: "QHD",
+dataTags: "QINHUANGDAO",
+dataSzm: "SHP",
+dataValue: "秦皇岛",
+dataLat: "39.971875",
+dataLng: "119.758745"
+},
+{
+dataSpac: "QQHR",
+dataTags: "QIQIHAER",
+dataSzm: "NDG",
+dataValue: "齐齐哈尔",
+dataLat: "47.259798",
+dataLng: "123.930451"
+}
+]
+},
+{
+groupname: "S",
+citylist: [
+{
+dataSpac: "SH",
+dataTags: "SHANGHAI",
+dataSzm: "SHA",
+dataValue: "上海",
+dataLat: "31.201274",
+dataLng: "121.353518"
+},
+{
+dataSpac: "SZ",
+dataTags: "SHENZHEN",
+dataSzm: "SZX",
+dataValue: "深圳",
+dataLat: "22.631355",
+dataLng: "113.820151"
+},
+{
+dataSpac: "SANYA",
+dataTags: "SANYA",
+dataSzm: "SYX",
+dataValue: "三亚",
+dataLat: "18.313788",
+dataLng: "109.418647"
+},
+{
+dataSpac: "SY",
+dataTags: "SHENYANG",
+dataSzm: "SHE",
+dataValue: "沈阳",
+dataLat: "41.646101",
+dataLng: "123.503419"
+},
+{
+dataSpac: "SU",
+dataTags: "SUZHOU",
+dataSzm: "WUX",
+dataValue: "苏州",
+dataLat: "31.504368",
+dataLng: "120.44183"
+},
+{
+dataSpac: "SJZ",
+dataTags: "SHIJIAZHUANG",
+dataSzm: "SJW",
+dataValue: "石家庄",
+dataLat: "38.284634",
+dataLng: "114.705215"
+},
+{
+dataSpac: "ST",
+dataTags: "SHANTOU",
+dataSzm: "SWA",
+dataValue: "汕头",
+dataLat: "23.559769",
+dataLng: "116.527309"
+},
+{
+dataSpac: "SX",
+dataTags: "SHAOXING",
+dataSzm: "HGH",
+dataValue: "绍兴",
+dataLat: "30.24123",
+dataLng: "120.443981"
+}
+]
+},
+{
+groupname: "T",
+citylist: [
+{
+dataSpac: "TJ",
+dataTags: "TIANJIN",
+dataSzm: "TSN",
+dataValue: "天津",
+dataLat: "39.136764",
+dataLng: "117.365596"
+},
+{
+dataSpac: "TY",
+dataTags: "TAIYUAN",
+dataSzm: "TYN",
+dataValue: "太原",
+dataLat: "37.760889",
+dataLng: "112.638822"
+},
+{
+dataSpac: "TB",
+dataTags: "TAIPEI",
+dataSzm: "TPE",
+dataValue: "台北",
+dataLat: "25.08552",
+dataLng: "121.240716"
+},
+{
+dataSpac: "TAIZHONG",
+dataTags: "TAICHUNG",
+dataSzm: "RMQ",
+dataValue: "台中",
+dataLat: "24.261335",
+dataLng: "120.607548"
+},
+{
+dataSpac: "TZ",
+dataTags: "TAIZHOU",
+dataSzm: "HYN",
+dataValue: "台州",
+dataLat: "28.567509",
+dataLng: "121.434576"
+}
+]
+},
+{
+groupname: "W",
+citylist: [
+{
+dataSpac: "WH",
+dataTags: "WUHAN",
+dataSzm: "WUH",
+dataValue: "武汉",
+dataLat: "30.776745",
+dataLng: "114.218541"
+},
+{
+dataSpac: "WZ",
+dataTags: "WENZHOU",
+dataSzm: "WNZ",
+dataValue: "温州",
+dataLat: "27.918183",
+dataLng: "120.860154"
+},
+{
+dataSpac: "WEIHAI",
+dataTags: "WEIHAI",
+dataSzm: "WEH",
+dataValue: "威海",
+dataLat: "37.194319",
+dataLng: "122.247294"
+},
+{
+dataSpac: "WX",
+dataTags: "WUXI",
+dataSzm: "WUX",
+dataValue: "无锡",
+dataLat: "31.504368",
+dataLng: "120.44183"
+}
+]
+},
+{
+groupname: "X",
+citylist: [
+{
+dataSpac: "XA",
+dataTags: "XIAN",
+dataSzm: "XIY",
+dataValue: "西安",
+dataLat: "34.443387",
+dataLng: "108.756597"
+},
+{
+dataSpac: "XM",
+dataTags: "XIAMEN",
+dataSzm: "XMN",
+dataValue: "厦门",
+dataLat: "24.539917",
+dataLng: "118.138611"
+},
+{
+dataSpac: "XJ",
+dataTags: "WULUMUQI",
+dataSzm: "URC",
+dataValue: "乌鲁木齐",
+dataLat: "43.913466",
+dataLng: "87.48053"
+},
+{
+dataSpac: "XGLL",
+dataTags: "XIANGGELILA",
+dataSzm: "DIG",
+dataValue: "香格里拉",
+dataLat: "27.799202",
+dataLng: "99.720382"
+},
+{
+dataSpac: "XN",
+dataTags: "XINING",
+dataSzm: "XNN",
+dataValue: "西宁",
+dataLat: "36.537009",
+dataLng: "102.053118"
+},
+{
+dataSpac: "XICHANG",
+dataTags: "XICHANG",
+dataSzm: "XIC",
+dataValue: "西昌",
+dataLat: "27.990691",
+dataLng: "102.202861"
+},
+{
+dataSpac: "XZ",
+dataTags: "XUZHOU",
+dataSzm: "XUZ",
+dataValue: "徐州",
+dataLat: "34.059647",
+dataLng: "117.568473"
+}
+]
+},
+{
+groupname: "Y",
+citylist: [
+{
+dataSpac: "YUNCHENG",
+dataTags: "YUNCHENG",
+dataSzm: "YCU",
+dataValue: "运城",
+dataLat: "35.119572",
+dataLng: "111.045698"
+},
+{
+dataSpac: "YT",
+dataTags: "YANTAI",
+dataSzm: "YNT",
+dataValue: "烟台",
+dataLat: "37.668155",
+dataLng: "121.009282"
+},
+{
+dataSpac: "YL",
+dataTags: "YULIN",
+dataSzm: "UYN",
+dataValue: "榆林",
+dataLat: "38.374645",
+dataLng: "109.616204"
+},
+{
+dataSpac: "YINCHUAN",
+dataTags: "YINCHUAN",
+dataSzm: "INC",
+dataValue: "银川",
+dataLat: "38.335711",
+dataLng: "106.40331"
+},
+{
+dataSpac: "YZ",
+dataTags: "YANGZHOU",
+dataSzm: "YTY",
+dataValue: "扬州",
+dataLat: "32.571227",
+dataLng: "119.732338"
+},
+{
+dataSpac: "YIWU",
+dataTags: "YIWU",
+dataSzm: "YIW",
+dataValue: "义乌",
+dataLat: "29.355053",
+dataLng: "120.044513"
+}
+]
+},
+{
+groupname: "Z",
+citylist: [
+{
+dataSpac: "ZH",
+dataTags: "ZHUHAI",
+dataSzm: "ZUH",
+dataValue: "珠海",
+dataLat: "22.018001",
+dataLng: "113.382561"
+},
+{
+dataSpac: "ZZ",
+dataTags: "ZHENGZHOU",
+dataSzm: "CGO",
+dataValue: "郑州",
+dataLat: "34.528249",
+dataLng: "113.84823"
+},
+{
+dataSpac: "ZUNYI",
+dataTags: "ZUNYI",
+dataSzm: "ZYI",
+dataValue: "遵义",
+dataLat: "27.805933",
+dataLng: "107.260099"
+},
+{
+dataSpac: "ZHOUSHAN",
+dataTags: "ZHOUSHAN",
+dataSzm: "HSN",
+dataValue: "舟山",
+dataLat: "29.94405",
+dataLng: "122.374717"
+}
+]
+}
+],
+hotList:[
+{
+dataSpac: "CC",
+dataTags: "CHANGCHUN",
+dataSzm: "CGQ",
+dataValue: "长春"
+},
+{
+dataSpac: "BJ",
+dataTags: "BEIJING",
+dataSzm: "PEK",
+dataValue: "北京"
+},
+{
+dataSpac: "SH",
+dataTags: "SHANGHAI",
+dataSzm: "SHA",
+dataValue: "上海"
+},
+{
+dataSpac: "GZ",
+dataTags: "GUANGZHOU",
+dataSzm: "CAN",
+dataValue: "广州"
+},
+{
+dataSpac: "CD",
+dataTags: "CHENGDU",
+dataSzm: "CTU",
+dataValue: "成都"
+},
+{
+dataSpac: "SZ",
+dataTags: "SHENZHEN",
+dataSzm: "SZX",
+dataValue: "深圳"
+}
+]
+
+}

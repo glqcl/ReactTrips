@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>APP</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+</head>
+<style>
+body { background: #f7f9f8;}
+</style>
+<body>
+    
+    <div class="aui-content">
+        <ul class="aui-list-view">
+            
+        </ul>
+    </div>
+   
+</body>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript" src="../script/zepto.js"></script>
+<script type="text/javascript" src="../script/store.min.js"></script>
+<script type="text/javascript" src="../script/template.js"></script>
+<script type="text/javascript">
+     apiready = function(){
+     	  var pageParam = api.pageParam;
+     	  var html = template("cityListTemplate",pageParam);
+	      $(".aui-list-view").html(html);
+     	  
+     }
+     
+     function list_detail(){
+     	  var pageParam = store.get("req_localCityList");
+     	  var html = template("cityListTemplate",pageParam);
+	      $(".aui-list-view").html(html);
+     }
+     
+     $("ul").on('click','li',function(){
+     	  var dataValue = $(this).attr("dataValue");
+     	  
+     	  api.sendEvent({
+	                    name: 'backLogic',
+	                    extra: {backLogic: false}
+	      });
+     	  
+     	  api.sendEvent({
+                    name: 'selectedcity',
+                    extra: {"cityName": dataValue}
+          });
+          
+          setTimeout(function(){
+                     api.closeFrame({
+                	     	name: '../../public_cmp/city_citylistMZ_win'
+                	     });
+                	     api.closeFrame({
+                	     	name: 'city_citylistMZ_frm'
+                	     });
+                	     
+                	     api.closeFrame();
+         },500);
+     });
+</script>
+
+<script id="cityListTemplate" type="text/html">
+	 {{each paramArr as obj index}} 
+			 <li class="aui-list-view-cell" dataTags="{{obj.dataTags}}" dataSpac="{{obj.dataSpac}}" dataValue="{{obj.text}}" dataSzm="{{obj.dataSzm}}">
+		           {{if key == "dataSpac"}}
+		                <div class="aui-arrow-right">{{obj.text}}({{obj.dataSpac}})</div>
+		           {{else if key == "dataTags"}}   
+		                <div class="aui-arrow-right">{{obj.text}}({{obj.dataTags}})</div>
+		           {{else if key == "dataValue"}}
+		                <div class="aui-arrow-right">{{obj.text}}</div>
+		           {{else if key == "dataSzm"}}    
+		                <div class="aui-arrow-right">{{obj.text}}({{obj.dataSzm}})</div>
+		           {{/if}}
+		     </li>
+     {{/each}}
+</script>
+</html>

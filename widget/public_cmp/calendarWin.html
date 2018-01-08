@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    	<script type="text/javascript" src="../script/zepto.js"></script>
+    <script type="text/javascript" src="../script/pengCmp/configXP.js"></script>
+    <script type="text/javascript" src="../script/pengCmp/coreXP.js"></script> 
+	
+</head>
+
+<body class="user_central">
+	    <header>
+			<div class="map-title">
+				<span class="main-goback" onclick="api.closeWin()"></span>
+				<h1>日历</h1>
+			</div>
+		</header>
+</body>
+<script>	
+     apiready = function(){
+          var pageParam = api.pageParam;
+	 	  var height = $('header').height();
+	 	  nativeXP.openFrame({url:'calendar.html',y:height,pageParam:pageParam});
+	 }
+</script>
+
+</html>

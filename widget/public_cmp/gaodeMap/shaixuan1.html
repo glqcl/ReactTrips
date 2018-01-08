@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+	<meta name="format-detection" content="telphone=no, email=no" />
+	<link rel="stylesheet" href="../../css/api.css" />
+
+	<script type="text/javascript" src="../../script/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="../../script/tripledes.js"></script>
+	<script type="text/javascript" src="../../script/mode-ecb-min.js"></script>
+	<script type="text/javascript" src="../../script/aes.js"></script>
+	<script src="../../script/rem.js"></script>
+	<script src="../../script/store.min.js"></script>
+	<script src="../../script/template.js"></script>
+	<script src="../../script/pengCmp/coreXP.js"></script>
+	<script src="../../script/pengCmp/configXP.js"></script>
+	<title></title>
+	<style>
+			html,
+			body {
+				background: rgba(0,0,0,.1);
+				font-size: 14px;
+				height: 100%;
+				overflow: hidden;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-webkit-flex-direction: column;
+				-ms-flex-direction: column;
+				flex-direction: column;
+			}
+
+			.mask {
+				height: 100%;
+				cursor: pointer;
+				background: rgba(0, 0, 0, .1);
+			}
+			.fl {
+				float: left;
+			}
+
+			.fr {
+				float: right;
+			}
+
+			.ot {
+				color: #cb5738;
+			}
+
+			.matro-box,
+			.matro-nav {
+				height: 30px;
+				display: -webkit-box;
+				/* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+				display: -moz-box;
+				/* 老版本语法: Firefox (buggy) */
+				display: -ms-flexbox;
+				/* 混合版本语法: IE 10 */
+				display: -webkit-flex;
+				/* 新版本语法: Chrome 21+ */
+				display: flex;
+				/* 新版本语法: Opera 12.1, Firefox 22+ */
+				font-size: 15px;
+			}
+
+			.matro-box {
+				-webkit-flex: 1;
+				-moz-box-flex: 1;
+				flex: 1;
+				-moz-box-flex: 1.0;
+				/*Firefox*/
+				-webkit-box-flex: 1.0;
+				/*Safari,Opera,Chrome*/
+				box-flex: 1.0;
+				position: relative;
+    z-index: 1000;
+			}
+
+			.matro-nav {
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-webkit-flex-direction: column;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				margin-left: -1px;
+			}
+
+			.matro-nav {
+				width: 120px;
+				overflow: auto;
+				position: relative;
+				z-index: 999;
+				height: 100%;
+			}
+
+			.martro-station {
+				-webkit-flex: 1;
+				flex: 1;
+				font-size: 17px;
+			}
+
+			.matro--click {
+				width: 100%;
+				line-height: 50px;
+				background: #f5f5f5;
+				text-align: center;
+				position: relative;
+				border: none;
+				color: #999999;
+			}
+
+			.matro--click:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				border: 1px solid #999999;
+				border-bottom: none;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				width: 240px;
+				height: 200%;
+				-webkit-transform: scale(0.5);
+				transform: scale(0.5);
+				-webkit-transform-origin: left top;
+				transform-origin: left top;
+			}
+
+			.matro-active {
+				border: none;
+				position: relative;
+				color: #000;
+				background: #FFFFFF;
+			}
+
+			.matro-active:after {
+				left: -1px;
+				border-right: none;
+				border-bottom: none;
+			}
+			.martro-station {
+				overflow: auto;
+				padding: 0 10px;
+				background: #fff;
+			}
+
+			.martro-station li {
+				/*display: none;*/
+				line-height: 50px;
+				text-indent: 15px;
+				padding-right: 10px;
+				overflow: auto;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.martro-station .p {
+				position: relative;
+				border: none;
+				color: #4B4B4B;
+				padding-right: 10px;
+				padding-right: 15px;
+			}
+
+			.martro-station .p:after {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				background: #999999;
+				width: 100%;
+				height: 1px;
+				-webkit-transform: scaleY(0.5);
+				transform: scaleY(0.5);
+				-webkit-transform-origin: 0 0;
+				transform-origin: 0 0;
+			}
+
+			.martro-station .p:first-child:after {
+				content: '';
+				position: absolute;
+				left: 0;
+				/*bottom: -1px;*/
+				background: #999999;
+				width: 100%;
+				height: 1px;
+				-webkit-transform: scaleY(0.5);
+				transform: scaleY(0.5);
+				-webkit-transform-origin: 0 0;
+				transform-origin: 0 0;
+			}
+
+			.martro-station li:first-child {
+				display: block;
+			}
+
+			.danxuan .p.staion-active {
+				background: url(image/check.png) 98%/20px no-repeat;
+				color: #1a4b74!important;
+			}
+			.duoxuan .p {
+				background: url(image/checkmore-f.png) 98%/20px no-repeat;
+				color: #1a4b74!important;
+			}
+			.duoxuan .p.staion-active {
+				background: url(image/checkmore-t.png) 98%/20px no-repeat;
+				color: #1a4b74!important;
+			}
+
+			.list2 li.empty {
+				background: none!important;
+				color: #1a4b74;
+			}
+
+			.item-box {
+				margin-bottom: 10px;
+			}
+
+			.quxiao {
+				background: none;
+				left: auto;
+				right: 0;
+				color: #FFFFFF;
+				font-size: 14px;
+				line-height: 42px;
+				text-align: center;
+			}
+
+
+			.map-title {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+			}
+
+			.input-active {
+				left: -36px;
+				background: #FFFFFF;
+			}
+
+			.matro--click:first-child {
+				background-image: url(image/juliwo.png);
+				background-repeat: no-repeat;
+				background-position: 8px;
+				background-size: 20px;
+			}
+
+			.matro--click:nth-child(2) {
+				background-image: url(image/jiudian.png);
+				background-repeat: no-repeat;
+				background-position: 8px;
+				background-size: 20px;
+			}
+
+			.matro--click:nth-child(3) {
+				background-image: url(image/shop.png);
+				background-repeat: no-repeat;
+				background-position: 8px;
+				background-size: 20px;
+			}
+
+			.matro--click:nth-child(4) {
+				background-image: url(image/pinpai-hotel.png);
+				background-repeat: no-repeat;
+				background-position: 8px;
+				background-size: 20px;
+			}
+
+			.tab-box {
+				display: none;
+			}
+
+			.main-inputbox {
+				display: none;
+				width: 100%;
+				background: rgba(0, 0, 0, .2);
+				position: absolute;
+				top: 44px;
+				font-size: 14px;
+				padding: 0 15px;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				z-index: 9999;
+			}
+
+			.main-inputbox ul {
+				display: none;
+				overflow: auto;
+			}
+
+			.main-inputbox li {
+				line-height: 38px;
+				height: 38px;
+				color: #000000;
+				border-bottom: 1px solid #F5F5F5;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.bg-white {
+				background: #FFFFFF;
+			}
+
+			.main {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-webkit-flex-direction: column;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				height: 70%;
+				background: rgba(0, 0, 0, .4);
+				/*padding-bottom: 1rem;*/
+			}
+
+			.shaixuan-btn {
+				background: #fff;
+				position: relative;
+				z-index: 100;
+				height: 40px;
+				overflow: hidden;
+			}
+
+			.shaixuan-btn a {
+				font-size: 20px;
+				float: left;
+				width: 50%;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+			}
+
+			.bor {
+				position: relative;
+			}
+
+			.bor:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				border: 1px solid #999999;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				width: 200%;
+				height: 200%;
+				-webkit-transform: scale(0.5);
+				transform: scale(0.5);
+				-webkit-transform-origin: left top;
+				transform-origin: left top;
+			}
+
+			.ret {
+				color: #1a4b74;
+			}
+
+			.ok {
+				color: #fff;
+				background: #cc5638;
+			}
+		</style>
+</head>
+
+<body>
+<div class="mask">
+	<div class="main">
+		<div class="matro-box">
+			<ul class="matro-nav">
+				<div>
+					<li class="matro--click matro-active" dataOper="kilometre">距离我</li>
+					<li class="matro--click" dataoper="SectionName">行政区</li>
+					<li class="matro--click" dataoper="Bizsectionname">商业区</li>
+					<li class="matro--click" dataoper="ChainName">品牌酒店</li>
+				</div>
+				<div class="matro--click" style="-webkit-flex:1;flex: 1;height: 100%;background-image: none;"></div>
+			</ul>
+			<ul class="matro-nav martro-station">
+				<div class="tab-box danxuan"  style="display: block;">
+
+					<li class="p staion-active">全城</li>
+					<li class="p ">1公里</li>
+					<li class="p ">3公里</li>
+					<li class="p ">5公里</li>
+				</div>
+				<div class="tab-box duoxuan" id="divList1Id">
+					<li class="p staion-active" class="staion-active-duoxuan">不限</li>
+
+					<!--<li class="p">前进大街11</li>
+
+                    <li class="p">硅谷大街11</li>
+
+                    <li class="p">吉大南校11</li>
+
+                    <li class="p">高新技术开发区11</li>
+
+                    <li class="p">临河街11</li>
+
+                    <li class="p">经济技术开发区11</li>
+
+                    <li class="p">自由大路11</li>
+
+                    <li class="p">汽车产业开发区11</li>
+
+                    <li class="p">重庆路11</li>
+
+                    <li class="p">建设街11</li>
+
+                    <li class="p">人民大街11</li>
+
+                    <li class="p">桂林路11</li>
+
+                    <li class="p">红旗街11</li>
+
+                    <li class="p">净月开发区11</li>
+
+                    <li class="p">净月大学城11</li>
+
+                    <li class="p">长春大街&amp;人民广场11</li>
+
+                    <li class="p">长春龙嘉国际机场11</li>-->
+				</div>
+				<div class="tab-box duoxuan" id="divList2Id">
+					<li class="p staion-active">不限</li>
+
+					<!--<li class="p">前进大街11</li>
+
+                    <li class="p">硅谷大街11</li>
+
+                    <li class="p">吉大南校11</li>
+
+                    <li class="p">高新技术开发区11</li>
+
+                    <li class="p">临河街11</li>
+
+                    <li class="p">经济技术开发区11</li>
+
+                    <li class="p">自由大路11</li>
+
+                    <li class="p">汽车产业开发区11</li>
+
+                    <li class="p">重庆路11</li>
+
+                    <li class="p">建设街11</li>
+
+                    <li class="p">人民大街11</li>
+
+                    <li class="p">桂林路11</li>
+
+                    <li class="p">红旗街11</li>
+
+                    <li class="p">净月开发区11</li>
+
+                    <li class="p">净月大学城11</li>
+
+                    <li class="p">长春大街&amp;人民广场11</li>
+
+                    <li class="p">长春龙嘉国际机场11</li>-->
+				</div>
+				<div class="tab-box duoxuan" id="divList3Id">
+					<li class="p staion-active">不限</li>
+
+					<!--<li class="p">前进大街11</li>
+
+                    <li class="p">硅谷大街11</li>
+
+                    <li class="p">吉大南校11</li>
+
+                    <li class="p">高新技术开发区11</li>
+
+                    <li class="p">临河街11</li>
+
+                    <li class="p">经济技术开发区11</li>
+
+                    <li class="p">自由大路11</li>
+
+                    <li class="p">汽车产业开发区11</li>
+
+                    <li class="p">重庆路11</li>
+
+                    <li class="p">建设街11</li>
+
+                    <li class="p">人民大街11</li>
+
+                    <li class="p">桂林路11</li>
+
+                    <li class="p">红旗街11</li>
+
+                    <li class="p">净月开发区11</li>
+
+                    <li class="p">净月大学城11</li>
+
+                    <li class="p">长春大街&amp;人民广场11</li>
+
+                    <li class="p">长春龙嘉国际机场11</li>-->
+				</div>
+			</ul>
+		</div>
+		<div class="shaixuan-btn">
+			<a href="##" class="ret bor" id="chongzhiBtn">重置</a>
+			<a href="##" class="ok" id="btnSubmit">完成</a>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+        var iskilometre = 0;
+
+
+
+        function show(){
+                  setTimeout(function(){
+                     var boxH = $(".matro-box").height();
+        	             $(".matro-nav").height(boxH);
+                  },500);
+
+        }
+
+
+
+
+		$(function() {
+			$(".martro-station .danxuan .p").click(function() {
+                    $(this).addClass('staion-active').siblings().removeClass('staion-active');
+			});
+
+
+            var boxH = $(".matro-box").height();
+          	$(".matro-nav").height(boxH);
+			var init = setInterval(function(){
+				var height=$('.matro-box').height();
+
+				if(height>0){
+					var boxH = $(".matro-box").height();
+					if(boxH > 30){
+					      $(".matro-nav").height(boxH);
+	        	              window.clearInterval(init);	
+					}
+				}
+			},50);
+
+
+
+			$("#btnSubmit").click(function(){
+
+				    var param = saveLocalData();
+	        	        window.trigp.sendParam(JSON.stringify(param));
+	        	        window.trigp.closeWin();
+			});
+			
+		
+
+			$("#chongzhiBtn").click(function(){
+                    resetting();
+			});
+
+
+			$(".matro--click:not(:last)").click(function(e) {
+						var thisIndex = $(this).index();
+						e.stopPropagation();
+						$(this).addClass('matro-active').siblings().removeClass('matro-active');
+						$(".martro-station .tab-box").eq(thisIndex).show().siblings().hide();
+						return false;
+			});
+			$(".martro-station .duoxuan").on("click","li",function() {
+				var index = $(this).index()
+
+				var Pindex = $(this).parent().index()
+
+				//				console.log(Pindex)
+				if(!$(this).hasClass('staion-active')) {
+
+					$(this).addClass('staion-active')
+					if(index == 0) {
+						$(".tab-box").eq(Pindex).find('li').slice(1).removeClass('staion-active')
+					} else {
+						$(".tab-box").eq(Pindex).find('li').eq(0).removeClass('staion-active')
+					}
+				} else {
+					$(this).removeClass('staion-active')
+				}
+
+			});
+
+
+
+
+		});
+
+		 $(document).mouseup(function(e) {
+                 var _con = $(".mask"); // 设置目标区域
+                 if(_con.is(e.target) && _con.has(e.target).length === 0) { // Mark 1
+                           reloadLocalData();
+                           if(isAppleMobileDevice()){
+                           	    window.trigp.closeWin();
+                           	    window.trigp.sendParam(null);
+                           }else{
+                           	     window.trigp.closeWin();
+                           }
+
+                  }
+         });
+
+         function isAppleMobileDevice() {
+				return(/iphone|ipod|ipad|Macintosh/i.test(navigator.userAgent.toLowerCase()));
+		 }
+
+         function resetting(){
+
+         	    $(".staion-active").removeClass("staion-active");
+			    $(".tab-box").eq(0).find("li").eq(0).addClass("staion-active");
+			    $(".tab-box").eq(1).find("li").eq(0).addClass("staion-active");
+			    $(".tab-box").eq(2).find("li").eq(0).addClass("staion-active");
+			    $(".tab-box").eq(3).find("li").eq(0).addClass("staion-active");
+         }
+         
+         function saveLocalData(){
+         	 var param  = {};
+    	         var objArr = [];
+    	         var me     = this;
+    	         $(".staion-active").each(function(){
+	        	       var obj       = {};
+	        	       var index     = $(this).parent().index();
+	        	       obj.oper      = $(".matro-box div li").eq(index).attr("dataOper");
+	        	       obj.name      = $(this).text();
+	        	       obj.index     = $(this).index();
+	        	       objArr.push(obj);
+	         });
+             param.seleted = objArr;
+             store.set(configXP.localDataKey.Shaixuan1Info , param);
+             return param;
+         }
+         
+         function reloadLocalData(){
+         	 var param = store.get(configXP.localDataKey.Shaixuan1Info);
+	         if(param != null){
+	           	   var seletedArr = param.seleted;
+	           	   if(seletedArr.length > 0){
+	           	   	     $(".matro-nav .tab-box").find("li").removeClass('staion-active');
+	           	   	     for(var i=0;i<seletedArr.length;i++){
+	                   	   	   var index = $(".matro-nav li[dataOper='"+seletedArr[i].oper+"']").index();
+	                   	   	   $(".matro-nav .tab-box").eq(index).find('li').eq(seletedArr[i].index).addClass("staion-active");
+	                   	 }
+	           	   }
+	          }else{
+	           	   //重置函数
+	           	   resetting();
+	          }
+         }
+
+        //getResult('{"cityId":2557,"iskilometre":1,isIndex:"1",oper:"SectionName",name:"净月开发区",isReadyHistory:true}');
+
+	    function getResult(result) {
+           
+			if(result == null){
+				result = '{"cityId":1}';
+			}
+			var result = eval("(" + result + ")");
+			//获得城市id
+			cityId      = result.cityId;
+			iskilometre = result.iskilometre;
+			isIndex     = result.isIndex;
+			oper        = result.oper;
+			name        = result.name;
+			isReadyHistory = result.isReadyHistory;
+			if(iskilometre == 0){
+				$(".matro-box div li").eq(0).remove();
+			    	$(".matro-box .danxuan").eq(0).remove();
+			    	$(".matro-box div li").eq(0).addClass("matro-active");
+			    	$(".martro-station .duoxuan").eq(0).show();
+			}else{
+			    
+		    	    $("#nav_contentId div").eq(0).find(".p").click(function() {
+				    $(this).addClass('staion-active').siblings().removeClass('staion-active');
+				});
+				if(isIndex != null){
+					$(".martro-station .tab-box").eq(0).find("li").eq(isIndex).addClass('staion-active').siblings().removeClass('staion-active');
+				}
+			}
+			
+			$("#cityId").val(cityId);
+		    /*
+		     * 链式请求
+		     */
+		    var settings = {
+			  "sectionName" : {
+			    "ProductId" : "12",
+			    "GroupDiff" : "sectionName",
+			    "PlatformId" : "14",
+			    "Sign"   : configXP.tmcSign.hotelSign,
+			    "CityId" : cityId,
+			    "Key"    : configXP.tmcSign.hotelKey
+			  },
+			  "bizSectionName" : {
+			    "ProductId" : "12",
+			    "GroupDiff" : "bizSectionName",
+			    "PlatformId" : "14",
+			    "Sign" : configXP.tmcSign.hotelSign,
+			    "CityId" : cityId,
+			    "Key" : configXP.tmcSign.hotelKey
+			  },
+			  "url" : "\/HotelQunar\/GetBizSectionName",
+			  "chainName" : {
+			    "ProductId" : "12",
+			    "GroupDiff" : "chainName",
+			    "PlatformId" : "14",
+			    "Sign"   : configXP.tmcSign.hotelSign,
+			    "CityId" : cityId,
+			    "Key"    : configXP.tmcSign.hotelKey
+			  },
+			  "type" : "2"
+			};
+
+
+			 $.ajax({
+				url : configXP.tmcJieKouPlatform + "/service/chainrequest.aspx",
+				data: {settings:JSON.stringify(settings)},
+				type: "get",
+				dataType: "json",
+				success: function(result) {
+					//获得Code编码
+					var statusCode = result.statusCode;
+					if(statusCode == 200){
+						showAnimate(-1);
+						var html = template("listTemplate",result.data.sectionName);
+					    $("#divList1Id").append(html);
+						html = template("listTemplate",result.data.bizSectionName);
+					    $("#divList2Id").append(html);
+						html = template("listTemplate",result.data.chainName);
+					    $("#divList3Id").append(html);
+					    //缓存搜索数据
+					    store.set(configXP.localKey.historyKeyWordListSel,result);
+					    if(isReadyHistory){
+					    	      reloadLocalData();
+					    }else{
+					    	      store.set(configXP.localDataKey.Shaixuan1Info , null);
+					    	      if(oper!=null){
+							    	      var leftIndex = $(".matro-box .matro-nav").eq(0).find('li[dataoper="'+oper+'"]').index();
+							    	      $(".matro-box .matro-nav").find(".tab-box").eq(leftIndex).find("li").each(function(index){
+						    	      	            if($(this).text() == name){
+						    	      	            	     $(this).addClass('staion-active').siblings().removeClass('staion-active');
+						    	      	            }
+							    	      });
+							  }
+					    	
+					    }
+					    
+					    var param = saveLocalData();
+					}
+
+
+
+
+				},
+				error: function(xhr, textStatus, errorThrown) {
+				}
+			});
+        }
+
+
+	</script>
+
+<script id="listTemplate" type="text/html">
+	{{each Result as obj index}}
+	<li class="p">{{obj}}</li>
+	{{/each}}
+</script>
+
+</html>

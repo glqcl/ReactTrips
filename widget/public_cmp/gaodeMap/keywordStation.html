@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<link rel="stylesheet" href="../../css/api.css" />
+		
+        <script type="text/javascript" src="../../script/jquery-1.8.3.js"></script>
+	    <script type="text/javascript" src="../../script/tripledes.js" ></script>
+        <script type="text/javascript" src="../../script/mode-ecb-min.js" ></script>
+        <script type="text/javascript" src="../../script/aes.js"></script>
+        <script src="../../script/rem.js"></script>
+		<script src="../../script/store.min.js"></script>
+		<script src="../../script/template.js"></script>
+		<script src="../../script/pengCmp/coreXP.js"></script>
+		<script src="../../script/pengCmp/configXP.js"></script>
+		<title></title>
+		<style>
+			html,
+			body {
+				background: #FFFFFF;
+				font-size: 14px;
+				height: 100%;
+				overflow: hidden;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-webkit-flex-direction: column;
+				-ms-flex-direction: column;
+				flex-direction: column;
+			}
+			
+			.fl {
+				float: left;
+			}
+			
+			.fr {
+				float: right;
+			}
+			
+			.ot {
+				color: #cb5738;
+			}
+			
+			.matro-box,
+			.matro-nav {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+			}
+			
+			.matro-box {
+				-webkit-flex: 1;
+				flex: 1;
+			}
+			
+			.matro-nav {
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-webkit-flex-direction: column;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				margin-left: -1px;
+			}
+			
+			.matro-nav {
+				width: 120px;
+				overflow: auto;
+				position: relative;
+				z-index: 999;
+				height: 100%;
+			}
+			
+			.martro-station {
+				-webkit-flex: 1;
+				flex: 1;
+			}
+			
+			.matro--click {
+				width: 100%;
+				line-height: 50px;
+				background: #f5f5f5;
+				text-align: center;
+				position: relative;
+				border: none;
+				color: #999999;
+			}
+			
+			.matro--click:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				border: 1px solid #999999;
+				border-bottom: none;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				width: 240px;
+				height: 200%;
+				-webkit-transform: scale(0.5);
+				transform: scale(0.5);
+				-webkit-transform-origin: left top;
+				transform-origin: left top;
+			}
+			
+			.matro-active {
+				border: none;
+				position: relative;
+				color: #000;
+				background: #FFFFFF;
+			}
+			
+			.matro-active:after {
+				left: -1px;
+				border-right: none;
+				border-bottom: none;
+			}
+			/*.matro--click:last-child {
+				background: #FFFFFF;
+				-webkit-flex: 1;
+				flex: 1;
+				z-index: 100;
+				position: relative;
+			}
+			
+			.matro--click:last-child:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				border: 1px solid #999999;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				width: 240px;
+				height: 200%;
+				-webkit-transform: scale(0.5);
+				transform: scale(0.5);
+				-webkit-transform-origin: left top;
+				transform-origin: left top;
+			}*/
+			
+			.martro-station {
+				margin-left: 10px;
+				overflow: auto;
+			}
+			
+			.martro-station li {
+				/*display: none;*/
+				line-height: 50px;
+				text-indent: 15px;
+				padding-right: 10px;
+				overflow: auto;
+				white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+			}
+			
+			.martro-station .p {
+				position: relative;
+				border: none;
+				color: #4B4B4B;
+				padding-right: 10px;
+			}
+			
+			.martro-station .p:after {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				background: #999999;
+				width: 100%;
+				height: 1px;
+				-webkit-transform: scaleY(0.5);
+				transform: scaleY(0.5);
+				-webkit-transform-origin: 0 0;
+				transform-origin: 0 0;
+			}
+			
+			.martro-station .p:first-child:after {
+				content: '';
+				position: absolute;
+				left: 0;
+				/*bottom: -1px;*/
+				background: #999999;
+				width: 100%;
+				height: 1px;
+				-webkit-transform: scaleY(0.5);
+				transform: scaleY(0.5);
+				-webkit-transform-origin: 0 0;
+				transform-origin: 0 0;
+			}
+			
+			.martro-station li:first-child {
+				display: block;
+			}
+			
+			.staion-active {
+				background: url(image/check.png) 98%/15px no-repeat;
+				color: #1a4b74!important;
+			}
+			
+			.list2 li.empty {
+				background: none!important;
+				color: #1a4b74;
+			}
+			
+			.item-box {
+				margin-bottom: 10px;
+			}
+			
+			.quxiao {
+				background: none;
+				left: auto;
+				right: 0;
+				color: #FFFFFF;
+				font-size: 14px;
+				line-height: 42px;
+				text-align: center;
+			}
+			
+			.move-input {
+				border: none;
+				background-color: #FFFFFF;
+				background-image: url(image/search-bg.png);
+				background-repeat: no-repeat;
+				background-size: 155px;
+				background-position: center;
+				-webkit-flex: 1;
+				flex: 1;
+				margin: 0 5px 0 44px;
+				height: 30px;
+				margin-top: 7px;
+				border-radius: 5px;
+				padding-left: 15px;
+				position: relative;
+				left: 0;
+				-webkit-transition: left .8s;
+				transition: left .8s;
+				z-index: 1000;
+			}
+			
+			.map-title {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+			}
+			
+			.input-active {
+				left: -36px;
+				background: #FFFFFF;
+			}
+			
+			.matro--click:first-child {
+				background-image: url(image/search.png);
+				background-repeat: no-repeat;
+				background-position: 8px;
+				background-size: 20px;
+			}
+			
+			.matro--click:nth-child(2) {
+				background-image: url(image/jiudian.png);
+				background-repeat: no-repeat;
+				background-position: 8px;
+				background-size: 20px;
+			}
+			
+			.matro--click:nth-child(3) {
+				background-image: url(image/shop.png);
+				background-repeat: no-repeat;
+				background-position: 8px;
+				background-size: 20px;
+			}
+			
+			.matro--click:nth-child(4) {
+				background-image: url(image/pinpai-hotel.png);
+				background-repeat: no-repeat;
+				background-position: 8px;
+				background-size: 20px;
+			}
+			.tab-box{
+				display: none;
+			}
+			.mask-inputbox{
+				display: none;
+				width: 100%;
+				background: rgba(0,0,0,.2);
+				position: absolute;
+				top: 44px;
+				font-size: 14px;
+				padding: 0 15px;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				z-index: 9999;
+			}
+			.mask-inputbox ul{
+				display: none;
+				overflow: auto;
+			}
+			.mask-inputbox li{
+				line-height: 38px;
+				height: 38px;
+				color: #000000;
+				border-bottom: 1px solid #F5F5F5;
+				white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+			}
+			.bg-white{
+				background: #FFFFFF;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+		    <form id="submitForm">
+				<input type="hidden" id="cityId"    value="1"/>
+				<input type="hidden" id="cityValId" value="长春"/>
+				<div class="map-title">
+					<span class="main-goback"></span>
+				
+					<input type="text" class="move-input" />
+			
+					<span class="main-goback quxiao">取消</span>
+				</div>
+			</form>
+		</header>
+		<div class="matro-box">
+			<ul class="matro-nav">
+				<div>
+					<li class="matro--click matro-active">搜索历史</li>
+					<li class="matro--click" dataOper="SectionName">行政区</li>
+					<li class="matro--click" dataOper="Bizsectionname">商业区</li>
+					<li class="matro--click" dataOper="ChainName">品牌酒店</li>
+				</div>
+				<div class="matro--click" style="-webkit-flex:1;flex: 1;height: 100%;background-image: none;"></div>
+			</ul>
+			<ul class="matro-nav martro-station">
+				<div class="tab-box" style="display: block;">
+
+				</div>
+				<div class="tab-box" id="divList1Id">
+		
+				</div>
+				<div class="tab-box" id="divList2Id">
+		
+				</div>
+				<div class="tab-box" id="divList3Id">
+		
+				</div>
+			</ul>
+		</div>
+		<div class="mask-inputbox">
+			<ul>
+			</ul>
+			 <center style="display:none;"><img src="../../image/empty2.png" style="width:160px;margin-top:100px;">
+					<p style="color:#333;padding:15px;">未找到相关信息</p>
+		     </center>
+		</div>
+		
+
+	</body>
+
+	<script type="text/javascript">	
+	    showAnimate(1);
+	    setTimeout(function(){
+	    	   showAnimate(-1);
+	    },6000);
+	    cityId  = 1;
+	    var preAjax = null;
+		$(function() {
+			//获得选择历史的记录
+		    var historySelArr = store.get(configXP.localKey.historyKeyWordStationSel)||[];
+		    if(historySelArr.length == 0){
+		    	    $(".matro-box div li").eq(0).remove();
+		    	    $(".matro-nav .tab-box").eq(0).remove();	
+		    	    $(".matro-box div li").eq(0).addClass("matro-active");
+		    	    $(".matro-nav .tab-box").eq(0).show();
+		    }else{
+		    	    for(var i=0;i<historySelArr.length;i++){
+					var historySel = historySelArr[i];
+					var name       = historySel.name;
+					var oper       = historySel.oper;
+					var cityId     = historySel.cityId;
+					var cityValId  = historySel.cityValId;
+					$(".matro-nav .tab-box").eq(0).append('<li oper="'+oper+'" class="p" cityId="'+cityId+'" cityValId="'+cityValId+'">'+name+'</li>');
+			    }
+		    	    setTimeout(function(){
+		    	    	    showAnimate(-1);
+		    	    },2000);
+		    }
+		    
+		    
+		    
+		    //将缓存结果注入到列表中	
+		    /*var result = store.get(configXP.localKey.historyKeyWordListSel);
+		    if(result != null){
+		      	var html = template("listTemplate",result.data.sectionName);
+			    $("#divList1Id").html(html);
+				html = template("listTemplate",result.data.bizSectionName);
+			    $("#divList2Id").html(html);
+				html = template("listTemplate",result.data.chainName);
+			    $("#divList3Id").html(html);
+		    	}*/
+		    
+			
+			$(".matro-nav").height($(".matro-box").height())
+			$(".matro--click:not(:last)").click(function(e) {
+		        var thisIndex = $(this).index();
+				e.stopPropagation();
+				$(this).addClass('matro-active').siblings().removeClass('matro-active');
+				$(".martro-station .tab-box").eq(thisIndex).show().siblings().hide();
+				return false;
+			});
+			
+		
+			
+			$(".move-input").on('input',function () {
+				var me    = this;
+				var value = $(this).val();
+				if ($(this).val()) {
+					//设置请求时间间隔
+					setTimeout(function(){
+						if(value == $(me).val()){
+							setInputData(value);
+						}
+					},500);
+					
+					$(".mask-inputbox").addClass('bg-white');
+					$(".mask-inputbox ul").show();
+					
+				} else{
+					$(".mask-inputbox").removeClass('bg-white');
+					$(".mask-inputbox ul").hide();
+					$("center").hide();
+				}
+			})
+			var heaxderHeight = $("header").outerHeight()
+			$(".mask-inputbox").height($(document).height()-heaxderHeight).css('top',heaxderHeight)
+			$(".mask-inputbox ul").height($(document).height()-heaxderHeight)
+			$(".martro-station .p").click(function() {
+				$(this).addClass('staion-active').siblings().removeClass('staion-active')
+			})
+			$(".move-input").focus(function() {
+				$("center").hide();
+				$(this).addClass('input-active');
+				$(".mask-inputbox").show();
+			});
+
+			$(".move-input").on('input',function () {
+				
+			});
+			
+			$(".mask-inputbox").click(function(){
+				//取消订单
+				canncelLogic();
+			});
+			
+			$("#submitForm").submit(function(e){
+					var value = $(".move-input").val();
+					if(value != ""){
+						var obj             = {};
+		            	    obj.oper            = "KeyWord";
+		            	    obj.name            = value;
+		            	    obj.cityId          = $("#cityId").val();
+		            	    obj.cityValId       = $("#cityValId").val();
+		            	    
+		            	    var hisObjSel       = {};
+	            	        hisObjSel.name      = value;
+					    hisObjSel.oper      = "KeyWord";
+					    hisObjSel.cityId    = $("#cityId").val();
+					    hisObjSel.cityValId = $("#cityValId").val();
+		            	    
+		            	    //获得选择历史的记录
+				        var historySelArr = store.get(configXP.localKey.historyKeyWordStationSel)||[];
+						//查找是否重复
+				     	var dataInfo    = nativeXP.jsonObjFilter("name",obj.name,historySelArr);
+		                if(!(nativeXP.isEmptyObject(dataInfo))){
+				     	  	  var index = dataInfo.xp_index;
+				     	  	  historySelArr.splice(index,1);
+				     	}
+		                historySelArr.unshift(hisObjSel);
+		                var hisSelLen = historySelArr.length;
+		                if(hisSelLen  > configXP.historySel.historyKeyWordStationIndex){
+				          	  historySelArr.splice(configXP.historySel.historyKeyWordStationIndex,hisSelLen);
+				        }
+		                store.set(configXP.localKey.historyKeyWordStationSel,historySelArr);
+		            	    console.log(JSON.stringify(obj));
+		            	    //传递给原生参数方法
+		            	    window.trigp.sendParam(JSON.stringify(obj));
+						
+					}
+			     
+			});
+			
+			//点击其中一项
+			$(".matro-box").on("click","li",function(){
+				var index = $(this).parent(".tab-box").index();
+				var dataOper = $(".matro-nav div li").eq(index).attr("dataOper");
+				var hisObjSel   = {};
+				var value       = $(this).text();
+				hisObjSel.name = value;
+				if(dataOper!=null){
+					hisObjSel.oper      = dataOper;
+					hisObjSel.cityId    = $("#cityId").val();
+					hisObjSel.cityValId = $("#cityValId").val();
+				}else{
+					hisObjSel.oper      = $(this).attr("oper");
+					hisObjSel.cityId    = $(this).attr("cityId");
+					hisObjSel.cityValId = $(this).attr("cityValId");
+				}
+				//获得选择历史的记录
+		        var historySelArr = store.get(configXP.localKey.historyKeyWordStationSel)||[];
+				//查找是否重复
+		     	var dataInfo    = nativeXP.jsonObjFilter("name",value,historySelArr);
+                if(!(nativeXP.isEmptyObject(dataInfo))){
+		     	  	  var index = dataInfo.xp_index;
+		     	  	  historySelArr.splice(index,1);
+		     	}
+                historySelArr.unshift(hisObjSel);
+                var hisSelLen = historySelArr.length;
+                if(hisSelLen  > configXP.historySel.historyKeyWordStationIndex){
+		          	  historySelArr.splice(configXP.historySel.historyKeyWordStationIndex,hisSelLen);
+		        }
+                store.set(configXP.localKey.historyKeyWordStationSel,historySelArr);
+                console.log(hisObjSel);
+                //传递给原生参数方法
+                window.trigp.sendParam(JSON.stringify(hisObjSel));
+            });
+            
+            $("div.mask-inputbox ul").on("click","li",function(){
+
+            	    var value           = $(this).text();
+            	    var obj             = {};
+            	    obj.oper            = "KeyWord";
+            	    obj.name            = value;
+            	    obj.city            = $("#cityId").val();
+            	    obj.cityId          = $("#cityId").val();
+            	    obj.cityValId       = $("#cityValId").val();
+            	    
+            	    var hisObjSel       = {};
+            	    hisObjSel.name      = value;
+				hisObjSel.oper      = "KeyWord";
+				hisObjSel.city      = $("#cityId").val();	
+				hisObjSel.cityId    = $("#cityId").val();
+				hisObjSel.cityValId = $("#cityValId").val();
+            	    
+            	    //获得选择历史的记录
+		        var historySelArr = store.get(configXP.localKey.historyKeyWordStationSel)||[];
+				//查找是否重复
+		     	var dataInfo    = nativeXP.jsonObjFilter("name",obj.name,historySelArr);
+             
+                if(!(nativeXP.isEmptyObject(dataInfo))){
+		     	  	  var index = dataInfo.xp_index;
+		     	  	  historySelArr.splice(index,1);
+		     	}
+                historySelArr.unshift(hisObjSel);
+                var hisSelLen = historySelArr.length;
+                if(hisSelLen  > configXP.historySel.historyKeyWordStationIndex){
+		          	  historySelArr.splice(configXP.historySel.historyKeyWordStationIndex,hisSelLen);
+		        }
+                store.set(configXP.localKey.historyKeyWordStationSel,historySelArr);
+                console.log(hisObjSel);
+            	    //传递给原生参数方法
+            	    window.trigp.sendParam(JSON.stringify(obj));
+            });
+            
+           
+			//点击返回按钮
+			$(".main-goback:not(.quxiao)").click(function(){
+				window.trigp.closeWin();
+			});
+			//点击取消按钮
+			$(".quxiao").click(function(){
+				canncelLogic();
+			});
+		});
+		
+		function canncelLogic(){
+			showAnimate(-1);
+			$(".mask-inputbox ul").empty();
+			$(".move-input").blur();
+			$(".move-input").removeClass('input-active').val('');
+			$(".mask-inputbox").removeClass('bg-white');
+			$(".mask-inputbox").hide();
+		}
+		
+	    /*
+	     * 设置input输入框
+	     */
+		function setInputData(inputVal){
+
+			cityId = $("#cityId").val();
+			//隐藏搜索为空
+			$("center").hide();
+			if(preAjax!=null){
+               preAjax.abort(); 
+            }
+			showAnimate(1);
+			var currentDate = nativeXP.GetDateStr(0);
+            var nextDate    = nativeXP.GetDateStr(1);
+			var parmData    = {
+				TimeStamp:new Date().getTime(),
+				Sign: configXP.tmcSign.hotelSign,
+				ProductId :12,
+				PlatformId:14,
+				CityId    : cityId,
+				CheckOut  : nextDate,
+				Content   : inputVal
+				
+		    };
+			
+		    var urlData = tgParmsFun(parmData);
+	        urlData += tgGetNewKeyStr(urlData, configXP.tmcSign.hotelKey);
+
+            preAjax = $.ajax({
+				url: configXP.tmcUrls.GetFuzzyHotelList,
+				data: urlData,
+				type: "get",
+				dataType: "json",
+				success: function(data) {
+					 var Code = data.Code;
+				
+				     var value = $(".move-input").val();
+				     if(value != ""){
+				     	if(Code == "1200"){
+				     		
+						 	 var result = data.Result;
+						 	 if(result == null ||  result.length == 0){
+						 	 	$(".mask-inputbox ul").hide();
+						 	 	$(".mask-inputbox ul").empty();
+						 	 	$("center").show();
+						 	 	
+						 	 }else{
+						 	 	$(".mask-inputbox ul").show();
+						 	 	$("center").hide();
+						 	 	var html = template("searchListTemplate",data);
+						
+	                             $(".mask-inputbox ul").html(html);
+						 	 }
+	                     }else{
+	                     	 $(".mask-inputbox ul").hide();
+						 	 $("center").show();
+						 }
+				     	
+				     }
+				     showAnimate(-1);
+					 
+				},
+				error: function(xhr, textStatus, errorThrown) {
+					$(".mask-inputbox ul").empty();
+					$("center").show();
+					showAnimate(-1);
+				}
+			});
+		}
+        	
+        //getResult('{"cityId":1,"city":"北京"}');
+		/*
+		 * 获得数据源
+		 */
+		function getResult(result) {
+			if(result == null){
+				result = '{"cityId":1,"city":"北京"}';
+			}
+			var result = eval("(" + result + ")");
+			//获得城市id
+			cityId     = result.cityId;
+			cityVal    = result.city;
+			
+			$("#cityId").val(cityId);
+			$("#cityValId").val(cityVal);
+		    /*
+		     * 链式请求
+		     */
+		    var settings = {
+			  "sectionName" : {
+			    "ProductId" : "12",
+			    "GroupDiff" : "sectionName",
+			    "PlatformId" : "14",
+			    "Sign"   : configXP.tmcSign.hotelSign,
+			    "CityId" : cityId,
+			    "Key"    : configXP.tmcSign.hotelKey
+			  },
+			  "bizSectionName" : {
+			    "ProductId" : "12",
+			    "GroupDiff" : "bizSectionName",
+			    "PlatformId" : "14",
+			    "Sign" : configXP.tmcSign.hotelSign,
+			    "CityId" : cityId,
+			    "Key" : configXP.tmcSign.hotelKey
+			  },
+			  "url" : "\/HotelQunar\/GetBizSectionName",
+			  "chainName" : {
+			    "ProductId" : "12",
+			    "GroupDiff" : "chainName",
+			    "PlatformId" : "14",
+			    "Sign"   : configXP.tmcSign.hotelSign,
+			    "CityId" : cityId,
+			    "Key"    : configXP.tmcSign.hotelKey
+			  },
+			  "type" : "2"
+			};
+			
+
+			 $.ajax({
+				url : configXP.tmcJieKouPlatform + "/service/chainrequest.aspx",
+				data: {settings:JSON.stringify(settings)},
+				type: "get",
+				dataType: "json",
+				success: function(result) {
+					//获得Code编码
+					var statusCode = result.statusCode;
+					if(statusCode == 200){
+						showAnimate(-1);
+						var html = template("listTemplate",result.data.sectionName);
+					    $("#divList1Id").html(html);
+						html = template("listTemplate",result.data.bizSectionName);
+					    $("#divList2Id").html(html);
+						html = template("listTemplate",result.data.chainName);
+					    $("#divList3Id").html(html);
+					    //缓存搜索数据
+					    store.set(configXP.localKey.historyKeyWordListSel,result);
+					}
+				},
+				error: function(xhr, textStatus, errorThrown) {
+				}
+			});
+        }
+	</script>
+	
+	<script id="listTemplate" type="text/html">
+		{{each Result as obj index}}
+		     <li class="p">{{obj}}</li>
+		{{/each}}
+	</script>
+	
+    <script id="searchListTemplate" type="text/html">
+    	    {{each Result as obj index}}
+    	         <li dataId="{{obj.hoteltgid}}">{{obj.hotelname}}</li>
+    	
+    	    {{/each}}
+    </script>
+
+</html>

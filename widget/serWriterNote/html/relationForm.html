@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<link rel="stylesheet" href="../../css/api.css" />
+		<link rel="stylesheet" href="../../css/note.css" />
+		<link rel="stylesheet" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" href="../../css/aui2/aui.2.0.css"/>
+		<script type="text/javascript" src="../../script/gmu/zepto.js"></script>
+		<script type="text/javascript" src="../../script/pengCmp/configXP.js"></script>
+		<script type="text/javascript" src="../../script/pengCmp/coreXP.js"></script>
+		
+		<script type="text/javascript" src="../../script/linq.js"></script>
+	    <script type="text/javascript" src="../../script/fastclick.js"></script>
+		<script type="text/javascript" src="../../script/template.js"></script>
+		<script type="text/javascript" src="../../script/store.min.js"></script>
+	    <script type="text/javascript" src="../../script/pengCmp/configXP.js"></script> 
+	    <script type="text/javascript" src="../../script/pengCmp/coreXP.js"></script> 
+	    <script type="text/javascript" src="../../script/gmu/extend/parseTpl.js"></script>
+		<script type="text/javascript" src="../../script/gmu/extend/throttle.js"></script>
+		<script type="text/javascript" src="../../script/gmu/extend/event.scrollStop.js"></script>
+		<script type="text/javascript" src="../../script/gmu/extend/event.ortchange.js"></script>
+		<script type="text/javascript" src="../../script/gmu/extend/matchMedia.js"></script>
+		<script type="text/javascript" src="../../script/gmu/core/gmu.js"></script>
+		<script type="text/javascript" src="../../script/gmu/core/event.js"></script>
+		<script type="text/javascript" src="../../script/gmu/core/widget.js"></script>
+		<script type="text/javascript" src="../../script/gmu/extend/iscroll.js"></script>
+		<script type="text/javascript" src="../../script/gmu/widget/refresh/refresh.js"></script>
+		<script type="text/javascript" src="../../script/gmu/widget/refresh/$lite.js"></script>   <!--向上拉动插件-->
+		<script type="text/javascript" src="../../script/aui2/aui-dialog.js"></script>
+	    <link rel="stylesheet" type="text/css" href="../../css/gmu/widget/loading.default.css" />
+	    <link rel="stylesheet" type="text/css" href="../../css/gmu/widget/refresh/refresh.default.css" />    <!--皮肤文件，若不使用该皮肤，可以不加载-->	
+		<title>关联申请单</title>
+
+ </head> 
+ <body style="padding: 10px 5px; height: auto;">
+ 
+  <center hidden><img src="../../image/empty.png" style="width:160px;margin-top:100px;height: ;"><p style="color:#333;padding:15px;">未找到相关信息</p></center>
+  <div id="pageProject_refresh_divId">
+	    <article id="list">   
+	       
+	    </article> 
+	     <div class="ui-refresh-down" hidden style=" overflow: hidden; margin-top: 1em; border: none">点击加载更多</div>
+  </div>
+           
+  <script> 
+        dialog = new auiDialog();
+        $("h3 span").bind("touchstart",function(){
+           $("div.out-div input").each(function(){
+               if(!$(this).is(":disabled")){
+                   $(this).prop("checked",true);
+               }
+           });
+        });
+        
+        var remoteStore = new nativeXP.store({
+		        	    url:configXP.urls.getMyTravelList,
+		        	    elemId:'list',
+		        	    tmpId:'getTemplate'
+	    });
+	 
+	    
+	    
+	     apiready = function(){
+	     	    var connectionType = api.connectionType; 
+				if(connectionType == "none"){
+					$(".ui-refresh-down").hide();
+					nativeXP.toast({
+						msg:'对不起,网络出现异常,请稍候重试',
+						duration:5000
+					});
+					return;
+				}
+                api.setStatusBarStyle({
+				    style: 'dark '
+		        });
+	     	    var userid     = store.get("userid");
+	     	    var systemType = api.systemType;
+	     	    var pageParam  = api.pageParam;
+                $("#pageProject_refresh_divId").refresh({
+								     page:1,
+				                     pageSize:5,
+				                     ready:function(){
+				                           var me    = this;
+				                           refresh   = me;
+				                           var param = {};
+                                           param.user_id  = userid;
+				                           param.pageSize = me._options.pageSize;
+				                           remoteStore.pagingLoad(refresh,param);
+				                     },
+								     load: function (dir, type) {
+								           var me         = this;
+								           refresh        = me;
+								           var param      = {};
+								           param.page     = me._options.page;
+				                           param.pageSize = me._options.pageSize;
+				                           param.user_id  = userid;
+								           if(dir == "down"){
+								           	    remoteStore.pagingAdd(refresh,dir,param);
+								           }
+								     }
+					}).on('statechange', function (e) {
+				                        e.preventDefault();
+				                             var data = e.data,
+				                                $elem = data[0],
+				                                state = data[1],
+				                                dir = data[2];
+				                        switch (state) {
+				                            case 'loaded':
+				                                $elem.html(dir == 'up' ? '点击刷新' : '点击加载更多');
+				                                break;
+				                            case 'beforeload':
+				                                $elem.html(dir == 'up' ? '松开立即刷新' : '松开立即加载');
+				                                break;
+				                            case 'loading':
+				                                $elem.html(dir == 'up' ? '正在刷新中...' : '正在加载中...');
+												break;
+				                            case 'disable':
+				                                $elem.html(dir == 'up' ? '对不起，没有更多内容了' : '没有更多内容');
+				                                break;
+				                        }
+				   });
+				   
+				   $("#list").on("click","label",function(){ 	
+				   	     //清除dialog
+					     dialog.remove();
+				   	     var param       = {};
+				   	     var dataId      = $(this).attr("dataId");
+				   	     var remoteObj   = remoteStore.findByObjFilter("id",dataId);
+				   	     param.user_id   = store.get("userid");
+				   	     param.travel_id = remoteObj.travel_id;
+				   	     param.list_id   = pageParam.checkArr.join(",");
+                         var paramData   = nativeXP.tgParmsFun(param);
+
+
+						api.ajax({
+							    url: configXP.urls.getTravelWrite + '?' + paramData,
+							    method: 'get'
+							}, function(ret, err) {
+							    if (ret) {
+							        var code = ret.code;
+							        if(code == 1){
+											
+											api.execScript({
+											     name: 'root',
+											     frameName: 'consumRecord_Frame01',
+											     script: 'reloadData2()'
+											 }); 
+											 
+											 api.execScript({
+											     name: 'root',
+											     frameName: 'consumRecord_Frame02',
+											     script: 'reloadData2()'
+											 }); 
+											 
+											 api.execScript({
+											     name: 'consumRecord',
+											     frameName: 'consumRecord_Frame01',
+											     script: 'reloadData2()'
+											 }); 
+											 
+											 api.execScript({
+											     name: 'consumRecord',
+											     frameName: 'consumRecord_Frame02',
+											     script: 'reloadData2()'
+											 }); 
+											 
+					                         api.closeWin();
+					                         
+					                      
+											
+								          
+	
+							        	     
+							        }else{
+							        	         
+							        	        nativeXP.toast({
+								            	    msg:ret.msg ,
+								            	    duration:5000
+								            });
+							        	     
+							        }
+							    } else {
+							    	
+							    	    nativeXP.toast({
+								            	    msg:"网络异常",
+								            	    duration:5000
+								    });
+							    }
+							});
+				   });
+	        }
+
+        
+    </script>
+    
+     <script id="getTemplate" type="text/html">  
+    	    {{each result as obj index}}  
+				        <label dataId="{{obj.id}}">
+			                <b></b>
+			                <p>申请单编号：{{obj.travel_id}}</p>
+			                <h4>{{obj.startCity}}-{{obj.endCity}}</h4>
+			                <span>出发日期：   {{obj.start_date}}<br />返回日期：   {{obj.end_date}}</span>
+			           </label>
+		    {{/each}}      
+	    </script>
+ </body>
+</html>

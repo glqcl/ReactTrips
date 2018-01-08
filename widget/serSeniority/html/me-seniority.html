@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<link rel="stylesheet" href="../../css/api.css" />
+		<link rel="stylesheet" href="../../css/travellnTransit/me_map.css" />
+		<script type="text/javascript" src="../../script/zepto.js"></script>
+        <script type="text/javascript" src="../../script/pengCmp/configXP.js"></script>
+        <script type="text/javascript" src="../../script/store.min.js"></script>
+		<title></title>
+		<style type="text/css">
+			body, html {
+				background: #f2f3f4;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="headerId">
+			<div class="map-title">
+				<span id="main-gobackId" class="main-goback"></span>
+				<h1>我的排行</h1>
+			</div>
+		</header>
+		
+	</body>
+</html>
+<script type="text/javascript">
+    
+	
+	apiready = function() {
+		var systemType = api.systemType;
+		var pageParam  = api.pageParam;
+		var userCode   = pageParam.usercode;
+		var height     = document.getElementById("headerId").offsetHeight;
+
+	    store.set("userCode",userCode);
+	    if(!configXP.productionEnvir){
+	    	   store.set("userCode","ZYS000001");
+	    }
+
+		if (systemType != "ios") {
+			api.accessNative({
+			}, function(pageParam) {
+				var userCode = pageParam.user_code;
+				store.set("userCode",userCode);
+				if(!configXP.productionEnvir){
+			    	   store.set("userCode","ZYS000001");
+			    }
+				api.openFrame({
+					    name: 'me-seniority-frame',
+					    url: './me-seniority-frame.html',
+					    rect: {
+					        x: 0,
+					        y: height,
+					        w: 'auto',
+					        h: 'auto'
+					    },
+					    pageParam:pageParam
+								    
+				});
+				
+			});
+		} else {
+                api.openFrame({
+					    name: 'me-seniority-frame',
+					    url: './me-seniority-frame.html',
+					    rect: {
+					        x: 0,
+					        y: height,
+					        w: 'auto',
+					        h: 'auto'
+					    },
+					    pageParam:pageParam
+								    
+				});
+		}
+		
+		document.getElementById("main-gobackId").onclick = function(){
+		         
+		         api.closeWin();
+	    }
+		
+	};
+
+</script>

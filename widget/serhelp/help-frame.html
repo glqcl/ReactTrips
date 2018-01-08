@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<link rel="stylesheet" href="css/api.css" />
+		<script src="sctipt/rem.js"></script>
+		<script src="../script/zepto.js"></script>
+		<script src="../script/pengCmp/coreXP.js"></script>
+		<script src="../script/pengCmp/configXP.js"></script>
+		<script src="../script/template.js"></script>
+		<title></title>
+		<style>
+			html,
+			body {
+				background: #f5f5f5;
+			}
+			
+			.fl {
+				float: left;
+			}
+			
+			.fr {
+				float: right;
+			}
+			
+			.ot {
+				color: #cb5738;
+			}
+			
+			.help-photo {
+				background: #162d3f;
+				padding: 20px;
+				overflow: hidden;
+				height: 1.5rem;
+				margin-bottom: 10px;
+			}
+			
+			.help-photo dl {
+				float: left;
+				text-align: center;
+				width: 50%;
+				overflow: hidden;
+			}
+			
+			.help-photo h1 {
+				color: #fefefe;
+				font-size: 0.20rem;
+			}
+			
+			.help-photo dl dt img {
+				max-width: 50%;
+				padding-top: 10px;
+				display: inline;
+				width: 50%;
+			}
+			
+			.help-photo dl dd {
+				font-size: 0.14rem;
+				margin-top: -13px;
+				color: #cccccc;
+			}
+			
+			.help-nav {
+				background: #FFFFFF;
+				padding: 15px 8px;
+				margin-bottom: 10px;
+			}
+			
+			.help-nav ul {
+				width: 100%;
+				display: -webkit-box;
+				/* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+				display: -moz-box;
+				/* 老版本语法: Firefox (buggy) */
+				display: -ms-flexbox;
+				/* 混合版本语法: IE 10 */
+				display: -webkit-flex;
+				/* 新版本语法: Chrome 21+ */
+				display: flex;
+				/* 新版本语法: Opera 12.1, Firefox 22+ */
+			}
+			
+			.help-nav li {
+				-webkit-flex: 1;
+				flex: 1;
+				font-size: 0.14rem;
+				text-align: center;
+			}
+			
+			.help-nav img {
+				max-width: 80%;
+				display: inline;
+				width: 80%;
+			}
+			
+			.help-nav P {
+				margin-top: 5px;
+				color: #666666;
+			}
+			
+			.help-item {
+				font-size: 0.14rem;
+				background: #FFFFFF;
+				border-bottom: 1px solid #f2f2f2;
+				padding: 15px 10px;
+			}
+			
+			.help-item h1 {
+				color: #000;
+				padding-left: 25px;
+				font-size: 0.14rem;
+				line-height: 1.5;
+				font-weight: normal;
+				background: url(image/h-question.png) left/18px no-repeat;
+			}
+			
+			.help-item li {
+				overflow: hidden;
+				background: url(image/r-arrow.png) right/10px no-repeat;
+				padding-right: 10px;
+			}
+			
+			.help-item li span,
+			.help-item li p {
+				float: left;
+			}
+			
+			.help-item li span {
+				font-size: 12px;
+				padding: 2px 0;
+				width: 56px;
+				text-align: center;
+				border: 1px solid #0169a3;
+				color: #0169a3;
+				border-radius: 5px;
+				line-height: normal;
+				margin-right: 10px;
+				display: none;
+			}
+			
+			.help-item li p {
+				font-size: 16px;
+				line-height: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+	
+		<div class="help-photo"> 
+			<dl class="fl" dataUrl="newuser.html">
+				<dt><img src="image/newuser.png"/></dt>
+				<dd>新手指南</dd>
+			</dl>
+		
+			<dl class="fl" dataUrl="aikefu.html">
+				<dt><img src="image/kefu.png"/></dt>
+				<dd>在线客服</dd>
+			</dl>
+		</div>
+		<div class="help-nav">
+			<ul>
+				<li dataId="1">
+					<img src="image/h-feiji.png" />
+					<p>国内机票</p>
+				</li>
+				<li dataId="3">
+					<img src="image/h-plain.png" />
+					<p>国际机票</p>
+				</li>
+				<li dataId="5">
+					<img src="image/h-jiudian.png" />
+					<p>酒店</p>
+				</li>
+				<li dataId="7">
+					<img src="image/h-train.png" />
+					<p>火车票</p>
+				</li>
+				<li dataId="9">
+					<img src="image/h-car.png" />
+					<p>用车</p>
+				</li>
+				<li dataId="11">
+					<img src="image/h-guankong.png" />
+					<p>差旅管控</p>
+				</li>
+			</ul>
+		</div>
+		<div class="help-item">
+			<h1>常见问题</h1>
+		</div>
+		<div id="help-item-Id">
+		</div>
+	</body>
+	<script src="sctipt/jquery-1.10.2.min.js"></script>
+	
+	<script id="getTemplate" type="text/html">  
+    	        {{each list as obj index}}  
+		        <div class="help-item">
+					<ul>
+						<li>
+							<p dataContent="{{obj.content}}">{{obj.caption}}</p>
+						</li>
+					</ul>
+				</div>
+		    {{/each}}      
+	 </script>
+	
+	<script type="text/javascript">
+		$(function() {
+			$(".help-photo .fl").click(function(){
+				var dataUrl = $(this).attr("dataUrl");
+				nativeXP.openWin({url:dataUrl});	
+			});
+			$(".city-btn").on("click", function() {
+				$(".biaozhun-mask").show()
+			})
+			$(".biaozhun-mask").on('click', function() {
+				$(this).hide()
+			})
+			$(".help-nav ul li").click(function(){
+				var dataId = $(this).attr("dataId");
+				var title  = $(this).find("p").text();
+	            nativeXP.openWin({url:'help-detail.html',pageParam:{id:dataId,title:title}});
+			});
+			
+			$("#help-item-Id").on("click",".help-item",function(){
+            	       var pTxt = $(this).find("p").text();
+            	       var content = $(this).find("p").attr("dataContent");
+            	       nativeXP.openWin({url:'help-Program.html',pageParam:{"content":content,"title":pTxt}});
+            });
+            
+            $(".main-goback").click(function(){
+            	       api.closeWin();
+            });
+            
+		})
+		console.log(configXP.PropagatePlatform);
+		apiready = function(){
+		    showAnimate(1);
+		    api.ajax({
+			    url:  configXP.PropagatePlatform + '/index.php/client_helper30/helper/index',
+			    method: 'get'
+			}, function(ret, err) {
+				if (ret) {
+			        var obj  = {};
+			        obj.list = ret;
+			        var html = template("getTemplate",obj);
+			        $("#help-item-Id").html(html);
+			        setTimeout(function(){
+			        	    showAnimate(-1);
+			        },1500);
+			        
+			    } 
+			});
+		}
+	</script>
+
+</html>

@@ -1,0 +1,154 @@
+	<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+            <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+                <link rel="stylesheet" type="text/css" href="../css/api.css" />
+      
+                <title>calendar</title>
+                </head>
+    <style>
+        
+        @-webkit-keyframes fadeIn {
+            0% {
+                opacity: 0; /*初始状态 透明度为0*/
+            }
+            50% {
+                opacity: 0.6; /*中间状态 透明度为0*/
+            }
+            100% {
+                opacity: 1; /*结尾状态 透明度为1*/
+            }
+            
+            
+        }
+    
+    
+    .help{
+        color: #cb5738;
+        line-height:20px;
+        padding: 7px 15px;
+        font-size: 12px;
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        background: #f5f5f5;
+        width: 100%;
+        -webkit-animation-name: fadeIn; /*动画名称*/
+        -webkit-animation-duration: 3s; /*动画持续时间*/
+        -webkit-animation-iteration-count: 1; /*动画次数*/
+        -webkit-animation-delay: 0s; /*延迟时间*/
+    }
+      
+    .scrollToAnim{
+          -webkit-animation: slide .5s  both;
+          position: relative;
+    }
+    @-webkit-keyframes slide{
+        from{top: 0;}
+        to{top: 45px;}
+    }
+                                    
+                                      
+    </style>
+    <body>
+        <p   id="notice"></p>
+        <div id="calendar" style="height: 100%;" class="aui-content aui-calendar">
+            
+        </div>
+    </body>
+    <link rel="stylesheet" type="text/css" href="../css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui/aui-calendar.css" />
+    <script type="text/javascript" src="../script/zepto.js"></script>
+    <script type="text/javascript" src="../script/aui2/api.js"></script>
+    <script type="text/javascript" src="../script/pengCmp/coreXP.js"></script>
+    <script type="text/javascript" src="../script/pengCmp/configXP.js"></script>
+    <script type="text/javascript" src="../script/aui2/aui-tap.js"></script>
+    <script type="text/javascript" src="../script/aui2/aui-calendar.js"></script>
+    <script type="text/javascript">
+            
+
+        apiready = function(){
+            //显示加载中......
+	        showPublicAnimate(1);
+	        setTimeout(function(){
+	        	     showPublicAnimate(-1);
+	        },1500);
+           
+            var pageParam   = api.pageParam;
+            var winName     = pageParam.winName;
+            var frameName   = pageParam.frameName;
+            var todayDate   = new Date();
+            var monthStr    = ((todayDate.getMonth()+1)>=10)?(todayDate.getMonth()+1):0+""+(todayDate.getMonth()+1);
+
+            var dateStr     = (todayDate.getDate()>=10)?todayDate.getDate():0+""+todayDate.getDate();
+            var startDate   = todayDate.getFullYear() +'-'+ monthStr +'-'+ dateStr;
+            var param  = {};
+            api.accessNative({name:'init',extra:param}, function(ret){
+                             var endDateIndex      = ret.endDateIndex;
+                             var currentDate       = ret.currentDate;
+                             var notice            = ret.notice;
+                             (ret.selectDate      != null)?selectDate      = ret.selectDate:selectDate           = startDate;
+                             (ret.startDate       != null)?startDate       = ret.startDate:startDate             = startDate;
+                             (ret.datebeforeIndex != null)?datebeforeIndex = ret.datebeforeIndex:datebeforeIndex = 28;
+                             
+                             var afterDateGay = ret.afterDateGay;
+                             var endDate      = ret.endDate;
+                             if(afterDateGay == null){
+	                             if(currentDate == null){
+	                                     afterDateGay  =  nativeXP.GetDateStr(parseInt(datebeforeIndex),startDate);
+	                             }else{
+	                                     afterDateGay  =  nativeXP.GetDateStr(parseInt(datebeforeIndex),currentDate);
+	                             }
+                             }
+                         
+                            
+                             if(endDate == null){
+                                 if(endDateIndex == null){
+	                                     endDateStr  =  afterDateGay.split("-")[0]+ "-" + afterDateGay.split("-")[1];
+	                             }else{
+	                                     endDateStr  = nativeXP.GetDateStr(parseInt(endDateIndex));
+	                             }
+                             }else{
+                             
+                                  endDateStr = endDate;
+                             }
+                            
+                             
+                             if(notice != "" && notice != null){
+                                     /*$("#notice").addClass("help");
+                                     $("#calendar").addClass("scrollToAnim");
+                                     $(".help").html(notice);
+                                     $(".help").show();*/
+                             }
+                             
+                             setTimeout(function(){
+                             	     var calendar      = new auiCalendar({
+                                                                 container     : document.getElementById("calendar"),
+                                                                 startDate     : startDate,
+                                                                 endDate       : endDateStr,
+                                                                 selectDate    : selectDate,
+                                                                 afterDateGay  : afterDateGay,
+                                                                 lunarShow     : true,
+                                                                 dateActive    : dateActive,
+                                                                 beforeStartDateClick : false
+                                     });
+                             },50);
+                             
+                             
+                             function dateActive(selectedDate){
+                                      var ext          = {};
+		                              ext.selectedDate = selectedDate;
+		                                     api.sendEvent({
+		                                           name: 'selectedDate',
+		                                           extra: ext	
+		                                     });	
+		                             
+		                              }
+                             });
+                             
+                             
+        }
+    </script>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+	<meta name="format-detection" content="telphone=no, email=no" />
+	<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/note.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/main_aui.css" /><!--样式添加修改-->
+	
+	<script src="../../script/zepto.js"></script>
+	<script type="text/javascript" src="../../script/store.min.js"></script>
+	<script src="../../script/pengCmp/coreXP.js"></script>
+	<style>
+		
+	</style>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<header style="padding-top: 20px!important;background-color:#061827 !important;">
+			<div class="map-title">
+				<span class="main-goback"></span>
+				<h1>记一笔列表</h1>
+			</div>
+		</header>
+		<article style="padding: 0;">
+				<ul class="tab_tit" style="border: 1px solid #CCCCCC;">
+						<li class="cur">未关联</li>
+						<li>已关联</li>
+				</ul> 
+		</article>
+        <footer class="cao"><span>关联出差申请单</span><span>删除</span></footer>
+		<script>
+			apiready = function() {
+				var systemType = api.systemType;
+                var pageParam  = api.pageParam;
+                name           = pageParam.name;
+	
+			    var headerHeight = $('header').height();
+				var tabHeight    = $('.tab_tit').height();
+				var footHeight   = $('footer').height();
+                	
+                openRequisitionGroup();
+      
+				function openRequisitionGroup() {
+                 
+	                    api.openFrameGroup({
+	                               name: 'Requisition_frameGroup',
+	                               background: '#FFF',
+	                               rect: {
+	                               x: 0,
+	                               y: headerHeight + tabHeight,
+	                               w: "auto",
+	                               h: api.winHeight - headerHeight - footHeight - tabHeight
+	                               },
+	                               index: 0,
+	                               frames: [{
+		                                        name: 'consumRecord_Frame01',
+		                                        url:  'consumRecord_frame01.html',
+		                                        bounces: false,
+		                                        pageParam:{
+		                                        	     name : pageParam.name,
+		                                        	     frameName:'consumRecord_Frame01'
+		                                        }
+	                                        }, {
+		                                        name: 'consumRecord_Frame02',
+		                                        url:  'consumRecord_frame02.html',
+		                                        bounces: false,
+		                                        pageParam:{
+		                                        	     name : pageParam.name,
+		                                        	     frameName:'consumRecord_Frame02'
+		                                        }
+	                                        }]
+	                               }, function(ret) {
+	                                        var index = ret.index;
+	                                        if(index == "0"){
+						                      	 $(".cao span").eq(0).html("关联出差申请单");
+						                    }else if(index == "1"){
+						                      	 $(".cao span").eq(0).html("重新关联申请单");
+						                    }
+	                                        $(".tab_tit li").eq(index).addClass("cur").siblings().removeClass("cur");
+	    
+	                               });
+			    }
+				
+				$('.tab_tit li').click(function(){
+                      $(this).addClass("cur").siblings().removeClass("cur");
+                      var index = $(this).index();
+                      if(index == "0"){
+                      	   $(".cao span").eq(0).html("关联出差申请单");
+                      }else if(index == "1"){
+                      	   $(".cao span").eq(0).html("重新关联申请单");
+                      }
+                      nativeXP.setFrameGroupIndex('Requisition_frameGroup',index);
+			    }); 
+			    
+			   
+			    
+			    $("footer span").eq(0).click(function(){
+			    	      var index     = $(".tab_tit .cur").index();
+			    	      var frameName = "consumRecord_Frame01"; 
+			    	      if(index == 0){
+			    	      	  frameName = "consumRecord_Frame01"; 
+			    	      }else{
+			    	      	  frameName = "consumRecord_Frame02"; 
+			    	      }
+			    	      
+			    	      api.execScript({
+						    frameName: frameName,
+						    script: 'guanlianSqd()'
+					  });
+			    });
+			    
+			    $("footer span").eq(1).click(function(){
+			    	      var index = $(".tab_tit .cur").index();
+			    	      var frameName = "consumRecord_Frame01"; 
+			    	      if(index == 0){
+			    	      	  frameName = "consumRecord_Frame01"; 
+			    	      }else{
+			    	      	  frameName = "consumRecord_Frame02"; 
+			    	      }
+			    	      api.execScript({
+						    frameName: frameName,
+						    script: 'delXiaofeiRecord()'
+					  });
+			    });
+			    
+			    $(".main-goback").click(function(){
+			 
+				      if(name != null){
+					 	    var jsfun = 'clearInput();';
+							api.execScript({
+							    name: 'root',
+							    frameName: 'index_note',
+							    script: jsfun
+							});
+							
+						}
+				        setTimeout(function(){
+				        	     api.closeFrameGroup({
+								     name: 'Requisition_frameGroup'
+							 });
+			        	         var systemType = api.systemType;  
+			        	         if(systemType == "ios"){
+							    	   api.closeWin();
+							 }else{
+							    	   api.closeWidget();
+							 }
+					    },600);
+		                  
+				 });
+			}
+			
+			
+			
+			 
+			 
+		</script>
+	</body>
+</html>

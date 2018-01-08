@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<link rel="stylesheet" href="css/api.css" />
+		<script src="sctipt/rem.js"></script>
+		<script src="../script/pengCmp/coreXP.js"></script>
+		<script src="../script/zepto.js"></script>
+		<title></title>
+	</head>
+
+	<body>
+		<header>
+			<div class="map-title">
+				<span class="main-goback"></span>
+				<h1>我是领导</h1>
+			</div>
+		</header>
+	</body>
+	<script type="text/javascript">
+		apiready = function(){
+    	     	
+    	     	$(".main-goback").click(function(){
+    	     		api.closeWin();
+    	     	});
+    	     	
+    	     	var height = $("header").height();
+    	     	nativeXP.openFrame({url:'lingdao-frame.html',y:height});
+    	     }
+	</script>
+
+</html>

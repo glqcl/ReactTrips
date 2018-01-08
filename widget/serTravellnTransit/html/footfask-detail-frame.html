@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="../../css/api.css">
+        <script type="text/javascript" src="../../script/zepto.js"></script>
+        <script type="text/javascript" src="../../script/store.min.js"></script>
+        <script type="text/javascript" src="../../script/pengCmp/configXP.js"></script>
+
+		<style>
+			body {
+				background: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="headerId">
+			<div class="map-title">
+				<span id="main-gobackId" class="main-goback"></span>
+				<h1>差旅数据</h1>
+			</div>
+		</header>
+	</body>
+	<script type="text/javascript">
+		apiready = function() {
+            var pageParam  = api.pageParam;
+		    var systemType = api.systemType;
+		    var userCode   = pageParam.usercode;
+		    var height     = document.getElementById("headerId").offsetHeight;
+		 
+		    
+		    if (systemType != "ios") {
+				api.accessNative({
+				}, function(pageParam){
+			    		var userCode  = pageParam.user_code;
+			    		store.set("userCode",userCode);
+			    		
+			    		if(!configXP.productionEnvir){
+			    			store.set("userCode","SGF00014548");
+			    		}
+			    		api.openFrame({
+						    name: 'footmask-detail',
+						    url: './footmask-detail.html',
+						    rect: {
+						        x: 0,
+						        y: height,
+						        w: 'auto',
+						        h: 'auto'
+						    },
+						    pageParam:pageParam
+						    
+					    });
+			    		
+			    	});
+			}else{
+				    store.set("userCode",userCode);
+				    
+				    if(!configXP.productionEnvir){
+				         store.set("userCode","SGF00014548");
+				    }     
+				    api.openFrame({
+						    name: 'footmask-detail',
+						    url: './footmask-detail.html',
+						    rect: {
+						        x: 0,
+						        y: height,
+						        w: 'auto',
+						        h: 'auto'
+						    },
+						    pageParam:pageParam
+						    
+					});
+			}
+          
+		    document.getElementById("main-gobackId").onclick = function(){
+		    	        var systemType = api.systemType;  
+				    	if(systemType == "ios"){
+						   api.closeWin();
+				    }else{
+				    	       api.execScript({
+							    frameName: 'footmask-detail',
+							    script: 'clearChartSales()'
+						   });
+						   setTimeout(function(){
+						   	    api.closeWidget();
+						   },300);
+						  
+				    }
+		    }
+		    
+		     api.addEventListener({
+			        name: 'keyback'
+			 }, function(ret, err) {
+				    var systemType = api.systemType;  
+		    	        if(systemType == "ios"){
+					    	   api.closeWin();
+					}else{
+						   api.execScript({
+							    frameName: 'footmask-detail',
+							    script: 'clearChartSales()'
+						   });
+					    	   setTimeout(function(){
+						   	    api.closeWidget();
+						   },300);
+					}
+			}); 
+			
+			
+		}
+		
+
+	</script>
+</html>

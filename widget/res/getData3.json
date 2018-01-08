@@ -1,0 +1,1341 @@
+{
+list: [
+{
+groupname: "A",
+citylist: [
+{
+dataSpac: "ASHCZ",
+dataTags: "ANSHANHUOCHEZHAN",
+dataSzm: "AST",
+dataValue: "鞍山火车站",
+cityId: "as",
+ct: "鞍山",
+Lat: "41.125198",
+Lng: "122.998731"
+},
+{
+dataSpac: "ASXHCZ",
+dataTags: "ANSHANXIHUOCHEZHAN",
+dataSzm: "AXT",
+dataValue: "鞍山西火车站",
+cityId: "as",
+ct: "鞍山",
+Lat: "41.129247",
+Lng: "122.928939"
+}
+]
+},
+{
+groupname: "B",
+citylist: [
+{
+dataSpac: "BJNHCZ",
+dataTags: "BEIJINGNANHUOCHEZHAN",
+dataSzm: "VNP",
+dataValue: "北京南火车站",
+cityId: "bj",
+ct: "北京",
+Lat: "39.871207",
+Lng: "116.385491"
+},
+{
+dataSpac: "BJXHCZ",
+dataTags: "BEIJINGXIHUOCHEZHAN",
+dataSzm: "BXP",
+dataValue: "北京西火车站",
+cityId: "bj",
+ct: "北京",
+Lat: "39.901879",
+Lng: "116.327729"
+},
+{
+dataSpac: "BJHCZ",
+dataTags: "BEIJINGHUOCHEZHAN",
+dataSzm: "BJP",
+dataValue: "北京火车站",
+cityId: "bj",
+ct: "北京",
+Lat: "39.911115",
+Lng: "116.433651"
+},
+{
+dataSpac: "BJBHCZ",
+dataTags: "BEIJINGBEIHUOCHEZHAN",
+dataSzm: "VAP",
+dataValue: "北京北火车站",
+cityId: "bj",
+ct: "北京",
+Lat: "39.948518",
+Lng: "116.360384"
+},
+{
+dataSpac: "BDHCZ",
+dataTags: "BAODINGHUOCHEZHAN",
+dataSzm: "BDP",
+dataValue: "保定火车站",
+cityId: "baod",
+ct: "保定",
+Lat: "38.875527",
+Lng: "115.491774"
+},
+{
+dataSpac: "BXHCZ",
+dataTags: "BENXIHUOCHEZHAN",
+dataSzm: "BXT",
+dataValue: "本溪火车站",
+cityId: "benxi",
+ct: "本溪",
+Lat: "41.302938",
+Lng: "123.772987"
+}
+]
+},
+{
+groupname: "C",
+citylist: [
+{
+dataSpac: "CQBHCZ",
+dataTags: "CHONGQINGBEIHUOCHEZHAN",
+dataSzm: "CUW",
+dataValue: "重庆北火车站",
+cityId: "cq",
+ct: "重庆",
+Lat: "29.613927",
+Lng: "106.557304"
+},
+{
+dataSpac: "CDDHCZ",
+dataTags: "CHENGDUDONGHUOCHEZHAN",
+dataSzm: "ICW",
+dataValue: "成都东火车站",
+cityId: "cd",
+ct: "成都",
+Lat: "30.635066",
+Lng: "104.148139"
+},
+{
+dataSpac: "CDBHCZ",
+dataTags: "CHENGDUBEIHUOCHEZHAN",
+dataSzm: "CDW",
+dataValue: "成都北火车站",
+cityId: "cd",
+ct: "成都",
+Lat: "30.7026",
+Lng: "104.078787"
+},
+{
+dataSpac: "CDNHCZ",
+dataTags: "CHENGDUNANHUOCHEZHAN",
+dataSzm: "CNW",
+dataValue: "成都南火车站",
+cityId: "cd",
+ct: "成都",
+Lat: "30.613345",
+Lng: "104.072541"
+},
+{
+dataSpac: "ZSHCZ",
+dataTags: "CHANGSHAHUOCHEZHAN",
+dataSzm: "CSQ",
+dataValue: "长沙火车站",
+cityId: "chs",
+ct: "长沙",
+Lat: "28.20022",
+Lng: "113.019611"
+},
+{
+dataSpac: "ZSNHCZ",
+dataTags: "CHANGSHANANHUOCHEZHAN",
+dataSzm: "CWQ",
+dataValue: "长沙南火车站",
+cityId: "chs",
+ct: "长沙",
+Lat: "28.152751",
+Lng: "113.069975"
+},
+{
+dataSpac: "CCHCZ",
+dataTags: "CHANGCHUNHUOCHEZHAN",
+dataSzm: "CCT",
+dataValue: "长春火车站",
+cityId: "cc",
+ct: "长春",
+Lat: "43.915647",
+Lng: "125.330666"
+},
+{
+dataSpac: "CCNHCZ",
+dataTags: "CHANGCHUNNANHUOCHEZHAN",
+dataSzm: "CET",
+dataValue: "长春南火车站",
+cityId: "cc",
+ct: "长春",
+Lat: "43.857489",
+Lng: "125.266217"
+},
+{
+dataSpac: "CCXHCZ",
+dataTags: "CHANGCHUNXIHUOCHEZHAN",
+dataSzm: "CRT",
+dataValue: "长春西火车站",
+cityId: "cc",
+ct: "长春",
+Lat: "43.883325",
+Lng: "125.207325"
+},
+{
+dataSpac: "CZHCZ",
+dataTags: "CHANGZHOUHUOCHEZHAN",
+dataSzm: "CZH",
+dataValue: "常州火车站",
+cityId: "cz",
+ct: "常州",
+Lat: "31.790537",
+Lng: "119.978449"
+},
+{
+dataSpac: "CZBHCZ",
+dataTags: "CHANGZHOUBEIHUOCHEZHAN",
+dataSzm: "ESH",
+dataValue: "常州北火车站",
+cityId: "cz",
+ct: "常州",
+Lat: "31.859944",
+Lng: "119.961203"
+},
+{
+dataSpac: "QSYHCZ",
+dataTags: "QISHUYANHUOCHEZHAN",
+dataSzm: "QYH",
+dataValue: "戚墅堰火车站",
+cityId: "cz",
+ct: "常州",
+Lat: "31.728378",
+Lng: "120.074129"
+}
+]
+},
+{
+groupname: "D",
+citylist: [
+{
+dataSpac: "DLBHCZ",
+dataTags: "DALIANBEIHUOCHEZHAN",
+dataSzm: "DFT",
+dataValue: "大连北火车站",
+cityId: "dl",
+ct: "大连",
+Lat: "39.023374",
+Lng: "121.614726"
+},
+{
+dataSpac: "DLHCZ",
+dataTags: "DALIANHUOCHEZHAN",
+dataSzm: "DLT",
+dataValue: "大连火车站",
+cityId: "dl",
+ct: "大连",
+Lat: "38.927999",
+Lng: "121.639405"
+}
+]
+},
+{
+groupname: "E",
+citylist: [
+{
+dataSpac: "EZHCZ",
+dataTags: "EZHOUHUOCHEZHAN",
+dataSzm: "ECN",
+dataValue: "鄂州火车站",
+cityId: "ez",
+ct: "鄂州",
+Lat: "30.374495",
+Lng: "114.879613"
+}
+]
+},
+{
+groupname: "F",
+citylist: [
+{
+dataSpac: "FZNHCZ",
+dataTags: "FUZHOUNANHUOCHEZHAN",
+dataSzm: "FYS",
+dataValue: "福州南火车站",
+cityId: "fz",
+ct: "福州",
+Lat: "25.992256",
+Lng: "119.396385"
+},
+{
+dataSpac: "FZHCZ",
+dataTags: "FUZHOUHUOCHEZHAN",
+dataSzm: "FZS",
+dataValue: "福州火车站",
+cityId: "fz",
+ct: "福州",
+Lat: "26.118774",
+Lng: "119.32615"
+},
+{
+dataSpac: "FSBHCZ",
+dataTags: "FUSHUNBEIHUOCHEZHAN",
+dataSzm: "FET",
+dataValue: "抚顺北火车站",
+cityId: "fushun",
+ct: "抚顺",
+Lat: "41.900892",
+Lng: "123.945916"
+},
+{
+dataSpac: "FSHCZ",
+dataTags: "FUSHUNHUOCHEZHAN",
+dataSzm: "FST",
+dataValue: "抚顺火车站",
+cityId: "fushun",
+ct: "抚顺",
+Lat: "41.874546",
+Lng: "123.915168"
+}
+]
+},
+{
+groupname: "G",
+citylist: [
+{
+dataSpac: "GZHCZ",
+dataTags: "GUANGZHOUHUOCHEZHAN",
+dataSzm: "GZQ",
+dataValue: "广州火车站",
+cityId: "gz",
+ct: "广州",
+Lat: "23.154023",
+Lng: "113.264681"
+},
+{
+dataSpac: "GZDHCZ",
+dataTags: "GUANGZHOUDONGHUOCHEZHAN",
+dataSzm: "GGQ",
+dataValue: "广州东火车站",
+cityId: "gz",
+ct: "广州",
+Lat: "23.155262",
+Lng: "113.331353"
+},
+{
+dataSpac: "GZBHCZ",
+dataTags: "GUANGZHOUBEIHUOCHEZHAN",
+dataSzm: "GBQ",
+dataValue: "广州北火车站",
+cityId: "gz",
+ct: "广州",
+Lat: "23.38272",
+Lng: "113.211084"
+},
+{
+dataSpac: "GZNHCZ",
+dataTags: "GUANGZHOUNANHUOCHEZHAN",
+dataSzm: "IZQ",
+dataValue: "广州南火车站",
+cityId: "gz",
+ct: "广州",
+Lat: "22.995165",
+Lng: "113.275888"
+}
+]
+},
+{
+groupname: "H",
+citylist: [
+{
+dataSpac: "HZDHCZ",
+dataTags: "HANGZHOUDONGHUOCHEZHAN",
+dataSzm: "HGH",
+dataValue: "杭州东火车站",
+cityId: "hz",
+ct: "杭州",
+Lat: "30.30216",
+Lng: "120.22432"
+},
+{
+dataSpac: "HFNHCZ",
+dataTags: "HEFEINANHUOCHEZHAN",
+dataSzm: "ENH",
+dataValue: "合肥南火车站",
+cityId: "hf",
+ct: "合肥",
+Lat: "31.803411",
+Lng: "117.295732"
+},
+{
+dataSpac: "HFHCZ",
+dataTags: "HEFEIHUOCHEZHAN",
+dataSzm: "HFH",
+dataValue: "合肥火车站",
+cityId: "hf",
+ct: "合肥",
+Lat: "31.89057",
+Lng: "117.323237"
+},
+{
+dataSpac: "GEBHCZ",
+dataTags: "HAERBINHUOCHEZHAN",
+dataSzm: "HBB",
+dataValue: "哈尔滨火车站",
+cityId: "hrb",
+ct: "哈尔滨",
+Lat: "45.76756",
+Lng: "126.639491"
+},
+{
+dataSpac: "GEBXHCZ",
+dataTags: "HAERBINXIHUOCHEZHAN",
+dataSzm: "VAB",
+dataValue: "哈尔滨西火车站",
+cityId: "hrb",
+ct: "哈尔滨",
+Lat: "45.711877",
+Lng: "126.587526"
+},
+{
+dataSpac: "GEBDHCZ",
+dataTags: "HAERBINDONGHUOCHEZHAN",
+dataSzm: "VBB",
+dataValue: "哈尔滨东火车站",
+cityId: "hrb",
+ct: "哈尔滨",
+Lat: "45.795113",
+Lng: "126.716243"
+},
+{
+dataSpac: "HZHCZ",
+dataTags: "HUIZHOUHUOCHEZHAN",
+dataSzm: "HCQ",
+dataValue: "惠州火车站",
+cityId: "huizhou",
+ct: "惠州",
+Lat: "23.16312",
+Lng: "114.42979"
+},
+{
+dataSpac: "HZXHCZ",
+dataTags: "HUIZHOUXIHUOCHEZHAN",
+dataSzm: "VXQ",
+dataValue: "惠州西火车站",
+cityId: "huizhou",
+ct: "惠州",
+Lat: "23.10373",
+Lng: "114.375993"
+},
+{
+dataSpac: "HYDHCZ",
+dataTags: "HENGYANGDONGHUOCHEZHAN",
+dataSzm: "HVQ",
+dataValue: "衡阳东火车站",
+cityId: "hy",
+ct: "衡阳",
+Lat: "26.908256",
+Lng: "112.722749"
+},
+{
+dataSpac: "HYHCZ",
+dataTags: "HENGYANGHUOCHEZHAN",
+dataSzm: "HYQ",
+dataValue: "衡阳火车站",
+cityId: "hy",
+ct: "衡阳",
+Lat: "26.901402",
+Lng: "112.644239"
+},
+{
+dataSpac: "HAHCZ",
+dataTags: "HUAIANHUOCHEZHAN",
+dataSzm: "AUH",
+dataValue: "淮安火车站",
+cityId: "ha",
+ct: "淮安",
+Lat: "33.661548",
+Lng: "119.046016"
+},
+{
+dataSpac: "DQHCZ",
+dataTags: "DEQINGHUOCHEZHAN",
+dataSzm: "DRH",
+dataValue: "德清火车站",
+cityId: "huzhou",
+ct: "湖州",
+Lat: "30.556012",
+Lng: "120.07408"
+},
+{
+dataSpac: "HZHCZ",
+dataTags: "HUZHOUHUOCHEZHAN",
+dataSzm: "VZH",
+dataValue: "湖州火车站",
+cityId: "huzhou",
+ct: "湖州",
+Lat: "30.869559",
+Lng: "120.030013"
+},
+{
+dataSpac: "HSHCZ",
+dataTags: "HUANGSHANHUOCHEZHAN",
+dataSzm: "HKH",
+dataValue: "黄山火车站",
+cityId: "huangshan",
+ct: "黄山",
+Lat: "29.734861",
+Lng: "118.335119"
+},
+{
+dataSpac: "HSBHCZ",
+dataTags: "HUANGSHANBEIHUOCHEZHAN",
+dataSzm: "NYH",
+dataValue: "黄山北火车站",
+cityId: "huangshan",
+ct: "黄山",
+Lat: "29.819105",
+Lng: "118.279954"
+}
+]
+},
+{
+groupname: "J",
+citylist: [
+{
+dataSpac: "JNXHCZ",
+dataTags: "JINANXIHUOCHEZHAN",
+dataSzm: "JGK",
+dataValue: "济南西火车站",
+cityId: "jn",
+ct: "济南",
+Lat: "36.67559",
+Lng: "116.899528"
+},
+{
+dataSpac: "JNHCZ",
+dataTags: "JINANHUOCHEZHAN",
+dataSzm: "JNK",
+dataValue: "济南火车站",
+cityId: "jn",
+ct: "济南",
+Lat: "36.676965",
+Lng: "116.998125"
+},
+{
+dataSpac: "JJHCZ",
+dataTags: "JIUJIANGHUOCHEZHAN",
+dataSzm: "JJG",
+dataValue: "九江火车站",
+cityId: "jj",
+ct: "九江",
+Lat: "29.716801",
+Lng: "116.018728"
+},
+{
+dataSpac: "LSHCZ",
+dataTags: "LUSHANHUOCHEZHAN",
+dataSzm: "LSG",
+dataValue: "庐山火车站",
+cityId: "jj",
+ct: "九江",
+Lat: "29.687373",
+Lng: "116.001985"
+},
+{
+dataSpac: "JXNHCZ",
+dataTags: "JIAXINGNANHUOCHEZHAN",
+dataSzm: "EPH",
+dataValue: "嘉兴南火车站",
+cityId: "jx",
+ct: "嘉兴",
+Lat: "30.703422",
+Lng: "120.812805"
+},
+{
+dataSpac: "JXHCZ",
+dataTags: "JIAXINGHUOCHEZHAN",
+dataSzm: "JXH",
+dataValue: "嘉兴火车站",
+cityId: "jx",
+ct: "嘉兴",
+Lat: "30.775691",
+Lng: "120.776405"
+}
+]
+},
+{
+groupname: "K",
+citylist: [
+{
+dataSpac: "KMHCZ",
+dataTags: "KUNMINGHUOCHEZHAN",
+dataSzm: "KMM",
+dataValue: "昆明火车站",
+cityId: "km",
+ct: "昆明",
+Lat: "25.022142",
+Lng: "102.728135"
+}
+]
+},
+{
+groupname: "L",
+citylist: [
+{
+dataSpac: "LZXHCZ",
+dataTags: "LANZHOUXIHUOCHEZHAN",
+dataSzm: "LAJ",
+dataValue: "兰州西火车站",
+cityId: "lz",
+ct: "兰州",
+Lat: "36.070704",
+Lng: "103.777774"
+},
+{
+dataSpac: "LZHCZ",
+dataTags: "LANZHOUHUOCHEZHAN",
+dataSzm: "LZJ",
+dataValue: "兰州火车站",
+cityId: "lz",
+ct: "兰州",
+Lat: "36.035292",
+Lng: "103.898956"
+},
+{
+dataSpac: "LDNHCZ",
+dataTags: "LOUDINANHUOCHEZHAN",
+dataSzm: "UOQ",
+dataValue: "娄底南火车站",
+cityId: "ld",
+ct: "娄底",
+Lat: "27.665794",
+Lng: "112.020906"
+},
+{
+dataSpac: "LDHCZ",
+dataTags: "LOUDIHUOCHEZHAN",
+dataSzm: "LDQ",
+dataValue: "娄底火车站",
+cityId: "ld",
+ct: "娄底",
+Lat: "27.74501",
+Lng: "112.01311"
+},
+{
+dataSpac: "LZHCZ",
+dataTags: "LIUZHOUHUOCHEZHAN",
+dataSzm: "LZZ",
+dataValue: "柳州火车站",
+cityId: "liuzhou",
+ct: "柳州",
+Lat: "24.319004",
+Lng: "109.402181"
+},
+{
+dataSpac: "LSHCZ",
+dataTags: "LISHUIHUOCHEZHAN",
+dataSzm: "USH",
+dataValue: "丽水火车站",
+cityId: "lishui",
+ct: "丽水",
+Lat: "28.453031",
+Lng: "119.967087"
+},
+{
+dataSpac: "LYHCZ",
+dataTags: "LONGYANHUOCHEZHAN",
+dataSzm: "LYS",
+dataValue: "龙岩火车站",
+cityId: "ly",
+ct: "龙岩",
+Lat: "25.108828",
+Lng: "117.020221"
+}
+]
+},
+{
+groupname: "N",
+citylist: [
+{
+dataSpac: "NJHCZ",
+dataTags: "NANJINGHUOCHEZHAN",
+dataSzm: "NJH",
+dataValue: "南京火车站",
+cityId: "nj",
+ct: "南京",
+Lat: "32.092745",
+Lng: "118.803114"
+},
+{
+dataSpac: "NJNHCZ",
+dataTags: "NANJINGNANHUOCHEZHAN",
+dataSzm: "NKH",
+dataValue: "南京南火车站",
+cityId: "nj",
+ct: "南京",
+Lat: "31.975444",
+Lng: "118.804458"
+},
+{
+dataSpac: "NBHCZ",
+dataTags: "NINGBOHUOCHEZHAN",
+dataSzm: "NGH",
+dataValue: "宁波火车站",
+cityId: "nb",
+ct: "宁波",
+Lat: "29.873825",
+Lng: "121.549258"
+},
+{
+dataSpac: "NTHCZ",
+dataTags: "NANTONGHUOCHEZHAN",
+dataSzm: "NUH",
+dataValue: "南通火车站",
+cityId: "nt",
+ct: "南通",
+Lat: "32.080428",
+Lng: "120.873198"
+},
+{
+dataSpac: "NCHCZ",
+dataTags: "NANCHANGHUOCHEZHAN",
+dataSzm: "NCG",
+dataValue: "南昌火车站",
+cityId: "nc",
+ct: "南昌",
+Lat: "28.674696",
+Lng: "115.931982"
+},
+{
+dataSpac: "NCXHCZ",
+dataTags: "NANCHANGXIHUOCHEZHAN",
+dataSzm: "NXG",
+dataValue: "南昌西火车站",
+cityId: "nc",
+ct: "南昌",
+Lat: "28.635157",
+Lng: "115.805429"
+}
+]
+},
+{
+groupname: "Q",
+citylist: [
+{
+dataSpac: "QDHCZ",
+dataTags: "QINGDAOHUOCHEZHAN",
+dataSzm: "QDK",
+dataValue: "青岛火车站",
+cityId: "qd",
+ct: "青岛",
+Lat: "36.070027",
+Lng: "120.31917"
+},
+{
+dataSpac: "QDBHCZ",
+dataTags: "QINGDAOBEIHUOCHEZHAN",
+dataSzm: "QHK",
+dataValue: "青岛北火车站",
+cityId: "qd",
+ct: "青岛",
+Lat: "36.181848",
+Lng: "120.387322"
+},
+{
+dataSpac: "QZHCZ",
+dataTags: "QUZHOUHUOCHEZHAN",
+dataSzm: "QEH",
+dataValue: "衢州火车站",
+cityId: "quzhou",
+ct: "衢州",
+Lat: "28.93512",
+Lng: "118.894251"
+}
+]
+},
+{
+groupname: "S",
+citylist: [
+{
+dataSpac: "SHHQHCZ",
+dataTags: "SHANGHAIHONGQIAOHUOCHEZHAN",
+dataSzm: "AOH",
+dataValue: "上海虹桥火车站",
+cityId: "sh",
+ct: "上海",
+Lat: "31.200607",
+Lng: "121.327295"
+},
+{
+dataSpac: "SHHCZ",
+dataTags: "SHANGHAIHUOCHEZHAN",
+dataSzm: "SHH",
+dataValue: "上海火车站",
+cityId: "sh",
+ct: "上海",
+Lat: "31.254937",
+Lng: "121.461667"
+},
+{
+dataSpac: "SHNHCZ",
+dataTags: "SHANGHAINANHUOCHEZHAN",
+dataSzm: "SNH",
+dataValue: "上海南火车站",
+cityId: "sh",
+ct: "上海",
+Lat: "31.159619",
+Lng: "121.43589"
+},
+{
+dataSpac: "SHXHCZ",
+dataTags: "SHANGHAIXIHUOCHEZHAN",
+dataSzm: "SXH",
+dataValue: "上海西火车站",
+cityId: "sh",
+ct: "上海",
+Lat: "31.268377",
+Lng: "121.409483"
+},
+{
+dataSpac: "SZBHCZ",
+dataTags: "SHENZHENBEIHUOCHEZHAN",
+dataSzm: "IOQ",
+dataValue: "深圳北火车站",
+cityId: "sz",
+ct: "深圳",
+Lat: "22.615292",
+Lng: "114.035418"
+},
+{
+dataSpac: "SZHCZ",
+dataTags: "SHENZHENHUOCHEZHAN",
+dataSzm: "SZQ",
+dataValue: "深圳火车站",
+cityId: "sz",
+ct: "深圳",
+Lat: "22.538662",
+Lng: "114.124815"
+},
+{
+dataSpac: "SZDHCZ",
+dataTags: "SHENZHENDONGHUOCHEZHAN",
+dataSzm: "BJQ",
+dataValue: "深圳东火车站",
+cityId: "sz",
+ct: "深圳",
+Lat: "22.607613",
+Lng: "114.126772"
+},
+{
+dataSpac: "SZXHCZ",
+dataTags: "SHENZHENXIHUOCHEZHAN",
+dataSzm: "OSQ",
+dataValue: "深圳西火车站",
+cityId: "sz",
+ct: "深圳",
+Lat: "22.534481",
+Lng: "113.91406"
+},
+{
+dataSpac: "SYBHCZ",
+dataTags: "SHENYANGBEIHUOCHEZHAN",
+dataSzm: "SBT",
+dataValue: "沈阳北火车站",
+cityId: "sy",
+ct: "沈阳",
+Lat: "41.823989",
+Lng: "123.443078"
+},
+{
+dataSpac: "SYNHCZ",
+dataTags: "SHENYANGNANHUOCHEZHAN",
+dataSzm: "SOT",
+dataValue: "沈阳南火车站",
+cityId: "sy",
+ct: "沈阳",
+Lat: "41.675072",
+Lng: "123.407721"
+},
+{
+dataSpac: "SZXQHCZ",
+dataTags: "SUZHOUXINQUHUOCHEZHAN",
+dataSzm: "ITH",
+dataValue: "苏州新区火车站",
+cityId: "su",
+ct: "苏州",
+Lat: "31.377818",
+Lng: "120.531127"
+},
+{
+dataSpac: "SZYQHCZ",
+dataTags: "SUZHOUYUANQUHUOCHEZHAN",
+dataSzm: "KAH",
+dataValue: "苏州园区火车站",
+cityId: "su",
+ct: "苏州",
+Lat: "31.347508",
+Lng: "120.717155"
+},
+{
+dataSpac: "SZBHCZ",
+dataTags: "SUZHOUBEIHUOCHEZHAN",
+dataSzm: "OHH",
+dataValue: "苏州北火车站",
+cityId: "su",
+ct: "苏州",
+Lat: "31.427378",
+Lng: "120.649872"
+},
+{
+dataSpac: "SZHCZ",
+dataTags: "SUZHOUHUOCHEZHAN",
+dataSzm: "SZH",
+dataValue: "苏州火车站",
+cityId: "su",
+ct: "苏州",
+Lat: "31.336735",
+Lng: "120.617068"
+},
+{
+dataSpac: "SJZHCZ",
+dataTags: "SHIJIAZHUANGHUOCHEZHAN",
+dataSzm: "SJP",
+dataValue: "石家庄火车站",
+cityId: "sjz",
+ct: "石家庄",
+Lat: "38.016908",
+Lng: "114.489367"
+},
+{
+dataSpac: "SJZBHCZ",
+dataTags: "SHIJIAZHUANGBEIHUOCHEZHAN",
+dataSzm: "VVP",
+dataValue: "石家庄北火车站",
+cityId: "sjz",
+ct: "石家庄",
+Lat: "38.071539",
+Lng: "114.472971"
+},
+{
+dataSpac: "CSHCZ",
+dataTags: "CHAOSHANHUOCHEZHAN",
+dataSzm: "CBQ",
+dataValue: "潮汕火车站",
+cityId: "st",
+ct: "汕头",
+Lat: "23.548042",
+Lng: "116.601074"
+},
+{
+dataSpac: "CYHCZ",
+dataTags: "CHAOYANGHUOCHEZHAN",
+dataSzm: "CNQ",
+dataValue: "潮阳火车站",
+cityId: "st",
+ct: "汕头",
+Lat: "23.390378",
+Lng: "116.433297"
+},
+{
+dataSpac: "STHCZ",
+dataTags: "SHANTOUHUOCHEZHAN",
+dataSzm: "OTQ",
+dataValue: "汕头火车站",
+cityId: "st",
+ct: "汕头",
+Lat: "23.384682",
+Lng: "116.767568"
+},
+{
+dataSpac: "SYHCZ",
+dataTags: "SHAOYANGHUOCHEZHAN",
+dataSzm: "SYQ",
+dataValue: "邵阳火车站",
+cityId: "shaoyang",
+ct: "邵阳",
+Lat: "27.225911",
+Lng: "111.473976"
+},
+{
+dataSpac: "SXBHCZ",
+dataTags: "SHAOXINGBEIHUOCHEZHAN",
+dataSzm: "SLH",
+dataValue: "绍兴北火车站",
+cityId: "sx",
+ct: "绍兴",
+Lat: "30.104969",
+Lng: "120.544634"
+}
+]
+},
+{
+groupname: "T",
+citylist: [
+{
+dataSpac: "TJNHCZ",
+dataTags: "TIANJINNANHUOCHEZHAN",
+dataSzm: "TIP",
+dataValue: "天津南火车站",
+cityId: "tj",
+ct: "天津",
+Lat: "39.062742",
+Lng: "117.067251"
+},
+{
+dataSpac: "TJHCZ",
+dataTags: "TIANJINHUOCHEZHAN",
+dataSzm: "TJP",
+dataValue: "天津火车站",
+cityId: "tj",
+ct: "天津",
+Lat: "39.141471",
+Lng: "117.215734"
+},
+{
+dataSpac: "TJXHCZ",
+dataTags: "TIANJINXIHUOCHEZHAN",
+dataSzm: "TXP",
+dataValue: "天津西火车站",
+cityId: "tj",
+ct: "天津",
+Lat: "39.162533",
+Lng: "117.169866"
+},
+{
+dataSpac: "TYNHCZ",
+dataTags: "TAIYUANNANHUOCHEZHAN",
+dataSzm: "TNV",
+dataValue: "太原南火车站",
+cityId: "ty",
+ct: "太原",
+Lat: "37.798035",
+Lng: "112.613529"
+},
+{
+dataSpac: "TYHCZ",
+dataTags: "TAIYUANHUOCHEZHAN",
+dataSzm: "TYV",
+dataValue: "太原火车站",
+cityId: "ty",
+ct: "太原",
+Lat: "37.8665",
+Lng: "112.593524"
+},
+{
+dataSpac: "TAHCZ",
+dataTags: "TAIANHUOCHEZHAN",
+dataSzm: "TMK",
+dataValue: "泰安火车站",
+cityId: "ta",
+ct: "泰安",
+Lat: "36.199881",
+Lng: "117.123556"
+},
+{
+dataSpac: "TZHCZ",
+dataTags: "TAIZHOUHUOCHEZHAN",
+dataSzm: "TZH",
+dataValue: "台州火车站",
+cityId: "tz",
+ct: "台州",
+Lat: "28.698037",
+Lng: "121.303094"
+}
+]
+},
+{
+groupname: "W",
+citylist: [
+{
+dataSpac: "HKHCZ",
+dataTags: "HANKOUHUOCHEZHAN",
+dataSzm: "HKN",
+dataValue: "汉口火车站",
+cityId: "wh",
+ct: "武汉",
+Lat: "30.624092",
+Lng: "114.261929"
+},
+{
+dataSpac: "WCHCZ",
+dataTags: "WUCHANGHUOCHEZHAN",
+dataSzm: "WCN",
+dataValue: "武昌火车站",
+cityId: "wh",
+ct: "武汉",
+Lat: "30.534399",
+Lng: "114.324376"
+},
+{
+dataSpac: "WHHCZ",
+dataTags: "WUHANHUOCHEZHAN",
+dataSzm: "WHN",
+dataValue: "武汉火车站",
+cityId: "wh",
+ct: "武汉",
+Lat: "30.613153",
+Lng: "114.430864"
+},
+{
+dataSpac: "WZNHCZ",
+dataTags: "WENZHOUNANHUOCHEZHAN",
+dataSzm: "VRH",
+dataValue: "温州南火车站",
+cityId: "wz",
+ct: "温州",
+Lat: "27.972268",
+Lng: "120.591763"
+},
+{
+dataSpac: "WXXQHCZ",
+dataTags: "WUXIXINQUHUOCHEZHAN",
+dataSzm: "IFH",
+dataValue: "无锡新区火车站",
+cityId: "wx",
+ct: "无锡",
+Lat: "31.504131",
+Lng: "120.397831"
+},
+{
+dataSpac: "WXDHCZ",
+dataTags: "WUXIDONGHUOCHEZHAN",
+dataSzm: "WGH",
+dataValue: "无锡东火车站",
+cityId: "wx",
+ct: "无锡",
+Lat: "31.603091",
+Lng: "120.46656"
+},
+{
+dataSpac: "WXHCZ",
+dataTags: "WUXIHUOCHEZHAN",
+dataSzm: "WXH",
+dataValue: "无锡火车站",
+cityId: "wx",
+ct: "无锡",
+Lat: "31.593605",
+Lng: "120.312402"
+}
+]
+},
+{
+groupname: "X",
+citylist: [
+{
+dataSpac: "XABHCZ",
+dataTags: "XIANBEIHUOCHEZHAN",
+dataSzm: "EAY",
+dataValue: "西安北火车站",
+cityId: "xa",
+ct: "西安",
+Lat: "34.382473",
+Lng: "108.945859"
+},
+{
+dataSpac: "XAHCZ",
+dataTags: "XIANHUOCHEZHAN",
+dataSzm: "XAY",
+dataValue: "西安火车站",
+cityId: "xa",
+ct: "西安",
+Lat: "34.283469",
+Lng: "108.969184"
+},
+{
+dataSpac: "SMBHCZ",
+dataTags: "XIAMENBEIHUOCHEZHAN",
+dataSzm: "XKS",
+dataValue: "厦门北火车站",
+cityId: "xm",
+ct: "厦门",
+Lat: "24.642558",
+Lng: "118.08049"
+},
+{
+dataSpac: "SMHCZ",
+dataTags: "XIAMENHUOCHEZHAN",
+dataSzm: "XMS",
+dataValue: "厦门火车站",
+cityId: "xm",
+ct: "厦门",
+Lat: "24.4742",
+Lng: "118.121952"
+},
+{
+dataSpac: "XZDHCZ",
+dataTags: "XUZHOUDONGHUOCHEZHAN",
+dataSzm: "UUH",
+dataValue: "徐州东火车站",
+cityId: "xz",
+ct: "徐州",
+Lat: "34.273373",
+Lng: "117.311087"
+},
+{
+dataSpac: "XZHCZ",
+dataTags: "XUZHOUHUOCHEZHAN",
+dataSzm: "XCH",
+dataValue: "徐州火车站",
+cityId: "xz",
+ct: "徐州",
+Lat: "34.271279",
+Lng: "117.213135"
+}
+]
+},
+{
+groupname: "Y",
+citylist: [
+{
+dataSpac: "YCHCZ",
+dataTags: "YINCHUANHUOCHEZHAN",
+dataSzm: "YIJ",
+dataValue: "银川火车站",
+cityId: "yinchuan",
+ct: "银川",
+Lat: "38.5043",
+Lng: "106.187562"
+},
+{
+dataSpac: "YYDHCZ",
+dataTags: "YUEYANGDONGHUOCHEZHAN",
+dataSzm: "YIQ",
+dataValue: "岳阳东火车站",
+cityId: "yy",
+ct: "岳阳",
+Lat: "29.377766",
+Lng: "113.220718"
+},
+{
+dataSpac: "YYHCZ",
+dataTags: "YUEYANGHUOCHEZHAN",
+dataSzm: "YYQ",
+dataValue: "岳阳火车站",
+cityId: "yy",
+ct: "岳阳",
+Lat: "29.388259",
+Lng: "113.133083"
+},
+{
+dataSpac: "YZHCZ",
+dataTags: "YANGZHOUHUOCHEZHAN",
+dataSzm: "YLH",
+dataValue: "扬州火车站",
+cityId: "yz",
+ct: "扬州",
+Lat: "32.400826",
+Lng: "119.364075"
+},
+{
+dataSpac: "YWHCZ",
+dataTags: "YIWUHUOCHEZHAN",
+dataSzm: "YWH",
+dataValue: "义乌火车站",
+cityId: "yiwu",
+ct: "义乌",
+Lat: "29.389803",
+Lng: "120.056476"
+}
+]
+},
+{
+groupname: "Z",
+citylist: [
+{
+dataSpac: "ZZDHCZ",
+dataTags: "ZHENGZHOUDONGHUOCHEZHAN",
+dataSzm: "ZAF",
+dataValue: "郑州东火车站",
+cityId: "zz",
+ct: "郑州",
+Lat: "34.76276",
+Lng: "113.788927"
+},
+{
+dataSpac: "ZZHCZ",
+dataTags: "ZHENGZHOUHUOCHEZHAN",
+dataSzm: "ZZF",
+dataValue: "郑州火车站",
+cityId: "zz",
+ct: "郑州",
+Lat: "34.752849",
+Lng: "113.667524"
+},
+{
+dataSpac: "ZYHCZ",
+dataTags: "ZUNYIHUOCHEZHAN",
+dataSzm: "ZIW",
+dataValue: "遵义火车站",
+cityId: "zunyi",
+ct: "遵义",
+Lat: "27.714857",
+Lng: "106.961216"
+}
+]
+}
+],
+hotList: [
+{
+dataSpac: "BJHCZ",
+dataTags: "BEIJINGHUOCHEZHAN",
+dataSzm: "BJP",
+dataValue: "北京火车站",
+cityId: "bj",
+ct: "北京",
+Lat: "39.911115",
+Lng: "116.433651"
+},
+{
+dataSpac: "SHHCZ",
+dataTags: "SHANGHAIHUOCHEZHAN",
+dataSzm: "SHH",
+dataValue: "上海火车站",
+cityId: "sh",
+ct: "上海",
+Lat: "31.254937",
+Lng: "121.461667"
+},
+{
+dataSpac: "GZHCZ",
+dataTags: "GUANGZHOUHUOCHEZHAN",
+dataSzm: "GZQ",
+dataValue: "广州火车站",
+cityId: "gz",
+ct: "广州",
+Lat: "23.154023",
+Lng: "113.264681"
+},
+{
+dataSpac: "SZHCZ",
+dataTags: "SHENZHENHUOCHEZHAN",
+dataSzm: "SZQ",
+dataValue: "深圳火车站",
+cityId: "sz",
+ct: "深圳",
+Lat: "22.538662",
+Lng: "114.124815"
+},
+{
+dataSpac: "CDNHCZ",
+dataTags: "CHENGDUNANHUOCHEZHAN",
+dataSzm: "CNW",
+dataValue: "成都南火车站",
+cityId: "cd",
+ct: "成都",
+Lat: "30.613345",
+Lng: "104.072541"
+},
+{
+dataSpac: "CCHCZ",
+dataTags: "CHANGCHUNHUOCHEZHAN",
+dataSzm: "CCT",
+dataValue: "长春火车站",
+cityId: "cc",
+ct: "长春",
+Lat: "43.915647",
+Lng: "125.330666"
+}
+]
+}

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link  rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui2/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui2/aui-indexed-list.css" />
+    <style>
+    body{font-size:14px;} 
+    .aui-list-view-cell:after{margin-right:20%;border-bottom:1px solid #e2e2e2}
+    .aui-indexed-list-bar a{font-size:14px;
+    height: 16px;
+line-height: 16px;font-weight:600} 
+    .aui-list-view-cell{font-size:18px;}
+    .aui-searchbar-wrap{background-color:#172d3e}
+    li:not(.aui-list-view-cell){
+    margin:0;
+    overflow:hidden;
+    	display:inline-block;
+    	width:28%;
+    	border:1px solid #f4f4f4;
+    	border-radius:5px;
+    	text-align:Center;
+    	padding:3px 0;
+    	margin:2% 1.5%;
+    	
+    }
+    li:not(.aui-list-view-cell) span{font-size:18px;}
+    li.position{color:#21a2dd}
+    li.aui-indexed-list-view-group:after{border:0}
+
+	.iosfix {
+	 height: 101%;
+	 overflow: hidden;
+	}
+
+    </style>
+</head>
+<body>
+	<div class="aui-searchbar-wrap fixed" id="group-search">
+        <div class="aui-searchbar aui-border-radius">
+            <i class="aui-iconfont aui-icon-search"></i>
+            <div class="aui-searchbar-text">长春/changchun/cc/bjq</div>
+            <div class="aui-searchbar-input">
+            	<form action="javascript:search();">
+            	<input type="text" placeholder="长春/changchun/cc/bjq" id="aui-searchbar-input">
+            	</form>
+            </div>
+            <i class="aui-iconfont aui-icon-roundclosefill" id="aui-searchbar-clear"></i>
+        </div>
+        <div class="aui-searchbar-cancel aui-text-info" id="aui-searchbar-cancel">取消</div>
+    </div>
+
+
+    <div class="aui-indexed-list">
+
+	     <ul class="aui-list-view aui-indexed-list-view aui-in" id="group-*" >
+	    	 <!--<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-A" data-group="当前">当前</li>
+		 <li class="position"  dataText="长春 北站" >  
+	                 <span>长春</span><br />
+	                 北站
+		 </li> 
+         <li class="aui-list-view-cell aui-indexed-list-view-group" id="group-A" data-group="热门">热门</li>
+              <li     dataText="长春 火车站" >  
+	                 <span>长春</span><br />
+	                 火车站
+		    	 </li><li dataText="长春 南火车站" >
+	                 <span>长春</span><br />
+	                 南火车站
+		    	 </li><li dataText="长春 西火车站" >
+	                 <span>长春</span><br />
+	                 西火车站
+		    	 </li><li dataText="长春 东火车站" >
+	                 <span>长春</span><br />
+	                 东火车站
+		    	 </li><li>  
+	                 <span>长春</span><br />
+	                 火车站
+		    	 </li><li>
+	                 <span>长春</span><br />
+	                 南火车站
+		    	 </li><li>
+	                 <span>长春</span><br />
+	                 西火车站
+		    	 </li><li>
+	                 <span>长春</span><br />
+	                 东火车站
+		    	 </li><li>  
+	                 <span>长春</span><br />
+	                 火车站
+		    	 </li><li>
+	                 <span>长春</span><br />
+	                 南火车站
+		    	 </li><li>
+	                 <span>长春</span><br />
+	                 西火车站
+		    	 </li><li>
+	                 <span>长春</span><br />
+	                 东火车站
+		    	 </li>
+		    <li class="aui-list-view-cell aui-indexed-list-view-group" id="group-A" data-group="A">A</li>
+			<li class="aui-list-view-cell" dataTags="alashanmeng" dataSpac="alsm"   dataValue="长春 北站"     dataSzm="pek">阿拉善盟 北站</li>
+			<li class="aui-list-view-cell" dataTags="anqing"      dataSpac="alsm"   dataValue="安庆 西站"     dataSzm="pek">安庆 西站</li>
+			<li class="aui-list-view-cell" dataTags="anyang">安阳</li>
+			<li class="aui-list-view-cell" dataTags="aba">阿坝藏族羌族自治州</li>
+			<li class="aui-list-view-cell" dataTags="anshun">安顺</li>
+			<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-B" data-group="B">B</li>
+			<li class="aui-list-view-cell" dataTags="beijing">北京</li>
+			<li class="aui-list-view-cell" dataTags="baoding">保定</li>
+			<li class="aui-list-view-cell" dataTags="baotou">包头</li>
+			<li class="aui-list-view-cell" dataTags="benxi">本溪</li>
+			<li class="aui-list-view-cell" dataTags="baishan">白山</li>
+			<li class="aui-list-view-cell" dataTags="baicheng">白城</li>
+			<li class="aui-list-view-cell" dataTags="haozhou">毫州</li>
+			<li class="aui-list-view-cell" dataTags="binzhou">滨州</li>
+			<li class="aui-list-view-cell" dataTags="binhai">滨海</li>
+			<li class="aui-list-view-cell" dataTags="beihai">北海</li>
+			<li class="aui-list-view-cell" dataTags="baise">百色</li>
+			<li class="aui-list-view-cell" dataTags="baoshan">保山</li>
+			<li class="aui-list-view-cell" dataTags="baoji">宝鸡</li>
+			<li class="aui-list-view-cell" dataTags="baiyin">白银</li>
+			<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-C" data-group="C">C</li>
+			<li class="aui-list-view-cell" dataTags="changchun" dataSpac="ccbz"   dataValue="长春 北站"      dataText="长春 北站"     dataSzm="pek">长春 北站</li>
+			<li class="aui-list-view-cell" dataTags="chengde"   dataSpac="ccxhcz" dataValue="长春 西火车站"  dataText="长春 西火车站" dataSzm="cgq">长春 西火车站</li>
+			<li class="aui-list-view-cell" dataTags="cangzhou"  dataSpac="ccnhcz" dataValue="长春 南火车站"  dataText="长春 南火车站" dataSzm="pek">长春 南火车站</li>
+			<li class="aui-list-view-cell" dataTags="chifeng">赤峰</li>
+			<li class="aui-list-view-cell" dataTags="chaoyang">朝阳</li>
+			<li class="aui-list-view-cell" dataTags="cangzhou">常州</li>
+			<li class="aui-list-view-cell" dataTags="chizhou">池州</li>
+			<li class="aui-list-view-cell" dataTags="changsha">长沙</li>
+			<li class="aui-list-view-cell" dataTags="changde">常德</li>
+			<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-D" data-group="D">D</li>
+			<li class="aui-list-view-cell" dataTags="datong">大同</li>
+			<li class="aui-list-view-cell" dataTags="dalian">大连</li>
+			<li class="aui-list-view-cell" dataTags="daqing">大庆</li>
+			<li class="aui-list-view-cell" dataTags="dongying">东营</li>
+			<li class="aui-list-view-cell" dataTags="dezhou">德州</li>
+			<li class="aui-list-view-cell" dataTags="dongguan">东莞</li>
+			<li class="aui-list-view-cell" dataTags="deyang">德阳</li>
+			<li class="aui-list-view-cell" dataTags="dingxi">定西</li>
+			<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-E" data-group="E">E</li>
+			<li class="aui-list-view-cell" dataTags="eerduosi">鄂尔多斯</li>
+			<li class="aui-list-view-cell" dataTags="ezhou">鄂州</li>
+			<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-F" data-group="F">F</li>
+			<li class="aui-list-view-cell" dataTags="fushun">抚顺</li>
+			<li class="aui-list-view-cell" dataTags="fuxin">阜新</li>
+			<li class="aui-list-view-cell" dataTags="fuzhou">福州</li>
+			<li class="aui-list-view-cell" dataTags="fuzhou">抚州</li>
+			<li class="aui-list-view-cell" dataTags="foshan">佛山</li>
+			<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-F" data-group="S">S</li>
+			<li class="aui-list-view-cell" dataTags="shenzhenbeizhen" dataSpac="szbz"   dataValue="深圳 北站"      dataText="深圳 北站"     dataSzm="pek">深圳 北站</li>
+			<li class="aui-list-view-cell" dataTags="shenzhenxihuochezhan"   dataSpac="szxhcz" dataValue="深圳 西火车站"  dataText="深圳 西火车站" dataSzm="cgq">深圳 西火车站</li>
+			<li class="aui-list-view-cell" dataTags="shenzhennanhuochezhan"  dataSpac="sznhcz" dataValue="深圳 南火车站"  dataText="深圳 南火车站" dataSzm="pek">深圳 南火车站</li>
+			<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-#" data-group="#">#</li>
+			<li class="aui-list-view-cell"> ^.^</li>
+			<li class="aui-list-view-cell">!!*_*!!</li> -->
+		</ul>
+	</div>
+	<div class="aui-indexed-list-toast"></div>
+	<div class="aui-indexed-list-bar">
+	    <a data-value="当前">当前</a>	
+		<a data-value="热门">热门</a>
+		<a data-value="A">A</a>
+		<a data-value="B">B</a>
+		<a data-value="C">C</a>
+		<a data-value="D">D</a>
+		<a data-value="E">E</a>
+		<a data-value="F">F</a>
+		<a data-value="G">G</a>
+		<a data-value="H">H</a>
+		<a data-value="I">I</a>
+		<a data-value="J">J</a>
+		<a data-value="K">K</a>
+		<a data-value="L">L</a>
+		<a data-value="M">M</a>
+		<a data-value="N">N</a>
+		<a data-value="O">O</a>
+		<a data-value="P">P</a>
+		<a data-value="Q">Q</a>
+		<a data-value="R">R</a>
+		<a data-value="S">S</a>
+		<a data-value="T">T</a>
+		<a data-value="U">U</a>
+		<a data-value="V">V</a>
+		<a data-value="W">W</a>
+		<a data-value="X">X</a>
+		<a data-value="Y">Y</a>
+		<a data-value="Z">Z</a>
+		<a data-value="#">#</a>
+	</div>
+	<script type="text/javascript" src="../script/zepto.js"></script>
+	<script type="text/javascript" src="../script/store.min.js"></script>
+	<script type="text/javascript" src="../script/pengCmp/configXP.js"></script>
+	<script type="text/javascript" src="../script/pengCmp/coreXP.js"></script>
+	<script type="text/javascript" src="../script/api.js" ></script>
+	<script type="text/javascript" src="../script/template.js"></script>
+	<script type="text/javascript" src="../script/aui2/aui-tap.js" ></script>
+	<script type="text/javascript" src="../script/aui2/aui-indexed-list.js" ></script>
+	
+	<script id="getTemplate" type="text/html">  
+	</script>
+	
+	
+	<script type="text/javascript">
+
+		apiready = function(){
+			pageParam  = api.pageParam;
+			
+			$("ul").find("li[dataValue]").click(function(){
+				var dataValue = $(this).attr("dataValue");
+				var ext   = {};
+				ext.value = dataValue;
+				ext.info  = "222222";
+				api.sendEvent({
+			    		name: 'selectedCity',
+			    		extra: ext
+			    	});
+			});
+			
+			api.ajax({
+			    url: 'http://m.tripg.com/ci/index.php/city/get_airpot',
+			    method: 'get'
+			    }, function(ret, err) {
+			    	   var html = template("getCityInfoTemplate",ret);
+                   $("ul").html(html);
+                   var indexedList = new auiIndexedList();
+			    
+			});
+			
+			var param = {};
+			param.methodName = "init";
+			param.param    = {};
+			param.param.aa = "11111";
+			param.param.bb = "22222";
+			api.accessNative(param, function(ret){
+	    		           
+	      	});
+  
+		}
+		
+		$("li").click(function(){
+		    alert($(this).attr("dataText"));	
+		});
+		
+
+		function cityInfo(currentCity){
+			 
+			 if(currentCity != null){
+			 	 $(".aui-list-view-cell").eq(0).next().remove();
+				 currentCity = currentCity.substring(0,2);
+				 var elemLiArr  = $('li[dataValue^="'+currentCity+'"]');
+	
+				 for(var i=0;i<elemLiArr.length;i++){
+				 	 var elemObj = elemLiArr[i];
+				 	 var dataVal = $(elemObj).attr("dataValue");
+				 	 var dataArr = dataVal.split(" ");
+				 	 var city    = dataArr[0];
+				 	 var station = dataArr[1];
+				 	 $(".aui-list-view-cell").eq(0).after('<li class="position"  dataText='+dataVal+' ><span>'+city+'</span><br />'+station+'</li>');
+				 }
+			 	
+			 }
+		}
+		
+		
+	</script>
+
+    <script id="getCityInfoTemplate" type="text/html">  
+		     <li class="aui-list-view-cell aui-indexed-list-view-group" id="currentElemId" data-group="当前">当前</li>
+		     <li class="position"  dataText="长春 北站" >  
+	                 <span>长春</span><br />
+	                 北站
+		     </li>
+		     <li class="aui-list-view-cell aui-indexed-list-view-group" id="hotElemId" data-group="热门">热门</li>
+		     {{each hotList.cityList as city index}}
+		           <li dataText="{{city.dataValue}}" >  
+	                     <span>{{city.ct}}</span><br />
+	                     {{city.dataValue.substring(city.ct.length,city.dataValue.length)}}
+	                </li>
+		     {{/each}}
+		     <li class="aui-list-view-cell aui-indexed-list-view-group" id="historyElemId" data-group="热门">历史</li>
+		     {{each list as obj index}}
+			    	 <li class="aui-list-view-cell aui-indexed-list-view-group" id="group-{{obj.groupName}}" data-group="{{obj.groupName}}">{{obj.groupName}}</li>
+			     {{each obj.citylist as city subIndex}}
+				    	 <li class="aui-list-view-cell" dataSpac="{{city.dataSpac}}" dataTags="{{city.dataTags}}" dataSzm="{{city.dataSzm}}" dataValue="{{city.dataValue}}">  
+			                 {{city.dataValue}}
+				    	 </li>
+				 {{/each}}   	 
+		    	 {{/each}}
+   </script>
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+	<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+	<meta name="format-detection" content="telephone=no" />
+
+	<link rel="stylesheet" href="../../css/api.css" />
+	<link rel="stylesheet" href="../../css/aui2/aui.2.0.css"/>
+	<link rel="stylesheet" href="../css/note.css" />
+	<link rel="stylesheet" href="../css/swiper.min.css" />
+		<script type="text/javascript" src="../../script/gmu/zepto-min.js"></script>
+    <script type="text/javascript" src="../../script/pengCmp/configXP.js"></script>
+	<script type="text/javascript" src="../../script/pengCmp/coreXP.js"></script>
+
+	<script type="text/javascript" src="../../script/linq.js"></script>
+	<script type="text/javascript" src="../../script/fastclick.js"></script>
+	<script type="text/javascript" src="../../script/template.js"></script>
+	<script type="text/javascript" src="../../script/store.min.js"></script>
+	<script type="text/javascript" src="../../script/gmu/extend/parseTpl.js"></script>
+	<script type="text/javascript" src="../../script/gmu/extend/throttle.js"></script>
+	<script type="text/javascript" src="../../script/gmu/extend/event.scrollStop.js"></script>
+	<script type="text/javascript" src="../../script/gmu/extend/event.ortchange.js"></script>
+	<script type="text/javascript" src="../../script/gmu/extend/matchMedia.js"></script>
+	<script type="text/javascript" src="../../script/gmu/core/gmu.js"></script>
+	<script type="text/javascript" src="../../script/gmu/core/event.js"></script>
+	<script type="text/javascript" src="../../script/gmu/core/widget.js"></script>
+	<script type="text/javascript" src="../../script/gmu/extend/iscroll.js"></script>
+	<script type="text/javascript" src="../../script/gmu/widget/refresh/refresh.js"></script>
+	<script type="text/javascript" src="../../script/gmu/widget/refresh/$lite.js"></script>
+	<script type="text/javascript" src="../../script/aui2/aui-dialog.js"></script>
+	<!--向上拉动插件-->
+	<link rel="stylesheet" type="text/css" href="../../css/gmu/widget/loading.default.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/gmu/widget/refresh/refresh.default.css" />
+	<!--皮肤文件，若不使用该皮肤，可以不加载-->
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body style="padding: 10px;background: #F2F3F4;">
+		     <center hidden><img src="../../image/empty.png" style="width:160px;margin-top:100px;height: ;"><p style="color:#333;padding:15px;">未找到相关信息</p></center>
+            <!--<div style="margin-top: 5px"></div>-->
+			<div id="pageProject_refresh_divId" dataCmp="dataList" hidden>
+				<div id="list">
+					<h3><span style="float: left;font-size: 14px;">齐齐哈尔-乌鲁木齐</span><span style="float: right;color: #FFFFFF;">2016-07-04 至 2016-08-04</span></h3>
+					<div class="out-div">
+						<table style="background: #FFFFFF;">
+							<tr>
+								<td width="130">
+									<label>
+				                                <input type="checkbox" /><b class=""></b>乌鲁木齐<br/>2016-08-04
+				                            </label>
+									<td width="50">酒店</td>
+									<td width="110">
+										<a onclick="">222220元</a>
+									</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="ui-refresh-down" hidden style=" overflow: hidden; margin-top: 1em; border: none">上拉加载更多</div>
+			</div>
+
+
+
+		<!--<footer class="cao"><span>关联出差申请单</span><span>删除</span></footer>-->
+		<!-- Initialize Swiper -->
+		<script>
+		   
+		    //$('div[dataCmp="dataList"]').hide();
+		    var userid        = store.get("userid");
+		    var checkGuanLian = false;
+	        var checkDelXiao  = false;
+	        dialog            = new auiDialog();
+	
+			$("h3 span").bind("touchstart", function() {
+				$("ul.list li input").each(function() {
+					if(!$(this).is(":disabled")) {
+						$(this).prop("checked", true);
+					}
+				});
+			});
+			
+			 /*
+	         * 点击 未关联的 出差申请单
+	         */
+	        $(".cao span").eq(0).click(function(){
+	        	        var checkArr  = [];
+	        	        var pageParam = {};
+	        	        var checkCmp = $('input[type="checkbox"]:checked');
+	        	        for(var i=0;i<checkCmp.length;i++){
+	        	        	    var check  = checkCmp[i];
+	        	        	    var dataId = $(check).attr("dataId");
+	        	        	    checkArr.push(dataId);
+	        	        	   
+	        	        }
+	        	        pageParam.checkArr = checkArr;
+	        	        if(checkArr.length == 0){
+	        	        	     dialog.alert({
+						    title: '尊敬的用户，请至少选择一项记录！',
+						    buttons: ['确定']
+						 });
+	        	        	     return;
+	        	        }
+	        	        nativeXP.openWin({url:'relationFormWin.html',pageParam:pageParam});
+	        });
+	        
+	        function guanlianSqd(){
+	        	        if(checkGuanLian || checkDelXiao){
+	        	       	   return;
+	        	        }
+	        	        var checkArr  = [];
+	        	        var pageParam = {};
+	        	        var checkCmp = $('input[type="checkbox"]:checked');
+	        	        for(var i=0;i<checkCmp.length;i++){
+	        	        	    var check  = checkCmp[i];
+	        	        	    var dataId = $(check).attr("dataId");
+	        	        	    checkArr.push(dataId);
+	        	        	   
+	        	        }
+	        	        pageParam.checkArr = checkArr;
+	        	        checkGuanLian = true;
+	        	        
+	        	        var dataList = remoteStore.getRemoteList();
+				    if(dataList.length == 0){
+				    	    dialog.alert({
+							title: '没有未关联的信息！',
+							buttons: ['确定']
+						}, function() {
+							checkGuanLian = false;
+						});
+						return;
+				    }
+	        	        if(checkArr.length == 0){
+	        	        	     dialog.alert({
+						    title: '请选择要操作的消费记录！',
+						    buttons: ['确定']
+						 },function(){
+						 	checkGuanLian = false;
+						 });
+	        	        	     return;
+	        	        }
+	        	        
+	        	        nativeXP.openWin({url:'relationFormWin.html',pageParam:pageParam});
+	        	        setTimeout(function(){
+						checkGuanLian = false;
+					},2000);
+	        }
+	        
+	        function delXiaofeiRecord(){
+	        	        if(checkGuanLian || checkDelXiao){
+	        	        	    return;
+	        	        }
+	        	        var checkCmp = $('input[type="checkbox"]:checked');
+		            checkDelXiao = true;
+		            
+		            var dataList = remoteStore.getRemoteList();
+		            if(dataList.length == 0){
+				    	    dialog.alert({
+							title: '没有需要删除的数据！',
+							buttons: ['确定']
+						}, function() {
+							checkDelXiao = false;
+						});
+						return;
+				    }
+		            if(checkCmp.length <= 0){
+		            	     dialog.alert({
+						    title: '请选择要删除的消费记录！',
+						    buttons: ['确定']
+						 },function(){
+						 	checkDelXiao = false;
+						 });
+		            	     return;
+		            }
+		        	    
+		        	    list_id = "";
+			        $("input").each(function(){ 
+				        	if($(this).is(":checked")){ 
+				        		canGo = 1;
+					        	list_id += $(this).attr("dataId")+","; 
+				        	}
+			        })   
+			        
+					if(canGo){	
+						list_id = list_id.substr(0,list_id.length-1); 
+					
+						dialog.alert({
+						    title: '您确定删除该消费记录吗？',
+						    buttons: ['确定', '取消']
+						}, function(ret, err) {
+							var index = ret.buttonIndex;
+							checkDelXiao = false;
+							if(index == 1){
+								 $.ajax({
+									type: "POST",
+									url: configXP.urls.writeNotedel,
+									data: {
+										"list_id": list_id
+									},
+									dataType: "json",
+									success: function(data) {
+									   
+										if(data.code == "1") { 
+							
+											 window.location.reload();	
+			
+										} else {
+											
+											nativeXP.toast({msg:data.msg});
+											dialog.close();
+				
+										}
+								},
+								error: function() {
+                                      nativeXP.toast({msg:'网络异常!'});
+									
+								}
+							});
+								
+							}
+						});
+						
+					
+					}
+	        	
+	        }
+
+			var remoteStore = new nativeXP.store({
+				url: configXP.urls.writeNote,
+				elemId: 'list',
+				tmpId: 'getTemplate'
+			});
+
+			apiready = function() {
+				
+				var connectionType = api.connectionType; 
+				if(connectionType == "none"){
+					$(".ui-refresh-down").hide();
+					nativeXP.toast({
+						msg:'对不起,网络出现异常,请稍候重试',
+						duration:5000
+					});
+					return;
+				}
+				
+				/*api.setRefreshHeaderInfo({
+				    visible: true,
+				    loadingImg: 'widget://image/refresh.png',
+				    bgColor: '#ccc',
+				    textColor: '#fff',
+				    textDown: '下拉刷新...',
+				    textUp: '松开刷新...',
+				    showTime: true
+				}, function(ret, err) {
+				    //在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
+				    reloadData();
+				});*/
+				
+                pageParam = api.pageParam;
+                pageParam.index = 1;
+				$("#pageProject_refresh_divId").refresh({
+					page: 1,
+					pageSize: 35,
+					ready: function() {
+						var me = this;
+						refresh = me;
+						var param = {};
+						param.user_id = userid;
+						param.type = '1';
+						param.pageSize = me._options.pageSize;
+						remoteStore.pagingLoad(refresh, param);
+					},
+					load: function(dir, type) {
+						var me = this;
+						refresh = me;
+						var param      = {};
+						param.page     = me._options.page;
+						param.pageSize = me._options.pageSize;
+						param.user_id  = userid;
+						param.type = '1';
+						if(dir == "down") {
+							remoteStore.pagingAdd(refresh, dir, param);
+						}
+					}
+				}).on('statechange', function(e) {
+					e.preventDefault();
+					var data = e.data,
+						$elem = data[0],
+						state = data[1],
+						dir = data[2];
+					switch(state) {
+						case 'loaded':
+							$elem.html(dir == 'up' ? '下拉刷新' : '上拉加载更多');
+							break;
+						case 'beforeload':
+							$elem.html(dir == 'up' ? '松开立即刷新' : '松开立即加载');
+							break;
+						case 'loading':
+							$elem.html(dir == 'up' ? '正在刷新中...' : '正在加载中...');
+							break;
+						case 'disable':
+							$elem.html(dir == 'up' ? '对不起，没有更多内容了' : '没有更多内容');
+							break;
+					}
+				});
+			}
+			
+			function reloadData(){
+
+	        		var param      = {};
+	        		refresh._options.page = 1;
+	        		param.pageSize = 20;
+	        		param.user_id  = userid;
+	        		remoteStore.pagingLoad(refresh,param);
+	        	}
+			
+			function reloadData2(){
+				nativeXP.toast({
+						 msg:'关联申请单成功',
+			             duration:5000
+				});
+	        		remoteStore.clear(refresh);
+	        		var param      = {};
+	        		refresh._options.page = 1;
+	        		param.pageSize = 20;
+	        		param.user_id  = userid;
+	        		remoteStore.pagingLoad(refresh,param);
+	        	}
+		</script>
+
+		<script id="getTemplate" type="text/html">
+			{{each result as obj index}}
+			     <div class="recordObjId">
+			       <h3><span style="float: left;">{{obj.travel_city}}</span><span style="float: right;color: #FFFFFF;">{{obj.travel_time}}</span></h3>
+				   <div class="out-div" style="background: #FFFFFF;">
+						<table style="background: #FFFFFF;">
+							{{each obj.subson as subObj index}}
+							<tr dataListId="{{subObj.list_id}}">
+								<td width="140">
+									<label> 
+		                                 {{if subObj.use_status == "1"}}
+		                                <input dataId="{{subObj.list_id}}"  type="checkbox" /><b class=""></b>{{subObj.in_city}}<br/>{{subObj.consume_time}}
+		                                {{else}} 
+		                                <input dataId="{{subObj.list_id}}" disabled type="checkbox" /><b class="disabled"></b>{{subObj.in_city}}<br/>{{subObj.consume_time}}
+		                                {{/if}}         
+				                    </label>
+									<td width="110" onclick="openEdit('{{subObj.list_id}}','{{subObj.use_status}}','{{subObj.in_city}}','{{subObj.consume_time}}','{{subObj.product_name}}','{{subObj.consume_amount}}')">{{subObj.product_name}}</td>
+									<td width="110">
+										<a class="hrefA" onclick="openEdit('{{subObj.list_id}}','{{subObj.use_status}}','{{subObj.in_city}}','{{subObj.consume_time}}','{{subObj.product_name}}','{{subObj.consume_amount}}')" listId= "{{subObj.list_id}}">{{subObj.consume_amount}}元</a>
+									</td>
+							</tr>
+							{{/each}}
+						</table>
+					</div>
+			     </div>		
+			{{/each}}
+		</script>
+	    <script> 
+			var urlAll = configXP.tmcJieKouPlatform + "/";
+	        $("body").on("touchstart","h3.text-center span",function(){  
+	           $("table input").each(function(){
+	               if(!$(this).is(":disabled")){
+	                   $(this).prop("checked",true);
+	               }
+	           });
+	        });
+	        function openEdit(id,use_status,in_city,consume_time,product_name,consume_amount){ 
+	        	    pageParam.list_id    = id;
+	            pageParam.userid     = userid;
+	            pageParam.company_id = store.get("company_id");
+	            pageParam.customerId = store.get("customerId");
+	            pageParam.deptId     = store.get("deptId");
+	            pageParam.operator   = true;
+	            pageParam.use_status     = use_status;
+	            pageParam.in_city        = in_city;
+	            pageParam.consume_time   = consume_time;
+	            pageParam.product_name   = product_name;
+	            pageParam.consume_amount = consume_amount;
+	        	    store.set("userid",userid);
+	        	   
+	        	    nativeXP.openWin({
+					url: 'index.html?list_id='+id, 
+					pageParam:pageParam
+				});
+	        }
+	        
+	        var list_id,canGo = 0;
+	         
+	        $(".cao span:nth-child(2)").click(function(){ 
+	            
+	               list_id = list_id.substr(0,list_id.length-1); 
+					listArr = list_id.split(",");
+										for(var i=0;i<listArr.length;i++){
+											$('table tr[dataListId="'+listArr[i]+'"]').remove();
+					}
+				    return;
+	            
+	            var checkCmp = $('input[type="checkbox"]:checked');
+	            if(checkCmp.length <= 0){
+	            	    dialog.alert({
+					    title: '尊敬的用户，请至少选择一项记录进行删除！',
+					    buttons: ['确定']
+					});
+
+	            	     return;
+	            }
+	        	    
+	        	    list_id = "";
+		        $("input").each(function(){ 
+		        	if($(this).is(":checked")){ 
+		        		canGo = 1;
+			        	list_id += $(this).attr("dataId")+","; 
+		        	}
+		        })   
+		        
+				if(canGo){	
+					
+					
+					 dialog.alert({
+					    title: '尊敬的用户:您确定删除消费记录吗？',
+					    buttons: ['确定', '取消']
+					}, function(ret, err) {
+						var index = ret.buttonIndex;
+						if(index == 1){
+							 $.ajax({
+								type: "POST",
+								url: configXP.urls.writeNotedel,
+								data: {
+									"list_id": list_id
+								},
+								dataType: "json",
+								success: function(data) {
+								
+									if(data.code == "1") { 
+										
+										window.location.reload();	
+		
+									} else {
+										nativeXP.toast({msg:data.msg});
+										dialog.close();
+									}
+							},
+							error: function() {
+								nativeXP.toast({
+									msg:'对不起,网络出现异常,请稍候重试'
+								});
+							}
+						});
+							
+						}
+					});
+					
+				
+				}
+	        })
+	        
+
+	    </script>
+	</body>
+
+</html>

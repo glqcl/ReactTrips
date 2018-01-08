@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link  rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui2/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui2/aui-indexed-list.css" />
+   
+     <style>
+			body {
+				font-size: 14px;
+			}
+			
+			.aui-list-view-cell:after {
+				margin-right: 20%;
+				border-bottom: 1px solid #e2e2e2
+			}
+			
+			.aui-indexed-list-bar a {
+				font-size: 12px;
+				height: 16px;
+				line-height: 16px;
+				font-weight: 100
+			}
+			
+			.aui-list-view-cell {
+				font-size: 18px;
+			}
+			
+			.aui-searchbar-wrap {
+				background-color: #172d3e
+			}
+			
+			li:not(.aui-list-view-cell) {
+				margin: 0;
+				overflow: hidden;
+				display: inline-block;
+				width: 25%;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+				text-align: Center;
+				padding: 8px 0;
+				margin: 2% 1.5%;
+			}
+			
+			.aui-indexed-list-bar {
+				background-color: #fff
+			}
+			
+			li:not(.aui-list-view-cell) span {
+				font-size: 18px;
+			}
+			
+			li.position {
+				color: #21a2dd
+			}
+			
+			li.aui-indexed-list-view-group:after {
+				border: 0
+			}
+			
+			.iosfix {
+				height: 101%;
+				overflow: hidden;
+			}
+			
+			div.position_city {
+				text-align: center;
+				font-size: 12px;
+				width: 65px;
+				position: absolute;
+				left: 7px;
+				color: #666;
+				background-size: 15px auto;
+			}
+			
+			li:not(.aui-list-view-cell) span {
+				font-size: 16px;
+				color: #000
+			}
+			
+			li:not(.aui-list-view-cell) {
+				font-size: 12px;
+				color: #666
+			}
+			
+			li.position {
+				color: #0169a3
+			}
+			
+			li.aui-indexed-list-view-group:after {
+				border: 0
+			}
+			
+			li.aui-list-view-cell {
+				font-size: 16px;
+				background-size: 10px auto;
+			}
+			
+			li.aui-indexed-list-view-group {
+				background: #f5f5f5
+			}
+			
+			li.aui-indexed-list-view-group {
+				font-size: 13px;
+				color: #000
+			}
+			
+			small {
+				color: #666;
+				display: block;
+			}
+			
+			ul#historyCityId2 li {
+				color: #999
+			}
+			
+			ul#historyCityId2 li small {
+				color: #999;
+				font-size: 13px;
+			}
+			
+			ul#historyCityId2 div {
+				color: #0169a3;
+				padding: 10px;
+				background-color: #f5f5f5;
+				text-align: center;
+				font-size: 12px;
+			}
+		</style>
+</head>
+<body>
+	<div class="aui-searchbar-wrap fixed" id="group-search">
+        <div class="aui-searchbar aui-border-radius">
+            <i class="aui-iconfont aui-icon-search"></i>
+            <div class="aui-searchbar-text">长春/changchun/cc</div>
+            <div class="aui-searchbar-input">
+            	<form action="javascript:search();">
+            	<input type="text" placeholder="长春/changchun/cc/bjq" id="aui-searchbar-input">
+            	</form>
+            </div>
+            <i class="aui-iconfont aui-icon-roundclosefill" id="aui-searchbar-clear"></i>
+        </div>
+        <div class="aui-searchbar-cancel aui-text-info" id="aui-searchbar-cancel">取消</div>
+    </div>
+
+
+    <div class="aui-indexed-list">
+         <ul class="aui-list-view aui-indexed-list-view aui-in" id="group-*" >
+	     </ul>
+	</div>
+	<div class="aui-indexed-list-toast"></div>
+	<div class="aui-indexed-list-bar">
+	    <a data-value="当前">当前</a>	
+		<a data-value="热门">热门</a>
+		<a data-value="历史">历史</a>
+		<a data-value="A">A</a>
+		<a data-value="B">B</a>
+		<a data-value="C">C</a>
+		<a data-value="D">D</a>
+		<a data-value="E">E</a>
+		<a data-value="F">F</a>
+		<a data-value="G">G</a>
+		<a data-value="H">H</a>
+		<a data-value="I">I</a>
+		<a data-value="J">J</a>
+		<a data-value="K">K</a>
+		<a data-value="L">L</a>
+		<a data-value="M">M</a>
+		<a data-value="N">N</a>
+		<a data-value="P">P</a>
+		<a data-value="Q">Q</a>
+		<a data-value="R">R</a>
+		<a data-value="S">S</a>
+		<a data-value="T">T</a>
+		<a data-value="U">U</a>
+		<a data-value="V">V</a>
+		<a data-value="W">W</a>
+		<a data-value="X">X</a>
+		<a data-value="Y">Y</a>
+		<a data-value="Z">Z</a>
+
+	</div>
+	<script type="text/javascript" src="../script/zepto.js"></script>
+	<script type="text/javascript" src="../script/store.min.js"></script>
+	<script type="text/javascript" src="../script/pengCmp/configXP.js"></script>
+	<script type="text/javascript" src="../script/pengCmp/coreXP.js"></script>
+	<script type="text/javascript" src="../script/api.js" ></script>
+	<script type="text/javascript" src="../script/template.js"></script>
+	<script type="text/javascript" src="../script/aui2/aui-tap.js" ></script>
+	<script type="text/javascript" src="../script/aui2/aui-indexed-list.js" ></script>
+	
+	
+	
+	
+	<script type="text/javascript">
+	
+    var historyLocalSel = configXP.localKey.historyInfoCitySel;
+    var hisInfoIndex    = configXP.historySel.hisInfoCityIndex;
+	apiready = function(){
+
+            //显示加载中......
+            showPublicAnimate(1);
+			pageParam  = api.pageParam;
+		    if(configXP.productionEnvir){
+				    	    var param  = {};
+				    	    param.type = "1";      //获得城市的json数据源
+						param.aa   = "11111";
+						param.bb   = "22222";
+						api.accessNative({name:'init',extra:param}, function(ret){
+                          
+					           var currentCity = ret.currentCity;
+				    		       var longitude   = ret.longitude;
+				    		       var latitude    = ret.latitude;
+				    		       var isshow      = ret.isshow;
+				    		       var jsonObj     = {};
+				    		       var systemType  = api.systemType; 
+				    		       if(systemType == "ios"){
+				    		       	   jsonObj     = eval("("+ret.jsonObj+")");
+				    		       }else{
+				    		       	   jsonObj     = ret.jsonObj;
+				    		       }
+				    		       
+	                            var html = template("getCityInfoTemplate",jsonObj);
+		                        $("ul").html(html);
+		                        //隐藏加载loding
+		                        showPublicAnimate(-1);
+		                        var indexedList = new auiIndexedList();
+		                        
+		                         /*
+		                         * 获得历史城市
+		                         */
+		                        reloadHistoryLocalData();
+		                        /*
+		                         * 设置当前城市
+		                         */
+		                        cityInfo(currentCity);
+		                        
+		                         if(isshow == "0"){
+					    		       	    setTimeout(function(){
+					    		       	    	    $("#currentDivId").remove();
+                                             $("#positionElemId").remove();
+					    		       	    },200);
+										
+								 }
+		                        
+		                       
+				      	});
+				    
+		    }
+		    $("ul").on("click","li[dataValue]",function(){
+				var dataValue = $(this).attr("dataValue");
+				var dataSpac  = $(this).attr("dataSpac");
+				var dataTags  = $(this).attr("dataTags");
+				var dataSzm   = $(this).attr("dataSzm");
+				var dataCt    = $(this).attr("dataCt");
+				var ext       = {};
+				ext.dataValue = dataValue;
+				ext.dataSpac  = dataSpac;
+				ext.dataTags  = dataTags;
+				ext.dataSzm   = dataSzm;
+				ext.ct        = dataCt;
+                //获得选择历史的记录
+     	        var list = store.get(historyLocalSel)||[];
+                //查找是否重复
+     	        var dataInfo  = nativeXP.jsonObjFilter("dataValue",dataValue,list);
+                if(!(nativeXP.isEmptyObject(dataInfo))){
+		     	  	var index = dataInfo.xp_index;
+		     	  	list.splice(index,1);
+		     	}
+                list.unshift(ext);
+                var len = list.length;
+	            if(len > hisInfoIndex){
+	          	    list.splice(hisInfoIndex,len);
+	            }
+	            store.set(historyLocalSel,list);
+                
+			    api.sendEvent({
+			    		name: 'selectedCity',
+			    		extra: ext	
+			    });	
+			
+			});
+			
+		}
+		
+		
+		
+
+		function cityInfo(currentCity){
+			 if(currentCity == null){
+			 	currentCity =  "";
+			 }
+             currentCity = currentCity.substring(0,currentCity.length-1); 
+             if(currentCity != ""){
+				 var list       = "";
+				 var elemLiArr  = $('#cityListElemId li[dataValue^="'+currentCity+'"]');
+				 for(var i=0;i<elemLiArr.length;i++){
+				 	 var elemObj = elemLiArr[i];
+				 	 var dataVal = $(elemObj).attr("dataValue");
+				 	 list   += '<li class="position" dataValue='+dataVal+'  dataText='+dataVal+' ><span>'+currentCity+'</span></li>';
+				 }
+				 $("#positionElemId").html(list);
+			 	
+			 }
+		}
+		
+		function reloadHistoryLocalData(){
+			 var jsonObj  = {};
+			 var list     = store.get(historyLocalSel)||[];
+			 if(list.length == 0){
+			 	  $("#historyElemId").remove();
+			 	  return;
+			 }
+			 jsonObj.list = list;
+			 var html = template("getOtherListTemplate",jsonObj);
+
+			 $("#historyListElemId").html(html);
+		}
+		
+		
+	</script>
+	
+	
+	<script id="getCityInfoTemplate2" type="text/html">
+	   <ul class="aui-list-view aui-indexed-list-view aui-in" id="group-*" >
+	    	 <!--<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-A" data-group="当前">当前222222</li>
+		 <li class="position"  dataText="长春 北站" >  
+	                 <span>长春</span><br />
+	                 北站
+		 </li> 
+         <li class="aui-list-view-cell aui-indexed-list-view-group" id="group-A" data-group="热门">热门</li>
+              <li     dataText="长春 火车站" >  
+	                 <span>长春</span><br />
+	                 火车站
+		    	 </li><li dataText="长春 南火车站" >
+	                 <span>长春</span><br />
+	                 南火车站
+		    	 </li><li dataText="长春 西火车站" >
+	                 <span>长春</span><br />
+	                 西火车站
+		    	 </li><li dataText="长春 东火车站" >
+	                 <span>长春</span><br />
+	                 东火车站
+		    	 </li><li>  
+	                 <span>长春</span><br />
+	                 火车站
+		    	 </li><li>
+	                 <span>长春</span><br />
+	                 南火车站
+		    	 </li><li>
+	                 <span>长春</span><br />
+	                 西火车站
+		    	 </li><li>
+	                 <span>长春</span><br />
+	                 东火车站
+		    	 </li><li>  
+	                 <span>长春</span><br />
+	                 火车站
+		    	 </li><li>
+	                 <span>长春</span><br />
+	                 南火车站
+		    	 </li><li>
+	                 <span>长春</span><br />
+	                 西火车站
+		    	 </li><li>
+	                 <span>长春</span><br />
+	                 东火车站
+		    	 </li>
+		    <li class="aui-list-view-cell aui-indexed-list-view-group" id="group-A" data-group="A">A</li>
+			<li class="aui-list-view-cell" dataTags="alashanmeng" dataSpac="alsm"   dataValue="长春 北站"     dataSzm="pek">阿拉善盟 北站</li>
+			<li class="aui-list-view-cell" dataTags="anqing"      dataSpac="alsm"   dataValue="安庆 西站"     dataSzm="pek">安庆 西站</li>
+			<li class="aui-list-view-cell" dataTags="anyang">安阳</li>
+			<li class="aui-list-view-cell" dataTags="aba">阿坝藏族羌族自治州</li>
+			<li class="aui-list-view-cell" dataTags="anshun">安顺</li>
+			<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-B" data-group="B">B</li>
+			<li class="aui-list-view-cell" dataTags="beijing">北京</li>
+			<li class="aui-list-view-cell" dataTags="baoding">保定</li>
+			<li class="aui-list-view-cell" dataTags="baotou">包头</li>
+			<li class="aui-list-view-cell" dataTags="benxi">本溪</li>
+			<li class="aui-list-view-cell" dataTags="baishan">白山</li>
+			<li class="aui-list-view-cell" dataTags="baicheng">白城</li>
+			<li class="aui-list-view-cell" dataTags="haozhou">毫州</li>
+			<li class="aui-list-view-cell" dataTags="binzhou">滨州</li>
+			<li class="aui-list-view-cell" dataTags="binhai">滨海</li>
+			<li class="aui-list-view-cell" dataTags="beihai">北海</li>
+			<li class="aui-list-view-cell" dataTags="baise">百色</li>
+			<li class="aui-list-view-cell" dataTags="baoshan">保山</li>
+			<li class="aui-list-view-cell" dataTags="baoji">宝鸡</li>
+			<li class="aui-list-view-cell" dataTags="baiyin">白银</li>
+			<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-C" data-group="C">C</li>
+			<li class="aui-list-view-cell" dataTags="changchun" dataSpac="ccbz"   dataValue="长春 北站"      dataText="长春 北站"     dataSzm="pek">长春 北站</li>
+			<li class="aui-list-view-cell" dataTags="chengde"   dataSpac="ccxhcz" dataValue="长春 西火车站"  dataText="长春 西火车站" dataSzm="cgq">长春 西火车站</li>
+			<li class="aui-list-view-cell" dataTags="cangzhou"  dataSpac="ccnhcz" dataValue="长春 南火车站"  dataText="长春 南火车站" dataSzm="pek">长春 南火车站</li>
+			<li class="aui-list-view-cell" dataTags="chifeng">赤峰</li>
+			<li class="aui-list-view-cell" dataTags="chaoyang">朝阳</li>
+			<li class="aui-list-view-cell" dataTags="cangzhou">常州</li>
+			<li class="aui-list-view-cell" dataTags="chizhou">池州</li>
+			<li class="aui-list-view-cell" dataTags="changsha">长沙</li>
+			<li class="aui-list-view-cell" dataTags="changde">常德</li>
+			<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-D" data-group="D">D</li>
+			<li class="aui-list-view-cell" dataTags="datong">大同</li>
+			<li class="aui-list-view-cell" dataTags="dalian">大连</li>
+			<li class="aui-list-view-cell" dataTags="daqing">大庆</li>
+			<li class="aui-list-view-cell" dataTags="dongying">东营</li>
+			<li class="aui-list-view-cell" dataTags="dezhou">德州</li>
+			<li class="aui-list-view-cell" dataTags="dongguan">东莞</li>
+			<li class="aui-list-view-cell" dataTags="deyang">德阳</li>
+			<li class="aui-list-view-cell" dataTags="dingxi">定西</li>
+			<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-E" data-group="E">E</li>
+			<li class="aui-list-view-cell" dataTags="eerduosi">鄂尔多斯</li>
+			<li class="aui-list-view-cell" dataTags="ezhou">鄂州</li>
+			<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-F" data-group="F">F</li>
+			<li class="aui-list-view-cell" dataTags="fushun">抚顺</li>
+			<li class="aui-list-view-cell" dataTags="fuxin">阜新</li>
+			<li class="aui-list-view-cell" dataTags="fuzhou">福州</li>
+			<li class="aui-list-view-cell" dataTags="fuzhou">抚州</li>
+			<li class="aui-list-view-cell" dataTags="foshan">佛山</li>
+			<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-F" data-group="S">S</li>
+			<li class="aui-list-view-cell" dataTags="shenzhenbeizhen" dataSpac="szbz"   dataValue="深圳 北站"      dataText="深圳 北站"     dataSzm="pek">深圳 北站</li>
+			<li class="aui-list-view-cell" dataTags="shenzhenxihuochezhan"   dataSpac="szxhcz" dataValue="深圳 西火车站"  dataText="深圳 西火车站" dataSzm="cgq">深圳 西火车站</li>
+			<li class="aui-list-view-cell" dataTags="shenzhennanhuochezhan"  dataSpac="sznhcz" dataValue="深圳 南火车站"  dataText="深圳 南火车站" dataSzm="pek">深圳 南火车站</li>
+			<li class="aui-list-view-cell aui-indexed-list-view-group" id="group-#" data-group="#">#</li>
+			<li class="aui-list-view-cell"> ^.^</li>
+			<li class="aui-list-view-cell">!!*_*!!</li> -->
+		</ul>
+		
+	</script>
+	
+
+    <script id="getCityInfoTemplate" type="text/html">  
+		     <li id="currentDivId" class="aui-list-view-cell aui-indexed-list-view-group" id="currentElemId" data-group="当前">当前</li>
+		     <ul id="positionElemId">
+		     	 <li class="position" dataValue="长春" dataSpac="cc" dataTags="changchun" dataSzm="pek"  dataText="长春" >  
+	                 <span>长春</span>
+
+		         </li>
+		     </ul>
+		     <li class="aui-list-view-cell aui-indexed-list-view-group" id="hotElemId" data-group="热门">热门</li>
+		     <ul id="hotListElemId">
+			     {{each hotList.cityList as city index}}
+			           <li  dataSpac="{{city.dataSpac}}" dataTags="{{city.dataTags}}" dataSzm="{{city.dataSzm}}" dataValue="{{city.dataValue}}">  
+		                     <span>{{city.dataValue}}</span>
+		               </li>
+			     {{/each}}
+		     </ul> 
+		     <li class="aui-list-view-cell aui-indexed-list-view-group" id="historyElemId" data-group="历史">历史</li>
+		     <ul id="historyListElemId">
+		     	
+		     </ul>
+		     {{each list as obj index}}
+			 <li class="aui-list-view-cell aui-indexed-list-view-group" id="group-{{obj.groupname}}" data-group="{{obj.groupname}}">{{obj.groupname}}</li>
+			 <ul id="cityListElemId">
+			     {{each obj.citylist as city subIndex}}
+				    	 <li class="aui-list-view-cell" dataSpac="{{city.dataSpac}}" dataTags="{{city.dataTags}}" dataSzm="{{city.dataSzm}}" dataValue="{{city.dataValue}}">  
+			                 {{city.dataValue}}
+				    	 </li>
+				 {{/each}}  
+			 </ul>	 
+		    	 {{/each}}
+   </script>
+   
+   <script id="getOtherListTemplate" type="text/html">
+		     {{each list as city index}}
+			        <li  dataSpac="{{city.dataSpac}}" dataTags="{{city.dataTags}}" dataSzm="{{city.dataSzm}}" dataValue="{{city.dataValue}}">  
+		                     <span>{{city.dataValue}}</span>
+		            </li>
+			 {{/each}}
+	</script>
+</body>
+</html>

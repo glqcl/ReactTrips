@@ -1,0 +1,56 @@
+.h-Curway{
+	padding: 10px;
+}
+.h-Curway ul{
+	
+}
+.h-Curway ul img{
+	width: 100%;
+}
+.h-Curway ul li{
+	padding: 10px;
+	margin-bottom: 10px;
+	height: 80px;
+	line-height:80px;
+	overflow: hidden;
+	background-color: #162d3f;
+	background-image: url(../image/white-goback.png);
+	background-repeat: no-repeat;
+	background-position:97%;
+	background-size:7px ;
+	border-radius: 5px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.Cueway_line{
+	flex: 1;
+	-webkit-flex: 1;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	justify-content: center;
+	color: #FFFFFF;
+	position: relative;
+	padding: 0 20px;
+}
+.Cueway_line_column{
+	height: 2px;
+	border-bottom: 1px dotted #FFFFFF;
+	position: absolute;
+	left: 15px;
+	right: 15px;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.Curway_text{
+	color: #FFFFFF;
+	font-size: 16px;
+	line-height: 60px;
+	padding-right: 15px;
+}
+.Curway_img{
+	width: 30px;
+	margin-left: 30px;
+}

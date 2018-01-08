@@ -1,0 +1,4 @@
+/*
+ * Compressed by JSA(www.xidea.org)
+ */
+(function($){$.Slider.template.item="<div class=\"ui-slider-item\">"+"<a href=\"<%= href %>\">"+"<img lazyload=\"<%= pic %>\" alt=\"\" /></a>"+"<% if( title ) { %><p><%= title %></p><% } %>"+"</div>";$.Slider.register("lazyloadimg",{_init:function(){this.on("ready slide",this._loadItems)},_loadItems:function(){var $=this._options,A=$.loop,C=$.viewNum||1,_=this.index,D,B;for(D=_-C,B=_+2*C;D<B;D++)this.loadImage(A?this._circle(D):D)},loadImage:function(_){var A=this._items[_],B;if(!A||!(B=$.staticCall(A,"find","img[lazyload]"),B.length))return this;B.each(function(){this.src=this.getAttribute("lazyload");this.removeAttribute("lazyload")})}})})(gmu)

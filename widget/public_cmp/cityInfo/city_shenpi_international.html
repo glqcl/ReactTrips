@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+<head>
+	<title>indexed</title>
+	<meta name="full-screen" content="yes">
+	<meta name="browsermode" content="application">
+	<meta name="x5-orientation" content="portrait">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="x5-page-mode" content="app">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<script type="text/javascript" src="../../script/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../script/tripledes.js" ></script>
+    <script type="text/javascript" src="../../script/mode-ecb-min.js" ></script>
+    <script type="text/javascript" src="../../script/aes.js"></script>
+	<script type="text/javascript" src="../../script/template.js"></script>
+	<script type="text/javascript" src="../../script/store.min.js"></script>
+	<script type="text/javascript" src="../../script/pengCmp/configXP.js"></script>
+	<script type="text/javascript" src="../../script/pengCmp/coreXP.js"></script>
+	<script type="text/javascript" src="../../cityCmp/js/cityInfo_shenpi_international.js"></script>
+	<link  rel="stylesheet" href="css/city_css.css"/>
+</head>
+
+<body>
+
+<ul>
+	<li class="big" data="NOWADD">
+		当前
+	</li>
+	<li class="big" data="history">
+		历史
+	</li>
+	<li class="big" data="HOT">
+		热门
+	</li>
+	<li>
+		A
+	</li>
+	<li>
+		B
+	</li>
+	<li>
+		C
+	</li>
+	<li>
+		D
+	</li>
+	<li>
+		E
+	</li>
+	<li>
+		F
+	</li>
+	<li>
+		G
+	</li>
+	<li>
+		H
+	</li>
+	<li>
+		J
+	</li>
+	<li>
+		K
+	</li>
+	<li>
+		L
+	</li>
+	<li>
+		M
+	</li>
+	<li>
+		N
+	</li>
+	<li>
+		P
+	</li>
+	<li>
+		Q
+	</li>
+	<li>
+		R
+	</li>
+	<li>
+		S
+	</li>
+	<li>
+		T
+	</li>
+	<li>
+		W
+	</li>
+	<li>
+		X
+	</li>
+	<li>
+		Y
+	</li>
+	<li>
+		Z
+	</li>
+</ul>
+<article>
+	<ol id="olListId">
+		<li  id="currentDivId" data-group="NOWADD" class="first group">当前</li>
+		<div id="positionElemId">
+             <li class="hot" dataValue="noGprPer"><span>正在定位</span></li>
+		</div>
+		<li data-group="history" class="first group">历史</li>
+		<div id="historyListElemId">
+
+		</div>
+		<li data-group="HOT" class="first group">热门</li>
+		<div id="hotListElemId">
+
+		</div>
+		
+		<div id="cityListElemId">
+		</div>
+	</ol>
+</article>
+<ol class="searchContent" style="display:none;position:fixed;top:44px;left:0;height:100%;width:100%;z-index:999;background-color:#fff;overflow:auto">
+    <div id="cityListElemId2">
+		    	      
+	</div>
+</ol>    
+<ol class="asdf" style="display:none;position:fixed;top:44px;bottom:0;left:0;right:0;z-index:9999999999999999;z-index:999;background-color:#fff;overflow-y:auto">
+	    <div id="cityListElemId2">
+	    	      
+	     </div>
+	    <center style="display:none;"><img src="img/empty.png" style="width:160px;margin-top:100px;">
+			<p style="color:#333;padding:15px;">未找到相关信息</p>
+		</center>
+</ol>
+
+
+<div class="showPin">
+</div>
+</div>
+<script>
+                var list_DetailFrm = false;
+                var systemType = ""; 
+                apiready = function() {
+               	    var param = {};
+               	    param.type = "international"; //获得机场的json数据源
+               	    api.accessNative({
+						name: 'init',
+						extra: param
+					}, function(ret) {
+						var position    = {};
+						var currentCity = ret.currentCity;
+		                var currentInfo = ret.currentInfo;
+						position.lng    = ret.longitude;
+						position.lat    = ret.latitude;
+						var isshow      = ret.isshow;
+		                if(isshow == "0"){
+							$("#currentDivId").remove();
+	                         $("#positionElemId").remove();
+						}
+						var jsonObj = {};
+						systemType  = api.systemType;
+						
+						cityInfo(currentCity,internationalDataCityJson,null);
+
+						
+					});
+               }
+
+	            //判断访问终端
+				var browser={
+						versions:function(){
+							var u = navigator.userAgent,
+								app = navigator.appVersion;
+							return {
+								trident: u.indexOf('Trident') > -1, //IE内核
+								presto: u.indexOf('Presto') > -1, //opera内核
+								webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+								gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
+								mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+								ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+								android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1, //android终端
+								iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
+								iPad: u.indexOf('iPad') > -1, //是否iPad
+								webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+								weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
+								qq: u.match(/\sQQ/i) == " qq" //是否QQ
+							};
+						}(),
+						language:(navigator.browserLanguage || navigator.language).toLowerCase()
+				}
+                
+                var localDataStoreKey         = configXP.localDataKey.CityShenpiInternaltionInfo;
+                var dataInfoJson              = store.get(localDataStoreKey);
+			    var historyInternationalSel   = configXP.localKey.historyShenpiInternationSel;
+				var historyInternationalIndex = configXP.historySel.historyShenpiInternationIndex;
+				var searchInput          = document.getElementById("searchInfoId");
+				$(function() {
+                    if(dataInfoJson == null || dataInfoJson.list == null || dataInfoJson.list.length == 0){
+						dataInfoJson = internationalDataCityJson;
+					}
+         
+                     //预加载国际城市数据
+					loadDataTmp(dataInfoJson);
+					
+					var timestamp = Date.parse(new Date());
+			        timestamp = timestamp / 1000;
+			    	    var parmData    = {
+			    	     	Sign    : configXP.phpSign.Sign,
+						service : 'CityInfo.get_foreign',
+						TimeStamp:timestamp
+					};
+					var urlData = tgParmsFun(parmData);
+	                urlData += tgGetNewKeyStr(urlData, configXP.phpSign.Key);
+
+					$.ajax({
+						url: configXP.phpUrls.GetCityList,
+						data: urlData,
+						type: "get",
+						dataType: "json",
+						success: function(result) {
+							var code   = result.Code;
+							if(code == "1"){
+								dataInfoJson = result.Result;
+								if(!(dataInfoJson == null || dataInfoJson.list == null || dataInfoJson.list.length == 0)){
+									store.set(localDataStoreKey,dataInfoJson);
+								}
+								
+							}
+							
+						}
+					});	
+					/*
+					 * 获得历史城市
+				     */
+					reloadHistoryLocalData();
+					
+					$('article').on('touchstart',function(){
+             	    	    $("#searchInfoId").blur();
+             	    	
+             	    });
+
+					$('header a').click(function(){
+                            //清空逻辑
+					        clearUpLogic();
+					    	    //关闭webView
+		                    window.CityInfo.closeWin();
+					});
+					if($("article").is(":empty")){
+						var articleH = $("article").height();
+						var ulliH = $("ul li").size();
+						$("ul li").css({
+							height:articleH/ulliH+"px",
+							lineHeight:articleH/ulliH+"px"
+						});
+					}
+					$("ul").on("touchmove touchstart","li",function(e) {
+						event.preventDefault();
+						e = e || window.event;
+						findEle(e);
+					});
+					$("ul").on("touchend","li", function(e) {
+						event.preventDefault();
+						$("DIV.showPin").hide();
+					});
+					var findEle = function(e) {
+						var touch = e.originalEvent.targetTouches[0];
+						var ele = document.elementFromPoint(touch.pageX, touch.pageY);
+						if(ele != "" && ele != null) {
+							$("li.group").each(function() {
+								if(ele.innerText.toUpperCase() == $(this).text().toUpperCase()) {
+									$("DIV.showPin").text(ele.innerText.toUpperCase());
+									$("DIV.showPin").show();
+									$("article").scrollTop(0);
+									top2 = $(this).position().top ;
+									$("article").scrollTop(top2);
+								}
+							})
+						}
+					}
+
+					var timeover;
+					$("input").on("input",function() {
+						_this = $(this);
+						var canShow = 1;
+						clearTimeout(timeover);
+                                 if(_this.val() != "") {
+								    _this.removeClass("infocus");
+							        _this.addClass("infocus2");
+									$(".searchContent").show();
+									$(".searchContent li").remove();
+								    keyword = _this.val().toUpperCase();
+									$("article").scrollTop(0);
+									timeover = setTimeout(function() {
+										if($('#cityListElemId li[dataValue^="'+keyword+'"]').size() > 0){
+										    $("center").hide();
+										    $(".asdf").hide();
+											$('#cityListElemId li[dataValue^="'+keyword+'"]').each(function(){
+												$(".searchContent").append($(this).prop("outerHTML"));
+											}) ;
+										}else if($('#cityListElemId li[dataSpac="'+keyword+'"]').size() > 0){
+											$("center").hide();
+											$(".asdf").hide();
+											$('#cityListElemId li[dataSpac="'+keyword+'"]').each(function(){
+												$(".searchContent").append($(this).prop("outerHTML"));
+											}) ;
+										}else if($('#cityListElemId li[dataTags^="'+keyword+'"]').size() > 0){
+											$("center").hide();
+											$(".asdf").hide();
+											$('#cityListElemId li[dataTags^="'+keyword+'"]').each(function(){
+												$(".searchContent").append($(this).prop("outerHTML"));
+											}) ;
+										}else if($('#cityListElemId li[dataSzm^="'+keyword+'"]').size() > 0){
+											$("center").hide();
+											$(".asdf").hide();
+											$('#cityListElemId li[dataSzm^="'+keyword+'"]').each(function(){
+												$(".searchContent").append($(this).prop("outerHTML"));
+											});    
+										}else{
+											$("center").show();
+											$(".asdf").show();
+										}
+									},100);
+								 }else{
+								    _this.removeClass("infocus2");
+							        _this.addClass("infocus");
+									$(".searchContent").hide();
+
+								 }
+
+
+					});
+					$("input").blur(function(){
+						if($(this).val() == ""){
+							$(this).removeClass().addClass("empty");
+						}
+					})
+					$("input").focus(function(){
+						$(this).removeClass().addClass("infocus") ;
+					    $(".asdf li").remove();
+					});
+					$("header p").on("click",function () {
+					    $(".searchContent").hide();
+						$("input").val("");
+						$("ol li").show();
+						$("ul").show();
+						$("center").hide();
+						$(".centOl").hide();
+						$("input").blur().removeClass().addClass("empty");
+						$(".asdf").hide();
+					    $(".asdf li").remove();
+					});
+					$("div.shadow").on("touchstart",function () {
+						return false;
+					});
+					$("ol").on("click","li:not(.group)",function () {
+
+						var ext       = {};
+					    ext.dataValue = $(this).attr("dataValue");
+					    ext.dataSpac  = $(this).attr("dataSpac");
+					    ext.dataTags  = $(this).attr("dataTags");
+					    ext.dataSzm   = $(this).attr("dataSzm");
+
+
+						//获得选择历史的记录
+						var list = store.get(historyInternationalSel) || [];
+						//查找是否重复
+						var dataInfo = nativeXP.jsonObjFilter("dataValue", ext.dataValue, list);
+						if(!(nativeXP.isEmptyObject(dataInfo))) {
+							var index = dataInfo.xp_index;
+							list.splice(index, 1);
+						}
+	                    list.unshift(ext);
+	                    var len = list.length;
+						if(len > historyInternationalIndex) {
+							list.splice(historyInternationalIndex, len);
+						}
+						store.set(historyInternationalSel, list);
+
+					    var selectedCityObj  = JSON.stringify(ext);
+
+					     setTimeout(function(){
+
+                            api.sendEvent({
+						    		name: 'selectedCity',
+						    		extra: ext
+						    });
+
+                        },500);
+
+						reloadHistoryLocalData();
+
+	               });
+				});
+
+				function clearUpLogic(){
+				     	$(".searchContent").hide();
+						$("input").val("");
+						$("ol li").show();
+						$("ul").show();
+						$("center").hide();
+						$("input").blur().removeClass().addClass("empty");
+						$("article").scrollTop(0);
+						$(".asdf").hide();
+					    $(".asdf li").remove();
+						reloadHistoryLocalData();
+				}
+
+			    //加载城市控件信息
+			    function loadDataTmp(Result){
+				    	     var newResult = {};
+				    	     var hotResult = {};
+            	      	     var list      = Result.list;
+            	      	     var hotList   = Result.hotList;
+            	      	     hotResult.hotList = hotList;
+            	      	     /*
+						  * 设置热门的城市
+						  */
+                         var html = template("getHotCityInfoTemplate", hotResult);
+                         $("#hotListElemId").html(html); 
+                         showAnimate(-1);
+                         /*
+						  * 获得历史城市
+						  */
+						reloadHistoryLocalData();
+						
+						var arr1 = list.slice(0, 8);
+				    	    newResult.list    = arr1;
+				    	    var html = template("getCityInfoTemplate", newResult);
+            	            $("#cityListElemId").append(html);
+            	            
+            	            var arr2 = list.slice(8,17);
+            	            setTimeout(function(){
+	            	          	 newResult.list = arr2;
+	            	          	 html = template("getCityInfoTemplate", newResult);
+	            	         	 $("#cityListElemId").append(html);
+	            	        },380);
+	            	        
+	            	        var arr3 = list.slice(17,list.length);
+            	            setTimeout(function(){
+	            	         	newResult.list = arr3;
+	            	            html = template("getCityInfoTemplate", newResult);
+	            	            $("#cityListElemId").append(html);
+                            	//隐藏loaidng加载
+                            showAnimate(-1);
+	            	        },700);
+	            	        
+	            	        clearUpLogic();
+                        $(".searchContent").show();
+				        $(".searchContent li").remove();
+	                    $(".searchContent").hide();
+	                    $("article").scrollTop(0);
+						
+	             }
+
+				 //获得历史文件
+				 function reloadHistoryLocalData() {
+
+						var jsonObj = {};
+	                    var list = store.get(historyInternationalSel) || [];
+	                    if(list.length == 0) {
+							$("#historyElemId").remove();
+							return;
+						}
+						jsonObj.list = list;
+						var html = template("getOtherListTemplate", jsonObj);
+
+						$("#historyListElemId").html(html);
+				}
+			
+				//设置城市信息
+	            function cityInfo(currentCity , result , accessFileLocaion){
+					 if(currentCity == null){
+						 	currentCity =  "";
+					 }
+					 result   =  internationalDataCityJson;
+					 currentCity    = currentCity.substring(0,currentCity.length-1);
+			         var list       = result.list;
+	                 var for1       = -1;
+	                 if(currentCity != ""){
+                     	   
+                        for(var v=0 ; v<list.length; v++){
+		                         if(for1 == 1){
+		                              break;
+		                              return;
+		                         }
+		                         var vObj = list[v];
+		                         for(var vv=0 ; vv<vObj.citylist.length ; vv++){
+		                             var vvobj     = vObj.citylist[vv];
+		                             var dataValue = vvobj.dataValue;
+		                             if(dataValue == currentCity){
+		                             	 var dataTags      = vvobj.dataTags;
+		                                  var dataSpac     = vvobj.dataSpac;
+		                                  var dataSzm      = vvobj.dataSzm;
+		                                  var ct           = vvobj.ct;
+		                                  var dataCityName = vvobj.dataCityName;
+		                                  list = '<li class="hot" dataPosition="true" dataValue='+dataValue+' dataTags='+dataTags+' dataSpac='+dataSpac+' dataSzm='+dataSzm+' dataCt='+ct+'><span>'+dataValue+'</span></li>';
+		                                  $("#positionElemId").html(list);
+		                                  for1 = 1;
+		                                  break;
+		                                  return;
+		                             }
+		                         }
+                         }
+                     	
+                     }else{
+                     	        var  list = '<li class="hot" dataValue="noGprPer"><span>定位失败</span></li>';
+                     	        $("#positionElemId").html(list);
+                     }
+				}
+	            
+	              /*
+	             * 设置frame里的索引值
+                 */
+				function setInfoFrame(dataAttr,keyword){
+						    var pageParam = {};
+						    var paramArr  = [];
+						    var elemLiArr = [];
+					
+						    if(dataAttr == "dataValue"){
+						    	    elemLiArr     = $('#cityListElemId li[dataValue="'+keyword+'"]');   
+						    	    if(elemLiArr.length == 0){
+						    	    	      elemLiArr     = $('#cityListElemId li[dataValue^="'+keyword+'"]');
+						    	    }
+						    }else{
+						    	    elemLiArr     = $('#cityListElemId li[dataSpac^="'+keyword+'"]');
+						    	    if(elemLiArr.length == 0){
+						    	    	      //判断是不是三字码
+						    	    	      if(keyword.length == 3){
+						    	    	      	  elemLiArr = $('#cityListElemId li[dataSzm="'+keyword+'"]');
+						    	    	      	  if(elemLiArr.length > 0){
+						    	    	      	  	  dataAttr   = "dataSzm";
+						    	    	      	  }
+						    	    	      }
+						    	    	      
+						    	    	      if(elemLiArr.length == 0){
+						    	    	      	  elemLiArr     = $('#cityListElemId li[dataTags^="'+keyword+'"]');
+						    	    	      	  if(elemLiArr.length > 0){
+						    	    	      	  	  dataAttr   = "dataTags";
+						    	    	      	  }
+						    	    	      }
+						    	    }
+						    }
+						    var elemLen  = elemLiArr.length;
+						    for(var i=0;i<elemLiArr.length;i++){
+						        var param = {};
+								var elemLi      = elemLiArr[i];
+								param.text      = $(elemLi).attr("dataValue");
+								param.dataTags  = $(elemLi).attr("dataTags");  
+								param.dataSpac  = $(elemLi).attr("dataSpac");
+								param.dataSzm   = $(elemLi).attr("dataSzm");
+								param.dataCt    = $(elemLi).attr("dataCt");
+								if($(elemLi).attr("dataCityId")==null){
+									param.dataCityId="";
+								}
+								param.dataCityId= $(elemLi).attr("dataCityId");
+								paramArr.push(param);
+						    }
+  						    pageParam.key       = dataAttr;
+							pageParam.paramArr  = paramArr;
+					        store.set("req_localInternalCityList" , pageParam);
+
+				}
+			</script>
+
+       
+    <script id="getCityInfoTemplate" type="text/html">
+		{{each list as obj index}}
+			<li data-group="{{obj.groupname}}" class="group">{{obj.groupname}}</li>
+			{{each obj.citylist as city subIndex}}
+				<li class="normal" dataValue="{{city.dataValue}}" dataTags="{{city.dataTags}}" dataSpac='{{city.dataSpac}}' dataSzm='{{city.dataSzm}}' dataCt="{{city.ct}}">
+					{{city.dataValue}}
+				</li>
+			{{/each}}
+		{{/each}}
+	</script>
+	
+	<script id="getOtherListTemplate" type="text/html">
+		{{each list as city index}}
+		       <li class='hot' dataValue="{{city.dataValue}}" dataTags="{{city.dataTags}}" dataSpac='{{city.dataSpac}}' dataSzm='{{city.dataSzm}}' dataCt="{{city.ct}}">{{city.dataValue}}</li>
+		{{/each}}
+	</script>
+	
+	<script id="getHotCityInfoTemplate" type="text/html">
+		{{each hotList as city index}}
+		<li class="hot"  dataValue="{{city.dataValue}}" dataTags="{{city.dataTags}}" dataSpac='{{city.dataSpac}}' dataSzm='{{city.dataSzm}}' dataCt="{{city.ct}}">
+			<span>{{city.dataValue}}</span>
+		</li>
+		{{/each}}
+	</script>
+</html>

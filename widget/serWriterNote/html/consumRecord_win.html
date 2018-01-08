@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+	<meta name="format-detection" content="telphone=no, email=no" />
+	<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+	<script src="../../script/zepto.js"></script>
+	<script type="text/javascript" src="../../script/store.min.js"></script>
+	<script src="../../script/pengCmp/coreXP.js"></script>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<header>
+			<div  class="map-title">
+				<span class="main-goback"></span>
+				<h1>出差申请单</h1>
+			</div>
+		</header>
+
+		<script>
+			apiready = function() {
+                 var height = $('header').height();
+				 nativeXP.openFrame({url:'consumRecord.html'});
+			}
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<link rel="stylesheet" href="../../css/api.css" />
+		<link rel="stylesheet" href="../../css/travellnTransit/me_map.css" />
+		<link rel="stylesheet" href="../../css/travellnTransit/iconfont.css" />
+		<script src="../../script/zepto.js"></script>
+		<script src="../../script/template.js"></script>
+		<script src="../../script/pengCmp/coreXP.js"></script>
+		<script type="text/javascript" src="../../script/store.min.js"></script>
+		<script src="../../script/pengCmp/configXP.js"></script>
+		<title></title>
+		<style type="text/css">
+			body, html {
+				background: #f2f3f4;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="h-paihang" id="h-paihang">
+			<dl>
+				<dt><img src="../../image/paihang-1.png"/>
+				</dt>
+				<dd class="flex_v">
+					<h1>第0名</h1>
+					<h2 class="flex_h">消费总金额：<span class="ot">0元</span></h2>
+				</dd>
+			</dl>
+			<dl>
+				<dt><img src="../../image/paihang-2.png"/>
+				</dt>
+				<dd class="flex_v">
+					<h1>第0名</h1>
+					<h2 class="flex_h">消费总金额：<span class="ot">0元</span></h2>
+				</dd>
+			</dl>
+			<dl>
+				<dt><img src="../../image/paihang-3.png"/>
+				</dt>
+				<dd class="flex_v">
+					<h1>第0名</h1>
+					<h2 class="flex_h">消费总金额：<span class="ot">0元</span></h2>
+				</dd>
+			</dl>
+			<dl>
+				<dt><img src="../../image/paihang-4.png"/>
+				</dt>
+				<dd class="flex_v">
+					<h1>第0名</h1>
+					<h2 class="flex_h">飞行总时常：<span class="ot">0分</span></h2>
+				</dd>
+			</dl>
+			<dl>
+				<dt><img src="../../image/paihang-5.png"/>
+				</dt>
+				<dd class="flex_v">
+					<h1>第0名</h1>
+					<h2 class="flex_h">消费总金额：<span class="ot">0元</span></h2>
+				</dd>
+			</dl>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	//store.set("userCode","ZYS000001");
+	apiready = function() {
+		var systemType = api.systemType;
+		var pageParam = api.pageParam;
+		var userCode  =  store.get("userCode");
+		getPaihangData(userCode);
+
+	};
+	function getPaihangData(userid) {
+		api.ajax({
+			url : 'http://data.tripglobal.cn/bi_system/interface/interface.php?action=cityCount&member='+ userid,
+			method : 'post',
+		}, function(ret, err) {
+			if (ret) {
+				//隐藏加载中......
+				showAnimate(-1);
+				var result = ret.result;
+				var obj1 = result[0];
+				var obj2 = result[1];
+				var obj3 = result[2];
+				var obj4 = result[3];
+				var obj5 = result[4];
+				html = "";
+				html += '<dl><dt><img src="../../image/paihang-1.png"/></dt><dd class="flex_v"><h1>第' + obj1.rank + '名</h1><h2 class="flex_h">消费总金额：<span class="ot">' + obj1.count + '元</span></h2></dd></dl>';
+				html += '<dl><dt><img src="../../image/paihang-2.png"/></dt><dd class="flex_v"><h1>第' + obj2.rank + '名</h1><h2 class="flex_h">飞行总里程：<span class="ot">' + obj2.count + '公里</span></h2></dd></dl>';
+				html += '<dl><dt><img src="../../image/paihang-3.png"/></dt><dd class="flex_v"><h1>第' + obj3.rank + '名</h1><h2 class="flex_h">飞行总次数：<span class="ot">' + obj3.count + '次</span></h2></dd></dl>';
+				html += '<dl><dt><img src="../../image/paihang-4.png"/></dt><dd class="flex_v"><h1>第' + obj4.rank + '名</h1><h2 class="flex_h">飞行总时长：<span class="ot">' + parseInt(parseInt(obj4.count) / 60) + '小时';
+				if (parseInt(obj4.count) % 60 == 0)
+					html += '</span></h2></dd></dl>';
+				else
+					html += parseInt(obj4.count) % 60 + '分</span></h2></dd></dl>';
+				html += '<dl><dt><img src="../../image/paihang-5.png"/></dt><dd class="flex_v"><h1>第' + obj5.rank + '名</h1><h2 class="flex_h">飞行城市量：<span class="ot">' + obj5.count + '个</span></h2></dd></dl>';
+				html += '<p class="paihang-p ot">注：排行范围为本公司,数据来源于国内机票;当日数据次日更新.</p>';
+				$("#h-paihang").html(html);
+			} 
+		});
+	}
+</script>

@@ -1,0 +1,3790 @@
+{
+list: [
+{
+groupname: "A",
+citylist: [
+{
+dataSpac: "ALSM",
+dataTages: "ALaShanMeng",
+dataCityId: "152900000",
+dataValue: "阿拉善盟",
+dataHotelCode: "259",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "AS",
+dataTages: "AN SHA",
+dataCityId: "210300000",
+dataValue: "鞍山",
+dataHotelCode: "245",
+dataWeatherCode: "101070301",
+dataAirPortCode: "IOB"
+},
+{
+dataSpac: "AQ",
+dataTages: "ANQING",
+dataCityId: "340800000",
+dataValue: "安庆",
+dataHotelCode: "36",
+dataWeatherCode: "101220601",
+dataAirPortCode: "AQG"
+},
+{
+dataSpac: "AY",
+dataTages: "ANYANG",
+dataCityId: "410500000",
+dataValue: "安阳",
+dataHotelCode: "150",
+dataWeatherCode: "101180201",
+dataAirPortCode: "AYG"
+},
+{
+dataSpac: "ABX",
+dataTages: "ABaXian",
+dataCityId: "513231000",
+dataValue: "阿坝",
+dataHotelCode: "322",
+dataWeatherCode: "101271901",
+dataAirPortCode: ""
+},
+{
+dataSpac: "AS",
+dataTages: "ANSHU",
+dataCityId: "520400000",
+dataValue: "安顺",
+dataHotelCode: "112",
+dataWeatherCode: "101260301",
+dataAirPortCode: "AVA"
+},
+{
+dataSpac: "ALDQ",
+dataTages: "ALiDiQu",
+dataCityId: "542500000",
+dataValue: "阿里",
+dataHotelCode: "344",
+dataWeatherCode: "101140701",
+dataAirPortCode: "NGQ"
+},
+{
+dataSpac: "AK",
+dataTages: "ANKANG",
+dataCityId: "610900000",
+dataValue: "安康",
+dataHotelCode: "311",
+dataWeatherCode: "101110701",
+dataAirPortCode: "AKA"
+},
+{
+dataSpac: "AKS",
+dataTages: "AKESU",
+dataCityId: "652901000",
+dataValue: "阿克苏",
+dataHotelCode: "351",
+dataWeatherCode: "101130801",
+dataAirPortCode: "AKU"
+},
+{
+dataSpac: "ALT",
+dataTages: "ALETAI",
+dataCityId: "654301000",
+dataValue: "阿勒泰",
+dataHotelCode: "3114",
+dataWeatherCode: "101131401",
+dataAirPortCode: "AAT"
+},
+{
+dataSpac: "ALES",
+dataTages: "ALaErShi",
+dataCityId: "659002000",
+dataValue: "阿拉尔",
+dataHotelCode: "352",
+dataWeatherCode: "101130701",
+dataAirPortCode: ""
+},
+{
+dataSpac: "AM",
+dataTages: "AoMen",
+dataCityId: "820100000",
+dataValue: "澳门",
+dataHotelCode: "396",
+dataWeatherCode: "101330101",
+dataAirPortCode: "MFM"
+}
+]
+},
+{
+groupname: "B",
+citylist: [
+{
+dataSpac: "BJ",
+dataTages: "BEIJING",
+dataCityId: "110000000",
+dataValue: "北京",
+dataHotelCode: "53",
+dataWeatherCode: "101010100",
+dataAirPortCode: "BJS"
+},
+{
+dataSpac: "BDS",
+dataTages: "BaoDingShi",
+dataCityId: "130600000",
+dataValue: "保定",
+dataHotelCode: "139",
+dataWeatherCode: "101090201",
+dataAirPortCode: ""
+},
+{
+dataSpac: "BT",
+dataTages: "BAOTOU",
+dataCityId: "150200000",
+dataValue: "包头",
+dataHotelCode: "261",
+dataWeatherCode: "101080201",
+dataAirPortCode: "BAV"
+},
+{
+dataSpac: "BYNES",
+dataTages: "BaYanNaoErShi",
+dataCityId: "150800000",
+dataValue: "巴彦淖尔",
+dataHotelCode: "260",
+dataWeatherCode: "",
+dataAirPortCode: "RLK"
+},
+{
+dataSpac: "BXS",
+dataTages: "BenXiShi",
+dataCityId: "210500000",
+dataValue: "本溪",
+dataHotelCode: "246",
+dataWeatherCode: "101070501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "BS",
+dataTages: "BAISHA",
+dataCityId: "220600000",
+dataValue: "白山",
+dataHotelCode: "213",
+dataWeatherCode: "101060901",
+dataAirPortCode: "NBS"
+},
+{
+dataSpac: "BCS",
+dataTages: "BaiChengShi",
+dataCityId: "220800000",
+dataValue: "白城",
+dataHotelCode: "212",
+dataWeatherCode: "101060601",
+dataAirPortCode: ""
+},
+{
+dataSpac: "BBS",
+dataTages: "BangBuShi",
+dataCityId: "340300000",
+dataValue: "蚌埠",
+dataHotelCode: "37",
+dataWeatherCode: "101220201",
+dataAirPortCode: ""
+},
+{
+dataSpac: "BZS",
+dataTages: "BinZhouShi",
+dataCityId: "371600000",
+dataValue: "滨州",
+dataHotelCode: "283",
+dataWeatherCode: "101121101",
+dataAirPortCode: ""
+},
+{
+dataSpac: "BH",
+dataTages: "BEIHAI",
+dataCityId: "450500000",
+dataValue: "北海",
+dataHotelCode: "99",
+dataWeatherCode: "101301301",
+dataAirPortCode: "BHY"
+},
+{
+dataSpac: "BSS",
+dataTages: "BaiSeShi",
+dataCityId: "451000000",
+dataValue: "百色",
+dataHotelCode: "98",
+dataWeatherCode: "101301001",
+dataAirPortCode: "AEB"
+},
+{
+dataSpac: "BSLZZZX",
+dataTages: "BaiShaLiZuZiZhiXian",
+dataCityId: "469025000",
+dataValue: "白沙黎族自治",
+dataHotelCode: "121",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "BTLZMZZZX",
+dataTages: "BaoTingLiZuMiaoZuZiZhiXian",
+dataCityId: "469029000",
+dataValue: "保亭黎族苗族自治",
+dataHotelCode: "122",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "BZS",
+dataTages: "BaZhongShi",
+dataCityId: "511900000",
+dataValue: "巴中",
+dataHotelCode: "323",
+dataWeatherCode: "101270901",
+dataAirPortCode: ""
+},
+{
+dataSpac: "BJS",
+dataTages: "BiJieShi",
+dataCityId: "520500000",
+dataValue: "毕节",
+dataHotelCode: "113",
+dataWeatherCode: "101260701",
+dataAirPortCode: "BFJ"
+},
+{
+dataSpac: "BS",
+dataTages: "BAOSHA",
+dataCityId: "530500000",
+dataValue: "保山",
+dataHotelCode: "367",
+dataWeatherCode: "101290501",
+dataAirPortCode: "BSD"
+},
+{
+dataSpac: "BJS",
+dataTages: "BaoJiShi",
+dataCityId: "610300000",
+dataValue: "宝鸡",
+dataHotelCode: "312",
+dataWeatherCode: "101110901",
+dataAirPortCode: ""
+},
+{
+dataSpac: "BYS",
+dataTages: "BaiYinShi",
+dataCityId: "620400000",
+dataValue: "白银",
+dataHotelCode: "63",
+dataWeatherCode: "101161301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "BETLMGZZZ",
+dataTages: "BoErTaLaMengGuZiZhiZhou",
+dataCityId: "652700000",
+dataValue: "博尔塔拉蒙古自治州",
+dataHotelCode: "354",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "BYGLMGZZZ",
+dataTages: "BaYinGuoLengMengGuZiZhiZhou",
+dataCityId: "652800000",
+dataValue: "巴音郭楞蒙古自治州",
+dataHotelCode: "353",
+dataWeatherCode: "",
+dataAirPortCode: ""
+}
+]
+},
+{
+groupname: "C",
+citylist: [
+{
+dataSpac: "CDS",
+dataTages: "ChengDeShi",
+dataCityId: "130800000",
+dataValue: "承德",
+dataHotelCode: "141",
+dataWeatherCode: "101090402",
+dataAirPortCode: ""
+},
+{
+dataSpac: "CZS",
+dataTages: "CangZhouShi",
+dataCityId: "130900000",
+dataValue: "沧州",
+dataHotelCode: "140",
+dataWeatherCode: "101090701",
+dataAirPortCode: ""
+},
+{
+dataSpac: "CZ",
+dataTages: "CHANG ZHI",
+dataCityId: "140400000",
+dataValue: "长治",
+dataHotelCode: "300",
+dataWeatherCode: "101100501",
+dataAirPortCode: "CIH"
+},
+{
+dataSpac: "CF",
+dataTages: "CHIFENG",
+dataCityId: "150400000",
+dataValue: "赤峰",
+dataHotelCode: "262",
+dataWeatherCode: "101080601",
+dataAirPortCode: "CIF"
+},
+{
+dataSpac: "CY",
+dataTages: "CHAO YANG",
+dataCityId: "211300000",
+dataValue: "朝阳",
+dataHotelCode: "247",
+dataWeatherCode: "101071201",
+dataAirPortCode: "CHG"
+},
+{
+dataSpac: "CC",
+dataTages: "CHANGCHUN",
+dataCityId: "220100000",
+dataValue: "长春",
+dataHotelCode: "214",
+dataWeatherCode: "101060101",
+dataAirPortCode: "CGQ"
+},
+{
+dataSpac: "CZ",
+dataTages: "CHANGZHOU",
+dataCityId: "320400000",
+dataValue: "常州",
+dataHotelCode: "221",
+dataWeatherCode: "101191101",
+dataAirPortCode: "CZX"
+},
+{
+dataSpac: "CHS",
+dataTages: "ChaoHuShi",
+dataCityId: "340181000",
+dataValue: "巢湖",
+dataHotelCode: "38",
+dataWeatherCode: "101220105",
+dataAirPortCode: ""
+},
+{
+dataSpac: "CZS",
+dataTages: "ChuZhouShi",
+dataCityId: "341100000",
+dataValue: "滁州",
+dataHotelCode: "40",
+dataWeatherCode: "101221101",
+dataAirPortCode: ""
+},
+{
+dataSpac: "CZS",
+dataTages: "ChiZhouShi",
+dataCityId: "341700000",
+dataValue: "池州",
+dataHotelCode: "39",
+dataWeatherCode: "101221701",
+dataAirPortCode: "JUH"
+},
+{
+dataSpac: "CS",
+dataTages: "CHANGSHA",
+dataCityId: "430100000",
+dataValue: "长沙",
+dataHotelCode: "199",
+dataWeatherCode: "101250101",
+dataAirPortCode: "CSX"
+},
+{
+dataSpac: "CD",
+dataTages: "CHANGDE",
+dataCityId: "430700000",
+dataValue: "常德",
+dataHotelCode: "198",
+dataWeatherCode: "101250601",
+dataAirPortCode: "CGD"
+},
+{
+dataSpac: "CZS",
+dataTages: "ChenZhouShi",
+dataCityId: "431000000",
+dataValue: "郴州",
+dataHotelCode: "200",
+dataWeatherCode: "101250501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "CZS",
+dataTages: "ChaoZhouShi",
+dataCityId: "445100000",
+dataValue: "潮州",
+dataHotelCode: "77",
+dataWeatherCode: "101281501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "CZS",
+dataTages: "ChongZuoShi",
+dataCityId: "451400000",
+dataValue: "崇左",
+dataHotelCode: "100",
+dataWeatherCode: "101300201",
+dataAirPortCode: ""
+},
+{
+dataSpac: "CMX",
+dataTages: "ChengMaiXian",
+dataCityId: "469023000",
+dataValue: "澄迈",
+dataHotelCode: "124",
+dataWeatherCode: "101310204",
+dataAirPortCode: ""
+},
+{
+dataSpac: "CJLZZZX",
+dataTages: "ChangJiangLiZuZiZhiXian",
+dataCityId: "469026000",
+dataValue: "昌江黎族自治",
+dataHotelCode: "123",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "CQ",
+dataTages: "CHONGQING",
+dataCityId: "500000000",
+dataValue: "重庆",
+dataHotelCode: "394",
+dataWeatherCode: "101040100",
+dataAirPortCode: "CKG"
+},
+{
+dataSpac: "CD",
+dataTages: "CHENGDU",
+dataCityId: "510100000",
+dataValue: "成都",
+dataHotelCode: "324",
+dataWeatherCode: "101270101",
+dataAirPortCode: "CTU"
+},
+{
+dataSpac: "CXS",
+dataTages: "ChuXiongShi",
+dataCityId: "532301000",
+dataValue: "楚雄",
+dataHotelCode: "368",
+dataWeatherCode: "101290801",
+dataAirPortCode: ""
+},
+{
+dataSpac: "CDX",
+dataTages: "ChangDuXian",
+dataCityId: "542121000",
+dataValue: "昌都",
+dataHotelCode: "345",
+dataWeatherCode: "101140501",
+dataAirPortCode: "BPX"
+},
+{
+dataSpac: "CJS",
+dataTages: "ChangJiShi",
+dataCityId: "652301000",
+dataValue: "昌吉",
+dataHotelCode: "355",
+dataWeatherCode: "101130401",
+dataAirPortCode: ""
+}
+]
+},
+{
+groupname: "D",
+citylist: [
+{
+dataSpac: "DT",
+dataTages: "DATONG",
+dataCityId: "140200000",
+dataValue: "大同",
+dataHotelCode: "301",
+dataWeatherCode: "101100201",
+dataAirPortCode: "DAT"
+},
+{
+dataSpac: "DL",
+dataTages: "DA LIA",
+dataCityId: "210200000",
+dataValue: "大连",
+dataHotelCode: "248",
+dataWeatherCode: "101070201",
+dataAirPortCode: "DLC"
+},
+{
+dataSpac: "DD",
+dataTages: "DAN DONG",
+dataCityId: "210600000",
+dataValue: "丹东",
+dataHotelCode: "249",
+dataWeatherCode: "101070601",
+dataAirPortCode: "DDG"
+},
+{
+dataSpac: "DQS",
+dataTages: "DaQingShi",
+dataCityId: "230600000",
+dataValue: "大庆",
+dataHotelCode: "168",
+dataWeatherCode: "101050901",
+dataAirPortCode: "DQA"
+},
+{
+dataSpac: "DXALDQ",
+dataTages: "DaXingAnLingDiQu",
+dataCityId: "232700000",
+dataValue: "大兴安岭",
+dataHotelCode: "169",
+dataWeatherCode: "101050701",
+dataAirPortCode: "JGD"
+},
+{
+dataSpac: "DY",
+dataTages: "DONGYING",
+dataCityId: "370500000",
+dataValue: "东营",
+dataHotelCode: "285",
+dataWeatherCode: "101121201",
+dataAirPortCode: "DOY"
+},
+{
+dataSpac: "DZS",
+dataTages: "DeZhouShi",
+dataCityId: "371400000",
+dataValue: "德州",
+dataHotelCode: "284",
+dataWeatherCode: "101120401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "DGS",
+dataTages: "DongGuanShi",
+dataCityId: "441900000",
+dataValue: "东莞",
+dataHotelCode: "78",
+dataWeatherCode: "101281601",
+dataAirPortCode: ""
+},
+{
+dataSpac: "DFS",
+dataTages: "DongFangShi",
+dataCityId: "469007000",
+dataValue: "东方",
+dataHotelCode: "126",
+dataWeatherCode: "101310202",
+dataAirPortCode: ""
+},
+{
+dataSpac: "DAX",
+dataTages: "DingAnXian",
+dataCityId: "469021000",
+dataValue: "定安",
+dataHotelCode: "125",
+dataWeatherCode: "101310209",
+dataAirPortCode: ""
+},
+{
+dataSpac: "DYS",
+dataTages: "DeYangShi",
+dataCityId: "510600000",
+dataValue: "德阳",
+dataHotelCode: "326",
+dataWeatherCode: "101272001",
+dataAirPortCode: ""
+},
+{
+dataSpac: "DZ",
+dataTages: "DAZHOU",
+dataCityId: "511700000",
+dataValue: "达州",
+dataHotelCode: "325",
+dataWeatherCode: "101270601",
+dataAirPortCode: "DAX"
+},
+{
+dataSpac: "DL",
+dataTages: "DALI",
+dataCityId: "532901000",
+dataValue: "大理",
+dataHotelCode: "369",
+dataWeatherCode: "101290201",
+dataAirPortCode: "DLU"
+},
+{
+dataSpac: "DH",
+dataTages: "DEHONG",
+dataCityId: "533100000",
+dataValue: "德宏",
+dataHotelCode: "370",
+dataWeatherCode: "101291501",
+dataAirPortCode: "LUM"
+},
+{
+dataSpac: "DQ",
+dataTages: "DIQING",
+dataCityId: "533400000",
+dataValue: "迪庆",
+dataHotelCode: "371",
+dataWeatherCode: "",
+dataAirPortCode: "DIG"
+},
+{
+dataSpac: "DXS",
+dataTages: "DingXiShi",
+dataCityId: "621100000",
+dataValue: "定西",
+dataHotelCode: "64",
+dataWeatherCode: "101160201",
+dataAirPortCode: ""
+}
+]
+},
+{
+groupname: "E",
+citylist: [
+{
+dataSpac: "EEDSS",
+dataTages: "EErDuoSiShi",
+dataCityId: "150600000",
+dataValue: "鄂尔多斯",
+dataHotelCode: "263",
+dataWeatherCode: "101080701",
+dataAirPortCode: "DSN"
+},
+{
+dataSpac: "EZS",
+dataTages: "EZhouShi",
+dataCityId: "420700000",
+dataValue: "鄂州",
+dataHotelCode: "181",
+dataWeatherCode: "101200301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "ES",
+dataTages: "ENSHI",
+dataCityId: "422801000",
+dataValue: "恩施",
+dataHotelCode: "182",
+dataWeatherCode: "101201001",
+dataAirPortCode: "ENH"
+}
+]
+},
+{
+groupname: "F",
+citylist: [
+{
+dataSpac: "FSS",
+dataTages: "FuShunShi",
+dataCityId: "210400000",
+dataValue: "抚顺",
+dataHotelCode: "250",
+dataWeatherCode: "101070401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "FXS",
+dataTages: "FuXinShi",
+dataCityId: "210900000",
+dataValue: "阜新",
+dataHotelCode: "251",
+dataWeatherCode: "101070901",
+dataAirPortCode: ""
+},
+{
+dataSpac: "FY",
+dataTages: "FUYANG",
+dataCityId: "341200000",
+dataValue: "阜阳",
+dataHotelCode: "41",
+dataWeatherCode: "101220801",
+dataAirPortCode: "FUG"
+},
+{
+dataSpac: "FZ",
+dataTages: "FUZHOU",
+dataCityId: "350100000",
+dataValue: "福州",
+dataHotelCode: "54",
+dataWeatherCode: "101230101",
+dataAirPortCode: "FOC"
+},
+{
+dataSpac: "FZS",
+dataTages: "FuZhouShi",
+dataCityId: "361000000",
+dataValue: "抚州",
+dataHotelCode: "234",
+dataWeatherCode: "101240401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "FS",
+dataTages: "FOSHA",
+dataCityId: "440600000",
+dataValue: "佛山",
+dataHotelCode: "79",
+dataWeatherCode: "101280800",
+dataAirPortCode: "FUO"
+},
+{
+dataSpac: "FCGS",
+dataTages: "FangChengGangShi",
+dataCityId: "450600000",
+dataValue: "防城港",
+dataHotelCode: "101",
+dataWeatherCode: "101301401",
+dataAirPortCode: ""
+}
+]
+},
+{
+groupname: "G",
+citylist: [
+{
+dataSpac: "GNX",
+dataTages: "GanNanXian",
+dataCityId: "230225000",
+dataValue: "甘南",
+dataHotelCode: "65",
+dataWeatherCode: "101050204",
+dataAirPortCode: ""
+},
+{
+dataSpac: "GZ",
+dataTages: "GANZHOU",
+dataCityId: "360700000",
+dataValue: "赣州",
+dataHotelCode: "235",
+dataWeatherCode: "101240701",
+dataAirPortCode: "KOW"
+},
+{
+dataSpac: "GZ",
+dataTages: "GUANGZHOU",
+dataCityId: "440100000",
+dataValue: "广州",
+dataHotelCode: "80",
+dataWeatherCode: "101280101",
+dataAirPortCode: "CAN"
+},
+{
+dataSpac: "GL",
+dataTages: "GUILI",
+dataCityId: "450300000",
+dataValue: "桂林",
+dataHotelCode: "102",
+dataWeatherCode: "101300501",
+dataAirPortCode: "KWL"
+},
+{
+dataSpac: "GGS",
+dataTages: "GuiGangShi",
+dataCityId: "450800000",
+dataValue: "贵港",
+dataHotelCode: "103",
+dataWeatherCode: "101300801",
+dataAirPortCode: ""
+},
+{
+dataSpac: "GY",
+dataTages: "GUANGYUA",
+dataCityId: "510800000",
+dataValue: "广元",
+dataHotelCode: "329",
+dataWeatherCode: "101272101",
+dataAirPortCode: "GYS"
+},
+{
+dataSpac: "GAS",
+dataTages: "GuangAnShi",
+dataCityId: "511600000",
+dataValue: "广安",
+dataHotelCode: "328",
+dataWeatherCode: "101270801",
+dataAirPortCode: ""
+},
+{
+dataSpac: "GZX",
+dataTages: "GanZiXian",
+dataCityId: "513328000",
+dataValue: "甘孜",
+dataHotelCode: "327",
+dataWeatherCode: "101271801",
+dataAirPortCode: ""
+},
+{
+dataSpac: "GY",
+dataTages: "GUIYANG",
+dataCityId: "520100000",
+dataValue: "贵阳",
+dataHotelCode: "114",
+dataWeatherCode: "101260101",
+dataAirPortCode: "KWE"
+},
+{
+dataSpac: "GLCZZZZ",
+dataTages: "GuoLuoCangZuZiZhiZhou",
+dataCityId: "632600000",
+dataValue: "果洛藏族自治州",
+dataHotelCode: "275",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "GYS",
+dataTages: "GuYuanShi",
+dataCityId: "640400000",
+dataValue: "固原",
+dataHotelCode: "271",
+dataWeatherCode: "101170401",
+dataAirPortCode: "GYU"
+},
+{
+dataSpac: "GX",
+dataTages: "GaoXiong",
+dataCityId: "710600000",
+dataValue: "高雄",
+dataHotelCode: "397",
+dataWeatherCode: "101340201",
+dataAirPortCode: "KHH"
+}
+]
+},
+{
+groupname: "H",
+citylist: [
+{
+dataSpac: "HDS",
+dataTages: "HanDanShi",
+dataCityId: "130400000",
+dataValue: "邯郸",
+dataHotelCode: "142",
+dataWeatherCode: "101091001",
+dataAirPortCode: "HDG"
+},
+{
+dataSpac: "HSS",
+dataTages: "HengShuiShi",
+dataCityId: "131100000",
+dataValue: "衡水",
+dataHotelCode: "143",
+dataWeatherCode: "101090801",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HHHT",
+dataTages: "HUHEHAOTE",
+dataCityId: "150100000",
+dataValue: "呼和浩特",
+dataHotelCode: "264",
+dataWeatherCode: "101080101",
+dataAirPortCode: "HET"
+},
+{
+dataSpac: "HLE",
+dataTages: "HAILAER",
+dataCityId: "150700000",
+dataValue: "呼伦贝尔",
+dataHotelCode: "265",
+dataWeatherCode: "",
+dataAirPortCode: "HLD"
+},
+{
+dataSpac: "HLDS",
+dataTages: "HuLuDaoShi",
+dataCityId: "211400000",
+dataValue: "葫芦岛",
+dataHotelCode: "252",
+dataWeatherCode: "101071401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HRB",
+dataTages: "HAERBI",
+dataCityId: "230100000",
+dataValue: "哈尔滨",
+dataHotelCode: "170",
+dataWeatherCode: "101050101",
+dataAirPortCode: "HRB"
+},
+{
+dataSpac: "HGS",
+dataTages: "HeGangShi",
+dataCityId: "230400000",
+dataValue: "鹤岗",
+dataHotelCode: "171",
+dataWeatherCode: "101051201",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HH",
+dataTages: "HEIHE",
+dataCityId: "231100000",
+dataValue: "黑河",
+dataHotelCode: "172",
+dataWeatherCode: "101050601",
+dataAirPortCode: "HEK"
+},
+{
+dataSpac: "HAS",
+dataTages: "HuaiAnShi",
+dataCityId: "320800000",
+dataValue: "淮安",
+dataHotelCode: "222",
+dataWeatherCode: "101190901",
+dataAirPortCode: "HIA"
+},
+{
+dataSpac: "HZ",
+dataTages: "HANGZHOU",
+dataCityId: "330100000",
+dataValue: "杭州",
+dataHotelCode: "383",
+dataWeatherCode: "101210101",
+dataAirPortCode: "HGH"
+},
+{
+dataSpac: "HZS",
+dataTages: "HuZhouShi",
+dataCityId: "330500000",
+dataValue: "湖州",
+dataHotelCode: "384",
+dataWeatherCode: "101210201",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HF",
+dataTages: "HEFEI",
+dataCityId: "340100000",
+dataValue: "合肥",
+dataHotelCode: "42",
+dataWeatherCode: "101220101",
+dataAirPortCode: "HFE"
+},
+{
+dataSpac: "HNS",
+dataTages: "HuaiNanShi",
+dataCityId: "340400000",
+dataValue: "淮南",
+dataHotelCode: "44",
+dataWeatherCode: "101220401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HBS",
+dataTages: "HuaiBeiShi",
+dataCityId: "340600000",
+dataValue: "淮北",
+dataHotelCode: "43",
+dataWeatherCode: "101221201",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HS",
+dataTages: "HUANGSHA",
+dataCityId: "341000000",
+dataValue: "黄山",
+dataHotelCode: "45",
+dataWeatherCode: "101221001",
+dataAirPortCode: "TXN"
+},
+{
+dataSpac: "HZS",
+dataTages: "HaoZhouShi",
+dataCityId: "341600000",
+dataValue: "亳州",
+dataHotelCode: "52",
+dataWeatherCode: "101220901",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HZS",
+dataTages: "HeZeShi",
+dataCityId: "371700000",
+dataValue: "菏泽",
+dataHotelCode: "286",
+dataWeatherCode: "101121001",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HBS",
+dataTages: "HeBiShi",
+dataCityId: "410600000",
+dataValue: "鹤壁",
+dataHotelCode: "151",
+dataWeatherCode: "101181201",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HSS",
+dataTages: "HuangShiShi",
+dataCityId: "420200000",
+dataValue: "黄石",
+dataHotelCode: "184",
+dataWeatherCode: "101200601",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HGS",
+dataTages: "HuangGangShi",
+dataCityId: "421100000",
+dataValue: "黄冈",
+dataHotelCode: "183",
+dataWeatherCode: "101200501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HY",
+dataTages: "HENGYANG",
+dataCityId: "430400000",
+dataValue: "衡阳",
+dataHotelCode: "201",
+dataWeatherCode: "101250401",
+dataAirPortCode: "HNY"
+},
+{
+dataSpac: "HH",
+dataTages: "HUAIHUA",
+dataCityId: "431200000",
+dataValue: "怀化",
+dataHotelCode: "202",
+dataWeatherCode: "101251201",
+dataAirPortCode: "HJJ"
+},
+{
+dataSpac: "HZ",
+dataTages: "HUIZHOU",
+dataCityId: "441300000",
+dataValue: "惠州",
+dataHotelCode: "82",
+dataWeatherCode: "101280301",
+dataAirPortCode: "HUZ"
+},
+{
+dataSpac: "HYS",
+dataTages: "HeYuanShi",
+dataCityId: "441600000",
+dataValue: "河源",
+dataHotelCode: "81",
+dataWeatherCode: "101281201",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HZS",
+dataTages: "HeZhouShi",
+dataCityId: "451100000",
+dataValue: "贺州",
+dataHotelCode: "105",
+dataWeatherCode: "101300701",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HCS",
+dataTages: "HeChiShi",
+dataCityId: "451200000",
+dataValue: "河池",
+dataHotelCode: "104",
+dataWeatherCode: "101301201",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HK",
+dataTages: "HAIKOU",
+dataCityId: "460100000",
+dataValue: "海口",
+dataHotelCode: "127",
+dataWeatherCode: "101310101",
+dataAirPortCode: "HAK"
+},
+{
+dataSpac: "HHX",
+dataTages: "HongHeXian",
+dataCityId: "532529000",
+dataValue: "红河",
+dataHotelCode: "372",
+dataWeatherCode: "101290301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HZ",
+dataTages: "HANZHONG",
+dataCityId: "610700000",
+dataValue: "汉中",
+dataHotelCode: "313",
+dataWeatherCode: "101110801",
+dataAirPortCode: "HZG"
+},
+{
+dataSpac: "HDS",
+dataTages: "HaiDongShi",
+dataCityId: "630200000",
+dataValue: "海东",
+dataHotelCode: "277",
+dataWeatherCode: "101150201",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HBCZZZZ",
+dataTages: "HaiBeiCangZuZiZhiZhou",
+dataCityId: "632200000",
+dataValue: "海北藏族自治州",
+dataHotelCode: "276",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HNCZZZZ",
+dataTages: "HuangNanCangZuZiZhiZhou",
+dataCityId: "632300000",
+dataValue: "黄南藏族自治州",
+dataHotelCode: "280",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HNCZZZZ",
+dataTages: "HaiNanCangZuZiZhiZhou",
+dataCityId: "632500000",
+dataValue: "海南藏族自治州",
+dataHotelCode: "278",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HXMGZCZZZZ",
+dataTages: "HaiXiMengGuZuCangZuZiZhiZhou",
+dataCityId: "632800000",
+dataValue: "海西蒙古族藏族自治州",
+dataHotelCode: "279",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "HM",
+dataTages: "HAMI",
+dataCityId: "652201000",
+dataValue: "哈密",
+dataHotelCode: "356",
+dataWeatherCode: "101131201",
+dataAirPortCode: "HMT"
+},
+{
+dataSpac: "HT",
+dataTages: "HETIA",
+dataCityId: "653201000",
+dataValue: "和田",
+dataHotelCode: "357",
+dataWeatherCode: "101131301",
+dataAirPortCode: "HTN"
+},
+{
+dataSpac: "HL",
+dataTages: "HuaLian",
+dataCityId: "711800000",
+dataValue: "花莲",
+dataHotelCode: "398",
+dataWeatherCode: "101340405",
+dataAirPortCode: "HUN"
+}
+]
+},
+{
+groupname: "J",
+citylist: [
+{
+dataSpac: "JCS",
+dataTages: "JinChengShi",
+dataCityId: "140500000",
+dataValue: "晋城",
+dataHotelCode: "302",
+dataWeatherCode: "101100601",
+dataAirPortCode: ""
+},
+{
+dataSpac: "JZS",
+dataTages: "JinZhongShi",
+dataCityId: "140700000",
+dataValue: "晋中",
+dataHotelCode: "303",
+dataWeatherCode: "101100401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "JZ",
+dataTages: "JIN ZHOU",
+dataCityId: "210700000",
+dataValue: "锦州",
+dataHotelCode: "253",
+dataWeatherCode: "101070701",
+dataAirPortCode: "JNZ"
+},
+{
+dataSpac: "JL",
+dataTages: "JINLI",
+dataCityId: "220200000",
+dataValue: "吉林",
+dataHotelCode: "215",
+dataWeatherCode: "101060201",
+dataAirPortCode: "JIL"
+},
+{
+dataSpac: "JXS",
+dataTages: "JiXiShi",
+dataCityId: "230300000",
+dataValue: "鸡西",
+dataHotelCode: "173",
+dataWeatherCode: "101051101",
+dataAirPortCode: "JXA"
+},
+{
+dataSpac: "JMS",
+dataTages: "JIAMUSI",
+dataCityId: "230800000",
+dataValue: "佳木斯",
+dataHotelCode: "174",
+dataWeatherCode: "101050401",
+dataAirPortCode: "JMU"
+},
+{
+dataSpac: "JXS",
+dataTages: "JiaXingShi",
+dataCityId: "330400000",
+dataValue: "嘉兴",
+dataHotelCode: "385",
+dataWeatherCode: "101210301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "JHS",
+dataTages: "JinHuaShi",
+dataCityId: "330700000",
+dataValue: "金华",
+dataHotelCode: "386",
+dataWeatherCode: "101210901",
+dataAirPortCode: ""
+},
+{
+dataSpac: "JDZ",
+dataTages: "JINGDEZHE",
+dataCityId: "360200000",
+dataValue: "景德镇",
+dataHotelCode: "237",
+dataWeatherCode: "101240801",
+dataAirPortCode: "JDZ"
+},
+{
+dataSpac: "JJ",
+dataTages: "JIUJIANG",
+dataCityId: "360400000",
+dataValue: "九江",
+dataHotelCode: "238",
+dataWeatherCode: "101240201",
+dataAirPortCode: "JIU"
+},
+{
+dataSpac: "JAS",
+dataTages: "JiAnShi",
+dataCityId: "360800000",
+dataValue: "吉安",
+dataHotelCode: "236",
+dataWeatherCode: "101240601",
+dataAirPortCode: ""
+},
+{
+dataSpac: "J",
+dataTages: "JINA",
+dataCityId: "370100000",
+dataValue: "济南",
+dataHotelCode: "287",
+dataWeatherCode: "101120101",
+dataAirPortCode: "TNA"
+},
+{
+dataSpac: "J",
+dataTages: "JINING",
+dataCityId: "370800000",
+dataValue: "济宁",
+dataHotelCode: "288",
+dataWeatherCode: "101120701",
+dataAirPortCode: "JNG"
+},
+{
+dataSpac: "JZS",
+dataTages: "JiaoZuoShi",
+dataCityId: "410800000",
+dataValue: "焦作",
+dataHotelCode: "153",
+dataWeatherCode: "101181101",
+dataAirPortCode: ""
+},
+{
+dataSpac: "JYS",
+dataTages: "JiYuanShi",
+dataCityId: "419001000",
+dataValue: "济源",
+dataHotelCode: "152",
+dataWeatherCode: "101181801",
+dataAirPortCode: ""
+},
+{
+dataSpac: "JMS",
+dataTages: "JingMenShi",
+dataCityId: "420800000",
+dataValue: "荆门",
+dataHotelCode: "185",
+dataWeatherCode: "101201401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "JZ",
+dataTages: "JINGZHOU",
+dataCityId: "421000000",
+dataValue: "荆州",
+dataHotelCode: "186",
+dataWeatherCode: "101200801",
+dataAirPortCode: "SHS"
+},
+{
+dataSpac: "JMS",
+dataTages: "JiangMenShi",
+dataCityId: "440700000",
+dataValue: "江门",
+dataHotelCode: "83",
+dataWeatherCode: "101281101",
+dataAirPortCode: ""
+},
+{
+dataSpac: "JYS",
+dataTages: "JieYangShi",
+dataCityId: "445200000",
+dataValue: "揭阳",
+dataHotelCode: "84",
+dataWeatherCode: "101281901",
+dataAirPortCode: "SWA"
+},
+{
+dataSpac: "JYG",
+dataTages: "JIAYUGUA",
+dataCityId: "620200000",
+dataValue: "嘉峪关",
+dataHotelCode: "66",
+dataWeatherCode: "101161401",
+dataAirPortCode: "JGN"
+},
+{
+dataSpac: "JCS",
+dataTages: "JinChangShi",
+dataCityId: "620300000",
+dataValue: "金昌",
+dataHotelCode: "67",
+dataWeatherCode: "101160601",
+dataAirPortCode: "JIC"
+},
+{
+dataSpac: "JQ",
+dataTages: "JIUQUA",
+dataCityId: "620900000",
+dataValue: "酒泉",
+dataHotelCode: "68",
+dataWeatherCode: "101160801",
+dataAirPortCode: "CHW"
+},
+{
+dataSpac: "JL",
+dataTages: "JiLong",
+dataCityId: "710700000",
+dataValue: "基隆",
+dataHotelCode: "399",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "JY",
+dataTages: "JiaYi",
+dataCityId: "710900000",
+dataValue: "嘉义",
+dataHotelCode: "400",
+dataWeatherCode: "101340202",
+dataAirPortCode: "CYI"
+},
+{
+dataSpac: "JM",
+dataTages: "JinMen",
+dataCityId: "712100000",
+dataValue: "金门",
+dataHotelCode: "5127",
+dataWeatherCode: "",
+dataAirPortCode: "KNH"
+}
+]
+},
+{
+groupname: "K",
+citylist: [
+{
+dataSpac: "KFS",
+dataTages: "KaiFengShi",
+dataCityId: "410200000",
+dataValue: "开封",
+dataHotelCode: "154",
+dataWeatherCode: "101180801",
+dataAirPortCode: ""
+},
+{
+dataSpac: "KM",
+dataTages: "KUNMING",
+dataCityId: "530100000",
+dataValue: "昆明",
+dataHotelCode: "373",
+dataWeatherCode: "101290101",
+dataAirPortCode: "KMG"
+},
+{
+dataSpac: "KLMY",
+dataTages: "KELAMAYI",
+dataCityId: "650200000",
+dataValue: "克拉玛依",
+dataHotelCode: "359",
+dataWeatherCode: "101130201",
+dataAirPortCode: "KRY"
+},
+{
+dataSpac: "KZLSKEKZZZZ",
+dataTages: "KeZiLeSuKeErKeZiZiZhiZhou",
+dataCityId: "653000000",
+dataValue: "克孜勒苏柯尔克孜自治州",
+dataHotelCode: "360",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "KS",
+dataTages: "KESHI",
+dataCityId: "653101000",
+dataValue: "喀什",
+dataHotelCode: "358",
+dataWeatherCode: "101130901",
+dataAirPortCode: "KHG"
+}
+]
+},
+{
+groupname: "L",
+citylist: [
+{
+dataSpac: "LFS",
+dataTages: "LangFangShi",
+dataCityId: "131000000",
+dataValue: "廊坊",
+dataHotelCode: "144",
+dataWeatherCode: "101090601",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LFS",
+dataTages: "LinFenShi",
+dataCityId: "141000000",
+dataValue: "临汾",
+dataHotelCode: "304",
+dataWeatherCode: "101100701",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LLS",
+dataTages: "LvLiangShi",
+dataCityId: "141100000",
+dataValue: "吕梁",
+dataHotelCode: "305",
+dataWeatherCode: "101101100",
+dataAirPortCode: "LLV"
+},
+{
+dataSpac: "LYS",
+dataTages: "LiaoYangShi",
+dataCityId: "211000000",
+dataValue: "辽阳",
+dataHotelCode: "254",
+dataWeatherCode: "101071001",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LYS",
+dataTages: "LiaoYuanShi",
+dataCityId: "220400000",
+dataValue: "辽源",
+dataHotelCode: "216",
+dataWeatherCode: "101060701",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LYG",
+dataTages: "LIANYUNGANG",
+dataCityId: "320700000",
+dataValue: "连云港",
+dataHotelCode: "223",
+dataWeatherCode: "101191001",
+dataAirPortCode: "LYG"
+},
+{
+dataSpac: "LSS",
+dataTages: "LiShuiShi",
+dataCityId: "331100000",
+dataValue: "丽水",
+dataHotelCode: "387",
+dataWeatherCode: "101210801",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LAS",
+dataTages: "LiuAnShi",
+dataCityId: "341500000",
+dataValue: "六安",
+dataHotelCode: "46",
+dataWeatherCode: "101221501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LYS",
+dataTages: "LongYanShi",
+dataCityId: "350800000",
+dataValue: "龙岩",
+dataHotelCode: "55",
+dataWeatherCode: "101230701",
+dataAirPortCode: "LCX"
+},
+{
+dataSpac: "LWS",
+dataTages: "LaiWuShi",
+dataCityId: "371200000",
+dataValue: "莱芜",
+dataHotelCode: "289",
+dataWeatherCode: "101121601",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LY",
+dataTages: "LINYI",
+dataCityId: "371300000",
+dataValue: "临沂",
+dataHotelCode: "291",
+dataWeatherCode: "101120901",
+dataAirPortCode: "LYI"
+},
+{
+dataSpac: "LCS",
+dataTages: "LiaoChengShi",
+dataCityId: "371500000",
+dataValue: "聊城",
+dataHotelCode: "290",
+dataWeatherCode: "101121701",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LY",
+dataTages: "LUOYANG",
+dataCityId: "410300000",
+dataValue: "洛阳",
+dataHotelCode: "155",
+dataWeatherCode: "101180901",
+dataAirPortCode: "LYA"
+},
+{
+dataSpac: "LHS",
+dataTages: "LuoHeShi",
+dataCityId: "411100000",
+dataValue: "漯河",
+dataHotelCode: "166",
+dataWeatherCode: "101181501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LDS",
+dataTages: "LouDiShi",
+dataCityId: "431300000",
+dataValue: "娄底",
+dataHotelCode: "203",
+dataWeatherCode: "101250801",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LZ",
+dataTages: "LIUZHOU",
+dataCityId: "450200000",
+dataValue: "柳州",
+dataHotelCode: "107",
+dataWeatherCode: "101300301",
+dataAirPortCode: "LZH"
+},
+{
+dataSpac: "LBS",
+dataTages: "LaiBinShi",
+dataCityId: "451300000",
+dataValue: "来宾",
+dataHotelCode: "106",
+dataWeatherCode: "101300401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LGX",
+dataTages: "LinGaoXian",
+dataCityId: "469024000",
+dataValue: "临高",
+dataHotelCode: "129",
+dataWeatherCode: "101310203",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LDLZZZX",
+dataTages: "LeDongLiZuZiZhiXian",
+dataCityId: "469027000",
+dataValue: "乐东黎族自治",
+dataHotelCode: "128",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LSLZZZX",
+dataTages: "LingShuiLiZuZiZhiXian",
+dataCityId: "469028000",
+dataValue: "陵水黎族自治",
+dataHotelCode: "130",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LZ",
+dataTages: "LUZHOU",
+dataCityId: "510500000",
+dataValue: "泸州",
+dataHotelCode: "342",
+dataWeatherCode: "101271001",
+dataAirPortCode: "LZO"
+},
+{
+dataSpac: "LSS",
+dataTages: "LeShanShi",
+dataCityId: "511100000",
+dataValue: "乐山",
+dataHotelCode: "330",
+dataWeatherCode: "101271401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LSYZZZZ",
+dataTages: "LiangShanYiZuZiZhiZhou",
+dataCityId: "513400000",
+dataValue: "凉山彝族自治州",
+dataHotelCode: "331",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LPSS",
+dataTages: "LiuPanShuiShi",
+dataCityId: "520200000",
+dataValue: "六盘水",
+dataHotelCode: "115",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LJ",
+dataTages: "LIJIANG",
+dataCityId: "530700000",
+dataValue: "丽江",
+dataHotelCode: "374",
+dataWeatherCode: "101291401",
+dataAirPortCode: "LJG"
+},
+{
+dataSpac: "LC",
+dataTages: "LINCANG",
+dataCityId: "530900000",
+dataValue: "临沧",
+dataHotelCode: "375",
+dataWeatherCode: "101291101",
+dataAirPortCode: "LNJ"
+},
+{
+dataSpac: "LS",
+dataTages: "LASA",
+dataCityId: "540100000",
+dataValue: "拉萨",
+dataHotelCode: "346",
+dataWeatherCode: "101140101",
+dataAirPortCode: "LXA"
+},
+{
+dataSpac: "LZX",
+dataTages: "LinZhiXian",
+dataCityId: "542621000",
+dataValue: "林芝",
+dataHotelCode: "347",
+dataWeatherCode: "101140401",
+dataAirPortCode: "MZY"
+},
+{
+dataSpac: "LZ",
+dataTages: "LANZHOU",
+dataCityId: "620100000",
+dataValue: "兰州",
+dataHotelCode: "69",
+dataWeatherCode: "101160101",
+dataAirPortCode: "LHW"
+},
+{
+dataSpac: "LNS",
+dataTages: "LongNanShi",
+dataCityId: "621200000",
+dataValue: "陇南",
+dataHotelCode: "71",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "LXS",
+dataTages: "LinXiaShi",
+dataCityId: "622901000",
+dataValue: "临夏",
+dataHotelCode: "70",
+dataWeatherCode: "101161101",
+dataAirPortCode: ""
+}
+]
+},
+{
+groupname: "M",
+citylist: [
+{
+dataSpac: "MDJ",
+dataTages: "MUDANJIANG",
+dataCityId: "231000000",
+dataValue: "牡丹江",
+dataHotelCode: "175",
+dataWeatherCode: "101050301",
+dataAirPortCode: "MDG"
+},
+{
+dataSpac: "MASS",
+dataTages: "MaAnShanShi",
+dataCityId: "340500000",
+dataValue: "马鞍山",
+dataHotelCode: "47",
+dataWeatherCode: "101220501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "MMS",
+dataTages: "MaoMingShi",
+dataCityId: "440900000",
+dataValue: "茂名",
+dataHotelCode: "85",
+dataWeatherCode: "101282001",
+dataAirPortCode: ""
+},
+{
+dataSpac: "MZ",
+dataTages: "MEIZHOU",
+dataCityId: "441400000",
+dataValue: "梅州",
+dataHotelCode: "86",
+dataWeatherCode: "101280401",
+dataAirPortCode: "MEI"
+},
+{
+dataSpac: "MY",
+dataTages: "MIANYANG",
+dataCityId: "510700000",
+dataValue: "绵阳",
+dataHotelCode: "333",
+dataWeatherCode: "101270401",
+dataAirPortCode: "MIG"
+},
+{
+dataSpac: "MSS",
+dataTages: "MeiShanShi",
+dataCityId: "511400000",
+dataValue: "眉山",
+dataHotelCode: "332",
+dataWeatherCode: "101271501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "ML",
+dataTages: "MiaoLi",
+dataCityId: "711100000",
+dataValue: "苗栗",
+dataHotelCode: "5117",
+dataWeatherCode: "101340402",
+dataAirPortCode: ""
+}
+]
+},
+{
+groupname: "N",
+citylist: [
+{
+dataSpac: "NJ",
+dataTages: "NANJING",
+dataCityId: "320100000",
+dataValue: "南京",
+dataHotelCode: "224",
+dataWeatherCode: "101190101",
+dataAirPortCode: "NKG"
+},
+{
+dataSpac: "NT",
+dataTages: "NANTONG",
+dataCityId: "320600000",
+dataValue: "南通",
+dataHotelCode: "225",
+dataWeatherCode: "101190501",
+dataAirPortCode: "NTG"
+},
+{
+dataSpac: "NB",
+dataTages: "NINGBO",
+dataCityId: "330200000",
+dataValue: "宁波",
+dataHotelCode: "388",
+dataWeatherCode: "101210401",
+dataAirPortCode: "NGB"
+},
+{
+dataSpac: "NPS",
+dataTages: "NanPingShi",
+dataCityId: "350700000",
+dataValue: "南平",
+dataHotelCode: "56",
+dataWeatherCode: "101230901",
+dataAirPortCode: ""
+},
+{
+dataSpac: "NDS",
+dataTages: "NingDeShi",
+dataCityId: "350900000",
+dataValue: "宁德",
+dataHotelCode: "57",
+dataWeatherCode: "101230301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "NC",
+dataTages: "NANCHANG",
+dataCityId: "360100000",
+dataValue: "南昌",
+dataHotelCode: "239",
+dataWeatherCode: "101240101",
+dataAirPortCode: "KHN"
+},
+{
+dataSpac: "NY",
+dataTages: "NANYANG",
+dataCityId: "411300000",
+dataValue: "南阳",
+dataHotelCode: "156",
+dataWeatherCode: "101180701",
+dataAirPortCode: "NNY"
+},
+{
+dataSpac: "N",
+dataTages: "NANNING",
+dataCityId: "450100000",
+dataValue: "南宁",
+dataHotelCode: "108",
+dataWeatherCode: "101300101",
+dataAirPortCode: "NNG"
+},
+{
+dataSpac: "NJS",
+dataTages: "NeiJiangShi",
+dataCityId: "511000000",
+dataValue: "内江",
+dataHotelCode: "335",
+dataWeatherCode: "101271201",
+dataAirPortCode: ""
+},
+{
+dataSpac: "NC",
+dataTages: "NANCHONG",
+dataCityId: "511300000",
+dataValue: "南充",
+dataHotelCode: "334",
+dataWeatherCode: "101270501",
+dataAirPortCode: "NAO"
+},
+{
+dataSpac: "NJLSZZZZ",
+dataTages: "NuJiangLiSuZuZiZhiZhou",
+dataCityId: "533300000",
+dataValue: "怒江傈僳族自治州",
+dataHotelCode: "376",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "NQDQ",
+dataTages: "NaQuDiQu",
+dataCityId: "542400000",
+dataValue: "那曲",
+dataHotelCode: "348",
+dataWeatherCode: "101140601",
+dataAirPortCode: ""
+},
+{
+dataSpac: "NT",
+dataTages: "NanTou",
+dataCityId: "711300000",
+dataValue: "南投",
+dataHotelCode: "5119",
+dataWeatherCode: "101340404",
+dataAirPortCode: ""
+}
+]
+},
+{
+groupname: "P",
+citylist: [
+{
+dataSpac: "PJS",
+dataTages: "PanJinShi",
+dataCityId: "211100000",
+dataValue: "盘锦",
+dataHotelCode: "255",
+dataWeatherCode: "101071301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "PTS",
+dataTages: "PuTianShi",
+dataCityId: "350300000",
+dataValue: "莆田",
+dataHotelCode: "58",
+dataWeatherCode: "101230401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "PXS",
+dataTages: "PingXiangShi",
+dataCityId: "360300000",
+dataValue: "萍乡",
+dataHotelCode: "240",
+dataWeatherCode: "101240901",
+dataAirPortCode: ""
+},
+{
+dataSpac: "PDSS",
+dataTages: "PingDingShanShi",
+dataCityId: "410400000",
+dataValue: "平顶山",
+dataHotelCode: "157",
+dataWeatherCode: "101180501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "PYS",
+dataTages: "PuYangShi",
+dataCityId: "410900000",
+dataValue: "濮阳",
+dataHotelCode: "167",
+dataWeatherCode: "101181301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "PZH",
+dataTages: "PANZHIHUA",
+dataCityId: "510400000",
+dataValue: "攀枝花",
+dataHotelCode: "336",
+dataWeatherCode: "101270201",
+dataAirPortCode: "PZI"
+},
+{
+dataSpac: "PE",
+dataTages: "PUER",
+dataCityId: "530800000",
+dataValue: "普洱",
+dataHotelCode: "378",
+dataWeatherCode: "101290901",
+dataAirPortCode: "SYM"
+},
+{
+dataSpac: "PLS",
+dataTages: "PingLiangShi",
+dataCityId: "620800000",
+dataValue: "平凉",
+dataHotelCode: "72",
+dataWeatherCode: "101160301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "PD",
+dataTages: "PingDong",
+dataCityId: "711600000",
+dataValue: "屏东",
+dataHotelCode: "5121",
+dataWeatherCode: "101340205",
+dataAirPortCode: ""
+},
+{
+dataSpac: "PH",
+dataTages: "PengHu",
+dataCityId: "712000000",
+dataValue: "澎湖",
+dataHotelCode: "5130",
+dataWeatherCode: "",
+dataAirPortCode: "MZG"
+}
+]
+},
+{
+groupname: "Q",
+citylist: [
+{
+dataSpac: "QHD",
+dataTages: "QINHUANGDAO",
+dataCityId: "130300000",
+dataValue: "秦皇岛",
+dataHotelCode: "145",
+dataWeatherCode: "101091101",
+dataAirPortCode: "SHF"
+},
+{
+dataSpac: "QQHE",
+dataTages: "QIQIHAER",
+dataCityId: "230200000",
+dataValue: "齐齐哈尔",
+dataHotelCode: "177",
+dataWeatherCode: "101050201",
+dataAirPortCode: "NDG"
+},
+{
+dataSpac: "QTHS",
+dataTages: "QiTaiHeShi",
+dataCityId: "230900000",
+dataValue: "七台河",
+dataHotelCode: "176",
+dataWeatherCode: "101051002",
+dataAirPortCode: ""
+},
+{
+dataSpac: "QZ",
+dataTages: "QUZHOU",
+dataCityId: "330800000",
+dataValue: "衢州",
+dataHotelCode: "393",
+dataWeatherCode: "101211001",
+dataAirPortCode: "JUZ"
+},
+{
+dataSpac: "QZS",
+dataTages: "QuanZhouShi",
+dataCityId: "350500000",
+dataValue: "泉州",
+dataHotelCode: "59",
+dataWeatherCode: "101230501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "QD",
+dataTages: "QINGDAO",
+dataCityId: "370200000",
+dataValue: "青岛",
+dataHotelCode: "292",
+dataWeatherCode: "101120201",
+dataAirPortCode: "TAO"
+},
+{
+dataSpac: "QJS",
+dataTages: "QianJiangShi",
+dataCityId: "429005000",
+dataValue: "潜江",
+dataHotelCode: "187",
+dataWeatherCode: "101201701",
+dataAirPortCode: ""
+},
+{
+dataSpac: "QYS",
+dataTages: "QingYuanShi",
+dataCityId: "441800000",
+dataValue: "清远",
+dataHotelCode: "87",
+dataWeatherCode: "101281301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "QZS",
+dataTages: "QinZhouShi",
+dataCityId: "450700000",
+dataValue: "钦州",
+dataHotelCode: "109",
+dataWeatherCode: "101301101",
+dataAirPortCode: ""
+},
+{
+dataSpac: "QHS",
+dataTages: "QiongHaiShi",
+dataCityId: "469002000",
+dataValue: "琼海",
+dataHotelCode: "131",
+dataWeatherCode: "101310211",
+dataAirPortCode: ""
+},
+{
+dataSpac: "QZLZMZZZX",
+dataTages: "QiongZhongLiZuMiaoZuZiZhiXian",
+dataCityId: "469030000",
+dataValue: "琼中黎族苗族自治",
+dataHotelCode: "132",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "QXNBYZMZZZZ",
+dataTages: "QianXiNanBuYiZuMiaoZuZiZhiZhou",
+dataCityId: "522300000",
+dataValue: "黔西南布依族苗族自治州",
+dataHotelCode: "118",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "QDNMZDZZZZ",
+dataTages: "QianDongNanMiaoZuDongZuZiZhiZhou",
+dataCityId: "522600000",
+dataValue: "黔东南苗族侗族自治州",
+dataHotelCode: "116",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "QNBYZMZZZZ",
+dataTages: "QianNanBuYiZuMiaoZuZiZhiZhou",
+dataCityId: "522700000",
+dataValue: "黔南布依族苗族自治州",
+dataHotelCode: "117",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "QJS",
+dataTages: "QuJingShi",
+dataCityId: "530300000",
+dataValue: "曲靖",
+dataHotelCode: "377",
+dataWeatherCode: "101290401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "QY",
+dataTages: "QINGYANG",
+dataCityId: "621000000",
+dataValue: "庆阳",
+dataHotelCode: "73",
+dataWeatherCode: "101160401",
+dataAirPortCode: "IQN"
+}
+]
+},
+{
+groupname: "R",
+citylist: [
+{
+dataSpac: "RZS",
+dataTages: "RiZhaoShi",
+dataCityId: "371100000",
+dataValue: "日照",
+dataHotelCode: "293",
+dataWeatherCode: "101121501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "RKZS",
+dataTages: "RiKaZeShi",
+dataCityId: "542301000",
+dataValue: "日喀则",
+dataHotelCode: "349",
+dataWeatherCode: "101140201",
+dataAirPortCode: "RKZ"
+}
+]
+},
+{
+groupname: "S",
+citylist: [
+{
+dataSpac: "SJZ",
+dataTages: "SHIJIAZHUANG",
+dataCityId: "130100000",
+dataValue: "石家庄",
+dataHotelCode: "146",
+dataWeatherCode: "101090101",
+dataAirPortCode: "SJW"
+},
+{
+dataSpac: "SZS",
+dataTages: "ShuoZhouShi",
+dataCityId: "140600000",
+dataValue: "朔州",
+dataHotelCode: "306",
+dataWeatherCode: "101100901",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SY",
+dataTages: "SHEN YANG",
+dataCityId: "210100000",
+dataValue: "沈阳",
+dataHotelCode: "256",
+dataWeatherCode: "101070101",
+dataAirPortCode: "SHE"
+},
+{
+dataSpac: "SPS",
+dataTages: "SiPingShi",
+dataCityId: "220300000",
+dataValue: "四平",
+dataHotelCode: "217",
+dataWeatherCode: "101060401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SYS",
+dataTages: "SongYuanShi",
+dataCityId: "220700000",
+dataValue: "松原",
+dataHotelCode: "218",
+dataWeatherCode: "101060801",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SYSS",
+dataTages: "ShuangYaShanShi",
+dataCityId: "230500000",
+dataValue: "双鸭山",
+dataHotelCode: "178",
+dataWeatherCode: "101051301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SHS",
+dataTages: "SuiHuaShi",
+dataCityId: "231200000",
+dataValue: "绥化",
+dataHotelCode: "179",
+dataWeatherCode: "101050501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SH",
+dataTages: "SHANGHAI",
+dataCityId: "310000000",
+dataValue: "上海",
+dataHotelCode: "321",
+dataWeatherCode: "101020100",
+dataAirPortCode: "SHA"
+},
+{
+dataSpac: "SZS",
+dataTages: "SuZhouShi",
+dataCityId: "320500000",
+dataValue: "苏州",
+dataHotelCode: "226",
+dataWeatherCode: "101190401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SQS",
+dataTages: "SuQianShi",
+dataCityId: "321300000",
+dataValue: "宿迁",
+dataHotelCode: "227",
+dataWeatherCode: "101191301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SXS",
+dataTages: "ShaoXingShi",
+dataCityId: "330600000",
+dataValue: "绍兴",
+dataHotelCode: "389",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SZS",
+dataTages: "SuZhouShi",
+dataCityId: "341300000",
+dataValue: "宿州",
+dataHotelCode: "48",
+dataWeatherCode: "101220701",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SMS",
+dataTages: "SanMingShi",
+dataCityId: "350400000",
+dataValue: "三明",
+dataHotelCode: "60",
+dataWeatherCode: "101230801",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SRS",
+dataTages: "ShangRaoShi",
+dataCityId: "361100000",
+dataValue: "上饶",
+dataHotelCode: "241",
+dataWeatherCode: "101240301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SMXS",
+dataTages: "SanMenXiaShi",
+dataCityId: "411200000",
+dataValue: "三门峡",
+dataHotelCode: "158",
+dataWeatherCode: "101181701",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SQS",
+dataTages: "ShangQiuShi",
+dataCityId: "411400000",
+dataValue: "商丘",
+dataHotelCode: "159",
+dataWeatherCode: "101181001",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SYS",
+dataTages: "ShiYanShi",
+dataCityId: "420300000",
+dataValue: "十堰",
+dataHotelCode: "189",
+dataWeatherCode: "101201101",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SZS",
+dataTages: "SuiZhouShi",
+dataCityId: "421300000",
+dataValue: "随州",
+dataHotelCode: "190",
+dataWeatherCode: "101201301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SNJLQ",
+dataTages: "ShenNongJiaLinQu",
+dataCityId: "429021000",
+dataValue: "神农架林区",
+dataHotelCode: "188",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SYS",
+dataTages: "ShaoYangShi",
+dataCityId: "430500000",
+dataValue: "邵阳",
+dataHotelCode: "204",
+dataWeatherCode: "101250901",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SGS",
+dataTages: "ShaoGuanShi",
+dataCityId: "440200000",
+dataValue: "韶关",
+dataHotelCode: "90",
+dataWeatherCode: "101280201",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SZ",
+dataTages: "SHENZHE",
+dataCityId: "440300000",
+dataValue: "深圳",
+dataHotelCode: "91",
+dataWeatherCode: "101280601",
+dataAirPortCode: "SZX"
+},
+{
+dataSpac: "ST",
+dataTages: "SHANTOU",
+dataCityId: "440500000",
+dataValue: "汕头",
+dataHotelCode: "88",
+dataWeatherCode: "101280501",
+dataAirPortCode: "SWA"
+},
+{
+dataSpac: "SWS",
+dataTages: "ShanWeiShi",
+dataCityId: "441500000",
+dataValue: "汕尾",
+dataHotelCode: "89",
+dataWeatherCode: "101282101",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SY",
+dataTages: "SANYA",
+dataCityId: "460200000",
+dataValue: "三亚",
+dataHotelCode: "133",
+dataWeatherCode: "101310201",
+dataAirPortCode: "SYX"
+},
+{
+dataSpac: "SSS",
+dataTages: "SanShaShi",
+dataCityId: "460300000",
+dataValue: "三沙",
+dataHotelCode: "6321",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SNS",
+dataTages: "SuiNingShi",
+dataCityId: "510900000",
+dataValue: "遂宁",
+dataHotelCode: "337",
+dataWeatherCode: "101270701",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SNDQ",
+dataTages: "ShanNanDiQu",
+dataCityId: "542200000",
+dataValue: "山南",
+dataHotelCode: "350",
+dataWeatherCode: "101140301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SLS",
+dataTages: "ShangLuoShi",
+dataCityId: "611000000",
+dataValue: "商洛",
+dataHotelCode: "314",
+dataWeatherCode: "101110601",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SZSS",
+dataTages: "ShiZuiShanShi",
+dataCityId: "640200000",
+dataValue: "石嘴山",
+dataHotelCode: "272",
+dataWeatherCode: "101170201",
+dataAirPortCode: ""
+},
+{
+dataSpac: "SHZS",
+dataTages: "ShiHeZiShi",
+dataCityId: "659001000",
+dataValue: "石河子",
+dataHotelCode: "361",
+dataWeatherCode: "101130301",
+dataAirPortCode: ""
+}
+]
+},
+{
+groupname: "T",
+citylist: [
+{
+dataSpac: "TJ",
+dataTages: "TIANJI",
+dataCityId: "120000000",
+dataValue: "天津",
+dataHotelCode: "343",
+dataWeatherCode: "101030100",
+dataAirPortCode: "TSN"
+},
+{
+dataSpac: "TSS",
+dataTages: "TangShanShi",
+dataCityId: "130200000",
+dataValue: "唐山",
+dataHotelCode: "147",
+dataWeatherCode: "101090501",
+dataAirPortCode: "TVS"
+},
+{
+dataSpac: "TY",
+dataTages: "TAIYUA",
+dataCityId: "140100000",
+dataValue: "太原",
+dataHotelCode: "307",
+dataWeatherCode: "101100101",
+dataAirPortCode: "TYN"
+},
+{
+dataSpac: "TL",
+dataTages: "TONGLIAO",
+dataCityId: "150500000",
+dataValue: "通辽",
+dataHotelCode: "266",
+dataWeatherCode: "101080501",
+dataAirPortCode: "TGO"
+},
+{
+dataSpac: "TLS",
+dataTages: "TieLingShi",
+dataCityId: "211200000",
+dataValue: "铁岭",
+dataHotelCode: "257",
+dataWeatherCode: "101071101",
+dataAirPortCode: ""
+},
+{
+dataSpac: "THS",
+dataTages: "TongHuaShi",
+dataCityId: "220500000",
+dataValue: "通化",
+dataHotelCode: "219",
+dataWeatherCode: "101060501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "TZS",
+dataTages: "TaiZhouShi",
+dataCityId: "321200000",
+dataValue: "泰州",
+dataHotelCode: "228",
+dataWeatherCode: "101191201",
+dataAirPortCode: ""
+},
+{
+dataSpac: "TZ",
+dataTages: "TAIZHOU",
+dataCityId: "331000000",
+dataValue: "台州",
+dataHotelCode: "390",
+dataWeatherCode: "101210601",
+dataAirPortCode: "HYN"
+},
+{
+dataSpac: "TLS",
+dataTages: "TongLingShi",
+dataCityId: "340700000",
+dataValue: "铜陵",
+dataHotelCode: "49",
+dataWeatherCode: "101221301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "TAS",
+dataTages: "TaiAnShi",
+dataCityId: "370900000",
+dataValue: "泰安",
+dataHotelCode: "294",
+dataWeatherCode: "101120801",
+dataAirPortCode: ""
+},
+{
+dataSpac: "TMS",
+dataTages: "TianMenShi",
+dataCityId: "429006000",
+dataValue: "天门",
+dataHotelCode: "191",
+dataWeatherCode: "101201501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "TCX",
+dataTages: "TunChangXian",
+dataCityId: "469022000",
+dataValue: "屯昌",
+dataHotelCode: "134",
+dataWeatherCode: "101310210",
+dataAirPortCode: ""
+},
+{
+dataSpac: "TR",
+dataTages: "TONGREN",
+dataCityId: "520600000",
+dataValue: "铜仁",
+dataHotelCode: "119",
+dataWeatherCode: "101260601",
+dataAirPortCode: "TEN"
+},
+{
+dataSpac: "TCS",
+dataTages: "TongChuanShi",
+dataCityId: "610200000",
+dataValue: "铜川",
+dataHotelCode: "315",
+dataWeatherCode: "101111001",
+dataAirPortCode: ""
+},
+{
+dataSpac: "TSS",
+dataTages: "TianShuiShi",
+dataCityId: "620500000",
+dataValue: "天水",
+dataHotelCode: "74",
+dataWeatherCode: "101160901",
+dataAirPortCode: "THQ"
+},
+{
+dataSpac: "TLFS",
+dataTages: "TuLuFanShi",
+dataCityId: "652101000",
+dataValue: "吐鲁番",
+dataHotelCode: "363",
+dataWeatherCode: "101130501",
+dataAirPortCode: "TLQ"
+},
+{
+dataSpac: "TC",
+dataTages: "TACHENG",
+dataCityId: "654201000",
+dataValue: "塔城",
+dataHotelCode: "3113",
+dataWeatherCode: "101131101",
+dataAirPortCode: "TCG"
+},
+{
+dataSpac: "TMSKS",
+dataTages: "TuMuShuKeShi",
+dataCityId: "659003000",
+dataValue: "图木舒克",
+dataHotelCode: "362",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "TB",
+dataTages: "TaiBei",
+dataCityId: "710100000",
+dataValue: "台北",
+dataHotelCode: "401",
+dataWeatherCode: "101340101",
+dataAirPortCode: "TPE"
+},
+{
+dataSpac: "TY",
+dataTages: "TaoYuan",
+dataCityId: "710300000",
+dataValue: "桃园",
+dataHotelCode: "5116",
+dataWeatherCode: "101340102",
+dataAirPortCode: ""
+},
+{
+dataSpac: "TZ",
+dataTages: "TaiZhong",
+dataCityId: "710400000",
+dataValue: "台中",
+dataHotelCode: "404",
+dataWeatherCode: "101340401",
+dataAirPortCode: "RMQ"
+},
+{
+dataSpac: "TN",
+dataTages: "TaiNan",
+dataCityId: "710500000",
+dataValue: "台南",
+dataHotelCode: "403",
+dataWeatherCode: "101340203",
+dataAirPortCode: ""
+},
+{
+dataSpac: "TD",
+dataTages: "TaiDong",
+dataCityId: "711900000",
+dataValue: "台东",
+dataHotelCode: "402",
+dataWeatherCode: "101340204",
+dataAirPortCode: "TTT"
+}
+]
+},
+{
+groupname: "W",
+citylist: [
+{
+dataSpac: "WH",
+dataTages: "WUHAI",
+dataCityId: "150300000",
+dataValue: "乌海",
+dataHotelCode: "267",
+dataWeatherCode: "101080301",
+dataAirPortCode: "WUA"
+},
+{
+dataSpac: "WLCBS",
+dataTages: "WuLanChaBuShi",
+dataCityId: "150900000",
+dataValue: "乌兰察布",
+dataHotelCode: "268",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "WX",
+dataTages: "WUXI",
+dataCityId: "320200000",
+dataValue: "无锡",
+dataHotelCode: "229",
+dataWeatherCode: "101190201",
+dataAirPortCode: "WUX"
+},
+{
+dataSpac: "WZ",
+dataTages: "WENZHOU",
+dataCityId: "330300000",
+dataValue: "温州",
+dataHotelCode: "391",
+dataWeatherCode: "101210701",
+dataAirPortCode: "WNZ"
+},
+{
+dataSpac: "WHS",
+dataTages: "WuHuShi",
+dataCityId: "340200000",
+dataValue: "芜湖",
+dataHotelCode: "50",
+dataWeatherCode: "101220301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "WF",
+dataTages: "WEIFANG",
+dataCityId: "370700000",
+dataValue: "潍坊",
+dataHotelCode: "296",
+dataWeatherCode: "101120601",
+dataAirPortCode: "WEF"
+},
+{
+dataSpac: "WH",
+dataTages: "WEIHAI",
+dataCityId: "371000000",
+dataValue: "威海",
+dataHotelCode: "295",
+dataWeatherCode: "101121301",
+dataAirPortCode: "WEH"
+},
+{
+dataSpac: "WH",
+dataTages: "WUHA",
+dataCityId: "420100000",
+dataValue: "武汉",
+dataHotelCode: "192",
+dataWeatherCode: "101200101",
+dataAirPortCode: "WUH"
+},
+{
+dataSpac: "WZ",
+dataTages: "WUZHOU",
+dataCityId: "450400000",
+dataValue: "梧州",
+dataHotelCode: "110",
+dataWeatherCode: "101300601",
+dataAirPortCode: "WUZ"
+},
+{
+dataSpac: "WZSS",
+dataTages: "WuZhiShanShi",
+dataCityId: "469001000",
+dataValue: "五指山",
+dataHotelCode: "137",
+dataWeatherCode: "101310222",
+dataAirPortCode: ""
+},
+{
+dataSpac: "WCS",
+dataTages: "WenChangShi",
+dataCityId: "469005000",
+dataValue: "文昌",
+dataHotelCode: "136",
+dataWeatherCode: "101310212",
+dataAirPortCode: ""
+},
+{
+dataSpac: "WNS",
+dataTages: "WanNingShi",
+dataCityId: "469006000",
+dataValue: "万宁",
+dataHotelCode: "135",
+dataWeatherCode: "101310215",
+dataAirPortCode: ""
+},
+{
+dataSpac: "WSS",
+dataTages: "WenShanShi",
+dataCityId: "532601000",
+dataValue: "文山",
+dataHotelCode: "379",
+dataWeatherCode: "101290601",
+dataAirPortCode: "WSS"
+},
+{
+dataSpac: "WNS",
+dataTages: "WeiNanShi",
+dataCityId: "610500000",
+dataValue: "渭南",
+dataHotelCode: "316",
+dataWeatherCode: "101110501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "WWS",
+dataTages: "WuWeiShi",
+dataCityId: "620600000",
+dataValue: "武威",
+dataHotelCode: "75",
+dataWeatherCode: "101160501",
+dataAirPortCode: ""
+},
+{
+dataSpac: "WZS",
+dataTages: "WuZhongShi",
+dataCityId: "640300000",
+dataValue: "吴忠",
+dataHotelCode: "273",
+dataWeatherCode: "101170301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "WLMQ",
+dataTages: "WULUMUQI",
+dataCityId: "650100000",
+dataValue: "乌鲁木齐",
+dataHotelCode: "364",
+dataWeatherCode: "101130101",
+dataAirPortCode: "URC"
+},
+{
+dataSpac: "WJQS",
+dataTages: "WuJiaQuShi",
+dataCityId: "659004000",
+dataValue: "五家渠",
+dataHotelCode: "365",
+dataWeatherCode: "",
+dataAirPortCode: ""
+}
+]
+},
+{
+groupname: "X",
+citylist: [
+{
+dataSpac: "XTS",
+dataTages: "XingTaiShi",
+dataCityId: "130500000",
+dataValue: "邢台",
+dataHotelCode: "148",
+dataWeatherCode: "101090901",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XZS",
+dataTages: "XinZhouShi",
+dataCityId: "140900000",
+dataValue: "忻州",
+dataHotelCode: "308",
+dataWeatherCode: "101101001",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XAM",
+dataTages: "XingAnMeng",
+dataCityId: "152200000",
+dataValue: "兴安盟",
+dataHotelCode: "270",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XLGLM",
+dataTages: "XiLinGuoLeMeng",
+dataCityId: "152500000",
+dataValue: "锡林郭勒盟",
+dataHotelCode: "269",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XC",
+dataTages: "XING CHENG",
+dataCityId: "211481000",
+dataValue: "兴城",
+dataHotelCode: "4580",
+dataWeatherCode: "101071404",
+dataAirPortCode: "XEN"
+},
+{
+dataSpac: "XZ",
+dataTages: "XUZHOU",
+dataCityId: "320300000",
+dataValue: "徐州",
+dataHotelCode: "230",
+dataWeatherCode: "101190801",
+dataAirPortCode: "XUZ"
+},
+{
+dataSpac: "XCS",
+dataTages: "XuanChengShi",
+dataCityId: "341800000",
+dataValue: "宣城",
+dataHotelCode: "51",
+dataWeatherCode: "101221401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XM",
+dataTages: "XIAME",
+dataCityId: "350200000",
+dataValue: "厦门",
+dataHotelCode: "61",
+dataWeatherCode: "101230201",
+dataAirPortCode: "XMN"
+},
+{
+dataSpac: "XYS",
+dataTages: "XinYuShi",
+dataCityId: "360500000",
+dataValue: "新余",
+dataHotelCode: "242",
+dataWeatherCode: "101241001",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XXS",
+dataTages: "XinXiangShi",
+dataCityId: "410700000",
+dataValue: "新乡",
+dataHotelCode: "160",
+dataWeatherCode: "101180301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XCS",
+dataTages: "XuChangShi",
+dataCityId: "411000000",
+dataValue: "许昌",
+dataHotelCode: "162",
+dataWeatherCode: "101180401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XYS",
+dataTages: "XinYangShi",
+dataCityId: "411500000",
+dataValue: "信阳",
+dataHotelCode: "161",
+dataWeatherCode: "101180601",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XY",
+dataTages: "XIANGYANG",
+dataCityId: "420600000",
+dataValue: "襄阳",
+dataHotelCode: "195",
+dataWeatherCode: "101200201",
+dataAirPortCode: "XFN"
+},
+{
+dataSpac: "XGS",
+dataTages: "XiaoGanShi",
+dataCityId: "420900000",
+dataValue: "孝感",
+dataHotelCode: "196",
+dataWeatherCode: "101200401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XNS",
+dataTages: "XianNingShi",
+dataCityId: "421200000",
+dataValue: "咸宁",
+dataHotelCode: "194",
+dataWeatherCode: "101200701",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XTS",
+dataTages: "XianTaoShi",
+dataCityId: "429004000",
+dataValue: "仙桃",
+dataHotelCode: "193",
+dataWeatherCode: "101201601",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XTS",
+dataTages: "XiangTanShi",
+dataCityId: "430300000",
+dataValue: "湘潭",
+dataHotelCode: "205",
+dataWeatherCode: "101250201",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XXTJZMZZZZ",
+dataTages: "XiangXiTuJiaZuMiaoZuZiZhiZhou",
+dataCityId: "433100000",
+dataValue: "湘西土家族苗族自治州",
+dataHotelCode: "206",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XSBNDZZZZ",
+dataTages: "XiShuangBanNaDaiZuZiZhiZhou",
+dataCityId: "532800000",
+dataValue: "西双版纳傣族自治州",
+dataHotelCode: "380",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XA",
+dataTages: "XIA",
+dataCityId: "610100000",
+dataValue: "西安",
+dataHotelCode: "317",
+dataWeatherCode: "101110101",
+dataAirPortCode: "XIY"
+},
+{
+dataSpac: "XYS",
+dataTages: "XianYangShi",
+dataCityId: "610400000",
+dataValue: "咸阳",
+dataHotelCode: "318",
+dataWeatherCode: "101110200",
+dataAirPortCode: ""
+},
+{
+dataSpac: "X",
+dataTages: "XINING",
+dataCityId: "630100000",
+dataValue: "西宁",
+dataHotelCode: "281",
+dataWeatherCode: "101150101",
+dataAirPortCode: "XNN"
+},
+{
+dataSpac: "XB",
+dataTages: "XinBei",
+dataCityId: "710200000",
+dataValue: "新北",
+dataHotelCode: "6571",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XZ",
+dataTages: "XinZhu",
+dataCityId: "710800000",
+dataValue: "新竹",
+dataHotelCode: "5114",
+dataWeatherCode: "101340103",
+dataAirPortCode: ""
+},
+{
+dataSpac: "XG",
+dataTages: "XiangGang",
+dataCityId: "810100000",
+dataValue: "香港",
+dataHotelCode: "395",
+dataWeatherCode: "101320101",
+dataAirPortCode: "HKG"
+}
+]
+},
+{
+groupname: "Y",
+citylist: [
+{
+dataSpac: "YQS",
+dataTages: "YangQuanShi",
+dataCityId: "140300000",
+dataValue: "阳泉",
+dataHotelCode: "309",
+dataWeatherCode: "101100301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "YC",
+dataTages: "YUNCHENG",
+dataCityId: "140800000",
+dataValue: "运城",
+dataHotelCode: "310",
+dataWeatherCode: "101100801",
+dataAirPortCode: "YCU"
+},
+{
+dataSpac: "YKS",
+dataTages: "YingKouShi",
+dataCityId: "210800000",
+dataValue: "营口",
+dataHotelCode: "258",
+dataWeatherCode: "101070801",
+dataAirPortCode: ""
+},
+{
+dataSpac: "YBCXZZZZ",
+dataTages: "YanBianChaoXianZuZiZhiZhou",
+dataCityId: "222400000",
+dataValue: "延边朝鲜族自治州",
+dataHotelCode: "220",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "YCS",
+dataTages: "YiChunShi",
+dataCityId: "230700000",
+dataValue: "伊春",
+dataHotelCode: "180",
+dataWeatherCode: "101050801",
+dataAirPortCode: "LDS"
+},
+{
+dataSpac: "YC",
+dataTages: "YANCHENG",
+dataCityId: "320900000",
+dataValue: "盐城",
+dataHotelCode: "231",
+dataWeatherCode: "101190701",
+dataAirPortCode: "YNZ"
+},
+{
+dataSpac: "YZS",
+dataTages: "YangZhouShi",
+dataCityId: "321000000",
+dataValue: "扬州",
+dataHotelCode: "232",
+dataWeatherCode: "101190601",
+dataAirPortCode: "YTY"
+},
+{
+dataSpac: "YTS",
+dataTages: "YingTanShi",
+dataCityId: "360600000",
+dataValue: "鹰潭",
+dataHotelCode: "244",
+dataWeatherCode: "101241101",
+dataAirPortCode: ""
+},
+{
+dataSpac: "YCS",
+dataTages: "YiChunShi",
+dataCityId: "360900000",
+dataValue: "宜春",
+dataHotelCode: "243",
+dataWeatherCode: "101240501",
+dataAirPortCode: "YIC"
+},
+{
+dataSpac: "YT",
+dataTages: "YANTAI",
+dataCityId: "370600000",
+dataValue: "烟台",
+dataHotelCode: "297",
+dataWeatherCode: "101120501",
+dataAirPortCode: "YNT"
+},
+{
+dataSpac: "YC",
+dataTages: "YICHANG",
+dataCityId: "420500000",
+dataValue: "宜昌",
+dataHotelCode: "197",
+dataWeatherCode: "101200901",
+dataAirPortCode: "YIH"
+},
+{
+dataSpac: "YYS",
+dataTages: "YueYangShi",
+dataCityId: "430600000",
+dataValue: "岳阳",
+dataHotelCode: "209",
+dataWeatherCode: "101251001",
+dataAirPortCode: ""
+},
+{
+dataSpac: "YYS",
+dataTages: "YiYangShi",
+dataCityId: "430900000",
+dataValue: "益阳",
+dataHotelCode: "207",
+dataWeatherCode: "101250700",
+dataAirPortCode: ""
+},
+{
+dataSpac: "YZ",
+dataTages: "YONGZHOU",
+dataCityId: "431100000",
+dataValue: "永州",
+dataHotelCode: "208",
+dataWeatherCode: "101251401",
+dataAirPortCode: "LLF"
+},
+{
+dataSpac: "YJS",
+dataTages: "YangJiangShi",
+dataCityId: "441700000",
+dataValue: "阳江",
+dataHotelCode: "92",
+dataWeatherCode: "101281801",
+dataAirPortCode: ""
+},
+{
+dataSpac: "YFS",
+dataTages: "YunFuShi",
+dataCityId: "445300000",
+dataValue: "云浮",
+dataHotelCode: "93",
+dataWeatherCode: "101281401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "YLS",
+dataTages: "YuLinShi",
+dataCityId: "450900000",
+dataValue: "玉林",
+dataHotelCode: "111",
+dataWeatherCode: "101300901",
+dataAirPortCode: ""
+},
+{
+dataSpac: "YB",
+dataTages: "YIBI",
+dataCityId: "511500000",
+dataValue: "宜宾",
+dataHotelCode: "339",
+dataWeatherCode: "101271101",
+dataAirPortCode: "YBP"
+},
+{
+dataSpac: "YAS",
+dataTages: "YaAnShi",
+dataCityId: "511800000",
+dataValue: "雅安",
+dataHotelCode: "338",
+dataWeatherCode: "101271701",
+dataAirPortCode: ""
+},
+{
+dataSpac: "YXS",
+dataTages: "YuXiShi",
+dataCityId: "530400000",
+dataValue: "玉溪",
+dataHotelCode: "381",
+dataWeatherCode: "101290701",
+dataAirPortCode: ""
+},
+{
+dataSpac: "YA",
+dataTages: "YANA",
+dataCityId: "610600000",
+dataValue: "延安",
+dataHotelCode: "319",
+dataWeatherCode: "101110300",
+dataAirPortCode: "ENY"
+},
+{
+dataSpac: "YL",
+dataTages: "YULI",
+dataCityId: "610800000",
+dataValue: "榆林",
+dataHotelCode: "320",
+dataWeatherCode: "101110401",
+dataAirPortCode: "UYN"
+},
+{
+dataSpac: "YSS",
+dataTages: "YuShuShi",
+dataCityId: "632701000",
+dataValue: "玉树",
+dataHotelCode: "282",
+dataWeatherCode: "101150601",
+dataAirPortCode: "YUS"
+},
+{
+dataSpac: "YC",
+dataTages: "YINCHUA",
+dataCityId: "640100000",
+dataValue: "银川",
+dataHotelCode: "274",
+dataWeatherCode: "101170101",
+dataAirPortCode: "INC"
+},
+{
+dataSpac: "YLHSKZZZ",
+dataTages: "YiLiHaSaKeZiZhiZhou",
+dataCityId: "654000000",
+dataValue: "伊犁哈萨克自治州",
+dataHotelCode: "366",
+dataWeatherCode: "",
+dataAirPortCode: ""
+},
+{
+dataSpac: "YZ",
+dataTages: "YunZhu",
+dataCityId: "711400000",
+dataValue: "云林",
+dataHotelCode: "5120",
+dataWeatherCode: "101340406",
+dataAirPortCode: ""
+},
+{
+dataSpac: "YL",
+dataTages: "YiLan",
+dataCityId: "711700000",
+dataValue: "宜兰",
+dataHotelCode: "5115",
+dataWeatherCode: "101340104",
+dataAirPortCode: ""
+}
+]
+},
+{
+groupname: "Z",
+citylist: [
+{
+dataSpac: "ZJKS",
+dataTages: "ZhangJiaKouShi",
+dataCityId: "130700000",
+dataValue: "张家口",
+dataHotelCode: "149",
+dataWeatherCode: "101090301",
+dataAirPortCode: "ZQZ"
+},
+{
+dataSpac: "ZJS",
+dataTages: "ZhenJiangShi",
+dataCityId: "321100000",
+dataValue: "镇江",
+dataHotelCode: "233",
+dataWeatherCode: "101190301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "ZS",
+dataTages: "ZHOUSHA",
+dataCityId: "330900000",
+dataValue: "舟山",
+dataHotelCode: "392",
+dataWeatherCode: "101211101",
+dataAirPortCode: "HSN"
+},
+{
+dataSpac: "ZZS",
+dataTages: "ZhangZhouShi",
+dataCityId: "350600000",
+dataValue: "漳州",
+dataHotelCode: "62",
+dataWeatherCode: "101230601",
+dataAirPortCode: ""
+},
+{
+dataSpac: "ZBS",
+dataTages: "ZiBoShi",
+dataCityId: "370300000",
+dataValue: "淄博",
+dataHotelCode: "299",
+dataWeatherCode: "101120301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "ZZS",
+dataTages: "ZaoZhuangShi",
+dataCityId: "370400000",
+dataValue: "枣庄",
+dataHotelCode: "298",
+dataWeatherCode: "101121401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "ZZ",
+dataTages: "ZHENGZHOU",
+dataCityId: "410100000",
+dataValue: "郑州",
+dataHotelCode: "163",
+dataWeatherCode: "101180101",
+dataAirPortCode: "CGO"
+},
+{
+dataSpac: "ZKS",
+dataTages: "ZhouKouShi",
+dataCityId: "411600000",
+dataValue: "周口",
+dataHotelCode: "164",
+dataWeatherCode: "101181401",
+dataAirPortCode: ""
+},
+{
+dataSpac: "ZMDS",
+dataTages: "ZhuMaDianShi",
+dataCityId: "411700000",
+dataValue: "驻马店",
+dataHotelCode: "165",
+dataWeatherCode: "101181601",
+dataAirPortCode: ""
+},
+{
+dataSpac: "ZZS",
+dataTages: "ZhuZhouShi",
+dataCityId: "430200000",
+dataValue: "株洲",
+dataHotelCode: "211",
+dataWeatherCode: "101250301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "ZJJ",
+dataTages: "ZHANGJIAJIE",
+dataCityId: "430800000",
+dataValue: "张家界",
+dataHotelCode: "210",
+dataWeatherCode: "101251101",
+dataAirPortCode: "DYG"
+},
+{
+dataSpac: "ZH",
+dataTages: "ZHUHAI",
+dataCityId: "440400000",
+dataValue: "珠海",
+dataHotelCode: "97",
+dataWeatherCode: "101280701",
+dataAirPortCode: "ZUH"
+},
+{
+dataSpac: "ZJS",
+dataTages: "ZhanJiangShi",
+dataCityId: "440800000",
+dataValue: "湛江",
+dataHotelCode: "94",
+dataWeatherCode: "101281001",
+dataAirPortCode: "ZHA"
+},
+{
+dataSpac: "ZQS",
+dataTages: "ZhaoQingShi",
+dataCityId: "441200000",
+dataValue: "肇庆",
+dataHotelCode: "95",
+dataWeatherCode: "101280901",
+dataAirPortCode: ""
+},
+{
+dataSpac: "ZSS",
+dataTages: "ZhongShanShi",
+dataCityId: "442000000",
+dataValue: "中山",
+dataHotelCode: "96",
+dataWeatherCode: "101281701",
+dataAirPortCode: ""
+},
+{
+dataSpac: "*ZS",
+dataTages: "ZuoZhouShi",
+dataCityId: "469003000",
+dataValue: "儋州",
+dataHotelCode: "138",
+dataWeatherCode: "101310205",
+dataAirPortCode: ""
+},
+{
+dataSpac: "ZGS",
+dataTages: "ZiGongShi",
+dataCityId: "510300000",
+dataValue: "自贡",
+dataHotelCode: "341",
+dataWeatherCode: "101270301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "ZYS",
+dataTages: "ZiYangShi",
+dataCityId: "512000000",
+dataValue: "资阳",
+dataHotelCode: "340",
+dataWeatherCode: "101271301",
+dataAirPortCode: ""
+},
+{
+dataSpac: "ZY",
+dataTages: "ZUIYI",
+dataCityId: "520300000",
+dataValue: "遵义",
+dataHotelCode: "120",
+dataWeatherCode: "101260201",
+dataAirPortCode: "ZYI"
+},
+{
+dataSpac: "ZT",
+dataTages: "ZHAOTONG",
+dataCityId: "530600000",
+dataValue: "昭通",
+dataHotelCode: "382",
+dataWeatherCode: "101291001",
+dataAirPortCode: "ZAT"
+},
+{
+dataSpac: "ZYS",
+dataTages: "ZhangYeShi",
+dataCityId: "620700000",
+dataValue: "张掖",
+dataHotelCode: "76",
+dataWeatherCode: "101160701",
+dataAirPortCode: "YZY"
+},
+{
+dataSpac: "ZWS",
+dataTages: "ZhongWeiShi",
+dataCityId: "640500000",
+dataValue: "中卫",
+dataHotelCode: "3105",
+dataWeatherCode: "101170501",
+dataAirPortCode: "ZHY"
+},
+{
+dataSpac: "ZH",
+dataTages: "ZhangHua",
+dataCityId: "711200000",
+dataValue: "彰化",
+dataHotelCode: "5118",
+dataWeatherCode: "101340403",
+dataAirPortCode: ""
+}
+]
+}
+],
+hotList: {
+cityList: [
+{
+dataSpac: "BJ",
+dataTags: "BEIJING",
+dataCityId: "110000000",
+dataValue: "北京",
+dataHotelCode: "53",
+dataWeatherCode: "101010100",
+dataAirPortCode: "BJS"
+},
+{
+dataSpac: "SH",
+dataTags: "SHANGHAI",
+dataCityId: "310000000",
+dataValue: "上海",
+dataHotelCode: "321",
+dataWeatherCode: "101020100",
+dataAirPortCode: "SHA"
+},
+{
+dataSpac: "GZ",
+dataTags: "GUANGZHOU",
+dataCityId: "440100000",
+dataValue: "广州",
+dataHotelCode: "80",
+dataWeatherCode: "101280101",
+dataAirPortCode: "CAN"
+},
+{
+dataSpac: "SZ",
+dataTags: "SHENZHEN",
+dataCityId: "440300000",
+dataValue: "深圳",
+dataHotelCode: "91",
+dataWeatherCode: "101280601",
+dataAirPortCode: "SZX"
+},
+{
+dataSpac: "CD",
+dataTags: "CHENGDU",
+dataCityId: "510100000",
+dataValue: "成都",
+dataHotelCode: "324",
+dataWeatherCode: "101270101",
+dataAirPortCode: "CTU"
+},
+{
+dataSpac: "CQ",
+dataTags: "CHONGQING",
+dataCityId: "500000000",
+dataValue: "重庆",
+dataHotelCode: "394",
+dataWeatherCode: "101040100",
+dataAirPortCode: "CKG"
+},
+{
+dataSpac: "XA",
+dataTags: "XIA",
+dataCityId: "610100000",
+dataValue: "西安",
+dataHotelCode: "317",
+dataWeatherCode: "101110101",
+dataAirPortCode: "XIY"
+},
+{
+dataSpac: "KM",
+dataTags: "KUNMING",
+dataCityId: "530100000",
+dataValue: "昆明",
+dataHotelCode: "373",
+dataWeatherCode: "101290101",
+dataAirPortCode: "KMG"
+},
+{
+dataSpac: "HZ",
+dataTags: "HANGZHOU",
+dataCityId: "330100000",
+dataValue: "杭州",
+dataHotelCode: "383",
+dataWeatherCode: "101210101",
+dataAirPortCode: "HGH"
+},
+{
+dataSpac: "WH",
+dataTags: "WUHA",
+dataCityId: "420100000",
+dataValue: "武汉",
+dataHotelCode: "192",
+dataWeatherCode: "101200101",
+dataAirPortCode: "WUH"
+},
+{
+dataSpac: "XM",
+dataTags: "XIAME",
+dataCityId: "350200000",
+dataValue: "厦门",
+dataHotelCode: "61",
+dataWeatherCode: "101230201",
+dataAirPortCode: "XMN"
+},
+{
+dataSpac: "CS",
+dataTags: "CHANGSHA",
+dataCityId: "430100000",
+dataValue: "长沙",
+dataHotelCode: "199",
+dataWeatherCode: "101250101",
+dataAirPortCode: "CSX"
+},
+{
+dataSpac: "HK",
+dataTags: "HAIKOU",
+dataCityId: "460100000",
+dataValue: "海口",
+dataHotelCode: "127",
+dataWeatherCode: "101310101",
+dataAirPortCode: "HAK"
+},
+{
+dataSpac: "QD",
+dataTags: "QINGDAO",
+dataCityId: "370200000",
+dataValue: "青岛",
+dataHotelCode: "292",
+dataWeatherCode: "101120201",
+dataAirPortCode: "TAO"
+},
+{
+dataSpac: "WLMQ",
+dataTags: "WULUMUQI",
+dataCityId: "650100000",
+dataValue: "乌鲁木齐",
+dataHotelCode: "364",
+dataWeatherCode: "101130101",
+dataAirPortCode: "URC"
+},
+{
+dataSpac: "ZZ",
+dataTags: "ZHENGZHOU",
+dataCityId: "410100000",
+dataValue: "郑州",
+dataHotelCode: "163",
+dataWeatherCode: "101180101",
+dataAirPortCode: "CGO"
+},
+{
+dataSpac: "DL",
+dataTags: "DA LIA",
+dataCityId: "210200000",
+dataValue: "大连",
+dataHotelCode: "248",
+dataWeatherCode: "101070201",
+dataAirPortCode: "DLC"
+},
+{
+dataSpac: "GY",
+dataTags: "GUIYANG",
+dataCityId: "520100000",
+dataValue: "贵阳",
+dataHotelCode: "114",
+dataWeatherCode: "101260101",
+dataAirPortCode: "KWE"
+},
+{
+dataSpac: "NJ",
+dataTags: "NANJING",
+dataCityId: "320100000",
+dataValue: "南京",
+dataHotelCode: "224",
+dataWeatherCode: "101190101",
+dataAirPortCode: "NKG"
+},
+{
+dataSpac: "TJ",
+dataTags: "TIANJI",
+dataCityId: "120000000",
+dataValue: "天津",
+dataHotelCode: "343",
+dataWeatherCode: "101030100",
+dataAirPortCode: "TSN"
+},
+{
+dataSpac: "J",
+dataTags: "JINA",
+dataCityId: "370100000",
+dataValue: "济南",
+dataHotelCode: "287",
+dataWeatherCode: "101120101",
+dataAirPortCode: "TNA"
+},
+{
+dataSpac: "FZ",
+dataTags: "FUZHOU",
+dataCityId: "350100000",
+dataValue: "福州",
+dataHotelCode: "54",
+dataWeatherCode: "101230101",
+dataAirPortCode: "FOC"
+},
+{
+dataSpac: "HRB",
+dataTags: "HAERBI",
+dataCityId: "230100000",
+dataValue: "哈尔滨",
+dataHotelCode: "170",
+dataWeatherCode: "101050101",
+dataAirPortCode: "HRB"
+}
+]
+}
+}

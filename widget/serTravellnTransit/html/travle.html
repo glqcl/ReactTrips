@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<script type="text/javascript" charset="utf-8" src="http://api.map.baidu.com/api?v=2.0&ak=KsjOhHzsO5gXOS5sIcUKrRdh"></script>
+		<link rel="stylesheet" href="../../css/api.css" />
+		<link rel="stylesheet" href="../../css/travellnTransit/me_map.css" />
+		<link rel="stylesheet" href="../../css/travellnTransit/iconfont.css" />
+		<script src="../../script/zepto.js"></script>
+		<script src="../../script/template.js"></script>
+		<script src="../../script/pengCmp/coreXP.js"></script>
+		<script src="../../script/pengCmp/configXP.js"></script>
+		<script type="text/javascript" src="../../script/store.min.js"></script>
+	
+		<title>地图展示</title>
+		<style>
+			
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="map-title">
+				<span class="main-goback" onclick="api.closeWin()"></span>
+				<h1>差旅在途</h1>
+			</div>
+		</header>
+		
+	</body>
+</html>
+<script type="text/javascript">
+       apiready = function() {
+       	
+       	    $('header').css('padding-top', '20px');
+			var systemType = api.systemType;
+			var pageParam = api.pageParam;
+			var height = $('header').height();
+			var width  = $('body').width();
+			
+			var systemType       = api.systemType;
+            var pageParam        = api.pageParam;
+            store.set("userid"     , pageParam.userid);
+	        store.set("customerId" , pageParam.company_id);
+	     	store.set("deptId"     , pageParam.detp_id);
+	     	if (systemType != "ios") {
+			    api.accessNative({
+				}, function(pageParam){       
+					store.set("userid"     , pageParam.userid);
+		    	     	store.set("customerId" , pageParam.company_id);
+		    	     	store.set("deptId"     , pageParam.detp_id);
+                    nativeXP.openFrame({url:'travle-frame.html',y:height,pageParam:pageParam});
+			    	});
+			 }else{
+			 	    nativeXP.openFrame({url:'travle-frame.html',y:height,pageParam:pageParam});
+			 }
+		}
+
+</script>

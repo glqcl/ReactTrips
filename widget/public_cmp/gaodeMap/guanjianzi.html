@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<link rel="stylesheet" href="../../css/api.css" />
+		<script src="../../script/rem.js"></script>
+		<title></title>
+		<style>
+			html,
+			body {
+				background: #f5f5f5;
+			}
+			
+			table {
+				border-collapse: collapse;
+				table-layout: fixed;
+			}
+			
+			.fl {
+				float: left;
+			}
+			
+			.fr {
+				float: right;
+			}
+			
+			.ot {
+				color: #cb5738;
+			}
+			
+			.alpha {
+				color: transparent;
+				color: #FFFFFF;
+			}
+			
+			.item {
+				padding: 10px;
+				font-size: 14px;
+			}
+			
+			.item ul {
+				/*background: #FFFFFF;*/
+				padding: 5px 10px;
+			}
+			
+			.list1 {
+				margin-bottom: 10px;
+			}
+			
+			.list1:last-child {
+				margin-bottom: 0px;
+			}
+			
+			.list1 li {
+				background: url(image/zhiwei.png) left/20px auto no-repeat;
+				padding: 5px 0;
+				padding-left: 30px;
+			}
+			
+			.list1 li:last-child {
+				background: url(image/city.png) left/20px auto no-repeat;
+			}
+			
+			.list2 li {
+				background: url(image/search.png) left/20px auto no-repeat!important;
+			}
+			
+			.list3 li {
+				background: url(image/train.png) left/20px auto no-repeat!important;
+			}
+			
+			.list4 li {
+				background: url(image/jiudian.png) left/20px auto no-repeat!important;
+			}
+			
+			.list5 li {
+				background: url(image/shop.png) left/20px auto no-repeat!important;
+			}
+			
+			.list6 li {
+				background: url(image/pinpai-hotel.png) left/20px auto no-repeat!important;
+			}
+			
+			.list2 {
+				margin-bottom: 0;
+				overflow: hidden;
+				/*border-bottom: 1px solid #f5f5f5;*/
+			}
+			
+			.item table {
+				width: 100%;
+				text-align: center;
+			}
+			
+			.item table tr td {
+				padding: 0 5px;
+				height: 35px;
+				line-height: 1.2;
+				border: 1px solid #f5f5f5;
+				width: 25%;
+				font-size: 12px;
+			}
+			
+			.list2-detail {
+				padding: 0!important;
+			}
+			
+			.b-arrow {
+				margin-right: 10px!important;
+				background: url(image/b-arrow.png) right/15px no-repeat!important;
+			}
+			
+			.b-arrow-active {
+				background: url(image/t-arrow.png) right/15px no-repeat!important;
+			}
+			
+			.item-box {
+				background: #FFFFFF;
+			}
+			
+			.hidden-tr {
+				display: none;
+			}
+			
+			.list2 li.empty {
+				background: none!important;
+				color: #1a4b74;
+			}
+			.item-box{
+				margin-bottom: 10px;
+			}
+			.quxiao{
+				background:none;
+				left: auto;
+				right: 0;
+				color: #FFFFFF;
+				font-size: 14px;
+				line-height: 42px;
+				text-align: center;
+			}
+			.move-input{
+				border: none;
+				background-color: #FFFFFF;
+				background-image: url(image/search-bg.png);
+				background-repeat: no-repeat;
+				background-size: 155px;
+				background-position: center;
+				-webkit-flex: 1;
+				flex: 1;
+				margin: 0 5px 0 44px;
+				height: 30px;
+				margin-top: 7px;
+				border-radius: 5px;
+				padding-left: 15px;
+				position: relative;
+				left: 0;
+				-webkit-transition:left .8s;
+				transition:left .8s;
+				z-index: 1000;
+			}
+			.map-title{
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+			}
+			.input-active{
+				left: -36px;
+				background: #FFFFFF;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="map-title">
+				<span class="main-goback"></span>
+				<input type="text" class="move-input" />
+				<span class="main-goback quxiao">取消</span>
+			</div>
+		</header>
+		<div class="item">
+			<div class="item-box">
+				<ul class="list1 list2">
+					<li class="fl">搜索历史</li>
+					<li class="fr empty">清空</li>
+				</ul>
+				<ul class="list1 list2-detail" id="search-item">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>吉林省南湖宾馆</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+						</tr>
+						<tr>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+						</tr>
+						<tr class="hidden-tr">
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+						</tr>
+						<tr class="hidden-tr">
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+						</tr>
+					</table>
+				</ul>
+			</div>
+			<div class="item-box">
+				<ul class="list1 list2 list4 b-arrow">
+					<li>行政区</li>
+				</ul>
+				<ul class="list1 list2-detail">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+						</tr>
+						<tr>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+						</tr>
+						<tr class="hidden-tr">
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+						</tr>
+						<tr class="hidden-tr">
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+						</tr>
+					</table>
+				</ul>
+			</div>
+			<div class="item-box">
+				<ul class="list1 list2 list5 b-arrow">
+					<li>商业区</li>
+				</ul>
+				<ul class="list1 list2-detail">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+						</tr>
+						<tr>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+						</tr>
+						<tr class="hidden-tr">
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+						</tr>
+						<tr class="hidden-tr">
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+						</tr>
+					</table>
+				</ul>
+			</div>
+			<div class="item-box">
+				<ul class="list1 list2 list6 b-arrow">
+					<li>酒店品牌	</li>
+				</ul>
+				<ul class="list1 list2-detail">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>火车站北站/宽城万达</td>
+							<td>汽车产业开发区</td>
+							<td>汽车产业开发区</td>
+							<td>德惠区</td>
+						</tr>
+						<tr>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+						</tr>
+						<tr class="hidden-tr">
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+						</tr>
+						<tr class="hidden-tr">
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+							<td>德惠区</td>
+						</tr>
+					</table>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="../../script/jquery-1.8.3.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$(".b-arrow").click(function() {
+				$(this).toggleClass('b-arrow-active')
+				$(this).next().find('tr').slice(2).toggleClass('hidden-tr')
+			})
+			$(".empty").click(function () {
+				$("#search-item table").hide()
+			})
+			$(".move-input").focus(function () {
+				$(this).addClass('input-active')
+			})
+			$(".move-input").blur(function () {
+				$(this).removeClass('input-active')
+			})
+		})
+	</script>
+
+</html>

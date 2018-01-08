@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<script src="../../cityCmp/js/jq.js"></script>
+	    <script src="../../script/pengCmp/configXP.js"></script>
+		<title>关联申请单</title>
+		<script>
+		    $(function(){
+		
+		    	     $.getJSON(configXP.PropagatePlatform + "/index.php/Interface/clsInterface/basepage/?id=11",function(result){
+			         console.log(result);
+			     });
+		    });
+		
+			apiready = function(){
+				var pageParam = api.pageParam;
+
+				var height       = document.getElementById("headerId").offsetHeight;
+				
+				
+
+				api.openFrame({
+								    name: 'propagate.tripg.com',
+								    url: configXP.PropagatePlatform + '/index.php/Interface/clsInterface/basepage/?id=11',
+								    rect: {
+								        x: 0,
+								        y: height,
+								        w: 'auto',
+								        h: 'auto'
+								    }
+				});
+				
+			    
+			    document.getElementById("headerId").onclick = function(){
+				         var systemType = api.systemType;  
+			    	         api.closeWin();
+						 
+			   }
+				  
+				  
+				  
+				    
+			
+				 api.addEventListener({
+				        name: 'keyback'
+				 }, function(ret, err) {
+					    var systemType = api.systemType;  
+						api.closeWin();
+					
+				}); 
+			
+			}
+		</script>
+
+ </head> 
+ <body>
+ 	
+ 	    <header id="headerId" >
+			<div class="map-title">
+				<span  id="main-gobackId" class="main-goback"></span>
+				<h1>版本信息</h1>
+			</div>
+		</header>
+  
+		
+	
+           
+   
+ </body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+<head>
+	<title>indexed</title>
+	<meta name="full-screen" content="yes">
+	<meta name="browsermode" content="application">
+	<meta name="x5-orientation" content="portrait">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="x5-page-mode" content="app">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="stylesheet" href="../../css/city_css.css"/>
+	<script src="../../script/jq.js"></script>
+	<script src="../../script/store.min.js"></script>
+	<script src="../../script/template.js"></script>
+	<script type="text/javascript" src="../../script/store.min.js"></script>
+	<script type="text/javascript" src="js/city_aircity_data.js"></script>
+	<script type="text/javascript" src="../../script/pengCmp/configXP.js"></script>
+	<script type="text/javascript" src="../../script/pengCmp/coreXP.js"></script>
+	<script type="text/javascript" src="../../script/tripledes.js" ></script>
+    <script type="text/javascript" src="../../script/mode-ecb-min.js" ></script>
+    <script type="text/javascript" src="../../script/aes.js"></script>
+	<style>
+		 header a{
+			position:absolute;
+			display:block;
+			height:44px;
+			width:44px;
+			top:0;left:0;
+			background: url(../../image/header-goback.png) center center no-repeat;
+			background-size:auto 40% ;
+		}
+
+		header input.empty{
+			background:#fff;
+			background-image: url(../../image/search.jpg);
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size:auto 90% ;
+		}
+		header input.infocus {
+			background: #fff;
+			background-image: url(../../image/search.jpg);
+			text-align: left;
+			left: 10px;
+			background-repeat: no-repeat;
+			background-size: auto 90%;
+			background-position: center center;
+		}
+
+	</style>
+	<script id="getCityInfoTemplate" type="text/html">
+		
+		<li data-group="HOT" class="first group">热门</li>
+		<div id="hotListElemId">
+			{{each hotList as city index}}
+				<li class="hot"  dataSpac="{{city.dataSpac}}" dataTags="{{city.dataTags}}" dataSzm="{{city.dataSzm}}" dataValue="{{city.dataValue}}">
+					<span>{{city.dataValue}}</span>
+				</li>
+			{{/each}}
+		</div>
+		<li data-group="history" class="first group">历史</li>
+		<div id="historyListElemId">
+	
+		</div>
+		<div id="cityListElemId">
+			{{each list as obj index}}
+				<li data-group="{{obj.groupname}}" class="group">{{obj.groupname}}</li>
+				{{each obj.citylist as city subIndex}}
+					<li class="normal" dataSpac="{{city.dataSpac}}" dataTags="{{city.dataTags}}" dataSzm="{{city.dataSzm}}" dataValue="{{city.dataValue}}">
+						{{city.dataValue}}
+					</li>
+				{{/each}}
+			{{/each}}
+		</div>
+		<center style="display:none;"><img src="../../image/empty.png" style="width:160px;margin-top:100px;"><p style="color:#333;padding:15px;">未找到相关信息</p></center>
+	</script>
+
+	<script id="getOtherListTemplate" type="text/html">
+		{{each list as city index}}
+		<li class='hot' dataSpac="{{city.dataSpac}}" dataTags="{{city.dataTags}}" dataSzm="{{city.dataSzm}}" dataValue="{{city.dataValue}}">
+			<span>{{city.dataValue}}</span>
+		</li>
+		{{/each}}
+	</script>
+</head>
+
+<body>
+<header><a></a><input id="searchInfoId" type="text" class="empty"/><p>取消</p></header>
+
+<ul>
+	<li class="big" data="NOWADD">
+		当前
+	</li>
+	<li class="big" data="HOT">
+		热门
+	</li>
+	<li class="big" data="history">
+		历史
+	</li>
+
+	<li>
+		A
+	</li>
+	<li>
+		B
+	</li>
+	<li>
+		C
+	</li>
+	<li>
+		D
+	</li>
+	<li>
+		E
+	</li>
+	<li>
+		F
+	</li>
+	<li>
+		G
+	</li>
+	<li>
+		H
+	</li>
+	<li>
+		J
+	</li>
+	<li>
+		K
+	</li>
+	<li>
+		L
+	</li>
+	<li>
+		M
+	</li>
+	<li>
+		N
+	</li>
+	<li>
+		P
+	</li>
+	<li>
+		Q
+	</li>
+	<li>
+		R
+	</li>
+	<li>
+		S
+	</li>
+	<li>
+		T
+	</li>
+	<li>
+		W
+	</li>
+	<li>
+		X
+	</li>
+	<li>
+		Y
+	</li>
+	<li>
+		Z
+	</li>
+</ul>
+<article>
+	<ol id="olListId">
+            <li  id="currentDivId" data-group="NOWADD" class="first group">当前</li>
+			<div id="positionElemId">
+				<li class="hot" dataspac="cc" datatags="changchun" dataszm="CGQ" datavalue="长春">
+					<span>长春</span>
+				</li>
+			</div>
+
+	</ol>
+</article>
+
+<div class="showPin">
+</div>
+</div>
+<script>   
+            $("#olListId").on('touchstart',function(e) {
+            	      document.activeElement.blur();
+			});
+
+            var localDataStoreKey = configXP.localDataKey.CityCarAirportCityInfo;
+			var dataInfoStore     = store.get(localDataStoreKey);
+		    var historyLocalSel   = configXP.localKey.historyInfoAirPortCitySel;
+			var hisInfoIndex      = configXP.historySel.historyInfoAirPortCityIndex;
+			var cityPage          = null;
+			
+			if(dataInfoStore == null || dataInfoStore.list == null || dataInfoStore.list.length == 0){
+				dataInfoStore = dataCityJson;
+			}
+			loadDataTmp(dataInfoStore);
+			
+			//时间戳
+			var timestamp = Date.parse(new Date());
+	        timestamp = timestamp / 1000;
+	    	    var parmData    = {
+	    	     	Sign    : configXP.phpSign.Sign,
+				service : 'CityInfo.getAirpotCity',
+				TimeStamp:timestamp
+			};
+			//请求key
+			var urlData = tgParmsFun(parmData);
+            urlData += tgGetNewKeyStr(urlData, configXP.phpSign.Key);
+            $.ajax({
+						url: configXP.phpUrls.GetCityList,
+						data: urlData,
+						type: "get",
+						dataType: "json",
+						success: function(result) {
+							console.log(result);
+							var code   = result.Code;
+							if(code == "1"){
+								dataInfoJson = result.Result;
+								setTimeout(function(){
+									if(!(dataInfoJson == null || dataInfoJson.list == null || dataInfoJson.list.length == 0)){
+										store.set(localDataStoreKey,dataInfoJson);
+								    }
+								},500);
+							}
+							
+						}
+			});	
+			
+			$("#olListId").on('touchstart',function(e) {
+			        $("#searchInfoId").blur();
+			});
+			
+			apiready = function(){
+
+				pageParam  = api.pageParam;
+				
+				if(configXP.productionEnvir){
+
+		    	        cityPage = pageParam.cityPage;
+
+		    	        if(cityPage == null){
+
+			    	           	var param  = {};
+					    	    param.type = "airportCity";      //获得城市的json数据源
+							api.accessNative({name:'init',extra:param}, function(ret){
+                                   currentCity = ret.currentCity;
+					    		       longitude   = ret.longitude;
+					    		       latitude    = ret.latitude;
+					    		       jsonObj     = {};
+					    		       isshow      = ret.isshow;
+					    		       cityInfo(currentCity);
+					    		       if(isshow == "0"){
+					    		       	    setTimeout(function(){
+					    		       	    	    $("#currentDivId").remove();
+                                             $("#positionElemId").remove();
+					    		       	    },200);
+										
+								   }
+
+			                });
+
+		    	      }else{
+		    	           	    var currentCity = pageParam.currentCity;
+					    		var longitude   = pageParam.longitude;
+					    		var latitude    = pageParam.latitude;
+					    		var cityList    = pageParam.cityList;
+					    		var cityPage    = pageParam.cityPage;
+                            cityInfo(currentCity);
+				  }
+		    	}
+
+				$('header a').click(function(){
+					//关闭webView
+	                api.closeWin();
+				});
+				if($("article").is(":empty")){
+					var articleH = $("article").height();
+					var ulliH = $("ul li").size();
+					$("ul li").css({
+						height:articleH/ulliH+"px",
+						lineHeight:articleH/ulliH+"px"
+					});
+				}
+				$("ul li").on("touchmove touchstart", function(e) {
+					event.preventDefault();
+					e = e || window.event;
+					findEle(e);
+				});
+				$("ul li").on("touchend", function(e) {
+					event.preventDefault();
+					$("DIV.showPin").hide();
+				});
+				var findEle = function(e) {
+					var touch = e.originalEvent.targetTouches[0];
+					var ele = document.elementFromPoint(touch.pageX, touch.pageY);
+					if(ele != "" && ele != null) {
+						$("li.group").each(function() {
+							if(ele.innerText.toUpperCase() == $(this).text().toUpperCase()) {
+								$("DIV.showPin").text(ele.innerText.toUpperCase());
+								$("DIV.showPin").show();
+								$("article").scrollTop(0);
+								top2 = $(this).position().top ;
+								$("article").scrollTop(top2);
+							}
+						})
+					}
+				}
+
+				var timeover;
+				$("input").on("input",function() {
+					_this = $(this);
+					var canShow = 1;
+					clearTimeout(timeover);
+					timeover = setTimeout(function(){
+						if(_this.val() != "") {
+							_this.removeClass("infocus");
+							_this.addClass("infocus2");
+							$("ol li").hide();
+							keyword = $.trim(_this.val().toUpperCase());
+							var regkeyWord = eval('/^'+keyword+'/');
+
+							$("ol li:not(.group,.hot)").each(function() {
+							    var dataSpac  = $(this).attr("dataSpac");
+                                var dataSzm   = $(this).attr("dataSzm");
+                                var dataValue = $(this).attr("dataValue");
+                                var dataTags  = $(this).attr("dataTags");
+
+                                if(dataSpac.indexOf(keyword) >= 0){
+                                        canShow = 0;
+										$(this).show();
+										$("center").hide();
+										$("ul").show();
+										$("article").scrollTop(0);
+
+                                }
+                                if(dataSzm.indexOf(keyword) >= 0){
+                                        canShow = 0;
+										$(this).show();
+										$("center").hide();
+										$("ul").show();
+										$("article").scrollTop(0);
+
+                                }
+                                if(dataTags.indexOf(keyword) >= 0){
+                                        canShow = 0;
+										$(this).show();
+										$("center").hide();
+										$("ul").show();
+										$("article").scrollTop(0);
+
+                                }
+                                if(dataValue.indexOf(keyword) >= 0){
+                                        canShow = 0;
+										$(this).show();
+										$("center").hide();
+										$("ul").show();
+										$("article").scrollTop(0);
+
+                                }
+
+
+
+							});
+							if(canShow) {
+								$("center").show();
+								$("ul").hide();
+							}
+						} else {
+							_this.removeClass("infocus2");
+							_this.addClass("infocus");
+							$("ol li").show();
+							$("ul").show();
+							$("center").hide();
+						}
+					},50);
+				});
+				showGroup = function (x) {
+					for(var i = x ; i >= 0 ; i--){
+						if($("ol>li,ol>div").eq(i).hasClass("group")){
+							$("ol>li,ol>div").eq(i).show();
+							break;
+						}
+					}
+				}
+				$("input").blur(function(){
+					if($(this).val() == ""){
+						$(this).removeClass().addClass("empty");
+					}
+				})
+				$("input").focus(function(){
+					$(this).removeClass().addClass("infocus") ;
+
+				});
+				$("header p").on("click",function () {
+					$("input").val("");
+					$("ol li").show();
+					$("ul").show();
+					$("center").hide();
+					$("input").blur().removeClass().addClass("empty");
+				});
+				$("div.shadow").on("touchstart",function () {
+					return false;
+				});
+				
+				$("ol").on("click","li:not(.group)",function () {
+
+						var dataValue = $(this).attr("dataValue");
+						var dataSpac  = $(this).attr("dataSpac");
+						var dataTags  = $(this).attr("dataTags");
+						var dataSzm   = $(this).attr("dataSzm");
+						var ext       = {};
+						ext.dataValue = dataValue;
+						ext.dataSpac  = dataSpac;
+						ext.dataTags  = dataTags;
+						ext.dataSzm   = dataSzm;
+	
+						//获得选择历史的记录
+						var list = store.get(historyLocalSel) || [];
+						//查找是否重复
+						var dataInfo = nativeXP.jsonObjFilter("dataValue", ext.dataValue, list);
+						if(!(nativeXP.isEmptyObject(dataInfo))) {
+							var index = dataInfo.xp_index;
+							list.splice(index, 1);
+						}
+	                    list.unshift(ext);
+	                    var len = list.length;
+						if(len > hisInfoIndex) {
+							list.splice(hisInfoIndex, len);
+						}
+						store.set(historyLocalSel, list);
+	
+					    api.sendEvent({
+					    		name: 'selectedCity',
+					    		extra: ext
+					    });
+					    if(cityPage != null){
+					     	 api.closeWin();
+					    }
+	
+	            });
+			
+			}
+			
+			
+			
+		
+
+
+
+			//获得城市的信息
+			function getCityInfo(jsonObj){
+			     var position    = {};
+			     var currentCity = "长春市";
+	             var currentInfo = "长春龙嘉机场";
+			     position.lng    = "1111.22";
+			     position.lat    = "1234.56";
+                 loadDataTmp(jsonObj,currentCity,currentInfo,position);
+
+			}
+
+		    //加载城市控件信息
+		    function loadDataTmp(jsonObj){
+		            console.log(jsonObj);
+			    	    var html = template("getCityInfoTemplate", jsonObj);
+					$("ol").append(html);
+                    /*
+					 * 获得历史城市
+					 */
+					reloadHistoryLocalData();
+
+					//cityInfo(currentCity,currentInfo,position);
+             }
+
+			 //获得历史文件
+			 function reloadHistoryLocalData() {
+
+					var jsonObj = {};
+                    var list = store.get(historyLocalSel) || [];
+                    if(list.length == 0) {
+						$("#historyElemId").remove();
+						return;
+					}
+					jsonObj.list = list;
+					var html = template("getOtherListTemplate", jsonObj);
+
+					$("#historyListElemId").html(html);
+			}
+
+            //设置城市信息
+            cityInfo = function(currentCity){
+				 if(currentCity == null){
+				 	currentCity =  "";
+				 }
+	             currentCity = currentCity.substring(0,currentCity.length-1);
+	             if(currentCity != ""){
+					 var list       = "";
+					 var elemLiArr  = $('#cityListElemId li[dataValue^="'+currentCity+'"]');
+					
+					 for(var i=0;i<elemLiArr.length;i++){
+					 	 var elemObj  = elemLiArr[i];
+					 	 var dataVal  = $(elemObj).attr("dataValue");
+					 	 var dataSpac = $(elemObj).attr("dataSpac");
+					 	 var dataSzm  = $(elemObj).attr("dataSzm");
+					 	 var dataTags = $(elemObj).attr("dataTags");
+					 	 list = '<li class="hot" dataText='+dataVal+' dataValue='+dataVal+' dataSpac='+dataSpac+' dataTags='+dataTags+'  dataSzm='+dataSzm+' ><span>'+dataVal+'</span></li>';
+					 }
+					 if(elemLiArr.length > 0){
+					 	  $("#positionElemId").html(list);
+					 }
+				 }
+			}
+		</script>
+</html>

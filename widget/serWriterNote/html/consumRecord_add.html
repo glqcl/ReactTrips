@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+	    <meta name="format-detection" content="telphone=no, email=no" />
+        <script src="../../script/zepto.js"></script>
+        <script src="../../script/pengCmp/coreXP.js"></script>
+        <script src="../../script/h5uploader.js"></script>
+		<link rel="stylesheet" href="../css/api.css" />
+		<link rel="stylesheet" href="../css/note.css" /> 
+		<link rel="stylesheet" href="../css/swiper.min.css" /> 
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<header>
+			<div class="map-title">
+				<span class="main-goback"></span>
+				<h1>记一笔</h1>
+			</div>
+		</header>
+        <article>
+            <h3>消费信息</h3>
+            <dl>
+                <dt>消费类型</dt>
+                <dd>请选择消费类型</dd>
+                <dt>消费金额</dt>
+                <dd>请输入消费金额</dd>
+                <dt>消费城市</dt>
+                <dd>请选择消费城市</dd>
+                <dt>消费日期</dt>
+                <dd>请选择消费日期</dd> 
+            </dl> 
+            <h3>上传票据</h3>
+
+           <div class="position_r swiperParent">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><IMG SRC="../images/IMG.png" /><img src="../images/del.png" class="del"/></div>
+                        <div class="swiper-slide"><IMG SRC="../images/IMG.png" /><img src="../images/del.png" class="del"/></div>
+                        <div class="swiper-slide"><IMG SRC="../images/IMG.png" /><img src="../images/del.png" class="del"/></div>
+                        <div class="swiper-slide"><IMG SRC="../images/IMG.png" /><img src="../images/del.png" class="del"/></div>
+                        <div class="swiper-slide"><IMG SRC="../images/IMG.png" /><img src="../images/del.png" class="del"/></div>
+                        <div class="swiper-slide"><IMG SRC="../images/IMG.png" /><img src="../images/del.png" class="del"/></div>
+                        <div class="swiper-slide"><IMG SRC="../images/IMG.png" /><img src="../images/del.png" class="del"/></div>
+                        <div class="swiper-slide"><IMG SRC="../images/IMG.png" /><img src="../images/del.png" class="del"/></div>
+                        <div class="swiper-slide"><IMG SRC="../images/IMG.png" /><img src="../images/del.png" class="del"/></div>
+                        <div class="swiper-slide"><IMG SRC="../images/IMG.png" /><img src="../images/del.png" class="del"/></div>
+                        <div class="swiper-slide"><IMG SRC="../images/IMG.png" /><img src="../images/del.png" class="del"/></div>
+                        <div class="swiper-slide"><IMG SRC="../images/IMG.png" /><img src="../images/del.png" class="del"/></div>
+                        <div class="swiper-slide"><IMG SRC="../images/IMG.png" /><img src="../images/del.png" class="del"/></div>
+                        <div class="swiper-slide"><IMG SRC="../images/IMG.png" /><img src="../images/del.png" class="del"/></div>
+                    </div>
+                    <!-- Add Arrows -->
+                </div> 
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+            <div class="cao">
+                <span>拍摄</span>
+                <span>照片</span>
+            </div>
+            <h3>报销说明</h3>
+            <textarea placeholder="请输入说明内容"></textarea>
+        
+        </article>
+		<footer>提交</footer>
+        
+	    <script src="../js/swiper.min.js"></script>
+	    <!-- Initialize Swiper -->
+	    <script>
+	        var swiper = new Swiper('.swiper-container', {
+	            pagination: '.swiper-pagination',
+	            slidesPerView: 3,
+	            paginationClickable: true,
+	            spaceBetween: 0,
+	            observer:true,
+	            nextButton: '.swiper-button-next',
+	            prevButton: '.swiper-button-prev'
+	
+	        }); 
+		    $("img.del").bind("touchstart",function(){
+		        $(this).parents(".swiper-slide").remove(); 
+		    });
+		    $(function(){
+		    	      $('.cao span').eq(0).click(function(){
+		    	      	  api.getPicture({
+						    sourceType: 'camera',
+						    encodingType: 'jpg',
+						    mediaValue: 'pic',
+						    destinationType: 'url',
+						    allowEdit: true,
+						    quality: 50,
+						    targetWidth: 100,
+						    targetHeight: 100,
+						    saveToPhotoAlbum: false
+						}, function(ret, err) {
+						    if (ret) {
+						        var data = ret.data;
+						        H5UploadFile(data);
+						    } else {
+						        alert(JSON.stringify(err));
+						    }
+						});
+		    	      });
+		    	      
+		    	      $('.cao span').eq(1).click(function(){
+		    	      	    api.getPicture({
+						    sourceType: 'album',
+						    encodingType: 'jpg',
+						    mediaValue: 'pic',
+						    destinationType: 'url',
+						    allowEdit: true,
+						    quality: 50,
+						    targetWidth: 100,
+						    targetHeight: 100,
+						    saveToPhotoAlbum: false
+						}, function(ret, err) {
+						    if (ret) {
+						    	    var data = ret.data;
+						        H5UploadFile(data);
+						    } else {
+						        alert(JSON.stringify(err));
+						    }
+						});
+		    	      });
+		    });
+		    
+		    
+		    function H5UploadFile(path){
+                      
+                       $.ajax({
+					      type: "POST",
+					      url: configXP.urls.uploadFileWrite + '?fileType＝1',
+					      enctype: 'multipart/form-data',
+					      data: {
+					           file:path
+					      },
+					      success: function (ret) {
+					           api.alert({ msg: JSON.stringify(ret) });
+					      }
+					    });
+		    	       
+		    }
+	    </script>
+	</body>
+</html>

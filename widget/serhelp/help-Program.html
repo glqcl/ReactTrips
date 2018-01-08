@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<link rel="stylesheet" href="css/api.css" />
+		<script src="sctipt/rem.js"></script>
+		<script src="../script/zepto.js"></script>
+		<script src="../script/pengCmp/coreXP.js"></script>
+		<script src="../script/template.js"></script>
+		<title></title>
+		<style>
+			html,
+			body {
+				background: #FFFFFF;
+			}
+			
+			.fl {
+				float: left;
+			}
+			
+			.fr {
+				float: right;
+			}
+			
+			.ot {
+				color: #cb5738;
+			}
+			
+			.help-program {
+				padding: 0 16px;
+			}
+			
+			.help-program h1 {
+				line-height: 50px;
+				font-size: 16px;
+			}
+			
+			.help-program-title {
+				border-bottom: 1px solid #666666;
+				margin-bottom: 20px;
+			}
+			.help-program p{
+				color: #666666;
+				font-size: 14px;
+				line-height: 1.5;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="map-title">
+				<span class="main-goback"></span>
+				<h1>查看解决方案</h1>
+			</div>
+		</header>
+	</body>
+
+	<script type="text/javascript">
+		apiready = function(){
+			var pageParam = api.pageParam;
+			var title     = pageParam.title;
+			var content   = pageParam.content;
+			var height    = $("header").height();
+			$(".help-program").find("h1").text(title);
+			$(".help-program").find("p").text(content);
+			
+			$(".main-goback").click(function(){
+				api.closeWin();
+			});
+			
+			nativeXP.openFrame({url:'help-Program-frame.html',y:height,pageParam:pageParam});
+		}
+		
+	</script>
+
+</html>

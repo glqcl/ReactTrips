@@ -1,0 +1,4 @@
+/*
+ * Compressed by JSA(www.xidea.org)
+ */
+(function($,A,_){A.extend(true,$.Slider,{template:{prev:"<span class=\"ui-slider-pre\"></span>",next:"<span class=\"ui-slider-next\"></span>"},options:{arrow:true,select:{prev:".ui-slider-pre",next:".ui-slider-next"}}});$.Slider.option("arrow",true,function(){var _=this,$=["prev","next"];this.on("done.dom",function(D,E,C){var B=C.selector;$.forEach(function(C){var $=E.find(B[C]);$.length||E.append($=A(_.tpl2html(C)));_["_"+C]=$})});this.on("ready",function(){$.forEach(function($){_["_"+$].on("tap"+_.eventNs,function(){_[$].call(_)})})});this.on("destroy",function(){_._prev.off(_.eventNs);_._next.off(_.eventNs)})})})(gmu,gmu.$)

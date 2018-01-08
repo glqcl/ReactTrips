@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <script src="../../script/zepto.js"></script>
+    <script src="../../script/pengCmp/coreXP.js"></script>
+    <script src="../../script/pengCmp/configXP.js"></script>
+</head>
+
+<style>
+
+	    .ovfHiden{
+		    overflow: hidden;height: 100%;
+		}
+    </style>
+
+<body class="user_central">
+
+<header id="headerId">
+    <div  class="map-title">
+        <span id="mainGoBack" class="main-goback"></span>
+        <h1 style="margin:0">差旅酒店-入住指南</h1>
+    </div>
+</header>
+
+</body>
+
+<script>
+         apiready = function(){
+         	  var height = $("#headerId").height();
+         	  nativeXP.openFrame({url:configXP.waijieUrl.ruzhuzhinanUrl,y:height});
+         };
+         
+         $("#mainGoBack").click(function(){
+              api.closeWin();
+         });
+
+    </script>
+
+</html>

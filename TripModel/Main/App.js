@@ -25,6 +25,7 @@ import HMPlaneIndex from '../Plane/HMPlaneIndex';
 import HMApprovalList from '../Approval/HMApprovalList';
 import HMApprovalDetail from '../Approval/HMApprovalDetail';
 import FlatListExample from '../Approval/FlatListExample'
+import HMPlaneList from '../Plane/HMPlaneList'
 
 export default class BaseRootNavigator extends Component
 {
@@ -81,6 +82,13 @@ const Navigator = StackNavigator({
         screen: FlatListExample,
         navigationOptions: {
             headerTitle: '申请单列表'
+        }
+    },
+
+    HMPlaneList: {
+        screen: HMPlaneList,
+        navigationOptions: {
+            headerTitle: '机票列表'
         }
     }
     ,

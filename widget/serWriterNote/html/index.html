@@ -1,0 +1,170 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+	<meta name="format-detection" content="telphone=no, email=no" />
+	<link rel="stylesheet" href="../../css/api.css" />
+	<link rel="stylesheet" href="../../css/aui2/aui.2.0.css"/>
+	<script type="text/javascript" src="../../script/zepto.js"></script>
+	<script type="text/javascript" src="../../script/pengCmp/configXP.js"></script>
+	<script type="text/javascript" src="../../script/store.min.js"></script>
+	<script type="text/javascript" src="../../script/aui2/aui-dialog.js"></script>
+	<title>记一笔</title>
+
+</head>
+<body>
+<header id="headerId">
+	<div id="map-titleId" class="map-title">
+		<span class="main-goback"></span>
+		<h1 style="margin:0">记一笔</h1>
+	</div>
+</header>
+
+<!-- Initialize Swiper -->
+<script>
+
+
+
+		    //显示加载中......
+	        showPublicAnimate(1);
+	        
+	        setTimeout(function(){
+	        	    showPublicAnimate(-1);
+	        },1800);
+	        
+	        dialog = new auiDialog();
+
+            apiready = function(){
+            	    var backLogic  = false;
+            	    api.addEventListener({
+					name : 'backLogic'
+				}, function(ret, err) {
+					    backLogic   = ret.value.backLogic;
+				});
+
+            	    var height     = document.getElementById("headerId").offsetHeight;
+                pageParam      = api.pageParam;
+			    newPageParam   = api.pageParam;
+			    var systemType = api.systemType;
+				if(!configXP.productionEnvir){
+				 	 pageParam.userid       = "97605";
+					 pageParam.travelId     = "18590";
+					 pageParam.customerId   = "919"  ;
+					 pageParam.company_id   = "919"  ;
+				 }
+				 store.set("userid"     , pageParam.userid);
+				 store.set("customerId" , pageParam.company_id);
+				 store.set("deptId"     , pageParam.detp_id);
+				 store.set("company_id" , pageParam.company_id);
+
+				 if (systemType != "ios") {
+					api.accessNative({
+					}, function(pageParam) {
+						if(!configXP.productionEnvir){
+							 pageParam.userid   = "97605";
+							 pageParam.travelId = "18590";
+							 pageParam.customerId = "919"
+						}
+						store.set("userid"     , pageParam.userid);
+						store.set("customerId" , pageParam.company_id);
+						store.set("deptId"     , pageParam.detp_id);
+						store.set("company_id" , pageParam.company_id);
+						pageParam.use_status     = newPageParam.use_status;
+						pageParam.name           = newPageParam.name;
+						pageParam.operator       = newPageParam.operator;
+                         pageParam.in_city        = newPageParam.in_city;
+						pageParam.consume_time   = newPageParam.consume_time;
+						pageParam.product_name   = newPageParam.product_name;
+						pageParam.consume_amount = newPageParam.consume_amount;
+
+						if(pageParam.list_id == "" || pageParam.list_id == null){
+							pageParam.list_id  = newPageParam.list_id;
+						}
+						api.openFrame({
+						    name: 'index_note',
+						    url: './index_note.html',
+						    rect: {
+						        x: 0,
+						        y: height,
+						        w: 'auto',
+						        h: 'auto'
+						    },
+						    pageParam:pageParam
+
+						});
+					});
+				 }else{
+				   	    api.openFrame({
+						    name: 'index_note',
+						    url: './index_note.html',
+						    rect: {
+						        x: 0,
+						        y: height,
+						        w: 'auto',
+						        h: 'auto'
+						    },
+						    pageParam:pageParam
+
+						});
+				 }
+
+				  api.addEventListener({
+			            name: 'keyback'
+				  }, function(ret, err) {
+				  	   var use_status = newPageParam.use_status;
+				  	   var systemType = api.systemType;
+
+				  	   if(backLogic){
+							 api.closeFrame({
+			                	    name:'city_listDetail_mzfrm'
+			                	 });
+				 	  	     api.closeFrame({
+			            	     	name:'city_citylistMZ_frm'
+			            	     });
+				 	  	     api.closeFrame({
+				 	  	     	name:'../../public_cmp/city_citylistMZ_win'
+				 	  	     });
+				 	  	     backLogic = false;
+						}else{
+					       if(use_status != "2"){
+		            	        	      api.sendEvent({
+								      name: 'goBack_note',
+								      extra: {}
+								  });
+		            	       }else{
+							    	  api.closeWin();
+						   }
+	            	        }
+
+				  });
+
+
+            }
+
+            function getQueryString(key) {
+					var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+					var result = window.location.search.substr(1).match(reg);
+					return result ? decodeURIComponent(result[2]) : null;
+			}
+
+            document.getElementById("map-titleId").onclick = function(){
+            	        var use_status = newPageParam.use_status;
+            	        var systemType = api.systemType;
+
+
+
+            	        if(use_status != "2"){
+	            	        	     api.sendEvent({
+							    name: 'goBack_note',
+							    extra: {}
+							});
+            	        }else{
+					    	    	api.closeWin();
+					}
+            }
+
+</script>
+</body>
+</html>

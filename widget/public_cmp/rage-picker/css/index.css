@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+.C_my_select{
+	position: relative;
+}
+.my_select{
+	width: 214px;
+	    z-index: 1;
+    padding-right: 20px;
+    padding-left: 5px;
+    background: #fff;
+    font-size: 12px;
+    text-indent: 5px;
+    _background: none;
+    _border: none;
+    border: 1px solid #e8e8e8;
+    height: 26px;
+    line-height: 25px;
+    cursor: pointer;
+    overflow: hidden;
+    background: url(../images/uew_icon.png) no-repeat right;
+}
+.my_select:hover{
+	border-color: #3497db;
+}
+.my_option{
+	 border: 1px solid #7a9cd3;
+	 margin-top: 1px;
+	 display: none;
+	 height: 218px;
+	 overflow: auto;
+	 overflow-x: hidden;
+}
+.my_option ul li{
+	 padding-left: 5px;
+}
+.my_option ul li:hover{
+	background: #1e90ff;
+	color: #FFFFFF;
+}

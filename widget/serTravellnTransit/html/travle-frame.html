@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<script type="text/javascript" charset="utf-8" src="http://api.map.baidu.com/api?v=2.0&ak=KsjOhHzsO5gXOS5sIcUKrRdh"></script>
+		<link rel="stylesheet" href="../../css/api.css" />
+		<link rel="stylesheet" href="../../css/travellnTransit/me_map.css" />
+		<link rel="stylesheet" href="../../css/travellnTransit/iconfont.css" />
+		<script src="../../script/zepto.js"></script>
+		<script src="../../script/template.js"></script>
+		<script src="../../script/pengCmp/coreXP.js"></script>
+		<script src="../../script/pengCmp/configXP.js"></script>
+		<script type="text/javascript" src="../../script/store.min.js"></script>
+
+		<title>地图展示</title>
+	</head>
+	<style>
+		body,
+		html,
+		#allmap {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			margin: 0;
+			font-family: "微软雅黑";
+		}
+		
+		html {
+			
+		}
+		
+		label {
+			display: none !important
+		}
+		
+		.hideMrt {
+			position: absolute;
+			width: 1.8rem;
+			height: 100%;
+			right: -1.8rem;
+			top: 0;
+			background: rgba(0, 0, 0, .6);
+			color: #fff;
+			-webkit-transition: all 0.6s;
+			transition: all 0.6s;
+			-webkit-transform: none;
+			z-index: 999;
+			/*display: none;*/
+		}
+	</style>
+
+	<body>
+		<div id="allmap"></div>
+		<div id="hideMrt" class="hideMrt">
+			<!--<div class="right-dialog-title">
+				<dd class="clearfix">齐齐哈尔<span class="fr">200W人</span></dd>
+				<dd>Qi Qi Ha Er</dd>
+			</div>
+			<div class="right-item-box">
+				<div class="right-dialog-title right-dialog-item">
+					<dd class="clearfix">金卯刀</dd>
+					<dd>产品事业部</dd>
+				</div>
+				<div class="right-dialog-title right-dialog-item">
+					<dd class="clearfix">金卯刀</dd>
+					<dd>产品事业部</dd>
+				</div>
+				<div class="right-dialog-title right-dialog-item">
+					<dd class="clearfix">金卯刀</dd>
+					<dd>产品事业部</dd>
+				</div>
+				<div class="right-dialog-title right-dialog-item">
+					<dd class="clearfix">金卯刀</dd>
+					<dd>产品事业部</dd>
+				</div>
+				<div class="right-dialog-title right-dialog-item">
+					<dd class="clearfix">金卯刀</dd>
+					<dd>产品事业部</dd>
+				</div>
+			</div>-->
+		</div>
+		<div class="hideMrtLeft">
+			<div class="centetLeft">
+				<div class="detail-title">
+					<h1>在途详情</h1>
+					<span class="goback"></span>
+				</div>
+				<div id="idDetailColumn" class="detail-column">
+					<ul>
+						<li>申请单号</li>
+						<li></li>
+					</ul>
+					<ul>
+						<li>申请人</li>
+						<li></li>
+					</ul>
+					<ul>
+						<li>部门/成本中心</li>
+						<li></li>
+					</ul>
+					<ul>
+						<li>行程安排</li>
+						<li></li>
+					</ul>
+					<ul>
+						<li>出发时间</li>
+						<li></li>
+					</ul>
+					<ul>
+						<li>返回时间</li>
+						<li></li>
+					</ul>
+					<ul>
+						<li>天数</li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="mask-box"></div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	var markerArr = new Array();
+	var str = "";
+
+	var personListStore = new nativeXP.store({
+		url: configXP.urls.personList,
+		elemId: 'hideMrt',
+		tmpId: 'personListTmp'
+	});
+
+	var personDetailStore = new nativeXP.store({
+		url: configXP.urls.personDetail,
+		elemId: 'idDetailColumn',
+		tmpId: 'personDetailTmp'
+	});
+
+	apiready = function() {
+
+		var pageParam = {};
+		pageParam.customerId = store.get("customerId");
+		pageParam.dept_id = store.get("deptId");
+		pageParam.user_id = store.get("userid");
+		var paramData = nativeXP.tgParmsFun(pageParam);
+		createMap();
+
+		//显示加载中......
+		showAnimate(1);
+
+		api.ajax({
+			url: configXP.urls.AddMarkPoint + "?" + paramData,
+			method: 'get'
+		}, function(ret, err) {
+			//隐藏加载中......
+			showAnimate(-1);
+
+			if(ret) {
+				markerArr = ret.markerArr;
+				if(markerArr != null) {
+
+					markerArr.map(function(obj, domElement) {
+						obj.personNum = obj.tot + "人"
+						obj.title = obj.city + ",共" + obj.tot + "人";
+						obj.point = obj.lon + "|" + obj.lat;
+						obj.icon = {
+							w: 21,
+							h: 21,
+							l: 0,
+							t: 0,
+							x: 6,
+							lb: 5
+						};
+						obj.travelId = obj.id;
+					});
+
+					addMarker(markerArr); //向地图中添加marker
+				}
+
+			}
+		});
+
+	}
+
+	function createMap() {
+		var map = new BMap.Map("allmap"); //在百度地图容器中创建一个地图
+		var point = new BMap.Point(108.017729, 37.621984); //定义一个中心点坐标
+		map.centerAndZoom(point, 4); //设定地图的中心点和坐标并将地图显示在地图容器中
+		map.setZoom(5);
+		window.map = map; //将map变量存储在全局
+	}
+	//创建marker
+	function addMarker(markerArr) {
+		for(var i = 0; i < markerArr.length; i++) {
+			var json = markerArr[i];
+
+			var p0 = json.point.split("|")[0];
+
+			var p1 = json.point.split("|")[1];
+
+			var point = new BMap.Point(p0, p1);
+			var iconImg = createIcon(json.icon);
+			var marker = new BMap.Marker(point, {
+				icon: iconImg
+			});
+
+			var label = new BMap.Label(json.personNum, {
+				"offset": new BMap.Size(json.icon.lb - json.icon.x - 25, -20)
+			});
+			marker.setLabel(label);
+			map.addOverlay(marker);
+			label.setStyle({
+				borderColor: "#2c4150",
+				color: "#fff",
+				cursor: "pointer",
+				backgroundColor: "#2c4150",
+				padding: "10px",
+				marginTop: "-20px",
+				borderRadius: "10px",
+				fontWeight: "bold"
+			});
+			(function() {
+				var index = i;
+				var _marker = marker;
+				_marker.addEventListener("click", function(event) {
+
+					var pointVal = _marker.point.lng + "|" + _marker.point.lat;
+					$.each(markerArr, function(n, value) {
+						if(pointVal == value.point) {
+							var param = {};
+							param.city = value.city;
+							param.travelId = value.travelId;
+							personListStore.load(param, function() {
+								var me = personListStore;
+								var paramStr = nativeXP.tgParmsFun(me.param);
+
+								//获取ajax信息
+								api.ajax({
+									url: me.url + "?" + paramStr,
+									method: 'get',
+									dataType: 'json',
+									returnAll: false,
+									timeout: 30
+								}, function(ret, err) {
+
+									//隐藏loading
+									showAnimate(-1);
+
+									if(ret) {
+										var html = template(me.tmpId, ret);
+										$("#" + me.elemId).html(html);
+
+										for(var key in ret) {
+
+											if(nativeXP.type(ret[key]) == '[object Array]') {
+												me.list = ret[key];
+												if(ret[key].length == 0) {
+													$(".ui-refresh-down").hide();
+												}
+
+											}
+										}
+										var headerHeight = $("header").height()
+										var windonHeight = $(window).height();
+										var hideHeight = $(".hideMrt").height(windonHeight)
+										var rightTitleHeight = $(".right-dialog-title").height();
+										var boxHeight = windonHeight - rightTitleHeight;
+										var rightBoxHeight = $(".right-item-box").height(boxHeight - 10);
+									}
+								});
+							});
+
+						}
+					});
+					$(".hideMrt").show()
+						//					$(".hideMrt").css("-webkit-transform", "none")
+					$(".hideMrt").css("right", "0")
+					$(".mask-box").show()
+				});
+			})()
+		}
+	}
+	//创建一个Icon
+	function createIcon(json) {
+		var icon = new BMap.Icon(configXP.PropagatePlatform + '/position.png', new BMap.Size(32, 32), {
+			anchor: new BMap.Size(15, 32)
+		});
+		return icon;
+	}
+	$(function() {
+		$(".mask-box").click(function(event) {
+			if(this == event.target) {
+				//				$(".hideMrt").css("-webkit-transform", "translateX(100%)");
+				$(".hideMrt").css("right", "-1.8rem")
+				$(".hideMrtLeft").css("-webkit-transform", "translateX(-100%)");
+				$(".mask-box").hide();
+
+			}
+		});
+
+		$(".hideMrt").on("click", '.right-dialog-item', function() {
+			$(".hideMrtLeft").css("-webkit-transform", "none");
+			$(".hideMrt").css("right", "-1.8rem");
+			$(this).addClass("right-Cur").siblings().removeClass("right-Cur");
+			var dataId = $(this).attr("dataId");
+			var markerArr = personListStore.findByObjFilter("id", dataId);
+
+			var DocNum = dataId;
+			var proposer = markerArr.proposer;
+			var dept_name = markerArr.dept_name;
+			var scheduling = markerArr.scheduling;
+			var startDate = markerArr.startDate;
+			var endDate = markerArr.endDate;
+			var seriesNum = markerArr.id;
+			var dataList = markerArr.data_num;
+			var travel_id = markerArr.travel_id;
+
+			$("#idDetailColumn ul").eq(0).find("li").eq(1).html(travel_id);
+			$("#idDetailColumn ul").eq(1).find("li").eq(1).html(proposer);
+			$("#idDetailColumn ul").eq(2).find("li").eq(1).html(dept_name);
+			$("#idDetailColumn ul").eq(3).find("li").eq(1).html(scheduling);
+			$("#idDetailColumn ul").eq(4).find("li").eq(1).html(startDate.split(" ")[0]);
+			$("#idDetailColumn ul").eq(5).find("li").eq(1).html(endDate.split(" ")[0]);
+			$("#idDetailColumn ul").eq(6).find("li").eq(1).html(dataList);
+			setTimeout(function() {
+				$(".hideMrt").hide()
+			}, 1000)
+		});
+
+		$(".goback").click(function() {
+			setTimeout(function() {
+				$(".mask-box").show()
+			}, 1000)
+			$(".hideMrt").show()
+			$(".hideMrtLeft").css("-webkit-transform", "translateX(-100%)");
+			$(".hideMrt").css("right", "0");
+		});
+		var rightTitleWidth = $(".right-dialog-title").height();
+		var windonHeight = $(window).height();
+		var rightItemHeight = windonHeight - rightTitleWidth;
+		$(".right-item-box").height(rightItemHeight - 50);
+
+		/*$(".right-item-box").scroll(function () {  
+		    var lI = $(this).find("div.right-dialog-item").eq(0).height();
+		    var size = $(this).find("div.right-dialog-item").size();  
+		    if(($(this).scrollTop()+$(this).height()) >= lI*size){
+		        _this = $(this);
+		        _this.append('<div class="right-dialog-title right-dialog-item loading">加载中。。。</div>'); 
+		        setTimeout(function(){
+		            $(".loading").remove();
+		           _this.append('<div class="right-dialog-title right-dialog-item"><dd class="clearfix">阿三地方</dd><dd>产品事业部</dd></div>'); 
+		           _this.append('<div class="right-dialog-title right-dialog-item"><dd class="clearfix">阿三地方</dd><dd>产品事业部</dd></div>'); 
+		           _this.append('<div class="right-dialog-title right-dialog-item"><dd class="clearfix">阿三地方</dd><dd>产品事业部</dd></div>'); 
+		           _this.append('<div class="right-dialog-title right-dialog-item"><dd class="clearfix">阿三地方</dd><dd>产品事业部</dd></div>'); 
+		           _this.append('<div class="right-dialog-title right-dialog-item"><dd class="clearfix">阿三地方</dd><dd>产品事业部</dd></div>'); 
+		           _this.append('<div class="right-dialog-title right-dialog-item"><dd class="clearfix">阿三地方</dd><dd>产品事业部</dd></div>');  
+		        },1000); 
+		    } 
+		});*/
+
+	})
+</script>
+
+<script id="personListTmp" type="text/html">
+	<div class="right-dialog-title">
+		<dd class="clearfix">{{city}}<span class="fr">{{personNum}}人</span></dd>
+		<dd>{{cityPin}}</dd>
+	</div>
+	<div class="right-item-box">
+		{{each markerArr as obj index}}
+		<div class="right-dialog-title right-dialog-item" dataId="{{obj.id}}">
+			<dd class="clearfix">{{obj.proposer}}</dd>
+			<dd>{{obj.dept_name}}</dd>
+		</div>
+		{{/each}}
+	</div>
+
+</script>
+
+<script id="personDetailTmp" type="text/html">
+	<ul>
+		<li>单据号</li>
+		<li>{{markerArr.DocNum}}</li>
+	</ul>
+	<ul>
+		<li>申请人</li>
+		<li>{{markerArr.proposer}}</li>
+	</ul>
+	<ul>
+		<li>部门/成本中心</li>
+		<li>{{markerArr.dept_name}}</li>
+	</ul>
+	<ul>
+		<li>行程安排</li>
+		<li>{{markerArr.scheduling}}</li>
+	</ul>
+	<ul>
+		<li>出发时间</li>
+		<li>{{markerArr.startDate}}</li>
+	</ul>
+	<ul>
+		<li>返回时间</li>
+		<li>{{markerArr.endDate}}</li>
+	</ul>
+	<ul>
+		<li>天数</li>
+		<li>{{markerArr.dataList}}</li>
+	</ul>
+</script>

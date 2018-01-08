@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>APP</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+</head>
+<style>
+		body {
+			background: #f7f9f8;
+		}
+		
+		small {
+			color: #999;
+			display: block;
+		}
+		.tips-msg{
+			position: fixed;
+			top: 30%;
+			left: 50%;
+			-webkit-transform: translateX(-50%);
+			transform: translateX(-50%);
+			text-align: center;
+		}
+		.tips-msg img{
+			width: 200px;
+		}
+		.tips-msg p{
+			font-size: 18px;
+			color: #666666;
+		}
+	</style>
+<body>
+
+        <div class="tips-msg tip-city" hidden>
+			<img src="../image/noprompt.png"/>
+			<p>未找到符合条件的地址</p>
+		</div>
+        <div class="aui-content">
+	        <ul class="aui-list-view">
+	           
+	        </ul>
+	    </div>
+   
+</body>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript" src="../script/zepto.js"></script>
+<script type="text/javascript" src="../script/pengCmp/coreXP.js"></script>
+<script type="text/javascript" src="../script/pengCmp/configXP.js"></script>
+<script type="text/javascript" src="../script/store.min.js"></script>
+<script type="text/javascript" src="../script/template.js"></script>
+<script type="text/javascript" src="../script/linq.js"></script>
+<script type="text/javascript">
+     var pageParam = {};
+     apiready = function(){
+          pageParam = api.pageParam;
+          var paramArr = pageParam.paramArr;
+          if(paramArr.length>0){
+          
+          	  var html = template("cityListTemplate",pageParam);
+	          $(".aui-list-view").html(html);
+	          $(".aui-list-view").show();
+          	  $(".tips-msg").hide();
+          }else{
+          	  $(".tips-msg").show();
+	      	  $(".aui-list-view").hide();
+          }
+     	  
+     }
+     
+     function list_detail(){
+     	  pageParam     = store.get("req_localCityList");
+     	  var paramArr  = pageParam.paramArr;
+          if(paramArr.length>0){
+     	  
+	     	  var html = template("cityListTemplate",pageParam);
+		      $(".aui-list-view").html(html);
+		      $(".aui-list-view").show();
+          	  $(".tips-msg").hide();
+		  }else{
+		  	  $(".tips-msg").show();
+		  	  $(".aui-list-view").hide();
+		  }
+     }
+     
+     $("ul").on('click','li[textClick]',function(){
+        
+     	  var hisSelCityAddr         = {};
+     	  var city                   = pageParam.city;
+     	  var userid                 = pageParam.userid;
+     	  hisSelCityAddr.point       = {};
+     	  hisSelCityAddr.dataTitle   = $(this).attr("dataTitle");
+     	  hisSelCityAddr.dataAddress = $(this).attr("dataAddress");
+     	  hisSelCityAddr.dataCity    = $(this).attr("dataCity");
+     	  hisSelCityAddr.point.lng   = $(this).attr("dataLng");
+     	  hisSelCityAddr.point.lat   = $(this).attr("dataLat");
+     	  hisSelCityAddr.userid      = userid;
+     	 
+     	  //获得选择历史的记录
+     	  var hisSelCityAddrArr = store.get(configXP.localKey.historySelectCityAddress)||[];
+     	  //查找是否重复
+     	  var dataInfo          = nativeXP.jsonObjFilter("dataTitle",hisSelCityAddr.dataTitle,hisSelCityAddrArr);
+     	  if(!(nativeXP.isEmptyObject(dataInfo))){
+     	  	  var index = dataInfo.xp_index;
+     	  	  hisSelCityAddrArr.splice(index,1);
+     	  }
+     	  
+          hisSelCityAddrArr.unshift(hisSelCityAddr);
+          var hisSelLen = hisSelCityAddrArr.length;
+          if(hisSelLen  > configXP.historySel.hisSelectCitySelIndex){
+          	  hisSelCityAddrArr.splice(configXP.historySel.hisSelectCitySelIndex,hisSelLen);
+          }
+          /*var citySelCityArr = nativeXP.jsonArrFilter("dataCity",city,hisSelCityAddrArr);
+          var hisSelLen = citySelCityArr.length;
+          if(hisSelLen  > configXP.historySel.hisSelectCitySelIndex){
+          	 citySelCityArr.splice(configXP.historySel.hisSelectCitySelIndex,hisSelLen);
+          }
+          hisSelCityAddrArr = nativeXP.jsonArrRemove("dataCity",city,hisSelCityAddrArr);
+          nativeXP.mergeArr(hisSelCityAddrArr,citySelCityArr);*/
+          store.set(configXP.localKey.historySelectCityAddress,hisSelCityAddrArr);
+          api.sendEvent({
+			    		name: 'selectSearchInfo',
+			    		extra: hisSelCityAddr	
+	      });	
+          /*api.execScript({
+		    name: 'root',
+		    frameName: 'select_city_Addressfrm',
+		    script: 'reloadHistoryLocalData()'
+		  });
+		  api.closeFrame();*/
+
+     });
+</script>
+
+<script id="cityListTemplate" type="text/html">
+	 {{each paramArr as obj index}} 
+	      <li class="aui-list-view-cell" textClick dataCity="{{obj.city}}" dataTitle="{{obj.title}}" dataAddress="{{obj.address}}" dataLng="{{obj.point.lng}}" dataLat="{{obj.point.lat}}">
+		            <div >{{obj.title}}<small>{{obj.address}}</small></div>
+		  </li>
+     {{/each}}
+</script>
+</html>

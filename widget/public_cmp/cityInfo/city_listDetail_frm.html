@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+</head>
+<style>
+		body {
+			background: #f7f9f8;
+		}
+		
+		small {
+			color: #999;
+			display: block;
+		}
+		.tips-msg{
+			position: fixed;
+			top: 30%;
+			left: 50%;
+			-webkit-transform: translateX(-50%);
+			transform: translateX(-50%);
+			text-align: center;
+		}
+		.tips-msg img{
+			width: 200px;
+		}
+		.tips-msg p{
+			font-size: 18px;
+			color: #666666;
+		}
+	</style>
+<body>
+    <div class="tips-msg tip-city" hidden>
+    	        <img  src="../../image/noprompt.png"/>
+			<p>未找到符合条件的城市</p>
+	</div>
+    <div class="aui-content">
+        <ul class="aui-list-view">
+            
+        </ul>
+    </div>
+   
+</body>
+<script type="text/javascript" src="../../script/api.js" ></script>
+<script type="text/javascript" src="../../script/zepto.js"></script>
+<script type="text/javascript" src="../../script/pengCmp/coreXP.js"></script>
+<script type="text/javascript" src="../../script/pengCmp/configXP.js"></script>
+<script type="text/javascript" src="../../script/store.min.js"></script>
+<script type="text/javascript" src="../../script/template.js"></script>
+<script type="text/javascript">
+     apiready = function(){
+     	  var pageParam  = api.pageParam;
+     	  var paramArr   = pageParam.paramArr;
+	      if(paramArr.length > 0){
+	      	   var html = template("cityListTemplate",pageParam);
+	           $(".aui-list-view").html(html);
+	           $(".aui-list-view").show();
+          	   $(".tips-msg").hide();
+	      }else{
+	      	   $(".tips-msg").show();
+	      	   $(".aui-list-view").hide();
+          	
+	      }
+	      
+	    //html页面a：
+		api.addEventListener({
+		    name: 'reqCityList'
+		}, function(ret, err) {
+		    list_detail(ret.value);
+		});
+     	
+     	  
+     }
+     
+     	
+    
+
+    
+     
+     function list_detail(pageParam){
+     	  var paramArr  = pageParam.paramArr;
+     	   if(paramArr.length > 0){
+	      	    var html = template("cityListTemplate",pageParam);
+	            $(".aui-list-view").html(html);
+	            $(".aui-list-view").show();
+          	    $(".tips-msg").hide();
+	      }else{
+	      	    $(".tips-msg").show();
+	      	    $(".aui-list-view").hide();
+	      }
+     }
+     
+     $("ul").on('click','li[textClick]',function(){
+     	  var historySel   = configXP.localKey.historyShenpiDomesticSel;
+		  var historyIndex = configXP.historySel.historyShenpiDomesticIndex;
+     	  var ext       = {};
+     	  ext.dataValue = $(this).attr("dataValue");
+		  ext.dataSpac  = $(this).attr("dataSpac");
+		  ext.dataTags  = $(this).attr("dataTags");
+		  ext.dataSzm   = $(this).attr("dataSzm");
+		  ext.dataType  = $(this).attr("dataType");
+		  
+		  if(ext.dataType  == "1"){
+		  	  historySel = configXP.localKey.historyShenpiInternationSel;
+		  }
+		  //获得选择历史的记录
+		  var list = store.get(historySel) || [];
+		  //查找是否重复
+		  var dataInfo = nativeXP.jsonObjFilter("dataValue", ext.dataValue, list);
+		  if(!(nativeXP.isEmptyObject(dataInfo))) {
+				var index = dataInfo.xp_index;
+				list.splice(index, 1);
+		  }
+		  list.unshift(ext);
+          var len = list.length;
+		  if(len > historyIndex) {
+				list.splice(historyIndex, len);
+		  }
+		  store.set(historySel, list);
+		  
+     	  api.sendEvent({
+                    name: 'selectedCity',
+                    extra: ext
+          });
+          
+         
+     });
+</script>
+
+<script id="cityListTemplate" type="text/html">
+	 {{each paramArr as obj index}} 
+		    <li class="aui-list-view-cell" textClick  dataTags="{{obj.dataTags}}" dataSpac="{{obj.dataSpac}}" dataValue="{{obj.dataValue}}" dataSzm="{{obj.dataSzm}}" dataType="{{obj.dataType}}">
+		         <div class="aui-arrow-right">{{obj.dataValue}}</div>
+		    </li>
+     {{/each}}
+</script>
+</html>

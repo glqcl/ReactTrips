@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<link rel="stylesheet" type="text/css" href="../css/animation.css">
+		<link rel="stylesheet" type="text/css" href="../css/aui.css" />
+	    <link rel="stylesheet" type="text/css" href="../css/pengCmp/simPanelXP.css"/>		
+		<link rel="stylesheet" type="text/css" href="../css/main_aui.css" /><!--样式添加修改-->
+		<script type="text/javascript" src="../script/api.js"></script>
+        <script type="text/javascript" src="../script/zepto.js"></script>
+        <script type="text/javascript" src="../script/pengCmp/coreXP.js"></script>
+        <script type="text/javascript" src="../script/pengCmp/simPannelXP.js"></script>
+        <style>
+    	        body{
+          	       background-color: rgba(0, 0, 0, 0)!important;
+                }
+                .gen_pop_list{padding: 10px;}
+                .gen_pop_list li{line-height: 32px;}
+        </style>
+        
+
+	</head>
+	<body class="user_central">
+		  
+	</body>
+	
+	<script>
+	      var str = [
+				'<div class="gen_pop_list">',
+					'<li operation = "camera">',
+						'拍照',
+					'</li>',
+					'<li operation="album">',
+						'相册',
+					'</li>',
+					'<li operation="library">',
+						'图片库',
+					'</li>',
+				'</div>'
+			].join('');
+			
+			
+			  nativeXP.SimPannel({
+						    pannelHtml: str,
+						    pannelMess: '选择',
+						    pannelStyle: {
+							      width: 200,
+							      height: 190
+						    },
+						    attachFn: function() {
+							     
+						},
+						pannelBtnArr: []
+			   });	
+			
+			 var pageParam = {};
+			 var winName   = {};
+			 var frameName = {};
+			 var index     = {};
+			 var winWid    = {};
+			 var winHei    = {};
+			 apiready = function(){
+		  	   
+			  	  pageParam  = api.pageParam;
+	              winName    = pageParam.winName;
+	              frameName  = pageParam.frameName;	
+	              index      = pageParam.index;
+		          winWid     = document.documentElement.clientWidth;
+			      winHei     = document.documentElement.clientHeight;
+		          
+		          nativeXP.SimPannel({
+						    pannelHtml: str,
+						    pannelMess: '选择',
+						    pannelStyle: {
+							      width: 200,
+							      height: 190
+						    },
+						    attachFn: function() {
+					        
+						    },
+					     	pannelBtnArr: []
+			       });			
+		  	    
+		    }
+		    
+		    $(function(){
+		    	
+		    	     //用于添加节点事件绑定
+			      $(".gen_pop_list").on("click" , 'li' , function(e) {
+			            e.stopPropagation();
+			            var operation = $(this).attr("operation");
+			            nativeXP.camera({operation:operation,targetHeight:800,targetHeight:600},function(ret, err){
+			            	     if (ret) {
+							    if(ret.data != ""){
+							        if(winName!=null){
+							        	       api.execScript({
+							            	    	    name      :  winName,
+											    frameName :  frameName,
+											    script: 'caramCallBack("'+ret.data+'" , "'+index+'");'
+										   });
+					            	    	
+					            	    }else{
+					            	    	       api.execScript({
+											    frameName: frameName,
+											    script: 'caramCallBack("'+ret.data+'" , "'+index+'");'
+										   });
+					            	     }
+
+					            	    	setTimeout(function(){
+						                	    api.closeFrame();
+									},200);
+					               
+								}
+							} 
+			            });
+
+			      });
+		    });
+		 	
+	</script>
+</html>

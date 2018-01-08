@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+<head>
+	<title>indexed</title>
+	<meta name="full-screen" content="yes">
+	<meta name="browsermode" content="application">
+	<meta name="x5-orientation" content="portrait">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="x5-page-mode" content="app">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<link rel="stylesheet" href="../css/city_css.css"/>
+
+	<style>
+		 header a{
+			position:absolute;
+			display:block;
+			height:44px;
+			width:44px;
+			top:0;left:0;
+			background: url(../image/header-goback.png) center center no-repeat;
+			background-size:auto 40% ;
+		}
+
+		header input.empty{
+			background:#fff;
+			background-image: url(../image/search.jpg);
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size:auto 90% ;
+		}
+
+		header input.infocus {
+					background: #fff;
+					background-image: url(../image/search.jpg);
+					text-align: left;
+					left: 10px;
+					background-repeat: no-repeat;
+					background-size: auto 90%;
+					background-position: center center;
+		}
+
+
+	</style>
+	
+    <script id="getCityInfoTemplate" type="text/html">
+		<li data-group="HOT" class="first group">热门</li>
+		<div id="hotListElemId">
+			{{each hotList as city index}}
+			<li class='hot' dataValue="{{city.dataValue}}" dataCityId="{{city.cityId}}" dataTags="{{city.dataTags}}" dataSpac='{{city.dataSpac}}' dataSzm='{{city.dataSzm}}' dataCt="{{city.ct}}">{{city.ct}}<span>{{city.dataValue.substring(city.ct.length,city.dataValue.length)}}</span></li>
+			{{/each}}
+		</div>
+		<li data-group="history" class="first group">历史</li>
+		<div id="historyListElemId">
+	
+		</div>
+		<div id="cityListElemId">
+			{{each list as obj index}}
+			<li data-group="{{obj.groupname}}" class="group">{{obj.groupname}}</li>
+			{{each obj.citylist as city subIndex}}
+			<li class='normal' dataValue="{{city.dataValue}}" dataCityId="{{city.cityId}}" dataTags="{{city.dataTags}}" dataSpac='{{city.dataSpac}}' dataSzm='{{city.dataSzm}}' dataCt="{{city.ct}}" dataLng="{{city.Lng}}" dataLat="{{city.Lat}}">{{city.ct}} {{city.dataValue.substring(city.ct.length,city.dataValue.length)}}</li>
+			{{/each}}
+			{{/each}}
+		</div>
+		<center style="display:none;"><img src="../image/empty.png" style="width:160px;margin-top:100px;"><p style="color:#333;padding:15px;">未找到相关信息</p></center>
+	</script>
+
+<script id="getOtherListTemplate" type="text/html">
+	{{each list as city index}}
+	<li class='hot' dataValue="{{city.dataValue}}" dataCityId="{{city.cityId}}" dataTags="{{city.dataTags}}" dataSpac='{{city.dataSpac}}' dataSzm='{{city.dataSzm}}' dataCt="{{city.ct}}"><span>{{city.ct}}</span>{{city.dataValue.substring(city.ct.length,city.dataValue.length)}}</li>
+	{{/each}}
+</script>
+	<script type="text/javascript" src="../script/jq.js"></script>
+	<script type="text/javascript" src="cityInfo/js/city_airport_data.js"></script>
+	<script type="text/javascript" src="../script/store.min.js"></script>
+	<script type="text/javascript" src="../script/template.js"></script>
+	<script type="text/javascript" src="../script/pengCmp/configXP.js"></script>
+	<script type="text/javascript" src="../script/pengCmp/coreXP.js"></script>
+	<script type="text/javascript" src="../script/tripledes.js" ></script>
+    <script type="text/javascript" src="../script/mode-ecb-min.js" ></script>
+    <script type="text/javascript" src="../script/aes.js"></script>
+	
+</head>
+
+<body>
+<header><a></a><input id="searchInfoId" type="text" class="empty"/><p>取消</p></header>
+
+<ul>
+	<li class="big" data="NOWADD">
+		当前
+	</li>
+	<li class="big" data="HOT">
+		热门
+	</li>
+	<li class="big" data="history">
+		历史
+	</li>
+
+	<li>
+		A
+	</li>
+	<li>
+		B
+	</li>
+	<li>
+		C
+	</li>
+	<li>
+		D
+	</li>
+	<li>
+		E
+	</li>
+	<li>
+		F
+	</li>
+	<li>
+		G
+	</li>
+	<li>
+		H
+	</li>
+	<li>
+		J
+	</li>
+	<li>
+		K
+	</li>
+	<li>
+		L
+	</li>
+	<li>
+		M
+	</li>
+	<li>
+		N
+	</li>
+	<li>
+		P
+	</li>
+	<li>
+		Q
+	</li>
+	<li>
+		R
+	</li>
+	<li>
+		S
+	</li>
+	<li>
+		T
+	</li>
+	<li>
+		W
+	</li>
+	<li>
+		X
+	</li>
+	<li>
+		Y
+	</li>
+	<li>
+		Z
+	</li>
+</ul>
+<article>
+	<ol>
+        <li  id="currentDivId" data-group="NOWADD" class="first group">当前</li>
+		<div id="positionElemId">
+			<li class="hot" dataSpac="CCLJGJ" dataCityId="CC" dataTags="CHANGCHUNLONGJIAGUOJI" dataSzm="CGQ" dataValue="长春龙嘉国际机场" dataText="长春龙嘉国际机场" dataCt="长春">
+				<span>长春</span>龙嘉国际机场
+			</li>
+		</div>
+
+	</ol>
+</article>
+
+<div class="showPin">
+</div>
+</div>
+<script>  
+            var localDataStoreKey = configXP.localDataKey.CityCarAirportInfo;
+			var dataInfoStore     = store.get(localDataStoreKey);
+			var historyLocalSel   = configXP.localKey.historyAirportCitySel;
+			var hisInfoIndex      = configXP.historySel.hisAirportCitySelIndex;
+			
+			if(dataInfoStore == null || dataInfoStore.list == null || dataInfoStore.list.length == 0){
+				dataInfoStore = dataCityJson;
+			}
+		
+			loadDataTmp(dataInfoStore);
+			
+			//时间戳
+			var timestamp = Date.parse(new Date());
+	        timestamp = timestamp / 1000;
+	    	    var parmData    = {
+	    	     	Sign    : configXP.phpSign.Sign,
+				service : 'CityInfo.getAirport',
+				TimeStamp:timestamp
+			};
+			//请求key
+			var urlData = tgParmsFun(parmData);
+            urlData += tgGetNewKeyStr(urlData, configXP.phpSign.Key);
+            $.ajax({
+						url: configXP.phpUrls.GetCityList,
+						data: urlData,
+						type: "get",
+						dataType: "json",
+						success: function(result) {
+							console.log(result);
+							var code   = result.Code;
+							if(code == "1"){
+								dataInfoJson = result.Result;
+								setTimeout(function(){
+									if(!(dataInfoJson == null || dataInfoJson.list == null || dataInfoJson.list.length == 0)){
+										store.set(localDataStoreKey,dataInfoJson);
+								    }
+								},500);
+							}
+							
+						}
+			});	
+			
+			apiready = function() {
+
+				pageParam = api.pageParam;
+				if(configXP.productionEnvir) {
+					var param = {};
+					param.type = "2"; //获得机场的json数据源
+					api.accessNative({
+						name: 'init',
+						extra: param
+					}, function(ret) {
+                        position    = {};
+						currentCity = ret.currentCity;
+		                currentInfo = ret.currentInfo;
+		                isshow      = ret.isshow;
+						position.lng    = ret.longitude;
+						position.lat    = ret.latitude;
+                        cityInfo(currentCity,currentInfo,position);
+						if(isshow == "0"){
+		    		       	    setTimeout(function(){
+		    		       	    	    $("#currentDivId").remove();
+                                 $("#positionElemId").remove();
+		    		       	    },200);
+						 }
+                     });
+
+				}
+
+				$('header a').click(function(){
+					//关闭webView
+	                api.closeWin();
+				});
+				if($("article").is(":empty")){
+					var articleH = $("article").height();
+					var ulliH = $("ul li").size();
+					$("ul li").css({
+						height:articleH/ulliH+"px",
+						lineHeight:articleH/ulliH+"px"
+					});
+				}
+				$("ul li").on("touchmove touchstart", function(e) {
+					event.preventDefault();
+					e = e || window.event;
+					findEle(e);
+				});
+				$("ul li").on("touchend", function(e) {
+					event.preventDefault();
+					$("DIV.showPin").hide();
+				});
+				var findEle = function(e) {
+					var touch = e.originalEvent.targetTouches[0];
+					var ele = document.elementFromPoint(touch.pageX, touch.pageY);
+					if(ele != "" && ele != null) {
+						$("li.group").each(function() {
+							if(ele.innerText.toUpperCase() == $(this).text().toUpperCase()) {
+								$("DIV.showPin").text(ele.innerText.toUpperCase());
+								$("DIV.showPin").show();
+								$("article").scrollTop(0);
+								top2 = $(this).position().top ;
+								$("article").scrollTop(top2);
+							}
+						})
+					}
+				}
+
+				var timeover;
+				$("input").on("input",function() {
+					_this = $(this);
+					var canShow = 1;
+					clearTimeout(timeover);
+					timeover = setTimeout(function(){
+						if(_this.val() != "") {
+							_this.removeClass("infocus");
+							_this.addClass("infocus2");
+							$("ol li").hide();
+							keyword = $.trim(_this.val().toUpperCase());
+							var regkeyWord = eval('/^'+keyword+'/');
+
+							$("ol li:not(.group,.hot)").each(function() {
+							    var dataSpac  = $(this).attr("dataSpac");
+                                var dataSzm   = $(this).attr("dataSzm");
+                                var dataValue = $(this).attr("dataValue");
+                                var dataTags  = $(this).attr("dataTags");
+                                if(dataTags.indexOf("JICHANG")){
+                                	    dataTags  = dataTags.substring(0,dataTags.length-7);
+                                }else if(dataTags.indexOf("HUOCHEZHAN")){
+                                	    dataTags  = dataTags.substring(0,dataTags.length-10);
+                                }
+
+                                if(dataSpac.indexOf(keyword) >= 0){
+                                        canShow = 0;
+										$(this).show();
+										$("center").hide();
+										$("ul").show();
+										$("article").scrollTop(0);
+
+                                }
+                                if(dataSzm.indexOf(keyword) >= 0){
+                                        canShow = 0;
+										$(this).show();
+										$("center").hide();
+										$("ul").show();
+										$("article").scrollTop(0);
+
+                                }
+                                if(dataTags.indexOf(keyword) >= 0){
+                                        canShow = 0;
+										$(this).show();
+										$("center").hide();
+										$("ul").show();
+										$("article").scrollTop(0);
+
+                                }
+                                if(dataValue.indexOf(keyword) >= 0){
+                                        canShow = 0;
+										$(this).show();
+										$("center").hide();
+										$("ul").show();
+										$("article").scrollTop(0);
+
+                                }
+
+
+
+							});
+							if(canShow) {
+								$("center").show();
+								$("ul").hide();
+							}
+						} else {
+							_this.removeClass("infocus2");
+							_this.addClass("infocus");
+							$("ol li").show();
+							$("ul").show();
+							$("center").hide();
+						}
+					},50);
+				});
+				showGroup = function (x) {
+					for(var i = x ; i >= 0 ; i--){
+						if($("ol>li,ol>div").eq(i).hasClass("group")){
+							$("ol>li,ol>div").eq(i).show();
+							break;
+						}
+					}
+				}
+				$("input").blur(function(){
+					if($(this).val() == ""){
+						$(this).removeClass().addClass("empty");
+					}
+				})
+				$("input").focus(function(){
+					$(this).removeClass().addClass("infocus") ;
+
+				});
+				$("header p").on("click",function () {
+					$("input").val("");
+					$("ol li").show();
+					$("ul").show();
+					$("center").hide();
+					$("input").blur().removeClass().addClass("empty");
+				});
+				$("div.shadow").on("touchstart",function () {
+					return false;
+				});
+			}
+			
+			$("ol").on("click","li:not(.group)",function () {
+
+					var dataValue = $(this).attr("dataValue");
+					var dataSpac = $(this).attr("dataSpac");
+					var dataTags = $(this).attr("dataTags");
+					var dataSzm = $(this).attr("dataSzm");
+					var dataCt = $(this).attr("dataCt");
+					var dataCityId = $(this).attr("dataCityId");
+					var ext = {};
+					ext.dataValue = dataValue;
+					ext.dataSpac = dataSpac;
+					ext.dataTags = dataTags;
+					ext.dataSzm = dataSzm;
+					ext.ct = dataCt;
+					ext.cityId = dataCityId;
+
+
+					//获得选择历史的记录
+					var list = store.get(historyLocalSel) || [];
+					//查找是否重复
+					var dataInfo = nativeXP.jsonObjFilter("dataValue", ext.dataValue, list);
+					if(!(nativeXP.isEmptyObject(dataInfo))) {
+						var index = dataInfo.xp_index;
+						list.splice(index, 1);
+					}
+                    list.unshift(ext);
+                    var len = list.length;
+					if(len > hisInfoIndex) {
+						list.splice(hisInfoIndex, len);
+					}
+					store.set(historyLocalSel, list);
+
+				    api.sendEvent({
+						name: 'selectedCity',
+						extra: ext
+					});
+
+            });
+
+			//获得城市的信息
+			function getCityInfo(jsonObj){
+			     var position    = {};
+			     var currentCity = "长春市";
+	             var currentInfo = "长春龙嘉机场";
+			     position.lng    = "1111.22";
+			     position.lat    = "1234.56";
+                 loadDataTmp(jsonObj,currentCity,currentInfo,position);
+
+			}
+
+		    //加载城市控件信息
+		    function loadDataTmp(jsonObj){
+		   
+			    	     var html = template("getCityInfoTemplate", jsonObj);
+					 $("ol").append(html);
+                    /*
+					 * 获得历史城市
+					 */
+					reloadHistoryLocalData();
+
+					//cityInfo(currentCity,currentInfo,position);
+             }
+
+			 //获得历史文件
+			 function reloadHistoryLocalData() {
+
+					var jsonObj = {};
+                    var list = store.get(historyLocalSel) || [];
+                    if(list.length == 0) {
+						$("#historyElemId").remove();
+						return;
+					}
+					jsonObj.list = list;
+					var html = template("getOtherListTemplate", jsonObj);
+
+					$("#historyListElemId").html(html);
+			}
+
+			//设置当前城市
+			cityInfo = function(currentCity,currentInfo,position){
+                    if(currentCity == null) {
+						currentCity = "";
+					}
+					currentCity = currentCity.substring(0, currentCity.length - 1)
+					var cityLen = currentCity.length;
+					if(cityLen > 0){
+						if(currentInfo !=null){
+							  currentInfo     = currentInfo.substring(cityLen,currentInfo.length)
+							  if(currentInfo.length>0){
+									currentInfo = currentInfo.substring(0,2);
+							  }
+
+						}
+					}
+
+
+				if(currentCity != "" || currentCity !=null) {
+					var list = "";
+					var elemLiArr = $('#cityListElemId li[dataValue^="' + currentCity + '"]');
+                    if(!(currentInfo == null || currentInfo == "")){
+						 for(var i = 0; i < elemLiArr.length; i++) {
+								var elemObj = elemLiArr[i];
+								var dataVal = $(elemObj).attr("dataValue");
+								var dataSpac = $(elemObj).attr("dataSpac");
+								var dataTags = $(elemObj).attr("dataTags");
+								var dataSzm = $(elemObj).attr("dataSzm");
+								var dataCt = $(elemObj).attr("dataCt");
+								var cityId = $(elemObj).attr("cityId");
+
+
+								if(dataVal.indexOf(currentInfo)>0)
+								{
+									 var aiport = dataVal.substring(currentCity.length, dataVal.length);
+									 list = '<li class="hot" dataValue=' + dataVal + ' dataCityId=' + cityId + ' dataSpac=' + dataSpac + ' dataTags=' + dataTags + ' dataSzm=' + dataSzm + ' dataCt=' + dataCt + ' dataText=' + dataVal + ' >' + currentCity + '<span>' + aiport + '</span></li>';
+
+								}
+						}
+
+					}else{
+
+
+						    var arenalatlngArr = [];
+						    for(var i=0 ; i < elemLiArr.length ; i++){
+							      var elemObj = elemLiArr[i];
+							      var arenalatlng  = {};
+							      arenalatlng.dataVal     = $(elemObj).attr("dataValue");
+							      arenalatlng.dataSpac    = $(elemObj).attr("dataSpac");
+							      arenalatlng.dataTags    = $(elemObj).attr("dataTags");
+								  arenalatlng.dataSzm     = $(elemObj).attr("dataSzm");
+								  arenalatlng.dataCt      = $(elemObj).attr("dataCt");
+								  arenalatlng.cityId      = $(elemObj).attr("cityId");
+							      arenalatlng.lat         = $(elemObj).attr("dataLng");
+                                  arenalatlng.lng         = $(elemObj).attr("dataLat");
+                                  arenalatlngArr.push(arenalatlng);
+						    }
+						    var minObj      = GetDistance(position,arenalatlngArr);
+						    var dataVal     = minObj.dataVal;
+						    var dataSpac    = minObj.dataSpac;
+							var dataTags    = minObj.dataTags;
+							var dataSzm     = minObj.dataSzm;
+							var dataCt      = minObj.dataCt;
+							var cityId      = minObj.cityId;
+
+						    var aiport = dataVal.substring(currentCity.length, dataVal.length);
+						    list = '<li class="hot" dataValue=' + dataVal + ' dataCityId=' + cityId + ' dataSpac=' + dataSpac + ' dataTags=' + dataTags + ' dataSzm=' + dataSzm + ' dataCt=' + dataCt + ' dataText=' + dataVal + ' >' + currentCity + '<span>' + aiport + '</span></li>';
+
+
+
+					}
+
+					$("#positionElemId").html(list);
+
+				}
+			}
+
+			//判断两个距离的经纬度
+		    function GetDistance(position,arenalatlngArr){
+
+		    	    var lat = position.lat;
+		    	    var lng = position.lng;
+		    	    var minPosition = {};
+		    	    var numArr = [];
+		        for(var i=0 ;i<arenalatlngArr.length; i++){
+		        	    var arenalatlng = arenalatlngArr[i];
+		        	    var newLat  = arenalatlng.lat;
+		        	    var newLng  = arenalatlng.lng;
+		        	    var radLat1 = Rad(lat);
+			        var radLat2 = Rad(newLat);
+			        var a = radLat1   - radLat2;
+			        var b = Rad(lng) - Rad(newLng);
+			        var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a/2),2) +
+			        Math.cos(radLat1)*Math.cos(radLat2)*Math.pow(Math.sin(b/2),2)));
+			        s = s *6378.137 ;// EARTH_RADIUS;
+			        s = Math.round(s * 10000) / 10000; //输出为公里
+			        arenalatlng.num = s;
+			        numArr.push(s);
+		        }
+		        var minVal = Math.min.apply(null, numArr);//最小值
+                var minObj = nativeXP.jsonObjFilter("num",minVal,arenalatlngArr);
+                return minObj;
+
+		    }
+
+		    function Rad(d){
+		       return d * Math.PI / 180.0;//经纬度转换成三角函数中度分表形式。
+		    }
+
+		</script>
+
+
+</html>

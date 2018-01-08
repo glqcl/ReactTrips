@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<link rel="stylesheet" href="../../css/api.css" />
+		<script src="../../script/api.js"></script>
+		<script src="../../script/zepto.js"></script>
+		<title></title>
+		<style>
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="map-title">
+				<span class="main-goback" onclick="api.closeFrame()"></span>
+				<h1>城市列表</h1>
+			</div>
+		</header>
+	</body>
+</html>
+<script type="text/javascript">
+	apiready = function() {
+		$('header').css('padding-top', '20px');
+		var systemType = api.systemType;
+		var pageParam = api.pageParam;
+		var height = $('header').height();
+		var width = $('body').width();
+		var header = $api.dom('header');
+		var headerH = $api.offset(header).h;
+		var city = "";
+		var UICityList = api.require('UICityList');
+		UICityList.open({
+			rect : {
+				x : 0,
+				y : height,
+				w : api.winWidth,
+				h : api.winHeight - headerH
+			},
+			resource : 'widget://res/cityList.json',
+			styles : {
+				searchBar : {
+					bgColor : '#696969',
+					cancelColor : '#E3E3E3'
+				},
+				location : {
+					color : '#696969',
+					size : 12
+				},
+				sectionTitle : {
+					bgColor : '#eee',
+					color : '#000',
+					size : 12
+				},
+				item : {
+					bgColor : '#fff',
+					activeBgColor : '#696969',
+					color : '#000',
+					size : 14,
+					height : 40
+				},
+				indicator : {
+					bgColor : '#fff',
+					color : '#696969'
+				}
+			},
+			currentCity : city,
+			locationWay : 'GPS',
+			hotTitle : '热门城市',
+			fixedOn : api.frameName,
+			placeholder : '输入城市名'
+		}, function(ret, err) {
+			if (ret) {
+				var eventType = ret.eventType;
+				if (eventType == "selected") {
+					var cityInfo = ret.cityInfo.city;
+					api.sendEvent({
+                    name: 'selectedcity',
+                    extra: {cityName: cityInfo}
+                });
+					api.closeFrame();
+				}
+			} else {
+				//alert( JSON.stringify( err ) );
+			}
+		});
+	}
+</script>

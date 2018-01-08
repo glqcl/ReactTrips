@@ -1,0 +1,61 @@
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+  height: 0;
+}
+html{font-size: 85px;font-family: "微软雅黑";}
+/*aui清除*/
+.aui-content{margin-bottom: 0!important;   }
+.aui-list-view{background: none!important;margin: 0!important;}
+.aui-list-view:after{border: none!important;}
+/*edu清除*/
+header{background: none!important;padding-top: 0!important;}
+
+/*Iphone5*/
+@media only screen and (min-width: 320px) {
+	html{font-size: 85px;}
+}
+/*Iphone6*/
+@media only screen and (min-width: 375px) {
+	html{font-size: 100px;}
+}
+/*Iphone6Plus*/
+@media only screen and (min-width: 414px) {
+	html{font-size: 110px;}
+}
+
+/*欢迎动画*/
+body.welcome{background: #1b3b54;overflow: hidden;}
+.topimg{width: 70%;margin:0.3rem auto 0.2rem;}
+.topimg img{width: 100%;}
+.txt{width: 80%;margin:0.5rem auto 0;}
+.txt h1{text-align: center;color:#ffffff;font-size: 0.26rem;font-weight: bold;opacity: 0;}
+.txp p.left{text-align: left;color:#FFFFFF;font-size: 0.2rem;opacity: 0;}
+.txp p.right{text-align: right;color:#ffffff;font-size: 0.2rem;opacity: 0;}
+.txp{width: 80%;margin: 0.5rem auto 0;}
+.topimg{
+	-webkit-animation:bounceInDown 0.5s linear forwards;
+	        animation:bounceInDown 0.5s linear forwards;
+}
+.txt h1{
+	-webkit-animation:rotateInDownLeft 0.5s linear forwards 0.5s;
+	        animation:rotateInDownLeft 0.5s linear forwards 0.5s;
+	        
+}
+.txp p.left{
+	-webkit-animation:fadeInLeft 0.5s linear forwards 1s;
+	        animation:fadeInLeft 0.5s linear forwards 1s;
+}
+.txp p.right{
+	-webkit-animation:fadeInRight 0.5s linear forwards 1s;
+	        animation:fadeInRight 0.5s linear forwards 1s;
+}
+
+
+
+
+
+
+
+

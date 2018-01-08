@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+	<meta name="format-detection" content="telphone=no, email=no" />
+	<link rel="stylesheet" href="css/api.css" />
+	<link rel="stylesheet" href="../../css/api.css" />
+	<link rel="stylesheet" href="../../css/aui2/aui.2.0.css"/>
+	<script type="text/javascript" src="../../script/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="../../script/tripledes.js" ></script>
+    <script type="text/javascript" src="../../script/mode-ecb-min.js" ></script>
+    <script type="text/javascript" src="../../script/aes.js"></script>
+	<script src="../../script/template.js"></script>
+	<script src="../../script/pengCmp/configXP.js"></script>
+    <script src="../../script/aui2/aui-dialog.js"></script>
+    <script src="../../script/store.min.js"></script>
+    <script src="../../script/pengCmp/configXP.js"></script>
+
+	<title></title>
+	<style>
+			html,
+			body {
+				background: #f5f5f5;
+			}
+
+			.fl {
+				float: left;
+			}
+
+			.fr {
+				float: right;
+			}
+
+			.ot {
+				color: #cb5738;
+			}
+
+			.alpha {
+				color: transparent;
+				color: #FFFFFF;
+			}
+
+			.item {
+				padding: 10px;
+				font-size: 14px;
+			}
+
+			.item ul {
+				background: #FFFFFF;
+				padding: 5px 10px;
+			}
+
+			.list1 {
+				margin-bottom: 10px;
+			}
+
+			.list1:last-child {
+				margin-bottom: 0px;
+			}
+
+			.list1 li {
+				background: url(image/zhiwei.png) left/20px auto no-repeat;
+				padding: 5px 0;
+				padding-left: 30px;
+			}
+
+			.list1 li:last-child {
+				background: url(image/city.png) left/20px auto no-repeat;
+			}
+
+			.list2 li {
+				background: url(image/jipiao.png) left/20px auto no-repeat!important;
+			}
+
+			.list3 li {
+				background: url(image/train.png) left/20px auto no-repeat!important;
+			}
+
+			.list4 li {
+				background: url(image/jiudian.png) left/20px auto no-repeat!important;
+			}
+
+			.list5 li {
+				background: url(image/car.png) left/20px auto no-repeat!important;
+			}
+
+			.list6 li {
+				background: url(image/buzhu.png) left/20px auto no-repeat!important;
+			}
+
+			.list1 a {
+				color: #1a4b74;
+				border-bottom: 1px solid #1a4b74;
+			}
+
+			.list1 p {
+				color: #666666;
+			}
+
+			.list2 {
+				margin-bottom: 0;
+				border-bottom: 1px solid #f5f5f5;
+			}
+
+			.list2-detail p {
+				line-height: 25px;
+			}
+
+			.biaozhun-mask {
+				display: none;
+				z-index: 999;
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background: rgba(0, 0, 0, .9);
+				padding: 20px 10px;
+			}
+
+			.biaozhun-mask h1,
+			.biaozhun-mask h2 {
+				font-size: 16px;
+				color: #FFFFFF;
+			}
+
+			.biaozhun-mask p {
+				font-size: 14px;
+				color: #FFFFFF;
+				margin-bottom: 20px;
+				line-height: 22px;
+			}
+
+			.biaozhun-mask h1 {
+				text-align: center;
+				border-bottom: 1px solid #FFFFFF;
+				padding: 10px 0;
+			}
+
+			.biaozhun-mask h2 {
+				line-height: 50px;
+			}
+		</style>
+</head>
+
+<body>
+
+<div class="item">
+	<ul class="list1 clearfix" >
+		<li class="fl" id="zhiweiId"></li>
+		<li class="fr city-btn" hidden>
+			<a href="##">城市级别</a>
+		</li>
+	</ul>
+	<ul class="list1 list2">
+		<li>机票</li>
+	</ul>
+	<ul class="list1 list2-detail" id="plainDeailId">
+	</ul>
+	<ul class="list1 list2 list3">
+		<li>火车票</li>
+	</ul>
+	<ul class="list1 list2-detail" id="tarinDeailId">
+		<!--<p>列车标准 ：<span>特快/动车/高铁</span></p>
+        <p>座位标准 ：<span>无座/硬座/硬卧</span></p>-->
+	</ul>
+	<ul class="list1 list2 list4">
+		<li>酒店</li>
+	</ul>
+	<ul class="list1 list2-detail" id="hotelDetailId">
+		<!--<p>一线城市 ：<span>1~500元</span></p>
+        <p>二线城市 ：<span>1~400元</span></p>
+        <p>三线城市 ：<span>1~300元</span></p>
+        <p>其他城市 ：<span>1~200元</span></p>
+        <p>星级标准城市 ：<span>无限制</span></p>-->
+	</ul>
+	<ul class="list1 list2 list5">
+		<li>用车</li>
+	</ul>
+	<ul class="list1 list2-detail" id="carDetailId">
+		<!--<p>租凭标准 ：<span>1~200元</span></p>
+        <p>车辆标准 ：<span>经济型</span></p>-->
+	</ul>
+	<ul class="list1 list2 list6">
+		<li>差旅补助</li>
+	</ul>
+	<ul class="list1 list2-detail" id="subsidyDeailId">
+		<!--<p>一线城市 ：<span>150元</span></p>
+        <p>二线城市 ：<span>100元</span></p>-->
+	</ul>
+</div>
+<div class="biaozhun-mask">
+	<h1>城市级别</h1>
+	<div id="cityLevelDivId">
+		<!--<h2>一线城市：</h2>
+		<p>北京、上海、广州、深圳</p>
+		<h2>二线城市：</h2>
+		<p>北京、上海、广州、深圳</p>
+		<h2>三线城市：</h2>
+		<p>北京、上海、广州、深圳、北京、上海、广州、深圳、深 圳、上海、广州、深圳、北京、上海、广州、深圳、深圳、 上海、广州、深圳、北京、上海、广州、深圳、深圳
+		</p>-->
+	</div>
+</div>
+</body>
+<script src="sctipt/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+		$(function() {
+			$(".city-btn").on("click", function() {
+				showAnimate(-1);
+				$(".biaozhun-mask").show();
+				showAnimate(-1);
+			})
+			$(".biaozhun-mask").on('click', function() {
+				showAnimate(-1);
+				$(this).hide();
+			})
+			$(".main-goback").click(function(){
+			    window.trigp.closeWin();
+			});
+		})
+	</script>
+
+</html>
+
+<script id="plainDeailTemplate" type="text/html">
+	{{each plain as obj index}}
+	{{if obj.title == null}}
+	      <p>{{obj.key}} ：<span>{{obj.value}}</span></p>
+	{{else}}
+		  <p>{{obj.key}} ：<span class="ot">{{obj.title}}</span></p>
+		  <p><span class="alpha"></span><span>{{obj.value}}</span></p>
+	{{/if}}
+	{{/each}}
+</script>
+
+<script id="trainDeailTemplate" type="text/html">
+	{{each train as obj index}}
+	<p>{{obj.key}} ：<span>{{obj.value}}</span></p>
+	{{/each}}
+</script>
+
+<script id="hotelDeailTemplate" type="text/html">
+	{{each hotel as obj index}}
+		{{if obj.key == "星级标准"}}
+		     {{if obj.value.indexOf("之") > 0}}
+		           <p>{{obj.key}} ：<span>{{obj.value.substring(0,obj.value.length-1)}}</span></p>      
+		     {{else}}
+		          <p>{{obj.key}} ：<span>{{obj.value}}星级</span></p>
+		     {{/if}}
+	    {{else}}
+	         <p>{{obj.key}} ：<span>{{obj.value}}</span></p>
+	    {{/if}}
+	{{/each}}
+</script>
+
+<script id="carDeailTemplate" type="text/html">
+	{{each car as obj index}}
+	<p>{{obj.key}} ：<span>{{obj.value}}</span></p>
+	{{/each}}
+</script>
+
+<script id="subsidyDeailTemplate" type="text/html">
+	{{each reimtype as obj index}}
+	       <p>{{obj.key}} ：<span>补{{obj.value}}元/天</span></p>
+	{{/each}}
+</script>
+
+<script id="cityLevelTemplate" type="text/html">
+	{{each citylist as obj index}}
+	     <h2>{{obj.key}}</h2>
+	     <p>{{obj.value}}</p>
+	{{/each}}
+</script>
+
+<script>
+    //console.log(configXP.phpUrls.GetStandardTravel);
+    var dialog = new auiDialog();
+   
+    
+    //getResult('{user_id:235719}');
+   
+	function getResult(obj){
+		 var obj    = eval("(" + obj + ")");
+		 //显示loading 加载
+         showAnimate(1);
+         setTimeout(function(){ 
+         	  //显示loading 加载
+              showAnimate(-1);
+         },3000);
+		 var user_id = obj.user_id;
+		 var timestamp = Date.parse(new Date());
+         timestamp = timestamp / 1000;
+    	     var parmData    = {
+    	     	Sign    : configXP.phpSign.Sign,
+			service : 'ApproveTest.getStandardTravel',
+			user_id : user_id,
+			product_type : '1,2,4,5',
+			TimeStamp:timestamp
+		 };
+		 
+		 var urlData = tgParmsFun(parmData);
+	     urlData += tgGetNewKeyStr(urlData, configXP.phpSign.Key);
+
+		 $.ajax({
+				url: configXP.phpUrls.GetStandardTravel,
+				data: urlData,
+				type: "get",
+				dataType: "json",
+				success: function(result) {
+					if(result == null || result ==""){
+						 	 setTimeout(function(){
+							 	  dialog.alert({
+										title:   "尊敬的用户,系统没有查出您的政策信息",
+				                        buttons: ['确定']
+							      },function(){
+							      	    //关闭窗体
+							      	    window.trigp.closeWin();
+							      });
+							      showAnimate(-1);
+							 });
+					}else{
+						 	 showAnimate(-1);
+							 var code      = result.Code;
+							 var message   = result.Message;
+							 var role_name = result.role_name;
+							 
+							 if(code == 1){
+							 	 var Result    = result.Result;
+							 	 if(role_name !=null){
+							 	      $("#zhiweiId").html('职位：'+role_name);
+							    }else{
+							          var explain = Result.policyList[0][0].explain;
+							          setTimeout(function(){
+							          	   dialog.alert({
+												title: explain,
+						                        buttons: ['确定']
+										   },function(){
+										   	    //关闭窗体
+							      	            window.trigp.closeWin();
+										   });
+										   showAnimate(-1);
+									  },1000);
+							 	 }
+							     var plainhtml = template("plainDeailTemplate",Result);
+								 $("#plainDeailId").html(plainhtml);
+								 var trainhtml = template("trainDeailTemplate",Result);
+						         $("#tarinDeailId").html(trainhtml);
+								 var hotelhtml = template("hotelDeailTemplate",Result);
+								 $("#hotelDetailId").html(hotelhtml);
+						         var carhtml       = template("carDeailTemplate",Result);
+						         $("#carDetailId").html(carhtml);
+						         var subsidyhtml   = template("subsidyDeailTemplate",Result);
+						         $("#subsidyDeailId").html(subsidyhtml);
+						         var cityLevelhtml = template("cityLevelTemplate",Result);
+						         $("#cityLevelDivId").html(cityLevelhtml);
+						         showAnimate(-1);
+							 }else{
+							 	 var Result    = result.Result;
+							 	 setTimeout(function(){
+							 	 	 dialog.alert({
+											title: Result.policyList[0][0].explain,
+					                        buttons: ['确定']
+									 },function(){
+							      	        //关闭窗体
+							      	        window.trigp.closeWin();
+							         });
+									 showAnimate(-1);
+							 	 },1000);
+							 
+							 }
+						 	
+						 }
+				}
+		});
+		
+		 
+	}
+</script>

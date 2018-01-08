@@ -1,0 +1,35 @@
+@charset "utf-8";
+/*====== pannel样式 ======*/
+.pannelWrapper {position:fixed;left:0;top:0;width:100%;height:100%;z-index:998;background:transparent;
+	-webkit-animation:fadeIn .3s ease;
+			animation:fadeIn .3s ease;
+}
+.pannelBox {width:300px;position:absolute;left:50%;top:50%;z-index:999;border-radius:8px;overflow:auto;
+	-webkit-animation:zoomIn .3s ease;
+			animation:zoomIn .3s ease;
+}
+.pannelClose {padding:4px;position:absolute;right:5px;top:5px;cursor:pointer;z-index:999;
+	-webkit-transform:scale(1.4);
+			transform:scale(1.4);
+}
+.pannelMain {margin:35px 0 10px;height:200px;overflow-y:auto;}
+.pannelMain iframe {width:100%;height:100%;}
+
+.pannelWrapper.f-hide {
+	-webkit-animation:fadeOut .3s ease;
+			animation:fadeOut .3s ease;
+}
+.pannelWrapper.f-hide .pannelBox {
+	-webkit-animation:zoomOut .3s ease;
+			animation:zoomOut .3s ease;
+}
+
+.pannelAction {width:100%;position:absolute;left:0;bottom:0;text-align:center;display:-webkit-box;display:-webkit-flex;display:flex;}
+.pannelBtn {display:block;width:50%;line-height:3em;text-align:center;color:#2886cc;}
+.pannelBtn:nth-child(1) {border-right:1px solid #ddd;border-top:1px solid #ddd;border-bottom-left-radius:8px;}
+.pannelBtn:nth-child(2) {border-top:1px solid #ddd;border-bottom-right-radius:8px;}
+.pannelBtn:hover {background:#f5f5f5;}
+.pannelBtn:visited {background:#fff;}
+ 
+
+

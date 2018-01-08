@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<script src="sctipt/rem.js"></script>
+		<script src="../script/zepto.js"></script>
+		<script src="../script/pengCmp/coreXP.js"></script>
+		<script src="../script/template.js"></script>
+		<title></title>
+		<style>
+			html,
+			body {
+				background: #FFFFFF;
+			}
+			
+			.fl {
+				float: left;
+			}
+			
+			.fr {
+				float: right;
+			}
+			
+			.ot {
+				color: #cb5738;
+			}
+			
+			.help-program {
+				padding: 0 16px;
+			}
+			
+			.help-program h1 {
+				line-height: 50px;
+				font-size: 16px;
+			}
+			
+			.help-program-title {
+				border-bottom: 1px solid #666666;
+				margin-bottom: 20px;
+			}
+			.help-program p{
+				color: #666666;
+				font-size: 14px;
+				line-height: 1.5;
+			}
+		</style>
+	</head>
+
+	<body>
+	
+		<div class="help-program">
+			<div class="help-program-title">
+				<h1 style="line-height:22px;padding:10px 0;"></h1>
+			</div>
+			<p>
+			</p>
+		</div>
+	</body>
+	<script src="sctipt/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$(".city-btn").on("click", function() {
+				$(".biaozhun-mask").show();
+			})
+			$(".biaozhun-mask").on('click', function() {
+				$(this).hide();
+			})
+		});
+		
+		
+		apiready = function(){
+			
+			$(".main-goback").click(function(){
+				api.closeWin();
+			});
+			var pageParam = api.pageParam;
+			var title     = pageParam.title;
+			var content   = pageParam.content;
+			$(".help-program").find("h1").text(title);
+			$(".help-program").find("p").html(content);
+		}
+		
+	</script>
+
+</html>

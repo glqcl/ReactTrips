@@ -1,0 +1,259 @@
+body{
+	position: relative;
+}
+/* 1-7 8-10 11-15 16-21*/
+body, html {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: #000
+	
+}
+@media only screen and (min-width: 320px) {
+	html {
+		font-size: 16.66666666px;
+	}
+}
+@media only screen and (min-width: 375px) {
+	html {
+		font-size: 19.53125px;
+	}
+}
+@media only screen and (min-width: 414px) {
+	html {
+		font-size: 21.8750px;
+	}
+}
+@media only screen and (min-width: 600px) {
+	html {
+		font-size: 31.25px;
+	}
+}
+@media only screen and (min-width: 720px) {
+	html {
+		font-size: 37.5px;
+	}
+}
+@media only screen and (min-width: 800px) {
+	html {
+		font-size: 42.6666px;
+	}
+}
+@media only screen and (min-width: 1200px) {
+	html {
+		font-size: 62.5px;
+	}
+}
+@media only screen and (min-width: 1450px) {
+	html {
+		font-size: 100px;
+	}
+}
+.top-btn{
+	position: fixed;
+	max-width: 100%;
+	margin:0 auto;
+	max-height: 100%;
+	top: 1rem;
+}
+.pre,.next,.close_btn{
+	width: 5rem;
+	height: 1.5rem;
+	position: fixed;
+	top: 1rem;
+	/*background: #F0AD4E;*/
+}
+.pre{
+	left: 0;
+}
+.close_btn{
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+}
+.next{
+	right: 0;
+}
+.page1 {
+	max-width: 100%;
+	margin:0 auto;
+	max-height: 100%;
+}
+.page-cur{
+	max-width: 100%;
+	margin:0 auto;
+	max-height: 100%;
+	position: absolute;
+	-webkit-animation: helpCur 2s infinite both;
+	animation: helpCur 2s infinite both;
+}
+@-webkit-keyframes helpCur{
+	0% {opacity: 0;}
+	50% {opacity: 1;}
+	100% {opacity: 0;}
+}
+@keyframes helpCur{
+	0% {opacity: 0;}
+	50% {opacity: 1;}
+	100% {opacity: 0;}
+}
+.page-btn{
+	background: transparent;
+	/*background: #ffffff;*/
+	color: transparent;
+	z-index: 100
+	/*-webkit-animation: shan 1.5s infinite both;
+	animation: shan 1.5s infinite both;
+	opacity: 0;
+	border-radius: 10px;*/
+	}
+/*@-webkit-keyframes shan{
+	from{opacity: 0;color: transparent;}
+	to{opacity: 0.5;box-shadow: 0 0 5px 2px #fff;color: transparent;}
+}*/
+.page1_btn {
+	position: absolute;
+	top: 43%;
+	height: 5.8rem;
+	width: 100%
+}
+.page2_btn {
+	position: absolute;
+	height: 2.7rem;
+	width: 100%;
+	bottom: 0
+}
+.page3_btn {
+	position: absolute;
+	height: 2.5rem;
+	width: 100%;
+	bottom: 0
+}
+.page4_btn {
+	position: absolute;
+	height: 2.5rem;
+	width: 100%;
+	top:49%;
+}
+.page5_btn {
+	position: absolute;
+	height: 15rem;
+	width: 100%;
+	top:10%;
+}
+.page6_btn {
+	position: absolute;
+	height: 1.7rem;
+	width: 5rem;
+	top: 33%;
+	right:1rem;
+}
+.page7_btn {
+	position: absolute;
+	height: 5rem;
+	width: 100%;
+	top: 3rem;
+	right:0;
+}
+.page8_btn {
+	position: absolute;
+	height: 1.7rem;
+	width: 8rem;
+	top: 40%;
+	right:1rem;
+}
+.page9_btn {
+	position: absolute;
+	height: 7.5rem;
+	width: 100%;
+	top:10%;
+	right:0;
+}
+.page10_btn {
+	position: absolute;
+	height: 2.5rem;
+	width: 50%;
+	bottom: 0;
+	right: 0;
+}
+.page11_btn {
+	position: absolute;
+	top: 62%;
+	height: 6.5rem;
+	width: 100%
+}
+.page13_btn {
+	position: absolute;
+	height: 4.6rem;
+	width: 100%;
+	top:25%;
+	right:0;
+}
+.page14_btn {
+	position: absolute;
+	height: 1.7rem;
+	width: 100%;
+	top:22%;
+	right:0;
+}
+.page14_btn-1 {
+	position: absolute;
+	height: 2rem;
+	width: 100%;
+	top:32%;
+	right:0;
+}
+
+.page15_btn {
+	position: absolute;
+	height: 1.7rem;
+	width: 5rem;
+	top: 25%;
+	right:0.7rem;
+}
+.page17_btn {
+	position: absolute;
+	height: 2.5rem;
+	width: 100%;
+	top:18%;
+	right:0;
+}
+.page18_btn {
+	position: absolute;
+	height: 1.7rem;
+	width: 8rem;
+	top: 31%;
+	right:1rem;
+}
+.page19_btn {
+	position: absolute;
+	height: 2.5rem;
+	width: 50%;
+	bottom: 0;
+	left: 0;
+}
+.pageall_btn{
+	position: absolute;
+	top: 10%;
+	height: 5.8rem;
+	width: 100%;
+	height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

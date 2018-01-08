@@ -1,0 +1,1116 @@
+{
+list: [
+{
+groupname: "A",
+citylist: [
+{
+dataSpac: "AMGJJC",
+dataTags: "AOMENGUOJIJICHANG",
+dataSzm: "MFM",
+dataValue: "澳门国际机场",
+cityId: "am",
+ct: "澳门",
+Lat: "22.163498",
+Lng: "113.582961"
+},
+{
+dataSpac: "ASTAJC",
+dataTags: "ANSHANTENGAOJICHANG",
+dataSzm: "AOG",
+dataValue: "鞍山腾鳌机场",
+cityId: "as",
+ct: "鞍山",
+Lat: "41.114949",
+Lng: "122.875192"
+}
+]
+},
+{
+groupname: "B",
+citylist: [
+{
+dataSpac: "BJSDGJJC",
+dataTags: "BEIJINGSHOUDUGUOJIJICHANG",
+dataSzm: "PEK",
+dataValue: "北京首都国际机场",
+cityId: "bj",
+ct: "北京",
+Lat: "40.08597",
+Lng: "116.59458"
+},
+{
+dataSpac: "BJNYJC",
+dataTags: "BEIJINGNANYUANJICHANG",
+dataSzm: "NAY",
+dataValue: "北京南苑机场",
+cityId: "bj",
+ct: "北京",
+Lat: "39.803966",
+Lng: "116.405492"
+},
+{
+dataSpac: "XSBNGSGJJC",
+dataTags: "XISHUANGBANNAGASAGUOJIJICHANG",
+dataSzm: "JHG",
+dataValue: "西双版纳嘎洒国际机场",
+cityId: "bn",
+ct: "西双版纳",
+Lat: "21.976475",
+Lng: "100.772973"
+},
+{
+dataSpac: "BTELBJC",
+dataTags: "BAOTOUERLIBANJICHANG",
+dataSzm: "BAV",
+dataValue: "包头二里半机场",
+cityId: "bt",
+ct: "包头",
+Lat: "40.570978",
+Lng: "110.010927"
+},
+{
+dataSpac: "CBSJC",
+dataTags: "CHANGBAISHANJICHANG",
+dataSzm: "NBS",
+dataValue: "长白山机场",
+cityId: "baishan",
+ct: "白山",
+Lat: "42.075556",
+Lng: "127.623974"
+}
+]
+},
+{
+groupname: "C",
+citylist: [
+{
+dataSpac: "ZQJBGJJC",
+dataTags: "ZHONGQINGJIANGBEIGUOJIJICHANG",
+dataSzm: "CKG",
+dataValue: "重庆江北国际机场",
+cityId: "cq",
+ct: "重庆",
+Lat: "29.727921",
+Lng: "106.647656"
+},
+{
+dataSpac: "CDSLGJJC",
+dataTags: "CHENGDUSHUANGLIUGUOJIJICHANG",
+dataSzm: "CTU",
+dataValue: "成都双流国际机场",
+cityId: "cd",
+ct: "成都",
+Lat: "30.585034",
+Lng: "103.965048"
+},
+{
+dataSpac: "CSHHGJJC",
+dataTags: "CHANGSHAHUANGHUAGUOJIJICHANG",
+dataSzm: "CSX",
+dataValue: "长沙黄花国际机场",
+cityId: "chs",
+ct: "长沙",
+Lat: "28.198522",
+Lng: "113.226329"
+},
+{
+dataSpac: "CCLJGJJC",
+dataTags: "CHANGCHUNLONGJIAGUOJIJICHANG",
+dataSzm: "CGQ",
+dataValue: "长春龙嘉国际机场",
+cityId: "cc",
+ct: "长春",
+Lat: "44.000164",
+Lng: "125.704287"
+},
+{
+dataSpac: "CZBNJC",
+dataTags: "CHANGZHOUBENNIUJICHANG",
+dataSzm: "CZX",
+dataValue: "常州奔牛机场",
+cityId: "cz",
+ct: "常州",
+Lat: "31.916777",
+Lng: "119.794221"
+}
+]
+},
+{
+groupname: "D",
+citylist: [
+{
+dataSpac: "DTYGJC",
+dataTags: "DATONGYUNGANGJICHANG",
+dataSzm: "DAT",
+dataValue: "大同云冈机场",
+cityId: "dt",
+ct: "大同",
+Lat: "40.060951",
+Lng: "113.493212"
+},
+{
+dataSpac: "DLZSZGJJC",
+dataTags: "DALIANZHOUSHUIZIGUOJIJICHANG",
+dataSzm: "DLC",
+dataValue: "大连周水子国际机场",
+cityId: "dl",
+ct: "大连",
+Lat: "38.968753",
+Lng: "121.55064"
+},
+{
+dataSpac: "DLJC",
+dataTags: "DALIJICHANG",
+dataSzm: "DLU",
+dataValue: "大理机场",
+cityId: "dali",
+ct: "大理",
+Lat: "25.659774",
+Lng: "100.336857"
+},
+{
+dataSpac: "DDLTGJJC",
+dataTags: "DANDONGLANGTOUGUOJIJICHANG",
+dataSzm: "DDG",
+dataValue: "丹东浪头国际机场",
+cityId: "dandong",
+ct: "丹东",
+Lat: "40.039675",
+Lng: "124.293233"
+},
+{
+dataSpac: "DQSETJC",
+dataTags: "DAQINGSAERTUJICHANG",
+dataSzm: "DQA",
+dataValue: "大庆萨尔图机场",
+cityId: "dq",
+ct: "大庆",
+Lat: "46.755272",
+Lng: "125.149606"
+}
+]
+},
+{
+groupname: "E",
+citylist: [
+{
+dataSpac: "EEDSYJHLJC",
+dataTags: "EERDUOSIYIJINHUOLUOJICHANG",
+dataSzm: "DSN",
+dataValue: "鄂尔多斯伊金霍洛机场",
+cityId: "erds",
+ct: "鄂尔多斯",
+Lat: "39.505995",
+Lng: "109.873299"
+}
+]
+},
+{
+groupname: "F",
+citylist: [
+{
+dataSpac: "FZZLGJJC",
+dataTags: "FUZHOUCHANGLEGUOJIJICHANG",
+dataSzm: "FOC",
+dataValue: "福州长乐国际机场",
+cityId: "fz",
+ct: "福州",
+Lat: "25.934518",
+Lng: "119.678874"
+},
+{
+dataSpac: "FSSDJC",
+dataTags: "FOSHANSHADIJICHANG",
+dataSzm: "FUO",
+dataValue: "佛山沙堤机场",
+cityId: "fs",
+ct: "佛山",
+Lat: "23.079681",
+Lng: "113.083613"
+}
+]
+},
+{
+groupname: "G",
+citylist: [
+{
+dataSpac: "GZBYGJJC",
+dataTags: "GUANGZHOUBAIYUNGUOJIJICHANG",
+dataSzm: "CAN",
+dataValue: "广州白云国际机场",
+cityId: "gz",
+ct: "广州",
+Lat: "23.391914",
+Lng: "113.309886"
+},
+{
+dataSpac: "LJJC",
+dataTags: "LIANGJIANGJICHANG",
+dataSzm: "KWL",
+dataValue: "两江机场",
+cityId: "gl",
+ct: "桂林",
+Lat: "25.229992",
+Lng: "110.059598"
+},
+{
+dataSpac: "GYLDBGJJC",
+dataTags: "GUIYANGLONGDONGBAOGUOJIJICHANG",
+dataSzm: "KWE",
+dataValue: "贵阳龙洞堡国际机场",
+cityId: "gy",
+ct: "贵阳",
+Lat: "26.547052",
+Lng: "106.806153"
+},
+{
+dataSpac: "XGGJJC",
+dataTags: "XIAOGANGGUOJIJICHANG",
+dataSzm: "KHH",
+dataValue: "小港国际机场",
+cityId: "gaoxiong",
+ct: "高雄",
+Lat: "22.580884",
+Lng: "120.351273"
+}
+]
+},
+{
+groupname: "H",
+citylist: [
+{
+dataSpac: "HZXSGJJC",
+dataTags: "HANGZHOUXIAOSHANGUOJIJICHANG",
+dataSzm: "HGH",
+dataValue: "杭州萧山国际机场",
+cityId: "hz",
+ct: "杭州",
+Lat: "30.24123",
+Lng: "120.443981"
+},
+{
+dataSpac: "HKMLGJJC",
+dataTags: "HAIKOUMEILANGUOJIJICHANG",
+dataSzm: "HAK",
+dataValue: "海口美兰国际机场",
+cityId: "haikou",
+ct: "海口",
+Lat: "19.944145",
+Lng: "110.468613"
+},
+{
+dataSpac: "XGGJJC",
+dataTags: "XIANGGANGGUOJIJICHANG",
+dataSzm: "HKG",
+dataValue: "香港国际机场",
+cityId: "hk",
+ct: "香港",
+Lat: "22.318259",
+Lng: "113.945081"
+},
+{
+dataSpac: "HFXQGJJC",
+dataTags: "HEFEIXINQIAOGUOJIJICHANG",
+dataSzm: "HFE",
+dataValue: "合肥新桥国际机场",
+cityId: "hf",
+ct: "合肥",
+Lat: "31.969393",
+Lng: "117.016491"
+},
+{
+dataSpac: "GEBTPGJJC",
+dataTags: "HAERBINTAIPINGGUOJIJICHANG",
+dataSzm: "HRB",
+dataValue: "哈尔滨太平国际机场",
+cityId: "hrb",
+ct: "哈尔滨",
+Lat: "45.629063",
+Lng: "126.248904"
+},
+{
+dataSpac: "HHHTBTGJJC",
+dataTags: "HUHEHAOTEBAITAGUOJIJICHANG",
+dataSzm: "HET",
+dataValue: "呼和浩特白塔国际机场",
+cityId: "hu",
+ct: "呼和浩特",
+Lat: "40.861591",
+Lng: "111.827735"
+},
+{
+dataSpac: "HLJC",
+dataTags: "HUALIANJICHANG",
+dataSzm: "HLN",
+dataValue: "花莲机场",
+cityId: "hualian",
+ct: "花莲",
+Lat: "24.032821",
+Lng: "121.624728"
+},
+{
+dataSpac: "HZPTJC",
+dataTags: "HUIZHOUPINGTANJICHANG",
+dataSzm: "HUZ",
+dataValue: "惠州平潭机场",
+cityId: "huizhou",
+ct: "惠州",
+Lat: "23.063006",
+Lng: "114.602589"
+},
+{
+dataSpac: "HLEDSJC",
+dataTags: "HAILAERDONGSHANJICHANG",
+dataSzm: "HLD",
+dataValue: "海拉尔东山机场",
+cityId: "hlbe",
+ct: "呼伦贝尔",
+Lat: "49.215625",
+Lng: "119.861815"
+},
+{
+dataSpac: "HALSJC",
+dataTags: "HUAIANLIANSHUIJICHANG",
+dataSzm: "HIA",
+dataValue: "淮安涟水机场",
+cityId: "ha",
+ct: "淮安",
+Lat: "33.800028",
+Lng: "119.147888"
+},
+{
+dataSpac: "HSTXJC",
+dataTags: "HUANGSHANTUNXIJICHANG",
+dataSzm: "TXN",
+dataValue: "黄山屯溪机场",
+cityId: "huangshan",
+ct: "黄山",
+Lat: "29.739025",
+Lng: "118.272104"
+}
+]
+},
+{
+groupname: "J",
+citylist: [
+{
+dataSpac: "JNYQGJJC",
+dataTags: "JINANYAOQIANGGUOJIJICHANG",
+dataSzm: "TNA",
+dataValue: "济南遥墙国际机场",
+cityId: "jn",
+ct: "济南",
+Lat: "36.856818",
+Lng: "117.219742"
+},
+{
+dataSpac: "LSJC",
+dataTags: "LUSHANJICHANG",
+dataSzm: "JIU",
+dataValue: "庐山机场",
+cityId: "jj",
+ct: "九江",
+Lat: "29.494993",
+Lng: "115.820219"
+},
+{
+dataSpac: "JLETZJC",
+dataTags: "JILINERTAIZIJICHANG",
+dataSzm: "JIL",
+dataValue: "吉林二台子机场",
+cityId: "jl",
+ct: "吉林",
+Lat: "44.0048",
+Lng: "126.392913"
+},
+{
+dataSpac: "HZXSGJJC",
+dataTags: "HANGZHOUXIAOSHANGUOJIJICHANG",
+dataSzm: "HGH",
+dataValue: "杭州萧山国际机场",
+cityId: "jx",
+ct: "嘉兴",
+Lat: "30.24123",
+Lng: "120.443981"
+}
+]
+},
+{
+groupname: "K",
+citylist: [
+{
+dataSpac: "KMZSJC",
+dataTags: "KUNMINGCHANGSHUIJICHANG",
+dataSzm: "KMG",
+dataValue: "昆明长水机场",
+cityId: "km",
+ct: "昆明",
+Lat: "25.101827",
+Lng: "102.93434"
+}
+]
+},
+{
+groupname: "L",
+citylist: [
+{
+dataSpac: "LYBJJC",
+dataTags: "LUOYANGBEIJIAOJICHANG",
+dataSzm: "LYA",
+dataValue: "洛阳北郊机场",
+cityId: "luoyang",
+ct: "洛阳",
+Lat: "34.741431",
+Lng: "112.399981"
+},
+{
+dataSpac: "LZZCJC",
+dataTags: "LANZHOUZHONGCHUANJICHANG",
+dataSzm: "LHW",
+dataValue: "兰州中川机场",
+cityId: "lz",
+ct: "兰州",
+Lat: "36.513679",
+Lng: "103.623837"
+},
+{
+dataSpac: "LJSYJC",
+dataTags: "LIJIANGSANYIJICHANG",
+dataSzm: "LJG",
+dataValue: "丽江三义机场",
+cityId: "lj",
+ct: "丽江",
+Lat: "26.67194",
+Lng: "100.254165"
+},
+{
+dataSpac: "LSGGGJJC",
+dataTags: "LASAGONGGAGUOJIJICHANG",
+dataSzm: "LXA",
+dataValue: "拉萨贡嘎国际机场",
+cityId: "lasa",
+ct: "拉萨",
+Lat: "29.301913",
+Lng: "90.914917"
+},
+{
+dataSpac: "LZBLJC",
+dataTags: "LIUZHOUBAILIANJICHANG",
+dataSzm: "LZH",
+dataValue: "柳州白莲机场",
+cityId: "liuzhou",
+ct: "柳州",
+Lat: "24.215088",
+Lng: "109.416389"
+},
+{
+dataSpac: "LYSBLJC",
+dataTags: "LINYISHUBULINGJICHANG",
+dataSzm: "LYI",
+dataValue: "临沂沭埠岭机场",
+cityId: "linyi",
+ct: "临沂",
+Lat: "35.050349",
+Lng: "118.457573"
+},
+{
+dataSpac: "LCGZSJC",
+dataTags: "LIANCHENGGUANZHISHANJICHANG",
+dataSzm: "LCX",
+dataValue: "连城冠豸山机场",
+cityId: "ly",
+ct: "龙岩",
+Lat: "25.691723",
+Lng: "116.771983"
+}
+]
+},
+{
+groupname: "M",
+citylist: [
+{
+dataSpac: "MYNJJC",
+dataTags: "MIANYANGNANJIAOJICHANG",
+dataSzm: "MIG",
+dataValue: "绵阳南郊机场",
+cityId: "mianyang",
+ct: "绵阳",
+Lat: "31.438119",
+Lng: "104.762918"
+},
+{
+dataSpac: "HLBEMZLXJJC",
+dataTags: "HULUNBEIERMANZHOULIXIJIAOJICHANG",
+dataSzm: "NZH",
+dataValue: "呼伦贝尔满洲里西郊机场",
+cityId: "manzl",
+ct: "满洲里",
+Lat: "49.576997",
+Lng: "117.370561"
+}
+]
+},
+{
+groupname: "N",
+citylist: [
+{
+dataSpac: "NJLKGJJC",
+dataTags: "NANJINGLUKOUGUOJIJICHANG",
+dataSzm: "NKG",
+dataValue: "南京禄口国际机场",
+cityId: "nj",
+ct: "南京",
+Lat: "31.739597",
+Lng: "118.877729"
+},
+{
+dataSpac: "NBLSGJJC",
+dataTags: "NINGBOLISHEGUOJIJICHANG",
+dataSzm: "NGB",
+dataValue: "宁波栎社国际机场",
+cityId: "nb",
+ct: "宁波",
+Lat: "29.825116",
+Lng: "121.473044"
+},
+{
+dataSpac: "NNWWGJJC",
+dataTags: "NANNINGWUWEIGUOJIJICHANG",
+dataSzm: "NNG",
+dataValue: "南宁吴圩国际机场",
+cityId: "nn",
+ct: "南宁",
+Lat: "22.615281",
+Lng: "108.178301"
+},
+{
+dataSpac: "NTXDJC",
+dataTags: "NANTONGXINGDONGJICHANG",
+dataSzm: "NTG",
+dataValue: "南通兴东机场",
+cityId: "nt",
+ct: "南通",
+Lat: "32.082945",
+Lng: "120.993206"
+},
+{
+dataSpac: "NCCBGJJC",
+dataTags: "NANCHANGCHANGBEIGUOJIJICHANG",
+dataSzm: "KHN",
+dataValue: "南昌昌北国际机场",
+cityId: "nc",
+ct: "南昌",
+Lat: "28.865002",
+Lng: "115.91912"
+}
+]
+},
+{
+groupname: "Q",
+citylist: [
+{
+dataSpac: "QDLTGJJC",
+dataTags: "QINGDAOLIUTINGGUOJIJICHANG",
+dataSzm: "TAO",
+dataValue: "青岛流亭国际机场",
+cityId: "qd",
+ct: "青岛",
+Lat: "36.273833",
+Lng: "120.392415"
+},
+{
+dataSpac: "QZJJGJJC",
+dataTags: "QUANZHOUJINJIANGGUOJIJICHANG",
+dataSzm: "JJN",
+dataValue: "泉州晋江国际机场",
+cityId: "qz",
+ct: "泉州",
+Lat: "24.806086",
+Lng: "118.599012"
+},
+{
+dataSpac: "JNJC",
+dataTags: "JININGJICHANG",
+dataSzm: "JNG",
+dataValue: "济宁机场",
+cityId: "qf",
+ct: "曲阜",
+Lat: "35.303234",
+Lng: "116.363043"
+},
+{
+dataSpac: "QHDJC",
+dataTags: "QINHUANGDAOJICHANG",
+dataSzm: "SHP",
+dataValue: "秦皇岛机场",
+cityId: "qhd",
+ct: "秦皇岛",
+Lat: "39.971875",
+Lng: "119.758745"
+},
+{
+dataSpac: "QQGESJZJC",
+dataTags: "QIQIHAERSANJIAZIJICHANG",
+dataSzm: "NDG",
+dataValue: "齐齐哈尔三家子机场",
+cityId: "qqhr",
+ct: "齐齐哈尔",
+Lat: "47.259798",
+Lng: "123.930451"
+}
+]
+},
+{
+groupname: "S",
+citylist: [
+{
+dataSpac: "SHHQGJJC",
+dataTags: "SHANGHAIHONGQIAOGUOJIJICHANG",
+dataSzm: "SHA",
+dataValue: "上海虹桥国际机场",
+cityId: "sh",
+ct: "上海",
+Lat: "31.201274",
+Lng: "121.353518"
+},
+{
+dataSpac: "SHPDGJJC",
+dataTags: "SHANGHAIPUDONGGUOJIJICHANG",
+dataSzm: "PVG",
+dataValue: "上海浦东国际机场",
+cityId: "sh",
+ct: "上海",
+Lat: "31.156197",
+Lng: "121.80933"
+},
+{
+dataSpac: "SZBAGJJC",
+dataTags: "SHENZHENBAOANGUOJIJICHANG",
+dataSzm: "SZX",
+dataValue: "深圳宝安国际机场",
+cityId: "sz",
+ct: "深圳",
+Lat: "22.631355",
+Lng: "113.820151"
+},
+{
+dataSpac: "SYFHGJJC",
+dataTags: "SANYAFENGHUANGGUOJIJICHANG",
+dataSzm: "SYX",
+dataValue: "三亚凤凰国际机场",
+cityId: "sanya",
+ct: "三亚",
+Lat: "18.313788",
+Lng: "109.418647"
+},
+{
+dataSpac: "SYTXGJJC",
+dataTags: "SHENYANGTAOXIANGUOJIJICHANG",
+dataSzm: "SHE",
+dataValue: "沈阳桃仙国际机场",
+cityId: "sy",
+ct: "沈阳",
+Lat: "41.646101",
+Lng: "123.503419"
+},
+{
+dataSpac: "SNSFGJJC",
+dataTags: "SUNANSHUOFANGGUOJIJICHANG",
+dataSzm: "WUX",
+dataValue: "苏南硕放国际机场",
+cityId: "su",
+ct: "苏州",
+Lat: "31.504368",
+Lng: "120.44183"
+},
+{
+dataSpac: "SJZZDJC",
+dataTags: "SHIJIAZHUANGZHENGDINGJICHANG",
+dataSzm: "SJW",
+dataValue: "石家庄正定机场",
+cityId: "sjz",
+ct: "石家庄",
+Lat: "38.284634",
+Lng: "114.705215"
+},
+{
+dataSpac: "JYCSJC",
+dataTags: "JIEYANGCHAOSHANJICHANG",
+dataSzm: "SWA",
+dataValue: "揭阳潮汕机场",
+cityId: "st",
+ct: "汕头",
+Lat: "23.559769",
+Lng: "116.527309"
+},
+{
+dataSpac: "HZXSGJJC",
+dataTags: "HANGZHOUXIAOSHANGUOJIJICHANG",
+dataSzm: "HGH",
+dataValue: "杭州萧山国际机场",
+cityId: "sx",
+ct: "绍兴",
+Lat: "30.24123",
+Lng: "120.443981"
+}
+]
+},
+{
+groupname: "T",
+citylist: [
+{
+dataSpac: "TJBHGJJC",
+dataTags: "TIANJINBINHAIGUOJIJICHANG",
+dataSzm: "TSN",
+dataValue: "天津滨海国际机场",
+cityId: "tj",
+ct: "天津",
+Lat: "39.136764",
+Lng: "117.365596"
+},
+{
+dataSpac: "TYWXGJJC",
+dataTags: "TAIYUANWUSUGUOJIJICHANG",
+dataSzm: "TYN",
+dataValue: "太原武宿国际机场",
+cityId: "ty",
+ct: "太原",
+Lat: "37.760889",
+Lng: "112.638822"
+},
+{
+dataSpac: "TBTY（ZZ）GJJC",
+dataTags: "TAIBEITAOYUAN（ZHONGZHENG）GUOJIJICHANG",
+dataSzm: "TPE",
+dataValue: "台北桃园（中正）国际机场",
+cityId: "tb",
+ct: "台北",
+Lat: "25.08552",
+Lng: "121.240716"
+},
+{
+dataSpac: "TBSSJC",
+dataTags: "TAIBEISONGSHANJICHANG",
+dataSzm: "TSA",
+dataValue: "台北松山机场",
+cityId: "tb",
+ct: "台北",
+Lat: "25.069243",
+Lng: "121.558614"
+},
+{
+dataSpac: "TZQQGJC",
+dataTags: "TAIZHONGQINGQUANGANGJICHANG",
+dataSzm: "RMQ",
+dataValue: "台中清泉岗机场",
+cityId: "taizhong",
+ct: "台中",
+Lat: "24.261335",
+Lng: "120.607548"
+},
+{
+dataSpac: "TZLQJC",
+dataTags: "TAIZHOULUQIAOJICHANG",
+dataSzm: "HYN",
+dataValue: "台州路桥机场",
+cityId: "tz",
+ct: "台州",
+Lat: "28.567509",
+Lng: "121.434576"
+}
+]
+},
+{
+groupname: "W",
+citylist: [
+{
+dataSpac: "WHTHGJJC",
+dataTags: "WUHANTIANHEGUOJIJICHANG",
+dataSzm: "WUH",
+dataValue: "武汉天河国际机场",
+cityId: "wh",
+ct: "武汉",
+Lat: "30.776745",
+Lng: "114.218541"
+},
+{
+dataSpac: "WZLWGJJC",
+dataTags: "WENZHOULONGWANGUOJIJICHANG",
+dataSzm: "WNZ",
+dataValue: "温州龙湾国际机场",
+cityId: "wz",
+ct: "温州",
+Lat: "27.918183",
+Lng: "120.860154"
+},
+{
+dataSpac: "WHDSBJC",
+dataTags: "WEIHAIDASHUIBOJICHANG",
+dataSzm: "WEH",
+dataValue: "威海大水泊机场",
+cityId: "weihai",
+ct: "威海",
+Lat: "37.194319",
+Lng: "122.247294"
+},
+{
+dataSpac: "SNSFGJJC",
+dataTags: "SUNANSHUOFANGGUOJIJICHANG",
+dataSzm: "WUX",
+dataValue: "苏南硕放国际机场",
+cityId: "wx",
+ct: "无锡",
+Lat: "31.504368",
+Lng: "120.44183"
+}
+]
+},
+{
+groupname: "X",
+citylist: [
+{
+dataSpac: "XAXYJC",
+dataTags: "XIANXIANYANGJICHANG",
+dataSzm: "XIY",
+dataValue: "西安咸阳机场",
+cityId: "xa",
+ct: "西安",
+Lat: "34.443387",
+Lng: "108.756597"
+},
+{
+dataSpac: "SMGQGJJC",
+dataTags: "XIAMENGAOQIGUOJIJICHANG",
+dataSzm: "XMN",
+dataValue: "厦门高崎国际机场",
+cityId: "xm",
+ct: "厦门",
+Lat: "24.539917",
+Lng: "118.138611"
+},
+{
+dataSpac: "WLMQDWBGJJC",
+dataTags: "WULUMUQIDIWOBAOGUOJIJICHANG",
+dataSzm: "URC",
+dataValue: "乌鲁木齐地窝堡国际机场",
+cityId: "xj",
+ct: "乌鲁木齐",
+Lat: "43.913466",
+Lng: "87.48053"
+},
+{
+dataSpac: "XGLLJC",
+dataTags: "XIANGGELILAJICHANG",
+dataSzm: "DIG",
+dataValue: "香格里拉机场",
+cityId: "xgll",
+ct: "香格里拉",
+Lat: "27.799202",
+Lng: "99.720382"
+},
+{
+dataSpac: "XNBJBJC",
+dataTags: "XININGCAOJIABAOJICHANG",
+dataSzm: "XNN",
+dataValue: "西宁曹家堡机场",
+cityId: "xn",
+ct: "西宁",
+Lat: "36.537009",
+Lng: "102.053118"
+},
+{
+dataSpac: "XCQSJC",
+dataTags: "XICHANGQINGSHANJICHANG",
+dataSzm: "XIC",
+dataValue: "西昌青山机场",
+cityId: "xichang",
+ct: "西昌",
+Lat: "27.990691",
+Lng: "102.202861"
+},
+{
+dataSpac: "XZGYJC",
+dataTags: "XUZHOUGUANYINJICHANG",
+dataSzm: "XUZ",
+dataValue: "徐州观音机场",
+cityId: "xz",
+ct: "徐州",
+Lat: "34.059647",
+Lng: "117.568473"
+}
+]
+},
+{
+groupname: "Y",
+citylist: [
+{
+dataSpac: "YCGGJC",
+dataTags: "YUNCHENGGUANGONGJICHANG",
+dataSzm: "YCU",
+dataValue: "运城关公机场",
+cityId: "yuncheng",
+ct: "运城",
+Lat: "35.119572",
+Lng: "111.045698"
+},
+{
+dataSpac: "YTPLGJJC",
+dataTags: "YANTAIPENGLAIGUOJIJICHANG",
+dataSzm: "YNT",
+dataValue: "烟台蓬莱国际机场",
+cityId: "yt",
+ct: "烟台",
+Lat: "37.668155",
+Lng: "121.009282"
+},
+{
+dataSpac: "YLYYJC",
+dataTags: "YULINYUYANGJICHANG",
+dataSzm: "UYN",
+dataValue: "榆林榆阳机场",
+cityId: "yl",
+ct: "榆林",
+Lat: "38.374645",
+Lng: "109.616204"
+},
+{
+dataSpac: "YCHDJC",
+dataTags: "YINCHUANHEDONGJICHANG",
+dataSzm: "INC",
+dataValue: "银川河东机场",
+cityId: "yinchuan",
+ct: "银川",
+Lat: "38.335711",
+Lng: "106.40331"
+},
+{
+dataSpac: "YZTZJC",
+dataTags: "YANGZHOUTAIZHOUJICHANG",
+dataSzm: "YTY",
+dataValue: "扬州泰州机场",
+cityId: "yz",
+ct: "扬州",
+Lat: "32.571227",
+Lng: "119.732338"
+},
+{
+dataSpac: "YWJC",
+dataTags: "YIWUJICHANG",
+dataSzm: "YIW",
+dataValue: "义乌机场",
+cityId: "yiwu",
+ct: "义乌",
+Lat: "29.355053",
+Lng: "120.044513"
+}
+]
+},
+{
+groupname: "Z",
+citylist: [
+{
+dataSpac: "ZHJWGJJC",
+dataTags: "ZHUHAIJINWANGUOJIJICHANG",
+dataSzm: "ZUH",
+dataValue: "珠海金湾国际机场",
+cityId: "zh",
+ct: "珠海",
+Lat: "22.018001",
+Lng: "113.382561"
+},
+{
+dataSpac: "ZZXZGJJC",
+dataTags: "ZHENGZHOUXINZHENGGUOJIJICHANG",
+dataSzm: "CGO",
+dataValue: "郑州新郑国际机场",
+cityId: "zz",
+ct: "郑州",
+Lat: "34.528249",
+Lng: "113.84823"
+},
+{
+dataSpac: "ZYXZGJJC",
+dataTags: "ZUNYIXINZHOUGUOJIJICHANG",
+dataSzm: "ZYI",
+dataValue: "遵义新舟国际机场",
+cityId: "zunyi",
+ct: "遵义",
+Lat: "27.805933",
+Lng: "107.260099"
+},
+{
+dataSpac: "ZSPTSJC",
+dataTags: "ZHOUSHANPUTUOSHANJICHANG",
+dataSzm: "HSN",
+dataValue: "舟山普陀山机场",
+cityId: "zhoushan",
+ct: "舟山",
+Lat: "29.94405",
+Lng: "122.374717"
+}
+]
+}
+],
+hotList: [
+{
+dataSpac: "BJSDGJJC",
+dataTags: "BEIJINGSHOUDUGUOJIJICHANG",
+dataSzm: "PEK",
+dataValue: "北京首都国际机场",
+cityId: "bj",
+ct: "北京",
+Lat: "40.08597",
+Lng: "116.59458"
+},
+{
+dataSpac: "SHHQGJJC",
+dataTags: "SHANGHAIHONGQIAOGUOJIJICHANG",
+dataSzm: "SHA",
+dataValue: "上海虹桥国际机场",
+cityId: "sh",
+ct: "上海",
+Lat: "31.201274",
+Lng: "121.353518"
+},
+{
+dataSpac: "GZBYGJJC",
+dataTags: "GUANGZHOUBAIYUNGUOJIJICHANG",
+dataSzm: "CAN",
+dataValue: "广州白云国际机场",
+cityId: "gz",
+ct: "广州",
+Lat: "23.391914",
+Lng: "113.309886"
+},
+{
+dataSpac: "SZBAGJJC",
+dataTags: "SHENZHENBAOANGUOJIJICHANG",
+dataSzm: "SZX",
+dataValue: "深圳宝安国际机场",
+cityId: "sz",
+ct: "深圳",
+Lat: "22.631355",
+Lng: "113.820151"
+},
+{
+dataSpac: "CDSLGJJC",
+dataTags: "CHENGDUSHUANGLIUGUOJIJICHANG",
+dataSzm: "CTU",
+dataValue: "成都双流国际机场",
+cityId: "cd",
+ct: "成都",
+Lat: "30.585034",
+Lng: "103.965048"
+},
+{
+dataSpac: "CCLJGJJC",
+dataTags: "CHANGCHUNLONGJIAGUOJIJICHANG",
+dataSzm: "CGQ",
+dataValue: "长春龙嘉国际机场",
+cityId: "cc",
+ct: "长春",
+Lat: "44.000164",
+Lng: "125.704287"
+}
+]
+}

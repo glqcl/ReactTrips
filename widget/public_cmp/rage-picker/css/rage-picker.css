@@ -1,0 +1,137 @@
+nav {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	padding: 10px 0;
+	background: #FFFFFF;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+	border-bottom: 1px solid #f5f5f5;
+}
+
+nav p {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex: 1;
+	flex: 1;
+	justify-content: center;
+	font-size: 14px;
+}
+
+p.picker-alert {
+	position: fixed;
+	background: rgba(0, 0, 0, .6);
+	bottom: 60px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	z-index: 10;
+	color: #FFFFFF;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.data h1 {
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	font-size: 14px;
+	border: solid #f5f5f5;
+	border-width: 1px 0 1px 0;
+	padding: 10px 0;
+}
+
+.data-number {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.data-number dl {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	padding: 25px 0;
+	position: relative;
+	width: 14.285%;
+	cursor: pointer;
+}
+
+.data-number dl dt,
+.data-number dl dd {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	justify-content: center;
+	font-size: 14px;
+	/*font-weight: bold;*/
+}
+
+.gt {
+	color: #ccc!important;
+}
+
+.gt dt {
+	color: #ccc!important;
+}
+
+.ot {
+	color: #ff6f5c;
+}
+
+.start-bt {
+	background: #009ff0!important;
+	color: #FFFFFF!important;
+}
+
+.start-bt:after {
+	content: "入住";
+	position: absolute;
+	top: 5px;
+	left: 50%;
+	width: 100%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	text-align: center;
+}
+
+.start-bt dt {
+	color: #FFFFFF!important;
+}
+
+.middle-bt {
+	background: #62c1f4!important;
+	color: #FFFFFF!important;
+}
+
+.middle-bt dt {
+	color: #FFFFFF!important;
+}
+
+.end-bt {
+	background: #009ff0!important;
+	color: #FFFFFF!important;
+}
+
+.end-bt:after {
+	content: "离店";
+	position: absolute;
+	top: 5px;
+	left: 50%;
+	width: 100%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	text-align: center;
+}
+
+.end-bt dt {
+	color: #FFFFFF!important;
+}

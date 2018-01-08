@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link  rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui2/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui2/aui-indexed-list.css" />
+     <style>
+			body {
+				font-size: 14px;
+			}
+			
+			.aui-list-view-cell:after {
+				margin-right: 20%;
+				border-bottom: 1px solid #e2e2e2
+			}
+			
+			.aui-indexed-list-bar a {
+				font-size: 12px;
+				height: 16px;
+				line-height: 16px;
+				font-weight: 100
+			}
+			
+			.aui-list-view-cell {
+				font-size: 18px;
+			}
+			
+			.aui-searchbar-wrap {
+				background-color: #172d3e
+			}
+			
+			li:not(.aui-list-view-cell) {
+				margin: 0;
+				overflow: hidden;
+				display: inline-block;
+				width: 27%;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+				text-align: Center;
+				padding: 8px 0;
+				margin: 2% 1.5%;
+			}
+			
+			.aui-indexed-list-bar {
+				background-color: #fff
+			}
+			
+			li:not(.aui-list-view-cell) span {
+				font-size: 18px;
+			}
+			
+			li.position {
+				color: #21a2dd
+			}
+			
+			li.aui-indexed-list-view-group:after {
+				border: 0
+			}
+			
+			.iosfix {
+				height: 101%;
+				overflow: hidden;
+			}
+			
+			div.position_city {
+				text-align: center;
+				font-size: 12px;
+				width: 65px;
+				position: absolute;
+				left: 7px;
+				color: #666;
+				background-size: 15px auto;
+			}
+			
+			li:not(.aui-list-view-cell) span {
+				font-size: 16px;
+				color: #000
+			}
+			
+			li:not(.aui-list-view-cell) {
+				font-size: 12px;
+				color: #666
+			}
+			
+			li.position {
+				color: #0169a3
+			}
+			
+			li.aui-indexed-list-view-group:after {
+				border: 0
+			}
+			
+			li.aui-list-view-cell {
+				font-size: 16px;
+				background-size: 10px auto;
+			}
+			
+			li.aui-indexed-list-view-group {
+				background: #f5f5f5
+			}
+			
+			li.aui-indexed-list-view-group {
+				font-size: 13px;
+				color: #000
+			}
+			
+			small {
+				color: #666;
+				display: block;
+			}
+			
+			ul#historyCityId2 li {
+				color: #999
+			}
+			
+			ul#historyCityId2 li small {
+				color: #999;
+				font-size: 13px;
+			}
+			
+			ul#historyCityId2 div {
+				color: #0169a3;
+				padding: 10px;
+				background-color: #f5f5f5;
+				text-align: center;
+				font-size: 12px;
+			}
+		</style>
+</head>
+<body>
+	<div class="aui-searchbar-wrap fixed" id="group-search">
+        <div class="aui-searchbar aui-border-radius">
+            <i class="aui-iconfont aui-icon-search"></i>
+            <div class="aui-searchbar-text">长春/changchun/cc</div>
+            <div class="aui-searchbar-input">
+            	<form action="javascript:search();">
+            	<input type="text" placeholder="长春/changchun/cc" style="height:27px!important;" id="aui-searchbar-input">
+            	</form>
+            </div>
+            <i class="aui-iconfont aui-icon-roundclosefill" id="aui-searchbar-clear"></i>
+        </div>
+        <div class="aui-searchbar-cancel aui-text-info" id="aui-searchbar-cancel">取消</div>
+    </div>
+    <div class="aui-indexed-list">
+        <ul class="aui-list-view aui-indexed-list-view aui-in" id="group-*" >
+		</ul>
+	</div>
+	<div class="aui-indexed-list-toast"></div>
+	<div class="aui-indexed-list-bar">
+	    <a data-value="热门">热门</a>	
+		<a data-value="历史">历史</a>
+		<a data-value="A">A</a>
+		<a data-value="B">B</a>
+		<a data-value="C">C</a>
+		<a data-value="D">D</a>
+		<a data-value="E">E</a>
+		<a data-value="F">F</a>
+		<a data-value="G">G</a>
+		<a data-value="H">H</a>
+		<a data-value="I">I</a>
+		<a data-value="J">J</a>
+		<a data-value="K">K</a>
+		<a data-value="L">L</a>
+		<a data-value="M">M</a>
+		<a data-value="N">N</a>
+		<a data-value="P">P</a>
+		<a data-value="Q">Q</a>
+		<a data-value="R">R</a>
+		<a data-value="S">S</a>
+		<a data-value="T">T</a>
+		<a data-value="U">U</a>
+		<a data-value="V">V</a>
+		<a data-value="W">W</a>
+		<a data-value="X">X</a>
+		<a data-value="Y">Y</a>
+		<a data-value="Z">Z</a>
+
+	</div>
+	<script type="text/javascript" src="../script/zepto.js"></script>
+	<script type="text/javascript" src="../script/store.min.js"></script>
+	<script type="text/javascript" src="../script/md5.js"></script>
+	<script type="text/javascript" src="../script/pengCmp/configXP.js"></script>
+	<script type="text/javascript" src="../script/pengCmp/coreXP.js"></script>
+	<script type="text/javascript" src="../script/api.js" ></script>
+	<script type="text/javascript" src="../script/template.js"></script>
+	<script type="text/javascript" src="../script/aui2/aui-tap.js" ></script>
+	<script type="text/javascript" src="../script/aui2/aui-indexed-listMZ.js" ></script>
+	
+	
+	
+	
+	<script type="text/javascript">
+	
+	$("ul").on("click","li[dataValue]",function(){
+           var dataValue = $(this).attr("dataValue");
+				var dataSpac  = $(this).attr("dataSpac");
+				var dataTags  = $(this).attr("dataTags");
+				var dataSzm   = $(this).attr("dataSzm");
+				var dataCt    = $(this).attr("dataCt");
+				var ext       = {};
+				ext.dataValue = dataValue;
+				ext.dataSpac  = dataSpac;
+				ext.dataTags  = dataTags;
+				ext.dataSzm   = dataSzm;
+				ext.ct        = dataCt;
+                //获得选择历史的记录
+     	        var list = store.get(historyLocalSel)||[];
+                //查找是否重复
+     	        var dataInfo  = nativeXP.jsonObjFilter("dataValue",dataValue,list);
+                if(!(nativeXP.isEmptyObject(dataInfo))){
+		     	  	var index = dataInfo.xp_index;
+		     	  	list.splice(index,1);
+		     	}
+                list.unshift(ext);
+                var len = list.length;
+	            if(len > hisInfoIndex){
+	          	    list.splice(hisInfoIndex,len);
+	            }
+	            store.set(historyLocalSel,list);
+                
+                api.sendEvent({
+	                    name: 'backLogic',
+	                    extra: {backLogic: false}
+	            });
+                
+                api.sendEvent({
+                    name: 'selectedcity',
+                    extra: {cityName: dataValue}
+                });
+                
+                setTimeout(function(){
+                     api.closeFrame({
+                	     	name: '../../public_cmp/city_citylistMZ_win'
+                	     });
+                	     api.closeFrame();
+                },500);
+    });
+	
+    var historyLocalSel = configXP.localKey.historyInfoCitySel;
+    var hisInfoIndex    = configXP.historySel.hisInfoCityIndex;
+	apiready = function(){	
+		
+		    
+
+
+            pageParam        = api.pageParam;
+            systemType       = api.systemType;
+            var cityListArr  = store.get(configXP.localKey.cityListArr);  
+            if(cityListArr == null){
+	            	    showPublicAnimate(1);
+	            	    //异步返回结果：
+					api.readFile({
+					    path: 'widget://res/get_hotel_city02.json'
+					}, function(ret, err) {
+					    if (ret.status) {
+					        var data = eval("("+ret.data+")");
+					        var html = template("getCityInfoTemplate",data);
+					        $("ul").html(html);
+					        
+					         showPublicAnimate(-1);
+				             var indexedList = new auiIndexedList();
+				             /*
+		                      * 获得历史城市
+		                      */
+		                     reloadHistoryLocalData();
+		                     store.set(configXP.localKey.cityListArr,data);
+					    } 
+					});
+            	
+           }else{   
+        	            var html = template("getCityInfoTemplate",cityListArr);
+        	            $("ul").html(html);
+        	            var indexedList = new auiIndexedList();
+        	            /*
+                     * 获得历史城市
+                     */
+                   reloadHistoryLocalData();
+
+           }
+			
+		}
+		
+		
+		
+
+		function cityInfo(currentCity){
+			
+			
+             currentCity = currentCity.substring(0,2);
+			 if(currentCity != null){
+				 var list       = "";
+				 var elemLiArr  = $('li[dataValue^="'+currentCity+'"]');
+				 for(var i=0;i<elemLiArr.length;i++){
+				 	 var elemObj = elemLiArr[i];
+				 	 var dataVal = $(elemObj).attr("dataValue");
+				 	 var station = dataVal.substring(currentCity.length,dataVal.length);
+				 	 list   += '<li class="position"  dataText='+dataVal+' ><span>'+currentCity+'</span><br />'+station+'</li>';
+				 }
+				 $("#positionElemId").html(list);
+			 	
+			 }
+		}
+		
+		function reloadHistoryLocalData(){
+			 var jsonObj  = {};
+			 var list     = store.get(historyLocalSel)||[];
+			 if(list.length == 0){
+			 	  $("#historyElemId").remove();
+			 	  return;
+			 }
+			 jsonObj.list = list;
+			 var html = template("getOtherListTemplate",jsonObj);
+			 $("#historyListElemId").html(html);
+		}
+		
+		
+	</script>
+	
+	
+
+    <script id="getCityInfoTemplate" type="text/html">  
+		     <li class="aui-list-view-cell aui-indexed-list-view-group" id="hotElemId" data-group="热门">热门</li>
+		     <ul id="hotListElemId">
+			     {{each hotList.cityList as city index}}
+			           <li  dataSpac="{{city.dataSpac}}" dataTags="{{city.dataTags}}" dataSzm="{{city.dataSzm}}" dataValue="{{city.dataValue}}">  
+		                     <span>{{city.dataValue}}</span>
+		               </li>
+			     {{/each}}
+		     </ul> 
+		     <li class="aui-list-view-cell aui-indexed-list-view-group" id="historyElemId" data-group="历史">历史</li>
+		     <ul id="historyListElemId">
+		     	
+		     </ul>
+		     {{each list as obj index}}
+			 <li class="aui-list-view-cell aui-indexed-list-view-group" id="group-{{obj.groupname}}" data-group="{{obj.groupname}}">{{obj.groupname}}</li>
+			 <ul id="cityListElemId">
+			     {{each obj.citylist as city subIndex}}
+				    	 <li class="aui-list-view-cell" dataSpac="{{city.dataSpac}}" dataTags="{{city.dataTags}}" dataSzm="{{city.dataSzm}}" dataValue="{{city.dataValue}}">  
+			                 {{city.dataValue}}
+				    	 </li>
+				 {{/each}}  
+			 </ul>	 
+		    	 {{/each}}
+   </script>
+   
+   <script id="getOtherListTemplate" type="text/html">
+		     {{each list as city index}}
+			        <li  dataSpac="{{city.dataSpac}}" dataTags="{{city.dataTags}}" dataSzm="{{city.dataSzm}}" dataValue="{{city.dataValue}}">  
+		                     <span>{{city.dataValue}}</span>
+		            </li>
+			 {{/each}}
+	</script>
+	
+
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<link rel="stylesheet" type="text/css" href="../css/aui2/aui.css" />
+		<link rel="stylesheet" href="../css/api.css" />
+		<script type="text/javascript" src="../script/zepto.js"></script>
+		<script type="text/javascript" src="../script/pengCmp/coreXP.js"></script>
+		<script type="text/javascript" src="../script/pengCmp/configXP.js"></script>
+
+		<style>
+			body {
+				font-size: 14px;
+			}
+			
+			.aui-list-view-cell:after {
+				border-bottom: 1px solid #e2e2e2
+			}
+			
+			.aui-list-view-cell2:after {
+				border-bottom: 0
+			}
+			
+			.aui-indexed-list-bar a {
+				font-size: 14px;
+				height: 16px;
+				line-height: 16px;
+				font-weight: 600
+			}
+			
+			.aui-searchbar input {
+				padding: 0
+			}
+			
+			li.aui-list-view-cell {
+				font-size: 18px;
+			}
+			
+			.aui-searchbar-wrap {
+				background-color: #172d3e
+			}
+			
+			li:not(.aui-list-view-cell) {
+				margin: 0;
+				overflow: hidden;
+				x display: inline-block;
+				width: 28%;
+				border: 1px solid #f4f4f4;
+				border-radius: 5px;
+				text-align: Center;
+				padding: 3px 0;
+				margin: 2% 1.5%;
+			}
+			
+			div.position_city {
+				text-align: center;
+				font-size: 12px;
+				width: 65px;
+				position: absolute;
+				left: 7px;
+				color: #666;
+				background-size: 15px auto;
+			}
+			
+			li:not(.aui-list-view-cell) span {
+				font-size: 12px;
+			}
+			
+			li.position {
+				color: #21a2dd
+			}
+			
+			li.aui-indexed-list-view-group:after {
+				border: 0
+			}
+			
+			li.aui-list-view-cell {
+				font-size: 16px;
+				background-size: 10px auto;
+			}
+			
+			li.aui-indexed-list-view-group {
+				background: #f5f5f5
+			}
+			
+			li.aui-indexed-list-view-group {
+				font-size: 13px;
+				color: #000
+			}
+			
+			small {
+				color: #666;
+				display: block;
+			}
+			
+			ul#historyCityId2 li small {
+				color: #999;
+				font-size: 13px;
+			}
+			
+			ul#historyCityId2 div {
+				color: #0169a3;
+				padding: 10px;
+				background-color: #f5f5f5;
+				text-align: center;
+				font-size: 12px;
+			}
+			
+		
+		</style>
+
+	</head>
+
+	<body>
+		<div id="l-map" hidden></div>
+
+		<div class="aui-searchbar-wrap fixed" id="group-search">
+			<div class="aui-searchbar aui-border-radius">
+				<div class="position_city">长春</div>
+				<input id="detailInfoId" type="text" style="border-radius:0;border-left:1px solid #ccc;padding-left:10px;" placeholder="详细地址" />
+			</div>
+		</div>
+
+		<div class="aui-indexed-list">
+
+			<ul class="aui-list-view aui-indexed-list-view aui-in">
+				<li id="positionliId" class="aui-list-view-cell aui-indexed-list-view-group">当前</li>
+				<ul id="positionId">
+					<!-- <li class="aui-list-view-cell oper">标题测试<small>详细地址测试</small></li>-->
+				</ul>
+				<!-- <li id="historyCityliId" class="aui-list-view-cell aui-indexed-list-view-group">历史搜索</li>-->
+				<!-- 	<ul id="historyCityId2">
+				      <li class="aui-list-view-cell oper">标题测试<small>详细地址测试</small></li>
+				          <li class="aui-list-view-cell oper">标题测试<small>详细地址测试</small></li>
+				          <li class="aui-list-view-cell oper">标题测试<small>详细地址测试</small></li>
+				          <li class="aui-list-view-cell oper">标题测试<small>详细地址测试</small></li>
+				          <li class="aui-list-view-cell oper">标题测试<small>详细地址测试</small></li>
+				          <li class="aui-list-view-cell oper">标题测试<small>详细地址测试</small></li>
+				          <li class="aui-list-view-cell oper">标题测试<small>详细地址测试</small></li>
+				          <li class="aui-list-view-cell oper">标题测试<small>详细地址测试</small></li>
+				          <li class="aui-list-view-cell aui-list-view-cell2 oper">标题测试<small>详细地址测试</small></li>
+				          <div>删除历史数据</div>
+				</ul>-->
+
+			</ul>
+		</div>
+
+		<link rel="stylesheet" type="text/css" href="../css/aui2/aui-indexed-list.css" />
+		<script type="text/javascript" charset="utf-8" src="http://api.map.baidu.com/api?v=2.0&ak=KsjOhHzsO5gXOS5sIcUKrRdh"></script>
+		<script type="text/javascript" src="../script/store.min.js"></script>
+		<script type="text/javascript" src="../script/pengCmp/coreXP.js"></script>
+		<script type="text/javascript" src="../script/template.js"></script>
+		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript">
+			var userid = "";
+			var select_city_searchAddFrm = false;
+			var cityPage = null;
+			var cityList = "";
+			var currentInfoCity = "";
+			var longitude = "";
+			var latitude = "";
+			var map = null;
+			//显示loading加载
+			//showPublicAnimate(1);
+			apiready = function() {
+
+				api.parseTapmode();
+				var pageParam = api.pageParam;
+
+				var searchHeight = $("#group-search").height();
+				height = searchHeight + pageParam.height;
+
+				$("#detailInfoId").on('input', function() {
+					var value = $(this).val();
+					if(value.length == 0) {
+						api.setFrameAttr({
+							name: 'select_city_searchAddFrm',
+							hidden: true
+						});
+					} else {
+						local = new BMap.LocalSearch(map, options);
+						local.search(value);
+					}
+				});
+
+				$(".position_city").click(function() {
+
+					$("#historyCityliId").remove();
+					$("#historyCityId2").remove();
+					select_city_searchAddFrm = false;
+					api.closeFrame({
+						name: 'select_city_searchAddFrm'
+					});
+					$("#detailInfoId").val("");
+					var pageParam = {};
+					pageParam.currentCity = currentInfoCity;
+					pageParam.cityPage = cityPage;
+					pageParam.longitude = longitude;
+					pageParam.latitude = latitude;
+					pageParam.cityList = cityList;
+					pageParam.cityPage = cityPage;
+					nativeXP.openWin({ url: 'cityInfo/' + cityPage + '.html', pageParam: pageParam });
+				});
+
+				$("ul.aui-list-view").on("click", "ul[id] li", function() {
+					var city = $(".position_city").html();
+					var hisSelCityAddr = {};
+					hisSelCityAddr.point = {};
+					hisSelCityAddr.dataTitle = $(this).attr("dataTitle");
+					if(hisSelCityAddr.dataTitle == null) {
+						nativeXP.toast({
+							msg: '请检查网络或者GPS连接是否正常',
+							duration: 5000
+						});
+						return;
+					}
+					hisSelCityAddr.userid = userid;
+					hisSelCityAddr.dataAddress = $(this).attr("dataAddress");
+					hisSelCityAddr.dataCity = $(this).attr("dataCity");
+					hisSelCityAddr.point.lng = $(this).attr("dataLng");
+					hisSelCityAddr.point.lat = $(this).attr("dataLat");
+
+					//获得选择历史的记录
+					var hisSelCityAddrArr = store.get(configXP.localKey.historySelectCityAddress) || [];
+					//查找是否重复
+					var dataInfo = nativeXP.jsonObjFilter("dataTitle", hisSelCityAddr.dataTitle, hisSelCityAddrArr);
+					if(!(nativeXP.isEmptyObject(dataInfo))) {
+						var index = dataInfo.xp_index;
+						hisSelCityAddrArr.splice(index, 1);
+					}
+
+					hisSelCityAddrArr.unshift(hisSelCityAddr);
+					var hisSelLen = hisSelCityAddrArr.length;
+					if(hisSelLen > configXP.historySel.hisSelectCitySelIndex) {
+						hisSelCityAddrArr.splice(configXP.historySel.hisSelectCitySelIndex, hisSelLen);
+					}
+					/*var citySelCityArr = nativeXP.jsonArrFilter("dataCity",city,hisSelCityAddrArr);
+		          var hisSelLen = citySelCityArr.length;
+		          if(hisSelLen  > configXP.historySel.hisSelectCitySelIndex){
+		          	  citySelCityArr.splice(configXP.historySel.hisSelectCitySelIndex,hisSelLen);
+		          }
+		          hisSelCityAddrArr = nativeXP.jsonArrRemove("dataCity",city,hisSelCityAddrArr);
+                  nativeXP.mergeArr(hisSelCityAddrArr,citySelCityArr);*/
+					store.set(configXP.localKey.historySelectCityAddress, hisSelCityAddrArr);
+					api.sendEvent({
+						name: 'selectSearchInfo',
+						extra: hisSelCityAddr
+					});
+
+				});
+
+				var param = {};
+				api.accessNative({ name: 'init', extra: param }, function(ret) {
+					//获得当前城市
+					currentCity = ret.currentCity;
+					longitude = ret.longitude
+					latitude = ret.latitude;
+					cityList = ret.cityList;
+					cityPage = ret.cityPage;
+					userid = ret.userid;
+
+					if(currentCity != null) {
+						currentCity = currentCity.substring(0, currentCity.length - 1);
+						//设置选中的城市
+						cityInfoFn(currentCity);
+						if(longitude == null || latitude == null || longitude == "" || latitude == "") {
+							showPublicAnimate(-1);
+							var pageParam = {};
+							pageParam.dataTitle = "无法定位当前城市地址";
+							var html = template("positionErroTmplate", pageParam);
+							$("#positionId").html(html);
+							nativeXP.toast({
+								msg: '请检查网络或者GPS连接是否正常',
+								duration: 5000
+							});
+							pageParam = {};
+							pageParam.hisSelCityAddrArr = store.get(configXP.localKey.historySelectCityAddress) || [];
+							if(pageParam.hisSelCityAddrArr.length > 0) {
+								$("ul.aui-list-view").append('<li id="historyCityliId" class="aui-list-view-cell aui-indexed-list-view-group">历史搜索</li>');
+								$("ul.aui-list-view").append('<ul id="historyCityId2"></ul>');
+								var html = template("historyCityListTemplate", pageParam);
+								setTimeout(function() {
+									$("#historyCityId2").html(html);
+								}, 500);
+
+							}
+
+						} else {
+							reloadHistoryLocalData(longitude, latitude);
+						}
+					}
+
+				});
+
+				//如监听网络连接事件
+				api.addEventListener({
+					name: 'selectedCity'
+				}, function(ret, err) {
+					var data = ret.value;
+					var city = data.dataValue;
+					cityInfoFn(city);
+					reloadHistoryData();
+				});
+
+			}
+
+			function cityInfoFn(city) {
+
+				$(".position_city").html(city);
+
+				var param = {};
+				param.address = city;
+				param.output = "json";
+				param.ak = "KsjOhHzsO5gXOS5sIcUKrRdh";
+				var paramStr = nativeXP.tgParmsFun(param);
+
+				api.ajax({
+					url: 'http://api.map.baidu.com/geocoder/v2/' + "?" + paramStr,
+					method: 'get'
+				}, function(ret, err) {
+					if(ret) {
+						var result = ret.result;
+						var location = result.location;
+						var lng = location.lng;
+						var lat = location.lat;
+						map.centerAndZoom(new BMap.Point(lng, lat), 11);
+						return true;
+					}
+				});
+			}
+
+			/*
+			 * 获得城市设置最新的城市节点
+			 */
+			function setChangedInfo(city) {
+
+				$(".position_city").html(city);
+
+				var param = {};
+				param.address = city;
+				param.output = "json";
+				param.ak = "KsjOhHzsO5gXOS5sIcUKrRdh";
+				var paramStr = nativeXP.tgParmsFun(param);
+				api.ajax({
+					url: 'http://api.map.baidu.com/geocoder/v2/' + '?' + paramStr,
+					method: 'get'
+				}, function(ret, err) {
+					if(ret) {
+						var result = ret.result;
+						var location = result.location;
+						var lng = location.lng;
+						var lat = location.lat;
+						map.centerAndZoom(new BMap.Point(lng, lat), 11);
+						return true;
+					}
+				});
+			}
+
+			function reloadHistoryLocalData(longitude, latitude) {
+
+				setTimeout(function() {
+					//隐藏loading
+					showPublicAnimate(-1);
+				}, 2000);
+
+				//获得选择历史的记录
+				var pageParam = {};
+
+				pageParam.ak = 'KsjOhHzsO5gXOS5sIcUKrRdh';
+				pageParam.location = latitude + "," + longitude;
+				pageParam.output = 'json';
+				pageParam.pois = 1;
+
+				var paramStr = nativeXP.tgParmsFun(pageParam);
+				api.ajax({
+					url: 'http://api.map.baidu.com/geocoder/v2/' + '?' + paramStr,
+					method: 'get'
+				}, function(ret, err) {
+					if(ret) {
+						var result = ret.result;
+						var address = result.formatted_address;
+						var addressComponent = result.addressComponent;
+						var currentCity = addressComponent.city;
+						currentInfoCity = addressComponent.city;
+						if(currentCity != null)
+							currentCity = currentCity.substring(0, currentCity.length - 1);
+						pageParam.hisSelCityAddrArr = [];
+						var hisSelCityAddr = {};
+						hisSelCityAddr.point = {};
+						hisSelCityAddr.userid = userid;
+						hisSelCityAddr.dataTitle = address;
+						hisSelCityAddr.dataAddress = address;
+						hisSelCityAddr.point.lng = longitude;
+						hisSelCityAddr.point.lat = latitude;
+						hisSelCityAddr.dataCity = currentCity;
+						pageParam.hisSelCityAddrArr.push(hisSelCityAddr);
+
+						var html = template("historyCityListTemplate", pageParam);
+
+						setTimeout(function() {
+							$("#positionId").html(html);
+							//隐藏loading
+							showPublicAnimate(-1);
+						}, 1000);
+
+					}
+				});
+				reloadHistoryData();
+
+			}
+
+			/*
+			 * 回显历史信息
+			 */
+			function reloadHistoryData() {
+				var city = $(".position_city").html();
+				pageParam = {};
+				pageParam.hisSelCityAddrArr = store.get(configXP.localKey.historySelectCityAddress) || [];
+				pageParam.hisSelCityAddrArr = nativeXP.jsonArrFilter("userid", userid, pageParam.hisSelCityAddrArr);
+				pageParam.hisSelCityAddrArr = nativeXP.jsonArrFilter("dataCity", city, pageParam.hisSelCityAddrArr);
+				if(pageParam.hisSelCityAddrArr.length > 0) {
+					$("ul.aui-list-view").append('<li id="historyCityliId" class="aui-list-view-cell aui-indexed-list-view-group">历史搜索</li>');
+					$("ul.aui-list-view").append('<ul id="historyCityId2"></ul>');
+					var html = template("historyCityListTemplate", pageParam);
+					setTimeout(function() {
+						$("#historyCityId2").html(html);
+					}, 500);
+
+				}
+			}
+
+			setTimeout(function() {
+				// 百度地图API功能
+				map = new BMap.Map("l-map");
+				map.centerAndZoom(new BMap.Point(125.368483, 43.866065), 11);
+			}, 50);
+
+			var options = {
+				onSearchComplete: function(results) {
+					var pageParam = {};
+					pageParam.city = $(".position_city").html();
+					var value = $("#detailInfoId").val();
+					if(value.length <= 0) {
+						api.setFrameAttr({
+							name: 'select_city_searchAddFrm',
+							hidden: true
+						});
+						return;
+					}
+					// 判断状态是否正确
+					if(local.getStatus() == BMAP_STATUS_SUCCESS) {
+						var city = $(".position_city").html();
+						var paramArr = [];
+						for(var i = 0; i < results.getCurrentNumPois(); i++) {
+							var cityInfo = results.getPoi(i).city;
+							if(cityInfo.indexOf(city) > -1) {
+								var resultObj = {};
+								resultObj.title = results.getPoi(i).title;
+								resultObj.address = results.getPoi(i).address;
+								resultObj.point = results.getPoi(i).point;
+								resultObj.city = city;
+								paramArr.push(resultObj);
+							}
+						}
+						pageParam.paramArr = paramArr;
+						pageParam.userid = userid;
+
+						if(select_city_searchAddFrm) {
+							store.set("req_localCityList", pageParam);
+							api.execScript({
+								frameName: 'select_city_searchAddFrm',
+								script: 'list_detail()'
+							});
+
+							api.setFrameAttr({
+								name: 'select_city_searchAddFrm',
+								hidden: false
+							});
+						} else {
+							nativeXP.openFrame({ url: 'select_city_searchAddFrm.html', y: height, pageParam: pageParam });
+							select_city_searchAddFrm = true;
+						}
+
+					} else {
+						var paramArr = [];
+						pageParam.paramArr = paramArr;
+						store.set("req_localCityList", pageParam);
+						if(select_city_searchAddFrm) {
+							api.execScript({
+								frameName: 'select_city_searchAddFrm',
+								script: 'list_detail()'
+							});
+							api.setFrameAttr({
+								name: 'select_city_searchAddFrm',
+								hidden: false
+							});
+						} else {
+							nativeXP.openFrame({ url: 'select_city_searchAddFrm.html', y: height, pageParam: pageParam });
+							select_city_searchAddFrm = true;
+						}
+					}
+				}
+			}
+		</script>
+		<script id="historyCityListTemplate" type="text/html">
+			{{each hisSelCityAddrArr as cityAddr index}}
+			<li class="aui-list-view-cell oper" tapmode dataCity="{{cityAddr.dataCity}}" dataAddress="{{cityAddr.dataAddress}}" dataTitle="{{cityAddr.dataTitle}}" dataLng="{{cityAddr.point.lng}}" dataLat="{{cityAddr.point.lat}}">{{cityAddr.dataTitle}}<small>{{cityAddr.dataAddress}}</small></li>
+			{{/each}}
+		</script>
+
+		<script id="positionErroTmplate">
+			<li class="aui-list-view-cell oper" positionAttr tapmode>{{dataTitle}}</li>
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,88 @@
+
+html{font-size: 85px;}
+/*登录页*/
+body.login{background: #022a39;font-family: "微软雅黑";overflow-y: hidden;}
+
+/*
+2、我的任务
+ */
+/*2——任务列表*/
+.time_sel{font-size: 0.18rem;position: relative;}
+.time_sel .back{float: left;margin-left: 0.1rem;}
+.time_sel .back i{margin-right: 0.08rem;}
+.time_sel .next{float: right;margin-right: 0.1rem;}
+.time_sel .next i{margin-left: 0.08rem;font-style: normal;}
+.opt_box{width: 40%;float: left;background: #FFFFFF;border-radius: 0.04rem;height: 0.32rem;padding:0 0.08rem;position: absolute;top: 16%;left: 30%;}
+.opt_box span{font-size: 0.14rem;color:#022a39;float: left;line-height: 0.32rem;}
+.opt_box span+span{margin-left: 0.15rem;}
+.opt_box i{color:#022a39!important;float: right;font-size: 0.16rem!important;line-height: 0.32rem!important;}
+.tab_tit{overflow: hidden;background:#FFFFFF;line-height: 0.45rem;}
+.tab_tit li{float: left;width: 50%;text-align:center;font-size: 0.14rem;color: #666666;}
+.tab_tit li.cur{color: #061827;border-bottom: 2px solid #022A39;}
+
+
+.my_task_per{width: 96%;margin:0.1rem auto 0;position: relative;}
+.my_task_per i.up{position: absolute;bottom: -0.05rem;left: 47%;z-index: 1000;width:0.2rem;height:0.1rem;display:block;background:url(../image/drop_bg.png) no-repeat center center;border-radius: 2px;}
+.my_task_per i.drop{position: absolute;bottom: -0.05rem;left: 47%;z-index: 1000;width:0.2rem;height:0.1rem;display:block;background:url(../image/down_bg.png) no-repeat center center;border-radius: 2px;}
+
+.my_task_per .task_tt {width:100%;background: #FFFFFF;border-radius: 0.04rem;padding: 0 0.04rem;line-height: 0.55rem;border:1px solid #CCCCCC;/*border-bottom-style: dashed;*/}
+.my_task_per .task_tt li{display:table-cell;float: left;font-size: 0.16rem;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;} 
+.my_task_per .task_tt li span.star_num{display: inline-block;padding:0.03rem 0.08rem;line-height:0.16rem;border-radius:0.04rem;font-size: 0.12rem;background: #FF6600;color: #FFFFFF;}
+.my_task_per .task_tt li:last-child span.air_time{float: left;}
+.my_task_per .task_tt li:nth-child(1){width: 22%;}
+.my_task_per .task_tt li:nth-child(2){width: 36%;}
+.my_task_per .task_tt li:last-child{text-align: right;width: 42%;}
+.my_task_per .task_tt li:last-child i{margin:0 0 0 0.05rem;font-size: 0.14rem;color: #cccccc;padding: 0;font-style: normal;}
+.my_task_per .username+div{height: 0.32rem;}
+.telphone{text-decoration: underline;color: #3c779b;}
+.mytask_tx{position:relative;background:#FFFFFF;border-radius: 0.04rem;padding: 0 0.1rem;border:1px solid #CCCCCC;border-top: none;font-size: 0.14rem;height: 0.91rem;overflow: hidden;}
+.mytask_tx.hei{min-height: 2.2rem!important;height: auto!important;}
+.mytask_tx .line1{font-size: 0.18rem;color:#000000;line-height: 0.32rem;}
+.mytask_tx .line{color:#000000;font-size: 0.16rem;line-height: 0.32rem;position: relative;}
+i.stars{color: #ff6600;font-style: normal;}
+.button_blue{border-radius: 0.04rem;display: inline-block;color: #FFFFFF;background: #022a39;line-height: normal;width:0.6rem;text-align: center;padding: 0.05rem 0;font-size: 0.14rem;position: absolute;right: 0.02rem;}
+.button_gray{background: #CCCCCC;border-radius: 0.04rem;display: inline-block;color: #FFFFFF;line-height: normal;width:0.6rem;text-align: center;padding: 0.05rem 0;font-size: 0.14rem;position: absolute;right: 0.02rem;}
+.thegray{background: #CCCCCC;color: #ffffff;}
+.f-blue{color: #022a39;}
+.listbtn_box span,.listbtn_box a{display: block;margin-bottom: 0.1rem;}
+.mytask_tx .listbtn_box{position: absolute;right: 0.12rem;top: 0.9rem;height: 1.17rem;}
+.btn_grp{border-radius: 0.04rem;display: inline-block;color: #FFFFFF;line-height: normal;width:0.6rem;text-align: center;padding: 0.05rem 0;font-size: 0.14rem;}
+.darkgray{background: #666666;}
+.green{background: #3eab32;}
+.orange{background: #ff6600;}
+.red{background: #a40000;}
+.white{border: 1px solid #022a39; color: #022a39;}
+/*.btn_grp.white{position: absolute;bottom: -0.00rem;}*/
+/*任务详情*/
+.task_det{height: 100%;}
+.imgsel img{display: table-cell;margin: auto;width: 90%;}
+.pannelMain i.imgclose{top: 0;right:0;color:#ffffff;}
+.task_tcbox{position: relative;}
+.task_tcbox>i{position: absolute;top: 0.03rem;right: 0.1rem;color:#022a39;}
+.task_tcbox{background: #FFFFFF;border-radius: 0.04rem;padding: 0 0.1rem 0.1rem;margin-top: 20PX;}
+.task_det .task_tcbox h1{font-size: 0.14rem;font-weight: bold;color:#022a39;text-align: center;line-height: 0.28rem;}
+.task_det .task_tcbox h1 i{float: right;margin-right: 0.1rem;}
+.task_det .task_tcbox .per{border:1px solid #cccccc;border-radius: 0.04rem;line-height: 0.32rem;font-size: 0.14rem;padding:0 0.1rem;color:#666666;margin-top: 0.05rem;}
+/*.task_det .task_tcbox .per:first-child{margin-top:0}*/
+.task_det .task_tcbox .per .mid{text-align: center;}
+.task_det .task_tcbox .per .right{text-align: right;}
+/*底部筛选*/
+.sel_box .botm ul li{border-bottom: 1px solid #999999;display: block;line-height:0.39rem;font-size: 0.14rem;white-space: nowrap;text-align: center;color:#000000;}
+.sel_box ul.top{overflow: hidden;line-height: 0.42rem;}
+.sel_box ul.top li{float: left;width: 33.3%;text-align: center;color: #FFFFFF;font-size: 0.16rem;background:#606060;height: 0.42rem;}
+.sel_box ul.top li span{font-size: 0.12rem;padding: 0.08rem 0.18rem;background: rgba(6,24,39,0.5);border-radius: 0.04rem;color:#bfbfbf;}
+
+.sel_box .mid{background:#dddddd;padding: 10px;border-bottom: 1px solid #aaaaaa;}
+.sel_box .botm{overflow: hidden;}
+.sel_box .botm ul{float: left;background: #ececec;width: 36%;}
+.sel_box .botm ul li b{color: #FF0000;font-size: 0.2rem;font-weight:bold;line-height: 0.34rem;opacity: 0;margin-right: 0.1rem;position: relative;top: 0.02rem;}
+.sel_box .botm ul li.cur{background: #FFFFFF;border-right: none;color:#000000;}
+.sel_box .botm ul li.incheck b{opacity: 1;}
+.sel_box .botm ul li:first-child{border-top: none;}
+.sel_box .botm .sel_innertab{padding: 0 0.75em;float: left;width: 64%;height:11.59em;overflow: auto;border-left: 1px solid #999999;}
+.sel_box .botm .sel_innertab ul{display: none;background: #FFFFFF;width: 100%;color: #666666;}
+.sel_box .botm .sel_innertab ul li{border-right: none;position: relative;}
+.sel_box .botm .sel_innertab ul li span{color: #666666;}
+.sel_box .botm .sel_innertab ul li i{position: absolute;right: 0.1rem;font-weight: bold;color:#1a4b74;display: none;}
+.sel_box .botm .sel_innertab ul li.cur{color:#1a4b74;}
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<script src="../../script/api.js"></script>
+		<script src="../../script/zepto.js"></script>
+		<!--<link rel="stylesheet" href="../../css/sm.min.css" />
+		<script src="../../script/sm.min.js"></script>
+		<script src="../../script/sm-city-picker.min.js"></script>-->
+		<link rel="stylesheet" href="../../css/api.css" />
+		<link rel="stylesheet" href="../../css/travellnTransit/me_map.css" />
+		<script type="text/javascript" src="../../script/store.min.js"></script>
+		<script src="../../script/template.js"></script>
+		<script src="../../script/pengCmp/configXP.js"></script>
+		<script src="../../script/pengCmp/coreXP.js"></script>
+		<script src="../../script/echarts.min.js"></script>
+		<script src="../../script/china.js"></script>
+		<script type="text/javascript" src="../../script/store.min.js"></script>
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<script type="text/javascript" src="../../script/underscore.js"></script>
+		
+		
+		<title></title>
+	</head>
+
+	<body>
+		<header>
+			<div class="map-title">
+				<span class="main-goback" id="main-gobackId"></span>
+				<h1>差旅足迹</h1>
+				<span class="menu-icon"></span>
+			</div>
+		</header>
+		
+	</body>
+	<script>
+	
+	       apiready = function(){
+	       	
+	       	     var systemType       = api.systemType;
+                 var pageParam        = api.pageParam;
+                 store.set("userid"     , pageParam.userid);
+    	     	     store.set("customerId" , pageParam.company_id);
+    	     	     store.set("deptId"     , pageParam.detp_id);
+    	     	     if (systemType != "ios") {
+				    api.accessNative({
+					}, function(pageParam){       
+						store.set("userid"     , pageParam.userid);
+			    	     	store.set("customerId" , pageParam.company_id);
+			    	     	store.set("deptId"     , pageParam.detp_id);
+                        nativeXP.openFrame({url:'footmask-frame.html',pageParam:pageParam});
+				    	});
+				 }else{
+				 	    nativeXP.openFrame({url:'footmask-frame.html',pageParam:pageParam});
+				 }
+	       	
+	
+	       }
+    </script>
+
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css">
+		<link rel="stylesheet" type="text/css" href="../../css/fontello.css">
+		<link rel="stylesheet" type="text/css" href="../../css/animation.css">
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+
+		<link rel="stylesheet" href="../../css/travellnTransit/me-chailv.css" />
+		<!--样式添加修改-->
+		<script type="text/javascript" src="../../script/api.js"></script>
+	    <script type="text/javascript" src="../../script/store.min.js"></script>
+		<script type="text/javascript" src="../../script/zepto.js"></script>
+		<script type="text/javascript" src="../../script/pengCmp/configXP.js"></script>
+		<script type="text/javascript" src="../../script/pengCmp/coreXP.js"></script>
+		<script type="text/javascript" src="../../script/pengCmp/configXP.js"></script>
+		<style>
+			body {
+				background: #FFFFFF
+			}
+			
+			h1 {
+				font-size: 16px;
+				color: #040404
+			}
+			img{ display:inline-block}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="map-title">
+				<span id="backId" class="main-goback"></span>
+				<h1>行 程</h1>
+			</div>
+		</header>
+	    <div class="h-Curway">
+			<ul>
+				<li dataUrl="travle.html">
+					<div class="Curway_img">
+						<img src="../../image/Curway-people.png" />
+					</div>
+					<div class="Cueway_line">
+						<div class="Cueway_line_column"></div>
+					</div>
+					<div class="Curway_text">
+						差旅在途
+					</div>
+					<div style="width: 10px;"></div>
+				</li>
+				<li dataUrl="footmask-frame.html">
+					<div class="Curway_img">
+						<img src="../../image/Curway-gps.png" />
+					</div>
+					<div class="Cueway_line">
+						<div class="Cueway_line_column"></div>
+					</div>
+					<div class="Curway_text">
+						足&emsp;&emsp;迹
+					</div>
+					<div style="width: 10px;"></div>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+	   
+		apiready = function() {
+			//显示加载中......
+            showAnimate(1);
+			var systemType       = api.systemType;
+            var pageParam        = api.pageParam;
+    	     	
+    	     	store.set("userid"     , pageParam.userid);
+    	     	store.set("customerId" , pageParam.company_id);
+    	     	store.set("deptId"     , pageParam.detp_id);
+    	     	
+    	     	if(!configXP.productionEnvir){
+	    	        store.set("customerId", "919");
+				store.set("deptId", "1766");
+				store.set("userid", "99159");
+			}
+            if (systemType != "ios") {
+				
+				api.accessNative({
+				}, function(pageParam){       
+					store.set("userid"     , pageParam.userid);
+		    	     	store.set("customerId" , pageParam.company_id);
+		    	     	store.set("deptId"     , pageParam.detp_id);
+		    	     	if(!configXP.productionEnvir){
+				    		pageParam.userid   = "97605";
+				    		pageParam.detp_id  = "2270";
+	    	     	        pageParam.travelId = "18590";
+    	     	        }
+			    	});
+			}
+
+    	     	setTimeout(function(){
+    	     		 //隐藏加载中......
+    	     		 showAnimate(-1);
+    	     	},200);
+			$(".h-Curway li").click(function() {
+				var type = $(this).attr("dataUrl");
+				nativeXP.openWin({
+					url: type,
+					pageParam: pageParam
+				});
+			});
+			
+			 document.getElementById("backId").onclick = function(){
+	             var systemType = api.systemType;  
+				 api.closeWin();
+				
+			}
+				  
+				  
+				  
+				    
+			
+			 api.addEventListener({
+			        name: 'keyback'
+			 }, function(ret, err) {
+				    var systemType = api.systemType;  
+		    	        api.closeWin();
+				
+			}); 
+		}
+	</script>
+
+</html>

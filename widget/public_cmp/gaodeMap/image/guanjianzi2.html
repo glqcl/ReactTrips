@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<link rel="stylesheet" href="css/api.css" />
+		<script src="sctipt/rem.js"></script>
+		<script type="text/javascript" src="sctipt/zepto.js"></script>
+		<title></title>
+		<style>
+			html,
+			body {
+				background: #FFFFFF;
+				font-size: 14px;
+				height: 100%;
+				overflow: hidden;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-webkit-flex-direction: column;
+				-ms-flex-direction: column;
+				flex-direction: column;
+			}
+			
+			.fl {
+				float: left;
+			}
+			
+			.fr {
+				float: right;
+			}
+			
+			.ot {
+				color: #cb5738;
+			}
+			
+			.matro-box,
+			.matro-nav {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+			}
+			
+			.matro-box {
+				-webkit-flex: 1;
+				flex: 1;
+			}
+			
+			.matro-nav {
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-webkit-flex-direction: column;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				margin-left: -1px;
+			}
+			
+			.matro-nav {
+				width: 120px;
+				overflow: auto;
+				position: relative;
+				z-index: 999;
+				height: 100%;
+			}
+			
+			.martro-station {
+				-webkit-flex: 1;
+				flex: 1;
+			}
+			
+			.matro--click {
+				width: 100%;
+				line-height: 50px;
+				background: #f5f5f5;
+				text-align: center;
+				position: relative;
+				border: none;
+				color: #999999;
+			}
+			
+			.matro--click:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				border: 1px solid #999999;
+				border-bottom: none;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				width: 240px;
+				height: 200%;
+				-webkit-transform: scale(0.5);
+				transform: scale(0.5);
+				-webkit-transform-origin: left top;
+				transform-origin: left top;
+			}
+			
+			.matro-active {
+				border: none;
+				position: relative;
+				color: #000;
+				background: #FFFFFF;
+			}
+			
+			.matro-active:after {
+				left: -1px;
+				border-right: none;
+				border-bottom: none;
+			}
+			/*.matro--click:last-child {
+				background: #FFFFFF;
+				-webkit-flex: 1;
+				flex: 1;
+				z-index: 100;
+				position: relative;
+			}
+			
+			.matro--click:last-child:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				border: 1px solid #999999;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				width: 240px;
+				height: 200%;
+				-webkit-transform: scale(0.5);
+				transform: scale(0.5);
+				-webkit-transform-origin: left top;
+				transform-origin: left top;
+			}*/
+			
+			.martro-station {
+				margin-left: 10px;
+				overflow: auto;
+			}
+			
+			.martro-station li {
+				display: none;
+				line-height: 50px;
+				text-indent: 15px;
+				padding-right: 10px;
+				overflow: auto;
+			}
+			
+			.martro-station li p {
+				position: relative;
+				border: none;
+				color: #999999;
+			}
+			
+			.martro-station li p:after {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				background: #999999;
+				width: 100%;
+				height: 1px;
+				-webkit-transform: scaleY(0.5);
+				transform: scaleY(0.5);
+				-webkit-transform-origin: 0 0;
+				transform-origin: 0 0;
+			}
+			
+			.martro-station li p:first-child:after {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: -1px;
+				background: #999999;
+				width: 100%;
+				height: 1px;
+				-webkit-transform: scaleY(0.5);
+				transform: scaleY(0.5);
+				-webkit-transform-origin: 0 0;
+				transform-origin: 0 0;
+			}
+			
+			.martro-station li:first-child {
+				display: block;
+			}
+			
+			.staion-active {
+				background: url(image/check.png) right/15px no-repeat;
+				color: #1a4b74!important;
+			}
+			
+			.list2 li.empty {
+				background: none!important;
+				color: #1a4b74;
+			}
+			
+			.item-box {
+				margin-bottom: 10px;
+			}
+			
+			.quxiao {
+				background: none;
+				left: auto;
+				right: 0;
+				color: #FFFFFF;
+				font-size: 14px;
+				line-height: 42px;
+				text-align: center;
+			}
+			
+			.move-input {
+				border: none;
+				background-color: #FFFFFF;
+				background-image: url(image/search-bg.png);
+				background-repeat: no-repeat;
+				background-size: 155px;
+				background-position: center;
+				-webkit-flex: 1;
+				flex: 1;
+				margin: 0 5px 0 44px;
+				height: 30px;
+				margin-top: 7px;
+				border-radius: 5px;
+				padding-left: 15px;
+				position: relative;
+				left: 0;
+				-webkit-transition: left .8s;
+				transition: left .8s;
+				z-index: 1000;
+			}
+			
+			.map-title {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+			}
+			
+			.input-active {
+				left: -36px;
+				background: #FFFFFF;
+			}
+			.matro--click:first-child{
+				background-image: url(image/search.png);
+				background-repeat: no-repeat;
+				background-position: 8px;
+				background-size: 20px;
+			}
+			.matro--click:nth-child(2){
+				background-image: url(image/jiudian.png);
+				background-repeat: no-repeat;
+				background-position: 8px;
+				background-size: 20px;
+			}
+			.matro--click:nth-child(3){
+				background-image: url(image/shop.png);
+				background-repeat: no-repeat;
+				background-position: 8px;
+				background-size: 20px;
+			}
+			.matro--click:nth-child(4){
+				background-image: url(image/pinpai-hotel.png);
+				background-repeat: no-repeat;
+				background-position: 8px;
+				background-size: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="map-title">
+				<span class="main-goback"></span>
+				<input type="text" class="move-input" />
+				<span class="main-goback quxiao">取消</span>
+			</div>
+		</header>
+		<div class="matro-box">
+			<ul class="matro-nav">
+				<div>
+					<li class="matro--click matro-active">搜索历史</li>
+					<li class="matro--click">行政区</li>
+					<li class="matro--click">商业区</li>
+					<li class="matro--click">品牌酒店</li>
+					<!--<li class="matro--click"></li>-->
+				</div>
+				<div class="matro--click" style="-webkit-flex:1;flex: 1;height: 100%;background-image: none;"></div>
+			</ul>
+			<ul class="martro-station">
+				<li>
+					<p class="staion-active">长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+					<p>长春站</p>
+				</li>
+				<li>
+					<p class="staion-active">范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+					<p>范家屯</p>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="sctipt/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$(".matro-nav").height($(".matro-box").height())
+			$(".matro--click:not(:last)").click(function(e) {
+				var thisIndex = $(this).index()
+				e.stopPropagation()
+				$(this).addClass('matro-active').siblings().removeClass('matro-active')
+				$(".martro-station li").eq(thisIndex).show().siblings().hide()
+				return false;
+			})
+			$(".martro-station li p").click(function() {
+				$(this).addClass('staion-active').siblings().removeClass('staion-active')
+			})
+			$(".move-input").focus(function () {
+				$(this).addClass('input-active')
+			})
+			$(".move-input").blur(function () {
+				$(this).removeClass('input-active').val('')
+			})
+		})
+	</script>
+
+</html>

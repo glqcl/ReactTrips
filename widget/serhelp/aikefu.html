@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<link rel="stylesheet" href="css/api.css" />
+		<script src="sctipt/rem.js"></script>
+		<script src="../script/pengCmp/coreXP.js"></script>
+		<script src="../script/pengCmp/configXP.js"></script>
+		<script src="../script/zepto.js"></script>
+		<title></title>
+	</head>
+
+	<body>
+		<header>
+			<div class="map-title">
+				<span class="main-goback"></span>
+				<h1>在线客服</h1>
+			</div>
+		</header>
+	</body>
+	<script type="text/javascript">
+	    showAnimate(1);
+		apiready = function(){
+    	     	
+    	     	$(".main-goback").click(function(){
+    	     		api.closeWin();
+    	     	});
+    	     	var height = $("header").height();
+    	     	var systemType = api.systemType; 
+    	     	if(systemType == "ios"){
+    	     		url = "https://web.jiaxincloud.com/gray/mobile.html?&thirdJson=%257B%257D&bg=007AFF&dialogLogo=0&dialogType=1&lang=cn&FixDialogWidth=360px&orgName=ntdsmha2b3g5aq&appName=w757&appChannel=20002&quoteUrl=http://tmc.tripg.com&pageTitle=%25E5%25B7%25AE%25E6%2597%2585%25E5%25A4%25A9%25E4%25B8%258B-%25E4%25BC%2581%25E4%25B8%259A%25E9%259B%2586%25E5%259B%25A2%25E5%25B7%25AE%25E6%2597%2585%25E7%25AE%25A1%25E6%258E%25A7%25E5%25B9%25B3%25E5%258F%25B0&pageUrl=http%253A%252F%252Ftmc.tripg.com%252Findex.php%252Fproframe%252Fframe%252F&alone=0&jump=false";
+    	     	}else{
+    	     		url = "https://web.jiaxincloud.com/gray/mobile.html?&thirdJson=%257B%257D&bg=007AFF&dialogLogo=0&dialogType=1&lang=cn&FixDialogWidth=360px&orgName=ntdsmha2b3g5aq&appName=w757&appChannel=20003&quoteUrl=http://tmc.tripg.com&pageTitle=%25E5%25B7%25AE%25E6%2597%2585%25E5%25A4%25A9%25E4%25B8%258B-%25E4%25BC%2581%25E4%25B8%259A%25E9%259B%2586%25E5%259B%25A2%25E5%25B7%25AE%25E6%2597%2585%25E7%25AE%25A1%25E6%258E%25A7%25E5%25B9%25B3%25E5%258F%25B0&pageUrl=http%253A%252F%252Ftmc.tripg.com%252Findex.php%252Fproframe%252Fframe%252F&alone=0&jump=false";
+    	     	}
+    	     	
+    	     	
+    	     	nativeXP.openFrame({url:url,y:height});
+    	     }
+	</script>
+
+</html>

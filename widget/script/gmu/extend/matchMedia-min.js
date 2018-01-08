@@ -1,0 +1,4 @@
+/*
+ * Compressed by JSA(www.xidea.org)
+ */
+(function($){$.matchMedia=(function(){var _=0,A="gmu-media-detect",D=$.fx.transitionEnd,C=$.fx.cssPrefix,B=$("<style></style>").append("."+A+"{"+C+"transition: width 0.001ms; width: 0; position: absolute; top: -10000px;}\n").appendTo("head");return function(G){var E=A+_++,H,F=[],C;B.append("@media "+G+" { #"+E+" { width: 1px; } }\n");if("matchMedia"in window)return window.matchMedia(G);H=$("<div class=\""+A+"\" id=\""+E+"\"></div>").appendTo("body").on(D,function(){C.matches=H.width()===1;$.each(F,function(A,_){$.isFunction(_)&&_.call(C,C)})});C={matches:H.width()===1,media:G,addListener:function($){F.push($);return this},removeListener:function(_){var $=F.indexOf(_);~$&&F.splice($,1);return this}};return C}}())})(Zepto)

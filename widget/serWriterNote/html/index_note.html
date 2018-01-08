@@ -1,0 +1,879 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0" />
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<script src="../../script/gmu/zepto-min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="http://api.map.baidu.com/api?v=2.0&ak=KsjOhHzsO5gXOS5sIcUKrRdh"></script>
+		<link rel="stylesheet" href="../../css/api.css" />
+		<link rel="stylesheet" href="../../css/aui2/aui.2.0.css"/>
+		<link rel="stylesheet" href="../../css/note.css" />
+		<link rel="stylesheet" href="../../css/swiper.min.css" />
+		<script src="../../script/pengCmp/configXP.js"></script>
+		<script src="../../script/pengCmp/coreXP.js"></script>
+		<script src="../../script/swiper.min.js"></script>
+		<link rel="stylesheet" href="../../css/sm.min.css" />
+		<script type="text/javascript" src="../../script/store.min.js"></script>
+		<script src="../../script/sm.min.js"></script>
+		<script src="../../script/sm-city-picker.min.js"></script>
+		<script src="../../script/aui2/aui-dialog.js"></script>
+		<title>记一笔</title>
+		<style type="text/css">
+			.in_city {
+				color: darkgrey;
+				background-size: 8px auto;
+				border-right: 1px solid #ccc;
+				height: 3em;
+				overflow: hidden;
+				position: relative;
+				line-height: 30px;
+				border: none;
+			}
+		</style>
+	</head>
+	<body>
+
+			<article>
+				<h3>消费信息</h3>
+				<dl>
+					<form id="subForm">
+							<dt>
+								消费类型<samp style='color: #F90505;'>*</samp>
+							</dt>
+							<dd>
+								<select id="type" style="color:#000"></select>
+							</dd>
+							<dt>
+								消费金额<samp style='color: #F90505;'>*</samp>
+							</dt>
+							<dd style="background: none;position: relative;" id="number-box">
+								<span style="position: absolute;top: 50%;-webkit-transform: translateY(-50%);transform: translateY(-50%);right: 10px;font-size: 0.85em; color: #A9A9A9;"></span>
+								<input type="number"  min="0.0" step="0.1" maxlength="6" autocomplete="off"  oninput="this.value=this.value.replace(/[^\d.]/g, '')" name="prize" placeholder="请输入消费的金额" />
+							</dd>
+							<dt>
+								消费城市<samp style='color: #F90505;'>*</samp>
+							</dt>
+							<!--<dd class="in_city">请选择消费城市</dd>-->
+							<dd>
+								<div class="jiyibi-city-text">
+									<input class="in_city" placeholder="请选择消费城市" readonly="readonly" value="" style="color: #000;">
+								</div>
+							</dd>
+							<dt>
+								消费日期<samp style='color: #F90505;'>*</samp>
+							</dt>
+							<dd class="consume_time" style="color:#000 ">
+								请选择消费日期
+							</dd>
+						</form>
+				</dl>
+				<h3>上传票据</h3>
+				<div class="position_r swiperParent">
+					<div class="swiper-container">
+						<div class="swiper-wrapper"></div>
+						<!-- Add Arrows -->
+					</div>
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
+				</div>
+				<div class="cao">
+					<span onclick = "cammerImage()"><label>拍照 </label></span>
+					<span onclick = "photoImage()"><label>照片 </label></span>
+					
+				</div>
+				<h3>报销说明</h3>
+				<textarea id="remark" placeholder="请输入说明内容"></textarea>
+				<div class="shadow" style="display:none"><img src="" />
+				</div>
+			</article>
+
+		<footer>
+			提交
+		</footer>
+		<!-- Initialize Swiper -->
+		<script>
+		    var operReady = false; 
+		    var dialog    = new auiDialog(); 
+
+		    $(function(){
+		    	     $('#remark').on("click",function(){
+		    	     
+		    	          setTimeout(function(){
+		    	               $("article")[0].scrollTop = 1000;
+		    	          },850);
+		    	     });
+		    	     
+		    	     $("input").change(function(){
+		    	     	operReady = true;
+		    	     });
+		    	     $("select").change(function(){
+		    	     	operReady = true;
+		    	     });
+		    	     $(".consume_time").change(function(){
+		    	     	operReady = true;
+		    	     });
+		    	     $("textarea").change(function(){
+		    	     	operReady = true;
+		    	     });
+		    }); 
+		    
+			var urlAll     = configXP.tripgPlatform+"/";
+			use_status     = "";
+		
+		    //图片读取
+			function photoImage(){
+				var systemType = api.systemType; 
+				if(systemType == "android"){
+					api.accessNative({
+					    name:"cameraPersionm"	
+					}, function(pageParam) {
+					    var isCarmeraPersionm = pageParam.isCarmeraPersionm;
+					    if(isCarmeraPersionm){
+					    	     sFileImage();
+					    }else{
+					    	     nativeXP.toast({msg:pageParam.text});
+					    }
+					   
+					});
+				}else{
+					sFileImage();
+				}
+			}
+			
+			//拍照
+			function cammerImage(){
+				var systemType = api.systemType; 
+				if(systemType == "android"){
+					api.accessNative({
+					    name:"cameraPersionm"	
+					}, function(pageParam) {
+					    var isCarmeraPersionm = pageParam.isCarmeraPersionm;
+					    if(isCarmeraPersionm){
+					    	    sFileImage2();
+					    }else{
+					    	    nativeXP.toast({msg:pageParam.text});
+					    }
+					    
+					});
+				}else{
+					sFileImage2();
+				}
+			}
+			
+			function sFileImage() {
+				
+			    var use_status = newPageParam.use_status;
+				if(use_status == "2"){
+					return;
+				}
+				
+				api.getPicture({
+					sourceType : 'library',
+					encodingType : 'jpg',
+					mediaValue : 'pic',
+					destinationType : 'base64',
+					allowEdit : false,
+					quality : 80,
+					targetWidth : 800,
+					targetHeight : 800,
+					saveToPhotoAlbum : true
+				}, function(ret, err) {
+					if (ret) {
+						base64 = ret.base64Data;
+						$.ajax({
+							type : "POST",
+							url : configXP.urls.uploadFileWrite,
+							data : {
+								"fileType" : "3",
+								"imgBase" : base64
+							},
+							dataType : "json",
+							async : false,
+							success : function(data) {
+								if (data.code == '1') {
+									operReady = true;
+									$(".swiper-wrapper").append('<div class="swiper-slide"><IMG class="img" relativeSrc="' + data.uploadInfo.database_path + '" SRC="' + data.uploadInfo.real_path + '" /><img src="../../image/del.png" class="del"/></div></div>')
+								}
+							},
+							error : function() {
+								nativeXP.toast({
+									msg:'对不起,网络出现异常,请稍候重试'
+								});
+							}
+						});
+					} 
+				});
+			}
+
+			function sFileImage2() {
+				
+				var use_status = newPageParam.use_status;
+				if(use_status == "2"){
+					return;
+				}
+				
+				api.getPicture({
+				    sourceType: 'camera',
+				    encodingType: 'jpg',
+				    mediaValue: 'pic',
+				    destinationType: 'base64',
+				    allowEdit: true,
+				    quality: 80,
+				    targetWidth: 600,
+				    targetHeight: 600,
+				    saveToPhotoAlbum : true
+				}, function(ret, err) {
+				    if (ret) {
+				    	    base64 = ret.base64Data;
+				        $.ajax({
+							type : "POST",
+							url : configXP.urls.uploadFileWrite,
+							data : {
+								"fileType" : "3",
+								"imgBase" : base64
+							},
+							dataType : "json",
+							async : false,
+							success : function(data) {
+								if (data.code == '1') {
+									operReady = true;
+									$(".swiper-wrapper").append('<div class="swiper-slide"><IMG class="img" relativeSrc="' + data.uploadInfo.database_path + '" SRC="' + data.uploadInfo.real_path + '" /><img src="../../image/del.png" class="del"/></div></div>')
+								}
+							},
+							error : function() {
+								nativeXP.toast({
+									msg:'对不起,网络出现异常,请稍候重试'
+								});
+							}
+						});
+				    }
+				});
+				return;
+				api.getPicture({
+					sourceType : 'camera',
+					encodingType : 'jpg',
+					mediaValue : 'pic',
+
+					allowEdit : false
+				
+				}, function(ret, err) {
+					return;
+					if (ret) {
+						base64 = ret.base64Data;
+						$.ajax({
+							type : "POST",
+							url :  configXP.urls.uploadFileWrite,
+							data : {
+								"fileType" : "3",
+								"imgBase" : base64
+							},
+							dataType : "json",
+							async : false,
+							success : function(data) {
+								if (data.code == '1') {
+									$(".swiper-wrapper").append('<div class="swiper-slide"><IMG class="img" relativeSrc="' + data.uploadInfo.database_path + '" SRC="' + data.uploadInfo.real_path + '" /><img src="../../image/del.png" class="del"/></div></div>')
+								}
+							},
+							error : function() {
+								nativeXP.toast({
+									msg:'对不起,网络出现异常,请稍候重试'
+								});
+							}
+						});
+					}
+				});
+			}
+
+			/*
+			 * 正则表达式判断 是不是 小数点
+			 */
+			var regNum = /^\d+(\.\d+)?$/;
+			var oldValue = "";
+			newPageParam = {};
+			apiready = function() {
+
+				var systemType = api.systemType;
+				//如监听网络连接事件
+				api.addEventListener({
+				    name: 'goBack_note'
+				}, function(ret, err) {
+				    if(operReady){
+				    	    dialog.remove();
+				        dialog.alert({
+						    title : '您确定放弃此操作吗？',
+						    buttons: ['取消','确定']
+						}, function(ret, err) {
+						    var index = ret.buttonIndex;
+						    if(index == "2"){
+						    	   api.closeWin(); 
+						    }
+						});
+					}else{
+						  api.closeWin(); 
+					}
+					    
+				});
+				 
+				var city = "";
+				var UICityList = api.require('UICityList');
+
+				newPageParam = api.pageParam;
+				pageParam = api.pageParam;
+				var currentCity = newPageParam.city;
+				var list_id = pageParam.list_id;
+	            if(!(currentCity == null ||  currentCity == "")){
+	            	    if(list_id !=null){
+						currentCity = currentCity.substring(0,currentCity.length-1);
+						$(".in_city").val(currentCity);
+					}
+				}
+				
+				//点击城市调用城市列表
+				$(".in_city").click(function() {
+					var extra = {};
+					api.sendEvent({
+	                    name: 'backLogic',
+	                    extra: {backLogic: true}
+	                });
+	                setTimeout(function(){
+	                	   nativeXP.openFrame({url:"../../public_cmp/city_citylistMZ_win.html"});
+	                },300);
+					
+				});
+				
+				api.addEventListener({
+					name : 'selectedcity'
+				}, function(ret, err) {
+					$(".in_city").val(ret.value.cityName);
+				});
+				
+				
+				var urlAll = configXP.tripgPlatform + "/";
+				var isEdit = 0;
+				var myDate = new Date();
+				var year = myDate.getFullYear();
+				//获取完整的年份(4位,1970-????)
+				var month = myDate.getMonth() + 1;
+				//获取当前月份(0-11,0代表1月)
+				if (month < 10) {
+					month = "0" + month;
+				}
+				var dates = myDate.getDate();
+				//获取当前日(1-31)
+				if (dates < 10) {
+					dates = "0" + dates;
+				}
+				currentDate = year + "-" + month + "-" + dates;
+				if(list_id == null){
+				    $(".consume_time").text(currentDate);
+				}
+				
+				if(list_id != null){
+					var in_city      = pageParam.in_city;
+					var consume_time = pageParam.consume_time;
+					var product_name = pageParam.product_name;
+					var consume_amount = pageParam.consume_amount; 
+					$("[name=prize]").val(consume_amount);
+					$("dd.consume_time").addClass("change").html(consume_time);
+					$("input.in_city").val(in_city);
+		
+					$("#type option").each(function() {
+						if ($(this).val() == product_name) {
+							$(this).prop("selected", true).siblings().prop("selected", false);
+						}
+					}); 
+				}
+				function getQueryString(key) {
+					var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+					var result = window.location.search.substr(1).match(reg);
+					return result ? decodeURIComponent(result[2]) : null;
+				}
+
+				var swiper = new Swiper('.swiper-container', {
+					slidesPerView : 3,
+					paginationClickable : true,
+					spaceBetween : 0,
+					observer : true,
+					nextButton : '.swiper-button-next',
+					prevButton : '.swiper-button-prev'
+				});
+				$("body").on("click", "img.img", function() {
+					var pageParam = {};
+					pageParam.dataSrc = $(this).attr("src");
+					api.openWin({
+						name : 'page1',
+						slidBackEnabled : false,
+						url : '../../public_cmp/imgSearchCmp.html',
+						animation : {
+							type : "fade",
+							subType : 'from_bottom',
+							duration : 300
+						},
+						pageParam : pageParam,
+						bgColor : "red",
+						scaleEnabled : true,
+						vScrollBarEnabled : false,
+						hScrollBarEnabled : false
+					});
+				});
+				$("body").on("click", "div.shadow", function() {
+					$(this).hide();
+				});
+				$.ajax({
+					type : "POST",
+					url : configXP.urls.getProductType,
+					data : {
+						"company_id" : store.get("company_id")
+					},
+					dataType : "json",
+					success : function(data) {
+						
+						if (data.code == "1") {
+							if(list_id == null){
+								$("#type").append("<option value=''>请选择消费类型</option>");
+							}else{
+								$("#type").append("<option value=''></option>");
+							}
+							
+							for (var i = 0; i < data.result.length; i++) {
+								$("#type").append("<option value='" + data.result[i].id + "'>" + data.result[i].product_name + "</option>");
+							}
+							if (list_id != "" && list_id != null) {
+								isEdit = 1;
+								$.ajax({
+									type : "POST",
+									url : configXP.urls.writeRow + "?user_id=" + store.get("userid") + "&list_id=" + list_id,
+									dataType : "json",
+									success : function(data) {
+										if (data.code == '1') {
+											if(pageParam.consume_amount == null){
+												$("[name=prize]").val(data.result[0].consume_amount);
+											}
+											if(pageParam.consume_time == null){
+												$("dd.consume_time").addClass("change").html(data.result[0].consume_time.split(" ")[0]);
+											}
+											if(pageParam.in_city == null){
+												$("input.in_city").val(data.result[0].in_city);
+											} 
+											
+											$("#remark").val(data.result[0].remark);
+											$("#type option").each(function() {
+												if ($(this).val() == data.result[0].consume_type) {
+													$(this).prop("selected", true).siblings().prop("selected", false);
+												}
+											}); 
+											if(data.result[0].picList != "" && data.result[0].picList!=null){
+											for (var i = 0; i < data.result[0].picList.length; i++) {
+												if (+data.result[0].picList[i].picture_path != "")
+													$("div.swiper-wrapper").append('<div class="swiper-slide"><IMG class="img" imgId="' + data.result[0].picList[i].id + '" relativeSrc="' + data.result[0].picList[i].picture_path + '" SRC="' + configXP.tripgPlatform + "/" + data.result[0].picList[i].picture_path + '" /><img src="../../image/del.png" class="del"/></div>');
+											}
+											}
+											use_status = data.result[0].use_status;
+											if (data.result[0].use_status == '2') {
+												$("select").css("color", "darkgrey");
+                                                $("input").attr("disabled", "disabled");
+												$("textarea").attr("readonly", "readonly");
+												$("select").attr("disabled", "disabled");
+												$(".in_city").attr("disabled", "disabled");
+												//$("dd.consume_time").removeClass("consume_time");
+												$(".consume_time").css("color", "darkgrey");
+												$("img.del").remove();
+												$("footer").remove();
+											}
+										}
+									},
+									error : function() {
+										nativeXP.toast({
+											msg:'对不起,网络出现异常,请稍候重试'
+										});
+									}
+								});
+							}
+						}
+					},
+					error : function() {
+						nativeXP.toast({
+									msg:'当前无网络！'
+						});
+					}
+				});
+			    var delImgArr = []; 
+				$("body").on("click", "img.del", function() {
+					_this = $(this).parent().find("img.img");
+						 
+					 dialog.alert({
+						title : '您确定删除当前图片！',
+						buttons : ['确定', '取消']
+					}, function(ret, err) {
+						var index = ret.buttonIndex;
+						if (index == "1") {
+							if (!isEdit) {
+								_this.parents(".swiper-slide").remove();
+							} else {
+								delImgArr.push(_this.attr("imgId"));
+								_this.parents(".swiper-slide").remove();
+							}
+						}
+					});
+				});
+				var imgId = "";
+				$("footer").click(function() {
+
+					//清除dialog
+					dialog.remove();
+					imgSrc = "";
+					$("img.img").each(function() {
+						if ($(this).attr("relativeSrc") != "")
+							imgSrc += $(this).attr("relativeSrc") + "|";
+					})
+					if (isEdit) {
+						$("img.img").each(function() {
+							if ($(this).attr("imgId") != "")
+								imgId += $(this).attr("imgId") + ",";
+						})
+						imgId = imgId.substring(0, imgId.length - 1);
+						var list_id = pageParam.list_id;
+						var consume_amount = $("[name=prize]").val();
+						var typeVal        = $("#type").val();
+						if(typeVal == ""){
+							dialog.alert({
+								title : '请选择消费类型！',
+								buttons : ['确定']
+							});
+							return;
+						}
+						
+						if (consume_amount == "") {
+							dialog.alert({
+								title : '请输入消费金额！',
+								buttons : ['确定']
+							});
+							return;
+						}
+						if (consume_amount == "0") {
+							dialog.alert({
+								title : '消费金额不能为0',
+								buttons : ['确定']
+							});
+							return;
+						}
+						
+					    if (consume_amount.substring(0, 1) == "0") {
+						    var secondIndex = consume_amount.substring(1,2);
+						    if(secondIndex != "."){
+						    	    dialog.alert({
+									title : '请您输入正确的消费金额!',
+									buttons : ['确定']
+								});
+							    return;
+						    }
+							
+						}
+						if (!(regNum.test(consume_amount))) {
+							dialog.alert({
+								title : '请您输入正确的消费金额!',
+								buttons : ['确定']
+							});
+							return;
+						}
+						var regNumText = consume_amount.match(regNum);
+						if (regNumText == null) {
+							dialog.alert({
+								title : '请输入正确的消费金额！',
+								buttons : ['确定']
+							});
+							return;
+						}
+						
+						
+						var regNumText = consume_amount.match(regNum);
+						if (regNumText == null) {
+							dialog.alert({
+								title : '请输入正确的消费金额！',
+								buttons : ['确定']
+							});
+							return;
+						}
+						var in_city = $("input.in_city").val();
+						if (in_city == "") {
+							dialog.alert({
+								title : '请选择消费城市！',
+								buttons : ['确定']
+							});
+							return;
+						}
+						var consume_time = $("dd.consume_time").html();
+						if (consume_time == "") {
+							dialog.alert({
+								title : '请选择消费日期！',
+								buttons : ['确定']
+							});
+							return;
+						}
+						//显示加载中......
+						showAnimate(1);
+						$.ajax({
+							type : "POST",
+							url : configXP.urls.writeNoteUpdate,
+							data : {
+								"in_city" : $("input.in_city").val(),
+								"consume_time" : $("dd.consume_time").html(),
+								"consume_amount" : $("[name=prize]").val(),
+								"consume_type" : $("#type").val(),
+								"pictures_num" : $("div.swiper-wrapper div.swiper-slide").size(),
+								"remark" : $("#remark").val(),
+								"list_id" : list_id,
+								"database_path" : imgSrc,
+								"pic_id" : imgId
+							},
+							dataType : "json",
+							success : function(data) {
+								//隐藏加载中......
+								showAnimate(-1);
+								if (data.code == "1") {
+									var name = pageParam.name;
+									if (name == null) {
+										name = "root";
+									}
+									
+									for(var i=0;i<delImgArr.length;i++){
+										$.ajax({
+											type : "POST",
+											url : configXP.urls.uploadFileWrite,
+											data : {
+												"fileType" : "2",
+												"file_id" : delImgArr[i]
+											},
+											dataType : "json",
+											async:false,
+											success : function(data) { 
+												_this.parents(".swiper-slide").remove();
+											},
+											error : function() {
+												nativeXP.toast({
+													msg:'对不起,网络出现异常,请稍候重试'
+												});
+											}
+										});
+									}
+									
+									api.execScript({
+										name : name,
+										frameName : 'consumRecord_Frame01',
+										script : 'reloadData()'
+									});
+									api.execScript({
+										name : name,
+										frameName : 'consumRecord_Frame02',
+										script : 'reloadData()'
+									});
+									api.closeWin();
+									/*nativeXP.openWin({
+									 url: 'consumRecord.html',
+									 animation: {
+									 type: "fade", //动画类型（详见动画类型常量）
+									 duration: 300 //动画过渡时间，默认300毫秒
+									 },
+									 reload:true
+									 });*/
+								} else {
+									dialog.alert({
+										title : data.msg,
+										buttons : ['确定']
+									});
+									showAnimate(-1);
+								}
+							},
+							error : function() {
+								nativeXP.toast({
+									msg:'对不起,网络出现异常,请稍候重试'
+								});
+								showAnimate(-1);
+							}
+						});
+					} else {
+						newPageParam.userid = store.get("userid");
+						newPageParam.customerId = store.get("customerId");
+						newPageParam.deptId = store.get("deptId");
+						newPageParam.name = "consumRecord";
+						var userid = store.get("userid");
+						var consume_amount = $("[name=prize]").val();
+                         var typeVal        = $("#type").val();
+						if(typeVal == ""){
+							dialog.alert({
+								title : '请选择消费类型！',
+								buttons : ['确定']
+							});
+							return;
+						}
+                         
+						if (consume_amount == "") {
+							dialog.alert({
+								title : '请输入消费金额！',
+								buttons : ['确定']
+							});
+							return;
+						}
+						if (consume_amount == "0") {
+							dialog.alert({
+								title : '消费金额不能为0',
+								buttons : ['确定']
+							});
+							return;
+						}
+						if (consume_amount.substring(0, 1) == "0") {
+						    var secondIndex = consume_amount.substring(1,2);
+						    if(secondIndex != "."){
+						    	    dialog.alert({
+									title : '请您输入正确的消费金额',
+									buttons : ['确定']
+								});
+							    return;
+						    }
+							
+						}
+						if (!(regNum.test(consume_amount))) {
+							dialog.alert({
+								title : '请您输入正确的消费金额',
+								buttons : ['确定']
+							});
+							return;
+						}
+						var regNumText = consume_amount.match(regNum);
+						if (regNumText == null) {
+							dialog.alert({
+								title : '请输入正确的消费金额！',
+								buttons : ['确定']
+							});
+							return;
+						}
+						var in_city = $("input.in_city").val();
+						if (in_city == "") {
+							dialog.alert({
+								title : '请选择消费城市！',
+								buttons : ['确定']
+							});
+							return;
+						}
+						var consume_time = $("dd.consume_time").html();
+						if (consume_time == "") {
+							dialog.alert({
+								title : '请选择消费日期！',
+								buttons : ['确定']
+							});
+							return;
+						}
+						//显示加载中......
+						showAnimate(1);
+						$.ajax({
+							type : "POST",
+							url : configXP.urls.createNote,
+							data : {
+								"user_id" : userid,
+								"in_city" : $("input.in_city").val(),
+								"consume_time" : $("dd.consume_time").html(),
+								"consume_amount" : $("[name=prize]").val(),
+								"consume_type" : $("#type").val(),
+								"pictures_num" : $("div.swiper-wrapper div.swiper-slide").size(),
+								"remark" : $("#remark").val(),
+								"database_path" : imgSrc
+							},
+							dataType : "json",
+							success : function(data) {
+								//隐藏加载中......
+								showAnimate(-1);
+								if (data.code == "1") {
+									nativeXP.openWin({
+										url : 'consumRecord.html',
+										pageParam : newPageParam
+									});
+								} else {
+									dialog.alert({
+										title : '创建记一笔失败!',
+										buttons : ['确定']
+									});
+									showAnimate(-1);
+								}
+							},
+							error : function() {
+								nativeXP.toast({
+									msg:'对不起,网络出现异常,请稍候重试'
+								});
+								showAnimate(-1);
+							}
+						});
+					}
+				})
+				$(".consume_time").click(function() {
+					if(use_status == "2"){
+						return;
+					}
+					var pageParam = {};
+					if (newPageParam.operator) {
+						pageParam.winName = "index";
+					} else {
+						pageParam.winName = "root";
+					}
+					pageParam.frameName = "index_note";
+					pageParam.currentDate = currentDate;
+					
+					nativeXP.openFrame({
+						url : '../../public_cmp/calendarMZWin.html',
+						pageParam : pageParam
+					});
+				})
+			}
+			$('input[name="prize"]').keyup(function() {
+				var value = $(this).val();
+				var indexLen = $(this).val().indexOf(".");
+				if (indexLen < -1) {
+					indexLen = 0;
+				}
+				var length = $(this).val().length;
+				var valStr = value.split(".")[1];
+				var subLen = 0;
+				if (valStr != null) {
+					subLen = valStr.length;
+				}
+				if (subLen > 2) {
+					$(this).val(oldValue);
+				} else if (indexLen > 6) {
+					$(this).val(oldValue);
+				} else if (length > 7) {
+					$(this).val(oldValue);
+				}
+				oldValue = $(this).val();
+			});
+			/*
+			 * 设置日期
+			 */
+			function calendarCall(currentDate, weekText) {
+				$(".consume_time").addClass("change").html(currentDate);
+			}
+			
+			function clearInput(){
+				$(".swiper-wrapper").empty();
+				$("#subForm")[0].reset();
+				$("dd.consume_time").html(currentDate);
+				$("#remark").val("");
+				$("input.in_city").val("");
+			}
+			
+			//城市选择完毕
+			function selectedCity(city){
+				$(".in_city").val(city);
+			}
+
+			$(function() {
+				/*$(".in_city").cityPicker({
+				 toolbarTemplate: '<header class="bar bar-nav">\
+				 <button class="button button-link pull-right close-picker">确定</button>\
+				 <h1 class="title">选择城市</h1>\
+				 </header>'
+				 });*/
+				
+			});
+		</script>
+	</body>
+</html>
