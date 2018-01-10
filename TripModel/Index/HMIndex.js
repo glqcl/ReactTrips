@@ -115,6 +115,7 @@ export default class TripGroup extends Component
 
     topItemClick(title)
     {
+
         if (this.props.titleArray[0] == title)
         {
             this.props.navigation.navigate('HMApprovalList');
@@ -166,6 +167,14 @@ export default class TripGroup extends Component
         return topItemArray;
     }
 
+    renderMiddleClick(positon)
+    {
+        if(0==positon)
+        {
+            this.props.navigation.navigate('HotelMainController');
+        }
+    }
+
     getMiddleView()
     {
 
@@ -173,6 +182,8 @@ export default class TripGroup extends Component
         for (var i = 0; i < this.props.middleArray.length; i++)
         {
             middleItemArray.push(<HMMiddleItem key={i}
+                                               position={i}
+                                               callBack={(positon)=>this.renderMiddleClick(positon)}
                                                title={this.props.middleArray[i]}/>)
         }
         return middleItemArray;
@@ -195,10 +206,7 @@ export default class TripGroup extends Component
     rednderPlane()
     {
         this.props.navigation.navigate('HMPlaneIndex');
-
-
         // this.refs.actionSheet.show();
-
         // this.props.navigator.push({
         //     component: HMPlaneIndex
         // })

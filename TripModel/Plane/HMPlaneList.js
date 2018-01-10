@@ -7,7 +7,12 @@ import {
     Dimensions
 } from 'react-native';
 import {ExpandableList} from "../CommonTools/ExpandableList";
-var {width, height} = Dimensions.get('window')
+var {width, height} = Dimensions.get('window');
+import HMUrlUtils from '../CommonTools/HMUrlUtils'
+import StorageUtil from '../CommonTools/StorageUtil'
+import NetUitl from '../CommonTools/NetUitl'
+import HMPlaneHeaderCell from './HMPlaneHeaderCell'
+
 
 export default class HMPlaneList extends Component
 {
@@ -16,6 +21,7 @@ export default class HMPlaneList extends Component
     {
         super(props);
     }
+
     _renderGroupHeader({item, groupId, status, toggleStatus})
     {
         return (
@@ -23,12 +29,13 @@ export default class HMPlaneList extends Component
                 <Text style={[styles.headTitleText, status && styles.headChosenTitleText]}>{item.title}</Text>
                 <TouchableOpacity onPress={() => toggleStatus(true)}>
                     <View style={styles.touchArea}>
-                        <Text style={{color: status ? '#FFF' : '#333',width:width}}>{status ? 'close' : 'open'}</Text>
+                        <Text style={{color: status ? '#FFF' : '#333', width: width}}>{status ? 'close' : 'open'}</Text>
                     </View>
                 </TouchableOpacity>
             </View>
         )
     }
+
     _renderGroupListItem({item, groupId, rowId})
     {
         return (
@@ -41,49 +48,65 @@ export default class HMPlaneList extends Component
 
     renderPlaneList()
     {
-        //http://a.tripg.com/QunarAir/GetFlightList?arr=CGQ&date=2018-01-09&companyCode=919&dpt=PEK&TimeStamp=1515401963&Sign=600DCA44-D71A-41F1-9B73-EB3A560B3429&NewKey=859b645e11806218b4afbb4f9cd10971
-
+        //http://a.tripg.com/QunarAir/GetFlightList?arr=CGQ&date=2018-01-09&companyCode=919&dpt=PEK
         //http://a.tripg.com/QunarAir/GetFlightInfo?arr=CGQ&date=2018-01-09&flightNum=CA1609&dpt=PEK&TimeStamp=1515401989&Sign=600DCA44-D71A-41F1-9B73-EB3A560B3429&companyCode=919&NewKey=3a34fd02225ec9813e30489f0af71048
+        StorageUtil.getJsonObject('userInfo').then(userInfo =>
+        {
+
+            let tempUrl = `${HMUrlUtils.GetFlightList}?arr=CGQ&date=2018-01-09&companyCode=919&dpt=PEK`;
+
+            NetUitl.get(tempUrl, function (response)
+            {
+                alert(JSON.stringify(response));
+            }, function (error)
+            {
+
+            })
+
+        })
+
+
     }
 
     componentDidMount()
     {
-
+        this.renderPlaneList();
     }
+
     render()
     {
 
         const {data = []} = this.props;
-
-
         let Data = [
             {
                 groupHeaderData: {title: 'Dashboard'},
-                groupListData: ['Calls', 'Chart', 'Map']
+                // groupListData: ['Calls', 'Chart', 'Map']
             },
             {
                 groupHeaderData: {title: 'Profile'},
-                groupListData: ['User', 'Add contact', 'Calendar']
+                //groupListData: ['User', 'Add contact', 'Calendar']
             },
             {
                 groupHeaderData: {title: 'Messages'},
-                groupListData: ['Inbox', 'Sent', 'Deleted']
+                //groupListData: ['Inbox', 'Sent', 'Deleted']
             },
             {
                 groupHeaderData: {title: 'Settings'},
-                groupListData: ['Fill Beer', 'Adjust', 'Alarm']
+                // groupListData: ['Fill Beer', 'Adjust', 'Alarm']
             }
         ];
 
         return (
             <View style={styles.container}>
-                <ExpandableList
-                    data={Data}
-                    groupStyle={styles.groupItem}
-                    initialOpenGroups={[1]}
-                    renderGroupHeader={this._renderGroupHeader}
-                    renderGroupListItem={this._renderGroupListItem}
-                />
+                {/*<ExpandableList*/}
+                    {/*data={Data}*/}
+                    {/*groupStyle={styles.groupItem}*/}
+                    {/*initialOpenGroups={[1]}*/}
+                    {/*renderGroupHeader={this._renderGroupHeader}*/}
+                    {/*renderGroupListItem={this._renderGroupListItem}*/}
+                {/*/>*/}
+
+                <HMPlaneHeaderCell />
             </View>
         );
     }

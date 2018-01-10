@@ -26,6 +26,7 @@ import HMApprovalList from '../Approval/HMApprovalList';
 import HMApprovalDetail from '../Approval/HMApprovalDetail';
 import FlatListExample from '../Approval/FlatListExample'
 import HMPlaneList from '../Plane/HMPlaneList'
+import HotelMainController from '../Hotel/HotelMainController'
 
 export default class BaseRootNavigator extends Component
 {
@@ -96,6 +97,12 @@ const Navigator = StackNavigator({
         screen: HMApprovalDetail,
         navigationOptions: {
             headerTitle: '申请单详情'
+        }
+    },
+    HotelMainController: {
+        screen: HotelMainController,
+        navigationOptions: {
+            headerTitle: '酒店查询'
         }
     }
 

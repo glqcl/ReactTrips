@@ -16,8 +16,6 @@ import {
 const HMUrlUtils = {
 
 
-
-
     /*审批列表*/
     getTravelList: 'http://test.tmcapi.tripg.com/index.php/commonApi/commonApi/getTravelList',
     /*审批详情*/
@@ -28,6 +26,9 @@ const HMUrlUtils = {
     scrollUrl: 'http://business.tripg.cn/phone_api/index_img_carousel.php?project_id=14',
 
     CusomterUrl: 'http://c.tripg.com/Base/Get_CusomterAndMemberInterface.aspx',
+    /*机票查询列表*/
+    GetFlightList: 'http://a.tripg.com/QunarAir/GetFlightList',
+
 
 };
 export default HMUrlUtils;

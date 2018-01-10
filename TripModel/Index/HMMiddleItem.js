@@ -11,7 +11,8 @@ import {
     Text,
     View,
     Image,
-    Platform
+    Platform,
+    TouchableOpacity
 
 } from 'react-native';
 
@@ -27,15 +28,29 @@ export default class TripGroup extends Component
 {
     static defaultProps = {
         title: '',
+        position: 0,
         maxLoops: 10,
+        callBack: null,
     };  // 注意这里有分号
+
+    renderCallBack()
+    {
+        if (this.props.callBack == null)return;
+        this.props.callBack(this.props.position);
+    }
+
     render()
     {
         return (
-            <View style={styles.container}>
-                <Image source={{uri: 'hotel', width: 20, height: 20}}></Image>
-                <Text style={{marginTop: 5, fontSize: 12, color: 'white'}}>{this.props.title}</Text>
+            <View >
+                <TouchableOpacity activeOpacity={0.5} onPress={() => this.renderCallBack()}>
+                    <View style={styles.container}>
+                        <Image source={{uri: 'hotel', width: 20, height: 20}}></Image>
+                        <Text style={{marginTop: 5, fontSize: 12, color: 'white'}}>{this.props.title}</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
+
         );
     }
 }
