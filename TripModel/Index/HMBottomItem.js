@@ -37,7 +37,7 @@ export default class TripGroup extends Component
 
                 <Image source={{uri: 'manage', width: Platform.OS=='ios'?25:20, height: Platform.OS=='ios'?25:20}}></Image>
 
-                <Text style={{fontSize:Platform.OS=='ios'?12:10 , color: 'white',marginTop:5}}>{this.props.title}</Text>
+                <Text style={{fontSize:Platform.OS=='ios'?12:10 , color: 'white',marginTop:5,display:'none'}}>{this.props.title}</Text>
 
             </View>
 

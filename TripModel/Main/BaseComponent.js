@@ -9,10 +9,22 @@ import React, {Component} from 'react';
 
 import {
     BackHandler,
+    View,
+    Text,
+    StyleSheet,
+    Alert,
+    ScrollView,
+    ListView,
+    Image,
+    ActivityIndicator,
+    ProgressBarAndroid,
+    ActivityIndicatorIOS,
     Platform,
+    TouchableHighlight,
 } from 'react-native';
 
 import Loading from 'react-native-loading-w';
+import PullToRefreshListView from 'react-native-smart-pull-to-refresh-listview'
 
 export default class BaseComponent extends Component
 {
@@ -94,3 +106,55 @@ export default class BaseComponent extends Component
         return false; // 默认false  表示跳出RN
     }
 }
+
+const styles = StyleSheet.create({
+    launchImageStyle: {
+        flex: 1
+    },
+    itemHeader: {
+        height: 35,
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderBottomColor: '#ccc',
+        backgroundColor: 'blue',
+        overflow: 'hidden',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    item: {
+        height: 60,
+        //borderBottomWidth: StyleSheet.hairlineWidth,
+        //borderBottomColor: '#ccc',
+        overflow: 'hidden',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    contentContainer: {
+        paddingTop: 20 + 44,
+    },
+
+    separator: {
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderBottomColor: '#ccc',
+    },
+
+    thumbnail: {
+        padding: 6,
+        flexDirection: 'row',
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderBottomColor: '#ccc',
+        overflow: 'hidden',
+    },
+
+    textContainer: {
+        //height: 100,
+        padding: 20,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
+});
+
+
+
+

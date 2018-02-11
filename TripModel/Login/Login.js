@@ -30,6 +30,7 @@ import NetUitl from '../CommonTools/NetUitl';
 import tgUtil from '../CommonTools/tgUtil';
 import BaseComponent from '../Main/BaseComponent';
 import HMUrlUtils from '../CommonTools/HMUrlUtils'
+import Loading from '../CommonTools/Loading'
 import {StackNavigator} from 'react-navigation';
 
 var Spinner = require('react-native-spinkit');
@@ -53,9 +54,24 @@ export default class TripGroup extends BaseComponent
             tempUrl: '',
             size: 100,
             color: "#FFFFFF",
-            isVisible: true
+            isVisible: true,
+            loadingBool:'false',
         };
     }
+
+
+    getClass(){
+        if (this.state.loadingBool ==='true' ) {
+            return (
+                <Loading/>
+            );
+        }else{
+
+            return(null);
+        }
+
+    }
+
 
     login()
     {
@@ -86,11 +102,19 @@ export default class TripGroup extends BaseComponent
         var urlData = tgUtil.tgParmsToUrl(parmData);
         urlData += tgUtil.tgGetNewKeyStr(urlData, LogoKey);
         var tempUrl = `${HMUrlUtils.CusomterUrl}?${urlData}`;
-        this.showProgress();
+       // this.showProgress();
+        this.setState({
+            loadingBool:'true'
+        })
+
         var self = this;
         NetUitl.get(tempUrl, function (responseText)
         {
-            self.hideProgress();
+
+            this.setState({
+                loadingBool:'false'
+            })
+          //  self.hideProgress();
             var Code = responseText.Code;
             var Message = responseText.Message;
 
@@ -109,7 +133,7 @@ export default class TripGroup extends BaseComponent
             }
         }, function (error)
         {
-            self.hideProgress();
+           // self.hideProgress();
         })
     }
 
@@ -166,8 +190,8 @@ export default class TripGroup extends BaseComponent
 
                         <Toast ref="toast"/>
 
-                        {this.initLoading()}
-
+                        {/*{this.initLoading()}*/}
+                        {  this.getClass()}
 
                     </View>
                 </View>
