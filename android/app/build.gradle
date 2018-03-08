@@ -142,6 +142,7 @@ dependencies {
     compile "com.facebook.react:react-native:+"  // From node_modules
     compile project(':jpush-react-native')  // 添加 jpush 依赖
     compile project(':jcore-react-native')  // 添加 jcore 依赖
+    compile project(':react-native-smart-swipe-refresh-layout')
 
 
 

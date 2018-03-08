@@ -58,7 +58,8 @@ import {
 
 } from 'react-native';
 
-import App from './TripModel/Main/App'
+import App from './TripModel/Classes/Main/App'
+import  './TripModel/Stytle/Global';  // 导出全局属性
 
 export default class TripGroup extends Component
 {

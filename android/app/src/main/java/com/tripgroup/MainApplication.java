@@ -3,13 +3,14 @@ package com.tripgroup;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.react.rnspinkit.RNSpinkitPackage;
-import com.github.xinthink.rnmk.ReactMaterialKitPackage;
-import com.react.arron.speech.speechModulePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.github.xinthink.rnmk.ReactMaterialKitPackage;
+import com.react.arron.speech.speechModulePackage;
+import com.react.rnspinkit.RNSpinkitPackage;
+import com.reactnativecomponent.swiperefreshlayout.RCTSwipeRefreshLayoutPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,10 +37,10 @@ public class MainApplication extends Application implements ReactApplication
         {
             return Arrays.<ReactPackage>asList(
                     new MainReactPackage(),
-            new RNSpinkitPackage(),
-            new ReactMaterialKitPackage(),
-            new speechModulePackage(),
-                   
+                    new RNSpinkitPackage(),
+                    new ReactMaterialKitPackage(),
+                    new speechModulePackage(),
+                    new RCTSwipeRefreshLayoutPackage(),
                     new JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG)
             );
         }
