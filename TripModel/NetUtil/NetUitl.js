@@ -45,7 +45,7 @@ class NetUitl extends BaseComponent
             // .set('API-Key', 'foobar')
             // .set('Accept', 'application/json')
             .timeout({
-                response: 5000,  // Wait 5 seconds for the server to start sending,
+                response: 50000,  // Wait 5 seconds for the server to start sending,
                 deadline: 60000, // but allow 1 minute for the file to finish loading.
             })
             .end(function (err, res)
@@ -56,16 +56,16 @@ class NetUitl extends BaseComponent
                 }
                 else
                 {
-                    if (err.timeout)
-                    {
-
-                        self.showToast(HMCommon.netTimeOut)
-                    }
-                    else
-                    {
-
-                        self.showToast(HMCommon.netError)
-                    }
+                    // if (err.timeout)
+                    // {
+                    //
+                    //     self.showToast(HMCommon.netTimeOut)
+                    // }
+                    // else
+                    // {
+                    //
+                    //     self.showToast(HMCommon.netError)
+                    // }
                     failureCallBack(err)
                 }
 

@@ -25,7 +25,8 @@ import HMPlaneIndex from '../Plane/HMPlaneIndex';
 import HMApprovalList from '../Approval/HMApprovalList';
 import HMApprovalDetail from '../Approval/HMApprovalDetail';
 import HMPlaneList from '../Plane/HMPlaneList';
-import HotelMainController from '../Hotel/Controller/HotelMainController';
+import HMInterPlaneIndex from '../InterPlane/HMInterPlaneIndex';
+import HMInterPlaneList from '../InterPlane/HMInterPlaneList';
 import HMCityListView from '../BaseView/HMCityListView';
 import HMCalendarView from '../BaseView/HMCalendarView';
 
@@ -103,12 +104,21 @@ const Navigator = StackNavigator({
             headerTitle: '选择日期'
         }
     },
-    HotelMainController: {
-        screen: HotelMainController,
+
+    HMInterPlaneIndex: {
+        screen: HMInterPlaneIndex,
         navigationOptions: {
-            headerTitle: '酒店首页'
+            headerTitle: '国际机票'
         }
-    }
+    },
+
+    HMInterPlaneList: {
+        screen: HMInterPlaneList,
+        navigationOptions: {
+            headerTitle: '国际机票'
+        }
+    },
+
 
 }, {
     navigationOptions: {

@@ -37,7 +37,7 @@ const HMCommonStyle = {
     themeColor: '#e74c3c',
 
     // 默认背景颜色
-    bgColor: 'rgba(18,32,47,1.0)',
+    bgColor: 'rgba(17,33,49,1.0)',
 
     /*红色按钮*/
     btnColorWithRed: 'rgb(189,65,43)',
@@ -145,6 +145,9 @@ const HMCommonStyle = {
     textFont14: 14,
 
     textFont16: 16,
+    textFont18: 18,
+
+
     // 默认按钮文字字体
     btnFont: 15,
     // 导航title字体
@@ -165,9 +168,10 @@ const HMCommonStyle = {
     between: 'space-between',
     center: 'center',
     row: 'row',
-    flex_end:'flex-end',
+    flex_end: 'flex-end',
 
-    left:'left'
+    left: 'left',
+    right: 'right'
 }
 
 export default HMCommonStyle;

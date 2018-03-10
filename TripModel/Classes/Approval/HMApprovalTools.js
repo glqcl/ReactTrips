@@ -91,4 +91,143 @@ export default class HMApprovalTools
             console.log('获取流程图失败' + error);
         })
     }
+
+
+    /**
+     * 时间秒数格式化
+     * @param s 时间戳（单位：秒）
+     * @returns {*} 格式化后的时分秒
+     */
+    static sec_to_time = function (s)
+    {
+        var t;
+        if (s > -1)
+        {
+            var hour = Math.floor(s / 3600);
+            var min = Math.floor(s / 60) % 60;
+            var sec = s % 60;
+            if (hour < 10)
+            {
+                t = '0' + hour + "h";
+            } else
+            {
+                t = hour + "h";
+            }
+
+            if (min < 10)
+            {
+                t += "0";
+            }
+            t += min + "m";
+            // if (sec < 10)
+            // {
+            //     t += "0";
+            // }
+            // t += sec.toFixed(2);
+        }
+        return t;
+    }
+
+    //获取当前时间，格式YYYY-MM-DD
+    static getNowFormatDate()
+    {
+        var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9)
+        {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9)
+        {
+            strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        return currentdate;
+    }
+
+    // 日期，在原有日期基础上，增加days天数，默认增加1天
+    static addDate(date, days)
+    {
+        if (days == undefined || days == '')
+        {
+            days = 0;
+        }
+        var date = new Date(date);
+        date.setDate(date.getDate() + days);
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        // return date.getFullYear() + '-' + getFormatDate(month) + '-' + getFormatDate(day);
+        return this.getFormatDate(day);
+    }
+
+    // 日期，在原有日期基础上，增加days天数，默认增加1天
+    static addDateByNewDate(date, days)
+    {
+        if (days == undefined || days == '')
+        {
+            days = 0;
+        }
+        var date = new Date(date);
+        date.setDate(date.getDate() + days);
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        return date.getFullYear() + '-' + this.getFormatDate(month) + '-' + this.getFormatDate(day);
+
+    }
+
+
+    // 日期月份/天的显示，如果是1位数，则在前面加上'0'
+    static getFormatDate(arg)
+    {
+        if (arg == undefined || arg == '')
+        {
+            return '';
+        }
+
+        var re = arg + '';
+        if (re.length < 2)
+        {
+            re = '0' + re;
+        }
+
+        return re;
+    }
+
+    /**
+     * 是否为Null
+     * @param object
+     * @returns {Boolean}
+     */
+    static isNull(object)
+    {
+        if (object == null || typeof object == "undefined")
+        {
+            return true;
+        }
+        return false;
+    };
+
+    /**
+     * 根据日期字符串获取星期几
+     * @param dateString 日期字符串（如：2016-12-29），为空时为用户电脑当前日期
+     * @returns {String}
+     */
+    static getWeek(dateString)
+    {
+        var date;
+        if (this.isNull(dateString))
+        {
+            date = new Date();
+        } else
+        {
+            var dateArray = dateString.split("-");
+            date = new Date(dateArray[0], parseInt(dateArray[1] - 1), dateArray[2]);
+        }
+        //var weeks = new Array("日", "一", "二", "三", "四", "五", "六");
+        //return "星期" + weeks[date.getDay()];
+        return "周" + "日一二三四五六".charAt(date.getDay());
+    };
 }

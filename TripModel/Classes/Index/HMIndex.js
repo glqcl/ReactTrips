@@ -111,16 +111,24 @@ export default class HMIndex extends Component
         JPushModule.removeReceiveNotificationListener();
     }
 
+    /*头部按钮点击事件*/
     topItemClick(title)
     {
-
         if (this.props.titleArray[0] == title)
         {
             this.props.navigation.navigate('HMApprovalList');
-            // this.props.navigation.navigate('FlatListExample');
-            // this.props.navigator.push({
-            //     component: HMApprovalList
-            // })
+        }
+    }
+    /*中部按钮点击事件*/
+    renderMiddleClick(positon)
+    {
+        if (0 == positon)
+        {
+            this.props.navigation.navigate('HotelMainController');
+        }
+        else if (1 == positon)
+        {
+            this.props.navigation.navigate('HMInterPlaneIndex');
         }
     }
 
@@ -165,13 +173,6 @@ export default class HMIndex extends Component
         return topItemArray;
     }
 
-    renderMiddleClick(positon)
-    {
-        if (0 == positon)
-        {
-            this.props.navigation.navigate('HotelMainController');
-        }
-    }
 
     getMiddleView()
     {
